@@ -1,37 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 70" width="340" height="70" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 64" width="540" height="64" fill="none">
   <defs>
-    <linearGradient id="monoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="beamWhite" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="60%" stop-color="#E4E4E7" />
-      <stop offset="100%" stop-color="#D4D4D8" />
+      <stop offset="60%" stop-color="#EDEDED" />
+      <stop offset="100%" stop-color="#D1D1D6" />
     </linearGradient>
-    <linearGradient id="monoLight" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="beamSilver" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#FFFFFF" />
       <stop offset="100%" stop-color="#A1A1AA" />
     </linearGradient>
   </defs>
 
-  <!-- Architectural Geometric 'S' Monogram (Black & White Minimalist) -->
-  <g transform="translate(6, 6)">
-    <!-- Top Beam Segment -->
-    <path d="M4 14 L28 14 L42 2 L18 2 Z" fill="url(#monoGrad)" />
-    <!-- Upper Vertical Angle Segment -->
-    <path d="M4 14 L18 2 L18 22 L4 34 Z" fill="url(#monoLight)" />
-    <!-- Central Cross Beam -->
-    <path d="M4 34 L18 22 L44 22 L30 34 Z" fill="url(#monoGrad)" />
-    <!-- Lower Vertical Angle Segment -->
-    <path d="M30 34 L44 22 L44 42 L30 54 Z" fill="url(#monoLight)" />
-    <!-- Bottom Beam Segment -->
-    <path d="M6 54 L30 54 L44 42 L20 42 Z" fill="url(#monoGrad)" />
-    <!-- Accent Dot -->
+  <!-- Architectural Geometric 'S' Monogram -->
+  <g transform="translate(4, 5)">
+    <path d="M4 14 L28 14 L42 2 L18 2 Z" fill="url(#beamWhite)" />
+    <path d="M4 14 L18 2 L18 22 L4 34 Z" fill="url(#beamSilver)" />
+    <path d="M4 34 L18 22 L44 22 L30 34 Z" fill="url(#beamWhite)" />
+    <path d="M30 34 L44 22 L44 42 L30 54 Z" fill="url(#beamSilver)" />
+    <path d="M6 54 L30 54 L44 42 L20 42 Z" fill="url(#beamWhite)" />
     <circle cx="42" cy="14" r="3" fill="#FFFFFF" />
   </g>
 
-  <!-- Wordmark -->
-  <g transform="translate(66, 10)">
+  <!-- Brand Wordmark matching exact MVC Engineering Reference -->
+  <g transform="translate(64, 4)">
     <!-- Main Brand Name -->
-    <text x="0" y="30" font-family="'Space Grotesk', 'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="800" letter-spacing="3.5" fill="#FFFFFF">STRATUM</text>
-    <!-- Subtitle / Disciplines -->
-    <text x="1" y="47" font-family="'JetBrains Mono', 'Plus Jakarta Sans', monospace" font-size="8.5" font-weight="600" letter-spacing="2.8" fill="#A1A1AA">VDC | BIM | MEP ENGINEERING</text>
+    <text x="0" y="27" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="800" letter-spacing="3" fill="#FFFFFF">STRATUM</text>
+    
+    <!-- Subtitle: ENGINEERING -->
+    <text x="1" y="46" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="700" letter-spacing="4.5" fill="#A1A1AA">ENGINEERING</text>
+
+    <!-- Vertical Divider Line -->
+    <line x1="168" y1="6" x2="168" y2="48" stroke="rgba(255, 255, 255, 0.28)" stroke-width="1.2" />
+
+    <!-- Technical Tagline -->
+    <text x="186" y="31" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="600" letter-spacing="2.4" fill="#E4E4E7">VDC  |  BIM  |  MEP ENGINEERING</text>
   </g>
 </svg>
