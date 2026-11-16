@@ -1001,42 +1001,44 @@ button, input, select, textarea {
    ========================================================================== */
 .why-cresto-bar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 24px;
+  flex-direction: column;
+  gap: 28px;
 }
 
 .why-pills-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  width: 100%;
 }
 
 .why-pill-badge {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  padding: 12px 20px;
+  padding: 14px 18px;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
   color: #FFFFFF;
   font-size: 13.5px;
   font-weight: 600;
+  white-space: nowrap;
   transition: all var(--transition-fast);
+}
+
+.why-pill-badge:hover {
+  background: #FFFFFF;
+  color: #000000;
+  border-color: #FFFFFF;
 }
 
 .why-pill-badge svg {
   width: 16px;
   height: 16px;
-  fill: #FFFFFF;
-}
-
-.why-pill-badge:hover {
-  border-color: rgba(255, 255, 255, 0.45);
-  background: var(--color-bg-card-hover);
+  fill: currentColor;
+  flex-shrink: 0;
 }
 
 /* ==========================================================================
@@ -1204,29 +1206,33 @@ button, input, select, textarea {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 28px;
-  margin-top: 40px;
+  margin-top: 48px;
   position: relative;
 }
 
 .process-cresto-row::before {
   content: '';
   position: absolute;
-  top: 18px;
+  top: 22px;
   left: 36px;
   right: 36px;
   height: 1px;
-  background: var(--color-border);
+  background: rgba(255, 255, 255, 0.18);
   z-index: 1;
 }
 
 .process-step-cresto {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
+.step-num-circle,
 .process-number-circle {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: #000000;
   border: 1px solid rgba(255, 255, 255, 0.35);
@@ -1234,17 +1240,22 @@ button, input, select, textarea {
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   color: #FFFFFF;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
   transition: all var(--transition-fast);
 }
 
+.process-step-cresto:hover .step-num-circle,
 .process-step-cresto:hover .process-number-circle {
   background: #FFFFFF;
   color: #000000;
   border-color: #FFFFFF;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
 }
 
 .process-step-cresto h4 {
@@ -1253,7 +1264,8 @@ button, input, select, textarea {
   font-weight: 600;
   color: #FFFFFF;
   line-height: 1.35;
-  max-width: 180px;
+  max-width: 200px;
+  margin: 0;
 }
 
 /* ==========================================================================
@@ -1615,6 +1627,8 @@ button, input, select, textarea {
   }
 
   .why-pills-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
     width: 100%;
   }
 
