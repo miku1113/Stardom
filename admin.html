@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Stratum VDC & MEP Engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- ==========================================
+       LOGIN VIEW (Shown when unauthenticated)
+       ========================================== -->
+  <div id="loginView" class="admin-login-wrapper">
+    <div class="login-card">
+      <div class="login-brand">
+        <img src="assets/stratum-logo-3d.jpg" alt="Stratum Logo" class="login-logo">
+        <div>
+          <div class="login-title">Stratum Admin</div>
+          <div class="login-subtitle">Engineering & Content Control Panel</div>
+        </div>
+      </div>
+
+      <div id="loginError" class="login-alert error">Invalid credentials. Please try again.</div>
+
+      <form id="loginForm">
+        <div class="form-field">
+          <label class="form-label">Username</label>
+          <input type="text" id="loginUsername" class="admin-input" placeholder="e.g. admin" value="admin" required autofocus>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Password</label>
+          <input type="password" id="loginPassword" class="admin-input" placeholder="Enter password" value="stratum2026" required>
+        </div>
+        <div style="font-size: 12px; color: var(--admin-text-dim); margin-bottom: 20px;">
+          Default Login: <code>admin</code> / <code>stratum2026</code>
+        </div>
+        <button type="submit" id="loginBtn" class="btn-admin btn-admin-primary" style="width: 100%; justify-content: center; padding: 12px;">
+          Log In to Dashboard
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       AUTHENTICATED DASHBOARD LAYOUT
+       ========================================== -->
+  <div id="dashboardView" class="admin-layout" style="display: none;">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-header">
+        <img src="assets/stratum-logo-3d.jpg" alt="Stratum Logo" style="width: 32px; height: 32px; border-radius: 6px; object-fit: cover;">
+        <div>
+          <div class="sidebar-brand-name">Stratum VDC</div>
+        </div>
+        <span class="sidebar-badge">CMS</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">General</div>
+        <a class="admin-nav-item active" data-tab="overview">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          Overview
+        </a>
+        <a class="admin-nav-item" data-tab="inquiries">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Client Inquiries
+          <span class="nav-pill" id="inquiriesCountBadge">0</span>
+        </a>
+
+        <div class="nav-section-label">Content Management</div>
+        <a class="admin-nav-item" data-tab="projects">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+          Projects & Portfolio
+        </a>
+        <a class="admin-nav-item" data-tab="services">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          Services (All 15)
+        </a>
+        <a class="admin-nav-item" data-tab="content">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+          Site Info & Hero
+        </a>
+        <a class="admin-nav-item" data-tab="blogs">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          Blog Articles
+        </a>
+        <a class="admin-nav-item" data-tab="careers">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+          Careers & Jobs
+        </a>
+
+        <div class="nav-section-label">System</div>
+        <a class="admin-nav-item" data-tab="settings">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+          Security & Password
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="index.html" target="_blank" class="btn-admin btn-admin-outline" style="width: 100%; justify-content: center;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+          View Live Website
+        </a>
+        <button id="logoutBtn" class="btn-admin btn-admin-danger" style="width: 100%; justify-content: center;">
+          Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <main class="admin-main">
+      <!-- TOPBAR -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <h1 class="topbar-title" id="pageTitle">Dashboard Overview</h1>
+        </div>
+        <div class="topbar-right">
+          <span style="font-size: 13px; color: var(--admin-text-muted);">
+            Logged in as <strong id="loggedUser" style="color:#FFF;">admin</strong>
+          </span>
+          <button id="quickAddProjectBtn" class="btn-admin btn-admin-primary btn-admin-sm">
+            + Add Project
+          </button>
+        </div>
+      </header>
+
+      <!-- CONTENT SECTIONS -->
+      <div class="admin-content">
+
+        <!-- ==========================================
+             TAB 1: OVERVIEW DASHBOARD
+             ========================================== -->
+        <section id="tab-overview" class="admin-section active">
+          <div class="stats-grid-admin">
+            <div class="stat-box accent-rose">
+              <div class="stat-header">
+                <span>Total Projects</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+              </div>
+              <div class="stat-number" id="overviewProjectsCount">0</div>
+              <div class="stat-desc">Featured in portfolio & homepage</div>
+            </div>
+
+            <div class="stat-box accent-emerald">
+              <div class="stat-header">
+                <span>Active Services</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+              </div>
+              <div class="stat-number" id="overviewServicesCount">15</div>
+              <div class="stat-desc">MEP, BIM, Drafting & Support</div>
+            </div>
+
+            <div class="stat-box accent-amber">
+              <div class="stat-header">
+                <span>Client Inquiries</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </div>
+              <div class="stat-number" id="overviewInquiriesCount">0</div>
+              <div class="stat-desc">Direct consultations received</div>
+            </div>
+
+            <div class="stat-box">
+              <div class="stat-header">
+                <span>Active Job Openings</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+              </div>
+              <div class="stat-number" id="overviewCareersCount">0</div>
+              <div class="stat-desc">Published on Career page</div>
+            </div>
+          </div>
+
+          <!-- Quick Recent Inquiries -->
+          <div class="admin-card">
+            <div class="card-header-bar">
+              <h2 class="card-header-title">Recent Client Inquiries</h2>
+              <button class="btn-admin btn-admin-outline btn-admin-sm" onclick="switchTab('inquiries')">View All Inquiries &rarr;</button>
+            </div>
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Client Name</th>
+                    <th>Firm / Organization</th>
+                    <th>Phone / Email</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="overviewRecentInquiriesTable">
+                  <tr><td colspan="6" style="text-align:center; padding:20px; color:var(--admin-text-dim);">Loading inquiries...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             TAB 2: INQUIRIES & LEADS INBOX
+             ========================================== -->
+        <section id="tab-inquiries" class="admin-section">
+          <div class="admin-card">
+            <div class="card-header-bar">
+              <div>
+                <h2 class="card-header-title">Incoming Consultation & Quote Inquiries</h2>
+                <p style="font-size:13px; color:var(--admin-text-muted); margin-top:4px;">
+                  All submissions from the website "Schedule Consultation" modal and project inquiry forms.
+                </p>
+              </div>
+              <div class="filter-bar">
+                <input type="text" id="inquirySearchInput" class="admin-input search-input" placeholder="Search inquiries...">
+                <select id="inquiryStatusFilter" class="admin-select" style="width: auto;">
+                  <option value="all">All Statuses</option>
+                  <option value="New">New</option>
+                  <option value="In Review">In Review</option>
+                  <option value="Contacted">Contacted</option>
+                </select>
+                <button class="btn-admin btn-admin-outline btn-admin-sm" id="exportInquiriesBtn">Export CSV</button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Client / Contact</th>
+                    <th>Firm / Company</th>
+                    <th>Project Scope / Details</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="inquiriesTableBody">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             TAB 3: PROJECTS MANAGER
+             ========================================== -->
+        <section id="tab-projects" class="admin-section">
+          <div class="admin-card">
+            <div class="card-header-bar">
+              <div>
+                <h2 class="card-header-title">Portfolio Projects Manager</h2>
+                <p style="font-size:13px; color:var(--admin-text-muted); margin-top:4px;">
+                  Add, edit, or delete case studies displayed in the portfolio section and homepage.
+                </p>
+              </div>
+              <div class="filter-bar">
+                <input type="text" id="projectSearchInput" class="admin-input search-input" placeholder="Search projects...">
+                <select id="projectCategoryFilter" class="admin-select" style="width: auto;">
+                  <option value="all">All Sectors</option>
+                  <option value="commercial">Commercial</option>
+                  <option value="residential">Residential</option>
+                  <option value="healthcare">Healthcare</option>
+                  <option value="industrial">Industrial</option>
+                  <option value="infrastructure">Infrastructure</option>
+                  <option value="datacenter">Data Center</option>
+                </select>
+                <button class="btn-admin btn-admin-primary" id="openNewProjectModalBtn">
+                  + Add Project
+                </button>
+              </div>
+            </div>
+
+            <div class="admin-grid" id="projectsGrid">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             TAB 4: SERVICES MANAGER
+             ========================================== -->
+        <section id="tab-services" class="admin-section">
+          <div class="admin-card">
+            <div class="card-header-bar">
+              <div>
+                <h2 class="card-header-title">Engineering Services Manager</h2>
+                <p style="font-size:13px; color:var(--admin-text-muted); margin-top:4px;">
+                  Manage descriptions, technical scopes, deliverables, regulatory codes, and software toolchains for all 15 services.
+                </p>
+              </div>
+              <div class="filter-bar">
+                <select id="serviceCategoryFilter" class="admin-select" style="width: auto;">
+                  <option value="all">All 5 Categories</option>
+                  <option value="MEP DESIGN SERVICES">MEP Design Services</option>
+                  <option value="ARCHITECTURAL & STRUCTURAL DRAFTING">Architectural & Structural Drafting</option>
+                  <option value="BIM SERVICES">BIM Services</option>
+                  <option value="OTHER SERVICES">Other Services</option>
+                  <option value="CONSTRUCTION SUPPORT SERVICES">Construction Support Services</option>
+                </select>
+                <button class="btn-admin btn-admin-primary" id="openNewServiceModalBtn">
+                  + Add Service
+                </button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Service Title</th>
+                    <th>Category</th>
+                    <th>Technical Scope Summary</th>
+                    <th>Deliverables & Codes</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="servicesTableBody">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             TAB 5: SITE INFO & HERO CONTENT
+             ========================================== -->
+        <section id="tab-content" class="admin-section">
+          <form id="siteContentForm">
+            <!-- Company Details -->
+            <div class="admin-card">
+              <h2 class="card-header-title" style="margin-bottom: 20px;">Company Contact & Identity</h2>
+              <div class="form-grid-2">
+                <div class="form-field">
+                  <label class="form-label">Company Brand Name</label>
+                  <input type="text" id="contentCompanyName" class="admin-input" required>
+                </div>
+                <div class="form-field">
+                  <label class="form-label">Primary Tagline</label>
+                  <input type="text" id="contentTagline" class="admin-input">
+                </div>
+              </div>
+              <div class="form-grid-3">
+                <div class="form-field">
+                  <label class="form-label">Official Phone</label>
+                  <input type="text" id="contentPhone" class="admin-input" required>
+                </div>
+                <div class="form-field">
+                  <label class="form-label">Primary Email</label>
+                  <input type="email" id="contentEmail" class="admin-input" required>
+                </div>
+                <div class="form-field">
+                  <label class="form-label">Careers Email</label>
+                  <input type="email" id="contentCareersEmail" class="admin-input">
+                </div>
+              </div>
+              <div class="form-field">
+                <label class="form-label">HQ Office Physical Address</label>
+                <input type="text" id="contentAddress" class="admin-input" required>
+              </div>
+            </div>
+
+            <!-- Hero Section -->
+            <div class="admin-card">
+              <h2 class="card-header-title" style="margin-bottom: 20px;">Hero Section & Mission Statement</h2>
+              <div class="form-field">
+                <label class="form-label">Hero Badge / Pill Tag</label>
+                <input type="text" id="contentHeroBadge" class="admin-input">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Hero Headline (H1)</label>
+                <input type="text" id="contentHeroTitle" class="admin-input" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Hero Subtitle Paragraph</label>
+                <textarea id="contentHeroSubtitle" class="admin-textarea" rows="3" required></textarea>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+              <button type="submit" class="btn-admin btn-admin-primary" style="padding: 12px 28px;">
+                Save Content Changes
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- ==========================================
+             TAB 6: BLOG ARTICLES
+             ========================================== -->
+        <section id="tab-blogs" class="admin-section">
+          <div class="admin-card">
+            <div class="card-header-bar">
+              <div>
+                <h2 class="card-header-title">Technical Blog & Insights Manager</h2>
+                <p style="font-size:13px; color:var(--admin-text-muted); margin-top:4px;">
+                  Publish engineering guides, code compliance notes, and case study articles.
+                </p>
+              </div>
+              <button class="btn-admin btn-admin-primary" id="openNewBlogModalBtn">
+                + Add Blog Post
+              </button>
+            </div>
+
+            <div class="admin-grid" id="blogsGrid">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             TAB 7: CAREERS & OPENINGS
+             ========================================== -->
+        <section id="tab-careers" class="admin-section">
+          <div class="admin-card">
+            <div class="card-header-bar">
+              <div>
+                <h2 class="card-header-title">Job Openings & Career Listings</h2>
+                <p style="font-size:13px; color:var(--admin-text-muted); margin-top:4px;">
+                  Manage job positions displayed on the Career page.
+                </p>
+              </div>
+              <button class="btn-admin btn-admin-primary" id="openNewCareerModalBtn">
+                + Add Job Position
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Role Title</th>
+                    <th>Department</th>
+                    <th>Location / Type</th>
+                    <th>Experience Required</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="careersTableBody">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             TAB 8: SECURITY SETTINGS
+             ========================================== -->
+        <section id="tab-settings" class="admin-section">
+          <div class="admin-card" style="max-width: 600px;">
+            <h2 class="card-header-title" style="margin-bottom: 20px;">Change Admin Credentials</h2>
+            <form id="passwordChangeForm">
+              <div class="form-field">
+                <label class="form-label">Admin Username</label>
+                <input type="text" id="newAdminUsername" class="admin-input" placeholder="e.g. admin" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Current Password</label>
+                <input type="password" id="currentAdminPassword" class="admin-input" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">New Password (min 6 characters)</label>
+                <input type="password" id="newAdminPassword" class="admin-input" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Confirm New Password</label>
+                <input type="password" id="confirmAdminPassword" class="admin-input" required>
+              </div>
+              <button type="submit" class="btn-admin btn-admin-primary" style="margin-top: 10px;">
+                Update Password
+              </button>
+            </form>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ==========================================
+       MODAL: PROJECT ADD / EDIT
+       ========================================== -->
+  <div class="admin-modal-overlay" id="projectModal">
+    <div class="admin-modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="projectModalTitle">Add New Project</h3>
+        <button class="modal-close-btn" onclick="closeModal('projectModal')">&times;</button>
+      </div>
+      <form id="projectForm">
+        <input type="hidden" id="projectId">
+        
+        <div class="form-field">
+          <label class="form-label">Project Title *</label>
+          <input type="text" id="projectTitle" class="admin-input" placeholder="e.g. Tech Horizon IT Park, Whitefield, Bengaluru" required>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-field">
+            <label class="form-label">Category Sector *</label>
+            <select id="projectCategory" class="admin-select" required>
+              <option value="commercial">Commercial Tech Campus</option>
+              <option value="residential">High-Rise Residential</option>
+              <option value="healthcare">Super-Specialty Hospital</option>
+              <option value="industrial">Logistics & Industrial</option>
+              <option value="infrastructure">Transit & Infrastructure</option>
+              <option value="datacenter">Hyperscale Data Center</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Sector Tag Label</label>
+            <input type="text" id="projectSector" class="admin-input" placeholder="e.g. Grade-A IT Park">
+          </div>
+        </div>
+
+        <div class="form-grid-3">
+          <div class="form-field">
+            <label class="form-label">Location</label>
+            <input type="text" id="projectLocation" class="admin-input" placeholder="e.g. Whitefield, Bengaluru">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Built-up Area</label>
+            <input type="text" id="projectArea" class="admin-input" placeholder="e.g. 1,200,000 sq ft">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Completion Year</label>
+            <input type="text" id="projectYear" class="admin-input" placeholder="2025">
+          </div>
+        </div>
+
+        <!-- Image Upload & URL -->
+        <div class="form-field">
+          <label class="form-label">Project Photo</label>
+          <div class="upload-dropzone" id="projectDropzone">
+            <input type="file" id="projectFileInput" accept="image/*" style="display:none;">
+            <p style="font-size:13.5px; color:#94A3B8; margin-bottom:4px;">
+              📁 Click to upload or drag & drop project image
+            </p>
+            <span style="font-size:11.5px; color:#64748B;">Supported: JPG, PNG, WEBP (up to 15MB)</span>
+          </div>
+          <div style="margin-top: 8px;">
+            <input type="text" id="projectImageUrl" class="admin-input" placeholder="Or enter image URL (e.g. assets/project-commercial.jpg)">
+          </div>
+          <div class="upload-preview-box" id="projectImgPreviewBox" style="display:none;">
+            <img id="projectImgPreview" class="upload-preview-img" src="" alt="Preview">
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Key Deliverable Tags (comma separated)</label>
+          <input type="text" id="projectTags" class="admin-input" placeholder="2400 TR Chiller Plant, 33kV Substation, Revit LOD 350, ECBC Compliant">
+          <div class="form-hint">These appear as feature chips on the project card.</div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Detailed Project Description *</label>
+          <textarea id="projectDescription" class="admin-textarea" rows="4" placeholder="Detail the MEP engineering scope, equipment sizing, codes adhered to, and LOD coordination achievements..." required></textarea>
+        </div>
+
+        <div class="form-field" style="display: flex; align-items: center; gap: 8px;">
+          <input type="checkbox" id="projectFeatured" style="width: 18px; height: 18px; cursor: pointer;">
+          <label for="projectFeatured" class="form-label" style="margin-bottom:0; cursor:pointer;">
+            Feature this project on Homepage Carousel
+          </label>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-admin btn-admin-outline" onclick="closeModal('projectModal')">Cancel</button>
+          <button type="submit" class="btn-admin btn-admin-primary">Save Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: SERVICE ADD / EDIT
+       ========================================== -->
+  <div class="admin-modal-overlay" id="serviceModal">
+    <div class="admin-modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="serviceModalTitle">Edit Engineering Service</h3>
+        <button class="modal-close-btn" onclick="closeModal('serviceModal')">&times;</button>
+      </div>
+      <form id="serviceForm">
+        <input type="hidden" id="serviceId">
+
+        <div class="form-grid-2">
+          <div class="form-field">
+            <label class="form-label">Service Title *</label>
+            <input type="text" id="serviceTitle" class="admin-input" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Category Group *</label>
+            <select id="serviceCategory" class="admin-select" required>
+              <option value="MEP DESIGN SERVICES">MEP DESIGN SERVICES</option>
+              <option value="ARCHITECTURAL & STRUCTURAL DRAFTING">ARCHITECTURAL & STRUCTURAL DRAFTING</option>
+              <option value="BIM SERVICES">BIM SERVICES</option>
+              <option value="OTHER SERVICES">OTHER SERVICES</option>
+              <option value="CONSTRUCTION SUPPORT SERVICES">CONSTRUCTION SUPPORT SERVICES</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Summary Overview *</label>
+          <textarea id="serviceSummary" class="admin-textarea" rows="2" required></textarea>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Technical Scope of Work *</label>
+          <textarea id="serviceScope" class="admin-textarea" rows="3" required></textarea>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Deliverables (comma separated)</label>
+          <input type="text" id="serviceDeliverables" class="admin-input" placeholder="e.g. HVAC DBR, Chilled Water Schematics, Duct Layouts">
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-field">
+            <label class="form-label">Governing Codes & Standards</label>
+            <input type="text" id="serviceStandards" class="admin-input" placeholder="e.g. NBC 2016, ISHRAE, ECBC 2017">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Software Toolchain</label>
+            <input type="text" id="serviceTools" class="admin-input" placeholder="e.g. Autodesk Revit, Carrier HAP, AutoCAD">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-admin btn-admin-outline" onclick="closeModal('serviceModal')">Cancel</button>
+          <button type="submit" class="btn-admin btn-admin-primary">Save Service</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: BLOG ADD / EDIT
+       ========================================== -->
+  <div class="admin-modal-overlay" id="blogModal">
+    <div class="admin-modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="blogModalTitle">Add Blog Post</h3>
+        <button class="modal-close-btn" onclick="closeModal('blogModal')">&times;</button>
+      </div>
+      <form id="blogForm">
+        <input type="hidden" id="blogId">
+        <div class="form-field">
+          <label class="form-label">Article Title *</label>
+          <input type="text" id="blogTitle" class="admin-input" required>
+        </div>
+        <div class="form-grid-3">
+          <div class="form-field">
+            <label class="form-label">Category / Topic</label>
+            <input type="text" id="blogCategory" class="admin-input" placeholder="e.g. HVAC & ECBC">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Author Name</label>
+            <input type="text" id="blogAuthor" class="admin-input" placeholder="e.g. Lead Engineer">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Read Time</label>
+            <input type="text" id="blogReadTime" class="admin-input" placeholder="5 min read">
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Image URL / Path</label>
+          <input type="text" id="blogImage" class="admin-input" placeholder="assets/services-mep-thumb.jpg">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Short Summary *</label>
+          <textarea id="blogSummary" class="admin-textarea" rows="2" required></textarea>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Full Article Content</label>
+          <textarea id="blogContent" class="admin-textarea" rows="6"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-admin btn-admin-outline" onclick="closeModal('blogModal')">Cancel</button>
+          <button type="submit" class="btn-admin btn-admin-primary">Save Article</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: CAREER ADD / EDIT
+       ========================================== -->
+  <div class="admin-modal-overlay" id="careerModal">
+    <div class="admin-modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="careerModalTitle">Add Job Opening</h3>
+        <button class="modal-close-btn" onclick="closeModal('careerModal')">&times;</button>
+      </div>
+      <form id="careerForm">
+        <input type="hidden" id="careerId">
+        <div class="form-field">
+          <label class="form-label">Role Title *</label>
+          <input type="text" id="careerTitle" class="admin-input" placeholder="e.g. Senior MEP BIM Coordinator" required>
+        </div>
+        <div class="form-grid-3">
+          <div class="form-field">
+            <label class="form-label">Department</label>
+            <input type="text" id="careerDepartment" class="admin-input" placeholder="e.g. BIM & VDC">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Location</label>
+            <input type="text" id="careerLocation" class="admin-input" placeholder="e.g. Gurugram / Remote">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Experience</label>
+            <input type="text" id="careerExperience" class="admin-input" placeholder="e.g. 5-8 Years">
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Required Skills / Tags (comma separated)</label>
+          <input type="text" id="careerTags" class="admin-input" placeholder="Autodesk Revit, Navisworks, ISO 19650">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Job Description *</label>
+          <textarea id="careerDescription" class="admin-textarea" rows="4" required></textarea>
+        </div>
+        <div class="form-field" style="display:flex; align-items:center; gap:8px;">
+          <input type="checkbox" id="careerActive" checked style="width:18px; height:18px;">
+          <label for="careerActive" class="form-label" style="margin-bottom:0; cursor:pointer;">Listing is actively accepting applications</label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-admin btn-admin-outline" onclick="closeModal('careerModal')">Cancel</button>
+          <button type="submit" class="btn-admin btn-admin-primary">Save Job Opening</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATIONS -->
+  <div class="admin-toast-container" id="toastContainer"></div>
+
+  <!-- Admin Application Script -->
+  <script src="js/admin.js"></script>
+</body>
+</html>
