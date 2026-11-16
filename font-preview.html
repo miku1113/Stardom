@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architectural Font Pairing Showcase | Stratum Engineering</title>
+  
+  <!-- Preconnect & Load Google Fonts for all Curated Architectural Pairings -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=Chakra+Petch:wght@600;700&family=Cinzel:wght@600;700;800&family=DM+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Rajdhani:wght@600;700&family=Share+Tech+Mono&family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-base: #000000;
+      --bg-card: #0D0D0E;
+      --bg-surface: #121214;
+      --border-subtle: rgba(255, 255, 255, 0.12);
+      --border-hover: rgba(255, 255, 255, 0.4);
+      --text-white: #FFFFFF;
+      --text-muted: #A1A1AA;
+      --text-dim: #71717A;
+      --copper: #E58C36;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-base);
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 40px 24px 80px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header-bar {
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 28px;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .header-bar h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text-white);
+      letter-spacing: -0.5px;
+    }
+
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--copper);
+      border: 1px solid rgba(229, 140, 54, 0.3);
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(229, 140, 54, 0.08);
+      margin-bottom: 12px;
+    }
+
+    .grid-pairings {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .pairing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 32px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pairing-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+      transform: translateY(-2px);
+    }
+
+    .pairing-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .pairing-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--copper);
+      font-weight: 700;
+    }
+
+    .pairing-name {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .font-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .font-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #D4D4D8;
+    }
+
+    /* Live Preview Section */
+    .preview-box {
+      background: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 28px;
+      margin-top: 20px;
+    }
+
+    .preview-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .preview-headline {
+      font-size: 28px;
+      line-height: 1.25;
+      color: var(--text-white);
+      margin-bottom: 12px;
+    }
+
+    .preview-lead {
+      font-size: 14.5px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      max-width: 800px;
+    }
+
+    .preview-stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+    }
+
+    .stat-box strong {
+      display: block;
+      font-size: 20px;
+      color: var(--text-white);
+    }
+
+    .stat-box span {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .apply-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: #FFFFFF;
+      color: #000000;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 999px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.2s ease;
+    }
+
+    .apply-btn:hover {
+      background: #E4E4E7;
+    }
+
+    /* Font Specific Classes */
+    /* Pairing 1: Syne + Inter + Space Mono */
+    .p1-head { font-family: 'Syne', sans-serif; letter-spacing: -0.5px; font-weight: 700; }
+    .p1-body { font-family: 'Inter', sans-serif; }
+    .p1-mono { font-family: 'Space Mono', monospace; }
+
+    /* Pairing 2: Rajdhani + DM Sans + JetBrains Mono */
+    .p2-head { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; font-size: 32px !important; }
+    .p2-body { font-family: 'DM Sans', sans-serif; }
+    .p2-mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* Pairing 3: Sora + Manrope + Space Mono */
+    .p3-head { font-family: 'Sora', sans-serif; font-weight: 700; letter-spacing: -0.5px; }
+    .p3-body { font-family: 'Manrope', sans-serif; }
+    .p3-mono { font-family: 'Space Mono', monospace; }
+
+    /* Pairing 4: Barlow Condensed + Barlow + Share Tech Mono */
+    .p4-head { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; font-size: 34px !important; }
+    .p4-body { font-family: 'Barlow', sans-serif; }
+    .p4-mono { font-family: 'Share Tech Mono', monospace; }
+
+    /* Pairing 5: Cinzel / Outfit + Plus Jakarta Sans + JetBrains Mono */
+    .p5-head { font-family: 'Outfit', sans-serif; font-weight: 800; letter-spacing: -0.5px; }
+    .p5-body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .p5-mono { font-family: 'JetBrains Mono', monospace; }
+
+    @media (max-width: 768px) {
+      .preview-stats-row { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .preview-headline { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-bar">
+      <div>
+        <span class="badge-live">● TYPOGRAPHY SELECTION LAB</span>
+        <h1>Curated Font Systems for Obsidian Blueprint</h1>
+        <p style="color:var(--text-muted); font-size:14px; margin-top:6px;">
+          Comparing 5 high-precision architectural typographic combinations tested against the dark blueprint theme.
+        </p>
+      </div>
+      <div>
+        <a href="index.html" style="color:#FFFFFF; font-family:'JetBrains Mono', monospace; font-size:12px; text-decoration:none; border:1px solid var(--border-subtle); padding:8px 16px; border-radius:999px;">&larr; Back to Live Site</a>
+      </div>
+    </div>
+
+    <div class="grid-pairings">
+
+      <!-- PAIRING 1: Syne + Inter + Space Mono -->
+      <div class="pairing-card">
+        <div class="pairing-header">
+          <div>
+            <span class="pairing-num">OPTION 01 // ARCHITECTURAL STUDIO MODERNISM</span>
+            <div class="pairing-name">Syne &amp; Inter (Avant-Garde Architectural Studio)</div>
+          </div>
+          <div class="font-tags">
+            <span class="font-tag">Headings: Syne (700/800)</span>
+            <span class="font-tag">Body: Inter (400/500)</span>
+            <span class="font-tag">Code/Metadata: Space Mono</span>
+          </div>
+        </div>
+        <p style="font-size:13.5px; color:#A1A1AA;">
+          <strong>Vibe:</strong> High-end contemporary architectural monographs, Zaha Hadid / BIG studio aesthetics. <em>Syne</em> features distinctive geometric character forms that elevate headings beyond generic tech sans, while <em>Inter</em> guarantees pristine legibility for dense technical reports.
+        </p>
+        <div class="preview-box">
+          <span class="preview-eyebrow p1-mono" style="color:var(--copper);">&mdash; SPECIFICATION // 01</span>
+          <h2 class="preview-headline p1-head">Turnkey MEP Engineering, VDC &amp; BIM Coordination</h2>
+          <p class="preview-lead p1-body">Chartered Mechanical (HVAC), Electrical Substation, PHE &amp; Fire Protection engineering coupled with high-precision Revit LOD 100-500 BIM modeling. Fully aligned with NBC 2016, IS Codes, ECBC, and municipal sanction clearances.</p>
+          <div class="preview-stats-row">
+            <div class="stat-box"><strong class="p1-mono">250+</strong><span class="p1-body">Projects Delivered</span></div>
+            <div class="stat-box"><strong class="p1-mono">15M+</strong><span class="p1-body">Sq Ft Coordinated</span></div>
+            <div class="stat-box"><strong class="p1-mono">99.8%</strong><span class="p1-body">Clash-Free Rate</span></div>
+            <div class="stat-box"><strong class="p1-mono">100%</strong><span class="p1-body">NBC &amp; IS Compliant</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAIRING 2: Rajdhani + DM Sans + JetBrains Mono -->
+      <div class="pairing-card">
+        <div class="pairing-header">
+          <div>
+            <span class="pairing-num">OPTION 02 // TECHNICAL DRAFTING & CAD BLUEPRINT</span>
+            <div class="pairing-name">Rajdhani &amp; DM Sans (Structural Engineering &amp; CAD)</div>
+          </div>
+          <div class="font-tags">
+            <span class="font-tag">Headings: Rajdhani (600/700 Condensed)</span>
+            <span class="font-tag">Body: DM Sans (400/500)</span>
+            <span class="font-tag">Code/Metadata: JetBrains Mono</span>
+          </div>
+        </div>
+        <p style="font-size:13.5px; color:#A1A1AA;">
+          <strong>Vibe:</strong> Direct reference to CAD title blocks, engineering drafting tables, and aerospace structural documentation. The squared, condensed glyphs of <em>Rajdhani</em> project disciplined structural strength and precision, balanced by the clean modern geometry of <em>DM Sans</em>.
+        </p>
+        <div class="preview-box">
+          <span class="preview-eyebrow p2-mono" style="color:var(--copper);">&mdash; SPECIFICATION // 02</span>
+          <h2 class="preview-headline p2-head">Turnkey MEP Engineering, VDC &amp; BIM Coordination</h2>
+          <p class="preview-lead p2-body">Chartered Mechanical (HVAC), Electrical Substation, PHE &amp; Fire Protection engineering coupled with high-precision Revit LOD 100-500 BIM modeling. Fully aligned with NBC 2016, IS Codes, ECBC, and municipal sanction clearances.</p>
+          <div class="preview-stats-row">
+            <div class="stat-box"><strong class="p2-mono">250+</strong><span class="p2-body">Projects Delivered</span></div>
+            <div class="stat-box"><strong class="p2-mono">15M+</strong><span class="p2-body">Sq Ft Coordinated</span></div>
+            <div class="stat-box"><strong class="p2-mono">99.8%</strong><span class="p2-body">Clash-Free Rate</span></div>
+            <div class="stat-box"><strong class="p2-mono">100%</strong><span class="p2-body">NBC &amp; IS Compliant</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAIRING 3: Sora + Manrope + Space Mono -->
+      <div class="pairing-card">
+        <div class="pairing-header">
+          <div>
+            <span class="pairing-num">OPTION 03 // DIGITAL MONOLITH & BESPOKE FACADE</span>
+            <div class="pairing-name">Sora &amp; Manrope (Modern Minimalist Tech)</div>
+          </div>
+          <div class="font-tags">
+            <span class="font-tag">Headings: Sora (700/800 Geometric)</span>
+            <span class="font-tag">Body: Manrope (400/500)</span>
+            <span class="font-tag">Code/Metadata: Space Mono</span>
+          </div>
+        </div>
+        <p style="font-size:13.5px; color:#A1A1AA;">
+          <strong>Vibe:</strong> High-tech computational architecture, parametric modeling (Grasshopper/Dynamo), and luxury commercial facades. <em>Sora</em> carries purposeful geometric curves reminiscent of parametric architecture, complemented by the ultra-refined proportions of <em>Manrope</em>.
+        </p>
+        <div class="preview-box">
+          <span class="preview-eyebrow p3-mono" style="color:var(--copper);">&mdash; SPECIFICATION // 03</span>
+          <h2 class="preview-headline p3-head">Turnkey MEP Engineering, VDC &amp; BIM Coordination</h2>
+          <p class="preview-lead p3-body">Chartered Mechanical (HVAC), Electrical Substation, PHE &amp; Fire Protection engineering coupled with high-precision Revit LOD 100-500 BIM modeling. Fully aligned with NBC 2016, IS Codes, ECBC, and municipal sanction clearances.</p>
+          <div class="preview-stats-row">
+            <div class="stat-box"><strong class="p3-mono">250+</strong><span class="p3-body">Projects Delivered</span></div>
+            <div class="stat-box"><strong class="p3-mono">15M+</strong><span class="p3-body">Sq Ft Coordinated</span></div>
+            <div class="stat-box"><strong class="p3-mono">99.8%</strong><span class="p3-body">Clash-Free Rate</span></div>
+            <div class="stat-box"><strong class="p3-mono">100%</strong><span class="p3-body">NBC &amp; IS Compliant</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAIRING 4: Barlow Condensed + Barlow + Share Tech Mono -->
+      <div class="pairing-card">
+        <div class="pairing-header">
+          <div>
+            <span class="pairing-num">OPTION 04 // GERMAN INDUSTRIAL DIN & CPWD NORMS</span>
+            <div class="pairing-name">Barlow Condensed &amp; Barlow (Industrial DIN 1451 Standards)</div>
+          </div>
+          <div class="font-tags">
+            <span class="font-tag">Headings: Barlow Condensed (700/800)</span>
+            <span class="font-tag">Body: Barlow (400/500)</span>
+            <span class="font-tag">Code/Metadata: Share Tech Mono</span>
+          </div>
+        </div>
+        <p style="font-size:13.5px; color:#A1A1AA;">
+          <strong>Vibe:</strong> Heavy industrial logistics hubs, substations, data centers, and DIN/CPWD engineering manuals. <em>Barlow Condensed</em> gives titles maximum visual punch and authority while conserving horizontal line length for technical terminologies.
+        </p>
+        <div class="preview-box">
+          <span class="preview-eyebrow p4-mono" style="color:var(--copper);">&mdash; SPECIFICATION // 04</span>
+          <h2 class="preview-headline p4-head">Turnkey MEP Engineering, VDC &amp; BIM Coordination</h2>
+          <p class="preview-lead p4-body">Chartered Mechanical (HVAC), Electrical Substation, PHE &amp; Fire Protection engineering coupled with high-precision Revit LOD 100-500 BIM modeling. Fully aligned with NBC 2016, IS Codes, ECBC, and municipal sanction clearances.</p>
+          <div class="preview-stats-row">
+            <div class="stat-box"><strong class="p4-mono">250+</strong><span class="p4-body">Projects Delivered</span></div>
+            <div class="stat-box"><strong class="p4-mono">15M+</strong><span class="p4-body">Sq Ft Coordinated</span></div>
+            <div class="stat-box"><strong class="p4-mono">99.8%</strong><span class="p4-body">Clash-Free Rate</span></div>
+            <div class="stat-box"><strong class="p4-mono">100%</strong><span class="p4-body">NBC &amp; IS Compliant</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAIRING 5: Outfit + Plus Jakarta Sans + JetBrains Mono -->
+      <div class="pairing-card">
+        <div class="pairing-header">
+          <div>
+            <span class="pairing-num">OPTION 05 // ULTRA-CLEAN MODERN CORPORATE</span>
+            <div class="pairing-name">Outfit &amp; Plus Jakarta Sans (Clean Modern Enterprise)</div>
+          </div>
+          <div class="font-tags">
+            <span class="font-tag">Headings: Outfit (700/800 Ultra-Modern)</span>
+            <span class="font-tag">Body: Plus Jakarta Sans (400/500)</span>
+            <span class="font-tag">Code/Metadata: JetBrains Mono</span>
+          </div>
+        </div>
+        <p style="font-size:13.5px; color:#A1A1AA;">
+          <strong>Vibe:</strong> Grade-A developer portals, commercial mega-campuses, and institutional investors. <em>Outfit</em> gives headlines a punchy, sharp, geometric presence that feels corporate and high-end without the quirky eccentricities of standard sans-serifs.
+        </p>
+        <div class="preview-box">
+          <span class="preview-eyebrow p5-mono" style="color:var(--copper);">&mdash; SPECIFICATION // 05</span>
+          <h2 class="preview-headline p5-head">Turnkey MEP Engineering, VDC &amp; BIM Coordination</h2>
+          <p class="preview-lead p5-body">Chartered Mechanical (HVAC), Electrical Substation, PHE &amp; Fire Protection engineering coupled with high-precision Revit LOD 100-500 BIM modeling. Fully aligned with NBC 2016, IS Codes, ECBC, and municipal sanction clearances.</p>
+          <div class="preview-stats-row">
+            <div class="stat-box"><strong class="p5-mono">250+</strong><span class="p5-body">Projects Delivered</span></div>
+            <div class="stat-box"><strong class="p5-mono">15M+</strong><span class="p5-body">Sq Ft Coordinated</span></div>
+            <div class="stat-box"><strong class="p5-mono">99.8%</strong><span class="p5-body">Clash-Free Rate</span></div>
+            <div class="stat-box"><strong class="p5-mono">100%</strong><span class="p5-body">NBC &amp; IS Compliant</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
