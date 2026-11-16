@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <linearGradient id="favBronzeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DCA376" />
+      <stop offset="50%" stop-color="#C48B5E" />
+      <stop offset="100%" stop-color="#9E6940" />
+    </linearGradient>
+    <linearGradient id="favBronzeLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F0C29E" />
+      <stop offset="100%" stop-color="#C48B5E" />
+    </linearGradient>
+  </defs>
+
+  <!-- Obsidian Tile Background -->
+  <rect width="64" height="64" rx="14" fill="#110F0E" stroke="rgba(196,139,94,0.35)" stroke-width="1.5" />
+
+  <!-- Geometric 'S' Monogram -->
+  <g transform="translate(10, 5)">
+    <!-- Top Beam Segment -->
+    <path d="M4 14 L28 14 L42 2 L18 2 Z" fill="url(#favBronzeGrad)" />
+    <!-- Upper Vertical Angle Segment -->
+    <path d="M4 14 L18 2 L18 22 L4 34 Z" fill="url(#favBronzeLight)" />
+    <!-- Central Cross Beam -->
+    <path d="M4 34 L18 22 L44 22 L30 34 Z" fill="url(#favBronzeGrad)" />
+    <!-- Lower Vertical Angle Segment -->
+    <path d="M30 34 L44 22 L44 42 L30 54 Z" fill="url(#favBronzeLight)" />
+    <!-- Bottom Beam Segment -->
+    <path d="M6 54 L30 54 L44 42 L20 42 Z" fill="url(#favBronzeGrad)" />
+    <!-- Accent Dot -->
+    <circle cx="42" cy="14" r="3" fill="#DCA376" />
+  </g>
+</svg>
