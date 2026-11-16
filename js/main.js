@@ -26,10 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
       header.classList.remove('scrolled');
     }
 
-    if (window.scrollY > 500) {
-      backToTop.classList.add('show');
-    } else {
-      backToTop.classList.remove('show');
+    if (backToTop) {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
     }
   });
 
@@ -44,20 +46,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileDrawer = document.querySelector('.mobile-drawer');
   const drawerCloseBtn = document.querySelector('.drawer-close-btn');
   const drawerLinks = document.querySelectorAll('.drawer-link');
+  const drawerOverlay = document.querySelector('.drawer-overlay');
 
   if (mobileToggle && mobileDrawer) {
     mobileToggle.addEventListener('click', () => {
       mobileDrawer.classList.add('open');
+      if (drawerOverlay) drawerOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
 
     const closeDrawer = () => {
       mobileDrawer.classList.remove('open');
+      if (drawerOverlay) drawerOverlay.classList.remove('active');
       document.body.style.overflow = '';
     };
 
     if (drawerCloseBtn) {
       drawerCloseBtn.addEventListener('click', closeDrawer);
+    }
+
+    if (drawerOverlay) {
+      drawerOverlay.addEventListener('click', closeDrawer);
     }
 
     drawerLinks.forEach(link => {
