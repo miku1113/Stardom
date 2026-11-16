@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=13.0">
+  <link rel="stylesheet" href="css/styles.css?v=14.0">
 </head>
 <body>
 
@@ -232,54 +232,69 @@
     </div>
   </section>
 
-  <!-- Hero Stats Bar (Directly below Hero) -->
-  <div style="background:#000000; border-bottom:1px solid rgba(255,255,255,0.08);">
+    <!-- ==========================================================================
+       HIGHLIGHTS / 5-ITEM VALUE PROPOSITION BAR (Directly below Hero)
+       ========================================================================== -->
+  <div class="highlights-bar">
     <div class="container">
-      <div class="hero-stats-bar">
-        <!-- Stat 1 -->
-        <div class="stat-item">
-          <div class="stat-icon-wrap">
-            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v2h-2V5zm0 4h2v2h-2V9zm0 4h2v2h-2v-2zm-4-8h2v2H8V5zm0 4h2v2H8V9zm0 4h2v2H8v-2zm-4-8h2v2H4V5zm0 4h2v2H4V9zm0 4h2v2H4v-2zm14 8H4v-2h16v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2z"/></svg>
+      <div class="highlights-grid">
+        <!-- 1: NBC & IS Standards -->
+        <div class="highlight-box">
+          <div class="highlight-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
           </div>
-          <div class="stat-numbers">
-            <strong>100+</strong>
-            <span>Projects Delivered</span>
-          </div>
-        </div>
-
-        <!-- Stat 2 -->
-        <div class="stat-item">
-          <div class="stat-icon-wrap">
-            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 3s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-          </div>
-          <div class="stat-numbers">
-            <strong>50+</strong>
-            <span>Engineering Experts</span>
+          <div class="highlight-text">
+            <h3>NBC 2016 &amp; IS Codes</h3>
+            <p>IS 732, IS 3043, IS 2189, IS 1239, IS 1536 &amp; ECBC.</p>
           </div>
         </div>
 
-        <!-- Stat 3 -->
-        <div class="stat-item">
-          <div class="stat-icon-wrap">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-          </div>
-          <div class="stat-numbers">
-            <strong>10+</strong>
-            <span>Years of Experience</span>
-          </div>
-        </div>
-
-        <!-- Stat 4 -->
-        <div class="stat-item">
-          <div class="stat-icon-wrap">
+        <!-- 2: Pan-India Delivery -->
+        <div class="highlight-box">
+          <div class="highlight-icon">
             <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
           </div>
-          <div class="stat-numbers">
-            <strong>Pan India</strong>
-            <span>Project Support</span>
+          <div class="highlight-text">
+            <h3>Pan-India Delivery</h3>
+            <p>Engineered for 18+ States, Metro Authorities &amp; Tier 1/2 Hubs.</p>
+          </div>
+        </div>
+
+        <!-- 3: Statutory Clearances -->
+        <div class="highlight-box">
+          <div class="highlight-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 13.17l5.59-5.59L19 9l-7 8z"/></svg>
+          </div>
+          <div class="highlight-text">
+            <h3>Statutory Clearances</h3>
+            <p>DDA, BMC, BBMP, HMDA, Fire Dept &amp; DISCOM sanction drawings.</p>
+          </div>
+        </div>
+
+        <!-- 4: Zero Site Clashes -->
+        <div class="highlight-box">
+          <div class="highlight-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          </div>
+          <div class="highlight-text">
+            <h3>Zero Site Clashes</h3>
+            <p>Navisworks multi-trade clash detection before concrete is poured.</p>
+          </div>
+        </div>
+
+        <!-- 5: 2D & 3D Tech Suite -->
+        <div class="highlight-box">
+          <div class="highlight-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+          </div>
+          <div class="highlight-text">
+            <h3>2D &amp; 3D Tech Suite</h3>
+            <p>Revit, AutoCAD, Navisworks, Dialux, HAP &amp; Civil 3D workflows.</p>
           </div>
         </div>
       </div>
+    </div>
+  </div>
     </div>
   </div>
 
@@ -288,67 +303,71 @@
        ========================================================================== -->
   <section class="section-cresto" id="about">
     <div class="container">
-      <div class="section-eyebrow">&mdash; ABOUT STRATUM ENGINEERING</div>
-      <h2 class="section-headline">Engineering precision at every stage.</h2>
+      <div class="value-prop-grid">
+        <!-- Visual Frame with Official User Leadership Image -->
+        <div class="value-prop-visual">
+          <div class="leadership-img-frame">
+            <img src="assets/stratum-leadership.jpg" alt="Stratum VDC &amp; MEP Engineering Leadership Office" class="leadership-img">
+            <div class="leadership-badge-overlay">
+              <strong>SPACES • SYSTEMS • PEOPLE</strong>
+              <span>Engineering Smarter Spaces for a Better Tomorrow</span>
+            </div>
+          </div>
+        </div>
 
-      <div class="about-cresto-grid">
-        <!-- Col 1: Text & Button -->
-        <div class="about-col-text">
-          <p class="about-desc">
-            Stratum Engineering is a design and construction engineering firm specializing in VDC, BIM and MEP engineering. We deliver coordinated, accurate and buildable solutions for complex projects across India.
+        <!-- Content Column -->
+        <div class="value-prop-content">
+          <div class="section-eyebrow">&mdash; OUR COMMITMENT</div>
+          <h2 class="section-headline">When your projects <span class="accent-gradient">succeed</span>, we succeed.</h2>
+          
+          <p class="value-prop-lead">
+            Stratum VDC &amp; MEP Engineering operates as a premier Indian engineering consultancy delivering high-precision MEP engineering, BIM VDC coordination, and statutory sanction documentation from concept through completion.
           </p>
-          <a href="#services" class="btn-outline-pill">
-            <span>Know More About Us</span>
-            <span>&rarr;</span>
-          </a>
+
+          <p class="value-prop-text">
+            Our teams align seamlessly with your architectural layouts, project timelines, and applicable statutory codes. We engineer for Indian climatic conditions, optimize operational energy footprints under ECBC/IGBC norms, and eliminate costly field clashes before concrete is poured.
+          </p>
+
+          <!-- Indian & Global Code Standards Chips -->
+          <div class="us-codes-grid">
+            <div class="us-code-chip"><span class="dot"></span> NBC 2016 (Vol 1 &amp; 2)</div>
+            <div class="us-code-chip"><span class="dot"></span> IS 732 &amp; IS 3043 (Elect/Earth)</div>
+            <div class="us-code-chip"><span class="dot"></span> IS 2189 / NBC Part 4 (Fire)</div>
+            <div class="us-code-chip"><span class="dot"></span> IS 1239 / NBC Part 9 (PHE)</div>
+            <div class="us-code-chip"><span class="dot"></span> ECBC &amp; ISHRAE Standards</div>
+            <div class="us-code-chip"><span class="dot"></span> IGBC &amp; GRIHA Green Norms</div>
+          </div>
+
+          <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:24px;">
+            <a href="contact.html" class="btn-copper-pill trigger-modal">
+              <span>Consult Our Engineers</span>
+              <span>&#8599;</span>
+            </a>
+            <a href="services.html" class="btn-outline-pill">
+              <span>Explore Capabilities</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
         </div>
+      </div>
 
-        <!-- Col 2: Facade Center Image -->
-        <div class="about-col-img">
-          <img src="assets/project-commercial.jpg" alt="Stratum Engineering Facade Precision">
+      <!-- 4 Metric Counters Strip -->
+      <div class="metrics-counter-bar">
+        <div class="metric-counter-item">
+          <div class="metric-counter-num">250+</div>
+          <div class="metric-counter-label">Pan-India &amp; Global Projects</div>
         </div>
-
-        <!-- Col 3: 4 Key Capabilities -->
-        <div class="about-capabilities-list">
-          <div class="capability-item">
-            <div class="capability-icon">
-              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-            </div>
-            <div class="capability-text">
-              <h4>Design Coordination</h4>
-              <p>Integrated and clash-free solutions.</p>
-            </div>
-          </div>
-
-          <div class="capability-item">
-            <div class="capability-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2zm0-6h2v4h-2z"/></svg>
-            </div>
-            <div class="capability-text">
-              <h4>Technical Excellence</h4>
-              <p>Accurate, detailed and code-compliant.</p>
-            </div>
-          </div>
-
-          <div class="capability-item">
-            <div class="capability-icon">
-              <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 3s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-            </div>
-            <div class="capability-text">
-              <h4>Collaborative Approach</h4>
-              <p>Aligned with project goals and stakeholders.</p>
-            </div>
-          </div>
-
-          <div class="capability-item">
-            <div class="capability-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-            </div>
-            <div class="capability-text">
-              <h4>Quality & Reliability</h4>
-              <p>Consistent, on-time and dependable delivery.</p>
-            </div>
-          </div>
+        <div class="metric-counter-item">
+          <div class="metric-counter-num">15M+</div>
+          <div class="metric-counter-label">Sq Ft Designed</div>
+        </div>
+        <div class="metric-counter-item">
+          <div class="metric-counter-num">18+</div>
+          <div class="metric-counter-label">Indian States Covered</div>
+        </div>
+        <div class="metric-counter-item">
+          <div class="metric-counter-num">100%</div>
+          <div class="metric-counter-label">NBC &amp; IS Code Compliance</div>
         </div>
       </div>
     </div>
@@ -441,8 +460,14 @@
               <span class="discipline-code">MEP // 01</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
             </div>
+            <span class="discipline-cat-badge">Mechanical / HVAC</span>
             <h4>Mechanical/HVAC Design</h4>
             <p>Complete heating, cooling, and ventilation designs including ISHRAE heat load calculations, CFM air distribution, chilled water piping, VRV/VRF systems, and rooftop equipment schedules.</p>
+            <div class="discipline-checklist">
+              <div class="discipline-check-item">Heating &amp; Cooling Load Calculations (HAP / TRACE)</div>
+              <div class="discipline-check-item">ISHRAE &amp; ECBC 2017 Energy Compliance Schedules</div>
+              <div class="discipline-check-item">Ductwork Layouts, Air Terminals &amp; Controls</div>
+            </div>
             <a href="services-mep.html#mechanical" class="discipline-link">
               <span>Explore Discipline</span>
               <span>&rarr;</span>
@@ -455,8 +480,14 @@
               <span class="discipline-code">MEP // 02</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
             </div>
+            <span class="discipline-cat-badge">Electrical Systems</span>
             <h4>Electrical Design Services</h4>
             <p>Comprehensive electrical engineering including 11kV/33kV substations, power distribution, lighting design with photometric calculations, panel schedules, SLDs, and ECBC/IS 732 compliance.</p>
+            <div class="discipline-checklist">
+              <div class="discipline-check-item">IS 732 &amp; NBC Part 8 Code-Compliant Panelboards</div>
+              <div class="discipline-check-item">Lighting Controls &amp; Photometrics (DIALux)</div>
+              <div class="discipline-check-item">Emergency DG Sets, APFC &amp; Fault Current Calcs</div>
+            </div>
             <a href="services-mep.html#electrical" class="discipline-link">
               <span>Explore Discipline</span>
               <span>&rarr;</span>
@@ -469,8 +500,14 @@
               <span class="discipline-code">MEP // 03</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2c-5.33 4-8 8-8 12 0 4.42 3.58 8 8 8s8-3.58 8-8c0-4-2.67-8-8-12z"/></svg>
             </div>
+            <span class="discipline-cat-badge">Plumbing &amp; Public Health</span>
             <h4>Plumbing Design Services</h4>
             <p>Full-scope sanitary drainage, domestic hot/cold water distribution, grease interceptors, STP/WTP integration, and detailed isometric riser diagrams compliant with NBC Part 9 &amp; IS codes.</p>
+            <div class="discipline-checklist">
+              <div class="discipline-check-item">Fixture Unit (WSFU/DFU) Calculations</div>
+              <div class="discipline-check-item">3D Plumbing Isometric Riser Diagrams</div>
+              <div class="discipline-check-item">Gas Piping &amp; Storm Drainage Sizing</div>
+            </div>
             <a href="services-mep.html#plumbing" class="discipline-link">
               <span>Explore Discipline</span>
               <span>&rarr;</span>
@@ -483,8 +520,14 @@
               <span class="discipline-code">BIM // 04</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
             </div>
+            <span class="discipline-cat-badge">Revit BIM</span>
             <h4>MEP BIM Modeling (LOD 100-500)</h4>
             <p>Parametric 3D Revit models built to precise Level of Development standards from schematic LOD 200 to fabrication-ready LOD 400 and facility management as-built LOD 500.</p>
+            <div class="discipline-checklist">
+              <div class="discipline-check-item">Parametric Families &amp; Embedded Metadata</div>
+              <div class="discipline-check-item">Strict Discipline Layering &amp; Shared Coordinates</div>
+              <div class="discipline-check-item">BIM 360 / ACC Cloud Worksharing Support</div>
+            </div>
             <a href="services-bim.html#mep-bim" class="discipline-link">
               <span>Explore Discipline</span>
               <span>&rarr;</span>
@@ -497,8 +540,14 @@
               <span class="discipline-code">BIM // 05</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
             </div>
+            <span class="discipline-cat-badge">VDC Coordination</span>
             <h4>Clash Detection &amp; Coordination</h4>
             <p>Multi-trade spatial coordination using Navisworks Manage to detect and resolve hard/soft clashes between MEP trades, structural steel, and architectural elements before installation.</p>
+            <div class="discipline-checklist">
+              <div class="discipline-check-item">Navisworks Clash Matrix &amp; Clearance Checks</div>
+              <div class="discipline-check-item">BCF Issue Tracking &amp; Weekly Coordination Meetings</div>
+              <div class="discipline-check-item">Eliminate Costly Field Rework &amp; RFIs</div>
+            </div>
             <a href="services-bim.html#clash-detection" class="discipline-link">
               <span>Explore Discipline</span>
               <span>&rarr;</span>
@@ -511,8 +560,14 @@
               <span class="discipline-code">BIM // 06</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
             </div>
+            <span class="discipline-cat-badge">Scan-to-BIM</span>
             <h4>Point Cloud to 3D BIM (Scan to BIM)</h4>
             <p>Converting raw LiDAR laser scan data (.rcp/.e57) into exact, dimensionally verified Revit models of existing buildings, MEP infrastructure, and brownfield redevelopments.</p>
+            <div class="discipline-checklist">
+              <div class="discipline-check-item">As-Built Facility Modeling for Renovation</div>
+              <div class="discipline-check-item">High Precision Geometric MEP Pipe Extraction</div>
+              <div class="discipline-check-item">Deviation Analysis &amp; Tolerance Verification</div>
+            </div>
             <a href="services-bim.html#scan-to-bim" class="discipline-link">
               <span>Explore Discipline</span>
               <span>&rarr;</span>
@@ -525,8 +580,14 @@
               <span class="discipline-code">BIM // 07</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
             </div>
+            <span class="discipline-cat-badge">CAD Conversion</span>
             <h4>PDF to CAD Drafting</h4>
             <p>Fast, dimensionally verified manual conversion of legacy blueprint scans, PDF design layouts, and municipal drawings into layered AutoCAD (.DWG) and 3D Revit models.</p>
+            <div class="discipline-checklist">
+              <div class="discipline-check-item">100% Dimension &amp; Coordinate Accuracy</div>
+              <div class="discipline-check-item">AIA &amp; CPWD CAD Layer Standards</div>
+              <div class="discipline-check-item">Parametric 3D Revit Model Migration</div>
+            </div>
             <a href="services-bim.html#pdf-cad" class="discipline-link">
               <span>Explore Discipline</span>
               <span>&rarr;</span>
@@ -539,8 +600,14 @@
               <span class="discipline-code">DRF // 08</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v2h-2V5zm0 4h2v2h-2V9zm0 4h2v2h-2v-2zm-4-8h2v2H8V5zm0 4h2v2H8V9zm0 4h2v2H8v-2zm-4-8h2v2H4V5zm0 4h2v2H4V9zm0 4h2v2H4v-2zm14 8H4v-2h16v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2z"/></svg>
             </div>
+            <span class="discipline-cat-badge">Structural Engineering</span>
             <h4>Structural Drafting Services</h4>
             <p>Reinforced concrete and steel structural drafting per IS 456, IS 800, and IS 13920 seismic ductile standards. Foundation raft plans, column schedules, and Bar Bending Schedules (BBS).</p>
+            <div class="discipline-checklist">
+              <div class="discipline-check-item">IS 456 &amp; IS 13920 Seismic Detailing</div>
+              <div class="discipline-check-item">Raft &amp; Pile Foundations with Cut Sheets</div>
+              <div class="discipline-check-item">Automated Bar Bending Schedules (BBS)</div>
+            </div>
             <a href="services-drafting.html#structural" class="discipline-link">
               <span>Explore Discipline</span>
               <span>&rarr;</span>
@@ -553,8 +620,14 @@
               <span class="discipline-code">DRF // 09</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 3L2 12h3v8h14v-8h3L12 3zm0 2.84L18.8 9H5.2L12 5.84zM7 18v-7h10v7H7z"/></svg>
             </div>
+            <span class="discipline-cat-badge">Sanction Drawings</span>
             <h4>Architectural Drafting Services</h4>
             <p>Complete statutory municipal approval drawing sets for DDA, BMC, BBMP, NOIDA, and GHMC. Formatted with FAR/FSI calculations, setbacks, fire tender movement, and GFC sheets.</p>
+            <div class="discipline-checklist">
+              <div class="discipline-check-item">Municipal Authority Sanction Sets (DDA/BMC/BBMP)</div>
+              <div class="discipline-check-item">FAR/FSI Calculations &amp; Setback Boundaries</div>
+              <div class="discipline-check-item">6m Fire Tender Driveways &amp; Evacuation Plans</div>
+            </div>
             <a href="services-drafting.html#architectural" class="discipline-link">
               <span>Explore Discipline</span>
               <span>&rarr;</span>
@@ -567,8 +640,14 @@
               <span class="discipline-code">CST // 10</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
             </div>
+            <span class="discipline-cat-badge">Estimating &amp; BOQ</span>
             <h4>Quantity Takeoff Services (BOQ)</h4>
             <p>Model-derived Bill of Quantities (BOQ) aligned with CPWD DSR and CSI MasterFormat. Detailed line items for duct sheet weights, pipe linear meters, cable runs, and valve schedules.</p>
+            <div class="discipline-checklist">
+              <div class="discipline-check-item">CPWD DSR Aligned Bill of Quantities (BOQ)</div>
+              <div class="discipline-check-item">GI Duct Surface Area &amp; Sheet Weight (Kg)</div>
+              <div class="discipline-check-item">Pipe Linear Meters by Class &amp; Diameter</div>
+            </div>
             <a href="services-construction.html#quantity-takeoff" class="discipline-link">
               <span>Explore Discipline</span>
               <span>&rarr;</span>
@@ -581,8 +660,14 @@
               <span class="discipline-code">CST // 11</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2l-5.5 9h11zM3 21h18l-9-6z"/></svg>
             </div>
+            <span class="discipline-cat-badge">Parametric BIM</span>
             <h4>Revit Family Creation (BIM Content)</h4>
             <p>Parametric Revit families (.RFA) for MEP equipment manufacturers with intelligent connectors, shared scheduling parameters, multi-LOD graphics, and size lookup tables.</p>
+            <div class="discipline-checklist">
+              <div class="discipline-check-item">Parametric .RFA Family Files (&lt;500KB)</div>
+              <div class="discipline-check-item">Intelligent MEP System Connectors</div>
+              <div class="discipline-check-item">Dynamic Type Catalogs (.TXT / CSV)</div>
+            </div>
             <a href="services-construction.html#family-creation" class="discipline-link">
               <span>Explore Discipline</span>
               <span>&rarr;</span>
@@ -595,8 +680,14 @@
               <span class="discipline-code">CST // 12</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v2h-2V5zm0 4h2v2h-2V9zm0 4h2v2h-2v-2zm-4-8h2v2H8V5zm0 4h2v2H8V9zm0 4h2v2H8v-2zm-4-8h2v2H4V5zm0 4h2v2H4V9zm0 4h2v2H4v-2zm14 8H4v-2h16v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2z"/></svg>
             </div>
+            <span class="discipline-cat-badge">Fabrication</span>
             <h4>Shop Drawings &amp; Spool Sheets</h4>
             <p>Site-ready Good for Construction (GFC) installation shop drawings, prefabrication spool sheets, slab penetration sleeves, and hanger support schedules to eliminate field rework.</p>
+            <div class="discipline-checklist">
+              <div class="discipline-check-item">Composite Coordinated Installation Drawings</div>
+              <div class="discipline-check-item">Pipe Spools &amp; Duct Cut Sheets with BOM</div>
+              <div class="discipline-check-item">Pre-Pour Deck Sleeve Coordinate Plans</div>
+            </div>
             <a href="services-construction.html#shop-drawings" class="discipline-link">
               <span>Explore Discipline</span>
               <span>&rarr;</span>
@@ -609,8 +700,14 @@
               <span class="discipline-code">CST // 13</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
             </div>
+            <span class="discipline-cat-badge">Quality Assurance</span>
             <h4>QA/QC Engineering Audits</h4>
             <p>Rigorous multi-tiered quality assurance and control audits for engineering models and drawings. Parameter verification, constructability checks, and code compliance sign-offs.</p>
+            <div class="discipline-checklist">
+              <div class="discipline-check-item">Model Health Check &amp; LOD 350-400 Auditing</div>
+              <div class="discipline-check-item">NBC 2016 &amp; IS Code Compliance Checks</div>
+              <div class="discipline-check-item">Pre-Pour Concrete Deck Sign-Off Lists</div>
+            </div>
             <a href="services-construction.html#qa-qc" class="discipline-link">
               <span>Explore Discipline</span>
               <span>&rarr;</span>
@@ -623,8 +720,14 @@
               <span class="discipline-code">VIS // 14</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
             </div>
+            <span class="discipline-cat-badge">Visualization</span>
             <h4>3D Architectural &amp; MEP Rendering</h4>
             <p>Photorealistic 3D interior/exterior renderings, animated walkthroughs, and MEP plant room 3D cutaway visualizations for developer launches, investor pitches, and marketing.</p>
+            <div class="discipline-checklist">
+              <div class="discipline-check-item">Ultra-HD 4K/8K Exterior Perspectives</div>
+              <div class="discipline-check-item">MEP Plant Room Isometric 3D Cutaways</div>
+              <div class="discipline-check-item">Cinematic Animated Walkthrough Tours</div>
+            </div>
             <a href="services.html#rendering" class="discipline-link">
               <span>Explore Discipline</span>
               <span>&rarr;</span>
@@ -637,8 +740,14 @@
               <span class="discipline-code">MEP // 15</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2c-5.33 4-8 8-8 12 0 4.42 3.58 8 8 8s8-3.58 8-8c0-4-2.67-8-8-12zm0 18c-3.31 0-6-2.69-6-6 0-2.97 2.16-6.05 6-9.15 3.84 3.1 6 6.18 6 9.15 0 3.31-2.69 6-6 6z"/></svg>
             </div>
+            <span class="discipline-cat-badge">Life Safety &amp; Fire NOC</span>
             <h4>Fire Protection &amp; Life Safety</h4>
             <p>Hydraulic calculations and fire suppression networks for statutory Fire NOC clearance under NBC Part 4. Hydrants, wet sprinklers, fire pump rooms, and clean agent gas systems.</p>
+            <div class="discipline-checklist">
+              <div class="discipline-check-item">NBC 2016 Part 4 Fire NOC Sanction Sets</div>
+              <div class="discipline-check-item">IS 3844 Hydrant &amp; Sprinkler Hydraulic Calcs</div>
+              <div class="discipline-check-item">FM-200 / Novec Clean Agent Server Suppression</div>
+            </div>
             <a href="services.html#fire-protection" class="discipline-link">
               <span>Explore Discipline</span>
               <span>&rarr;</span>
@@ -995,55 +1104,118 @@
         </a>
       </div>
 
-      <div class="projects-three-grid">
-        <!-- Project 1: Commercial -->
+      <div class="projects-six-grid">
+        <!-- Project 1: Bengaluru IT Park -->
         <div class="project-card-cresto">
           <div class="project-card-thumb">
-            <img src="assets/project-commercial.jpg" alt="Commercial Office Complex Bengaluru">
+            <img src="assets/project-commercial.jpg" alt="Bengaluru Tech Horizon IT Park MEP Engineering">
           </div>
           <div class="project-card-info">
-            <div>
-              <h4>Commercial Office Complex</h4>
-              <span class="location">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFFFFF"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                <span>Bengaluru, Karnataka</span>
-              </span>
+            <span class="discipline-cat-badge" style="margin-bottom:10px;">Commercial IT Park &bull; Bengaluru</span>
+            <h4>Tech Horizon IT Park, Whitefield</h4>
+            <p>1.2 Million Sq Ft Grade-A IT campus. Engineered water-cooled central chiller plant (2,400 TR), 11kV/433V indoor substation with 100% N+1 DG backup, and full LOD 400 BIM clash coordination.</p>
+            <div class="project-meta-chips">
+              <span class="meta-chip">2,400 TR Chiller Plant</span>
+              <span class="meta-chip">11kV Substation &amp; DGs</span>
+              <span class="meta-chip">LOD 400 BIM VDC</span>
+              <span class="meta-chip">IGBC Platinum Certified</span>
             </div>
-            <a href="portfolio.html" class="project-arrow-circle" aria-label="View Project">&rarr;</a>
+            <a href="contact.html" class="project-inquire-btn">Inquire About Similar Project &rarr;</a>
           </div>
         </div>
 
-        <!-- Project 2: Healthcare -->
+        <!-- Project 2: Mumbai Skyvillas -->
         <div class="project-card-cresto">
           <div class="project-card-thumb">
-            <img src="assets/project-healthcare.jpg" alt="Multi-Speciality Hospital Pune">
+            <img src="assets/project-multifamily.jpg" alt="Mumbai Skyvillas Luxury Twin Towers MEP Design">
           </div>
           <div class="project-card-info">
-            <div>
-              <h4>Multi-Speciality Hospital</h4>
-              <span class="location">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFFFFF"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                <span>Pune, Maharashtra</span>
-              </span>
+            <span class="discipline-cat-badge" style="margin-bottom:10px;">Luxury High-Rise &bull; Mumbai</span>
+            <h4>Skyvillas Twin Towers, Worli</h4>
+            <p>54-storey ultra-luxury residential development overlooking the Arabian Sea. Designed zoned high-pressure hydro-pneumatic booster pumping, VRF air conditioning, and NBC Part 4 automated fire refuge life safety.</p>
+            <div class="project-meta-chips">
+              <span class="meta-chip">54-Storey High-Rise</span>
+              <span class="meta-chip">High-Pressure PHE Risers</span>
+              <span class="meta-chip">NBC Part 4 Fire NOC</span>
+              <span class="meta-chip">VRV Heat Recovery</span>
             </div>
-            <a href="portfolio.html" class="project-arrow-circle" aria-label="View Project">&rarr;</a>
+            <a href="contact.html" class="project-inquire-btn">Inquire About Similar Project &rarr;</a>
           </div>
         </div>
 
-        <!-- Project 3: Industrial -->
+        <!-- Project 3: Healthcare Gurgaon -->
         <div class="project-card-cresto">
           <div class="project-card-thumb">
-            <img src="assets/project-multifamily.jpg" alt="Industrial Facility Chennai">
+            <img src="assets/project-healthcare.jpg" alt="Medanta Care Super-Specialty Hospital MEP BIM Design">
           </div>
           <div class="project-card-info">
-            <div>
-              <h4>Industrial Facility</h4>
-              <span class="location">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFFFFF"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                <span>Chennai, Tamil Nadu</span>
-              </span>
+            <span class="discipline-cat-badge" style="margin-bottom:10px;">Super-Specialty Hospital &bull; Delhi NCR</span>
+            <h4>Medanta Care Hospital, Gurgaon</h4>
+            <p>650-bed multi-specialty tertiary care hospital. Engineered NABH-compliant positive-pressure laminar airflow OTs, Medical Gas Pipeline Systems (MGPS), HEPA air handling, and isolated power panels.</p>
+            <div class="project-meta-chips">
+              <span class="meta-chip">Laminar Flow OTs</span>
+              <span class="meta-chip">MGPS Medical Gases</span>
+              <span class="meta-chip">100% DG Synchronization</span>
+              <span class="meta-chip">NABH &amp; NBC Compliant</span>
             </div>
-            <a href="portfolio.html" class="project-arrow-circle" aria-label="View Project">&rarr;</a>
+            <a href="contact.html" class="project-inquire-btn">Inquire About Similar Project &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Project 4: Industrial Logistics Pune -->
+        <div class="project-card-cresto">
+          <div class="project-card-thumb">
+            <img src="assets/project-restaurant.jpg" alt="Pune Industrial &amp; Logistics Park MEP Fire Safety">
+          </div>
+          <div class="project-card-info">
+            <span class="discipline-cat-badge" style="margin-bottom:10px;">Industrial &amp; Logistics &bull; Pune</span>
+            <h4>Auto-Cluster Logistics Hub, Chakan</h4>
+            <p>450,000 Sq Ft modern logistics and warehousing facility. Designed early suppression fast response (ESFR) high-bay fire sprinkler systems, industrial ventilation, rainwater harvesting pond, and solar integration.</p>
+            <div class="project-meta-chips">
+              <span class="meta-chip">ESFR High-Bay Sprinklers</span>
+              <span class="meta-chip">Industrial Ventilation</span>
+              <span class="meta-chip">STP &amp; RWH Sizing</span>
+              <span class="meta-chip">Solar Roof Integration</span>
+            </div>
+            <a href="contact.html" class="project-inquire-btn">Inquire About Similar Project &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Project 5: Data Center Navi Mumbai -->
+        <div class="project-card-cresto">
+          <div class="project-card-thumb">
+            <img src="assets/stat-data-center.jpg" alt="Cybercity Hyperscale Data Center Campus Navi Mumbai">
+          </div>
+          <div class="project-card-info">
+            <span class="discipline-cat-badge" style="margin-bottom:10px;">Mission Critical &bull; Navi Mumbai</span>
+            <h4>Cybercity Hyperscale Data Center</h4>
+            <p>48MW critical IT load hyperscale data center facility. Engineered N+N redundant chilled water loops, CRAH units with hot aisle containment, 33kV substation with 2N diesel rotary UPS systems.</p>
+            <div class="project-meta-chips">
+              <span class="meta-chip">48MW Critical IT Load</span>
+              <span class="meta-chip">N+N Chilled Water</span>
+              <span class="meta-chip">2N Rotary UPS</span>
+              <span class="meta-chip">Tier IV Reliability</span>
+            </div>
+            <a href="contact.html" class="project-inquire-btn">Inquire About Similar Project &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Project 6: Underground Metro Delhi -->
+        <div class="project-card-cresto">
+          <div class="project-card-thumb">
+            <img src="assets/stat-metro-transit.jpg" alt="Capital Central Underground Metro Interchange Delhi">
+          </div>
+          <div class="project-card-info">
+            <span class="discipline-cat-badge" style="margin-bottom:10px;">Transit Infrastructure &bull; Delhi</span>
+            <h4>Capital Central Metro Interchange</h4>
+            <p>Deep underground interchange metro station. Engineered tunnel ventilation system (TVS), station air conditioning (VAC), smoke management, and NFPA 130 / NBC Part 4 fire life safety coordination.</p>
+            <div class="project-meta-chips">
+              <span class="meta-chip">Tunnel Ventilation (TVS)</span>
+              <span class="meta-chip">Station VAC Sizing</span>
+              <span class="meta-chip">NFPA 130 Fire Safety</span>
+              <span class="meta-chip">LOD 400 Multi-Trade BIM</span>
+            </div>
+            <a href="contact.html" class="project-inquire-btn">Inquire About Similar Project &rarr;</a>
           </div>
         </div>
       </div>
@@ -1120,43 +1292,100 @@
   <section class="section-cresto" id="industries">
     <div class="container">
       <div class="section-eyebrow">&mdash; INDUSTRIES WE SERVE</div>
-      <h2 class="section-headline">Delivering Engineering Solutions Across Sectors.</h2>
+      <h2 class="section-headline">Built for Every Building Type.</h2>
+      <p style="max-width:760px; color:#A1A1AA; font-size:15px; margin-bottom:36px; line-height:1.6;">
+        Hands-on engineering experience across a diverse spectrum of facilities — specialized MEP, BIM, and VDC workflows custom-tailored to each sector's statutory codes.
+      </p>
 
-      <div class="industries-pills-row">
-        <!-- 1: Commercial -->
-        <div class="industry-pill">
-          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v2h-2V5zm0 4h2v2h-2V9zm0 4h2v2h-2v-2zm-4-8h2v2H8V5zm0 4h2v2H8V9zm0 4h2v2H8v-2zm-4-8h2v2H4V5zm0 4h2v2H4V9zm0 4h2v2H4v-2zm14 8H4v-2h16v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2z"/></svg>
-          <span>Commercial</span>
+      <div class="sectors-ten-grid">
+        <!-- 1: Residential -->
+        <div class="sector-box-cresto">
+          <div class="sector-box-icon">
+            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          </div>
+          <h4>Residential</h4>
+          <p>Single-family, townhomes &amp; multi-unit high-rise dwellings.</p>
         </div>
 
-        <!-- 2: Residential -->
-        <div class="industry-pill">
-          <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-          <span>Residential</span>
+        <!-- 2: Commercial -->
+        <div class="sector-box-cresto">
+          <div class="sector-box-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+          </div>
+          <h4>Commercial</h4>
+          <p>Grade-A corporate office towers, tech parks &amp; fit-outs.</p>
         </div>
 
-        <!-- 3: Healthcare -->
-        <div class="industry-pill">
-          <svg viewBox="0 0 24 24"><path d="M19 10.5h-4.5V6h-5v4.5H5v5h4.5V20h5v-4.5H19v-5z"/></svg>
-          <span>Healthcare</span>
+        <!-- 3: Restaurant -->
+        <div class="sector-box-cresto">
+          <div class="sector-box-icon">
+            <svg viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>
+          </div>
+          <h4>Restaurant &amp; Dining</h4>
+          <p>Commercial kitchens, grease trap systems &amp; make-up air.</p>
         </div>
 
-        <!-- 4: Industrial -->
-        <div class="industry-pill">
-          <svg viewBox="0 0 24 24"><path d="M22 22H2V10l7-3v4l7-3v4l6-3v10zM19 18h-2v-2h2v2zm-4 0h-2v-2h2v2zm-4 0H9v-2h2v2z"/></svg>
-          <span>Industrial</span>
+        <!-- 4: Highrise Buildings -->
+        <div class="sector-box-cresto">
+          <div class="sector-box-icon">
+            <svg viewBox="0 0 24 24"><path d="M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2z"/></svg>
+          </div>
+          <h4>Highrise Towers</h4>
+          <p>Vertical MEP risers, pressure zones &amp; NBC fire refuges.</p>
         </div>
 
-        <!-- 5: Hospitality -->
-        <div class="industry-pill">
-          <svg viewBox="0 0 24 24"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg>
-          <span>Hospitality</span>
+        <!-- 5: Healthcare -->
+        <div class="sector-box-cresto">
+          <div class="sector-box-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/></svg>
+          </div>
+          <h4>Healthcare</h4>
+          <p>Hospitals, medical labs, med-gas (MGPS) &amp; laminar OTs.</p>
         </div>
 
-        <!-- 6: Infrastructure -->
-        <div class="industry-pill">
-          <svg viewBox="0 0 24 24"><path d="M19 4h-2V2h-2v2H9V2H7v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V8h14v12z"/></svg>
-          <span>Infrastructure</span>
+        <!-- 6: Educational -->
+        <div class="sector-box-cresto">
+          <div class="sector-box-icon">
+            <svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+          </div>
+          <h4>Educational</h4>
+          <p>K-12 schools, university research campuses &amp; sport complexes.</p>
+        </div>
+
+        <!-- 7: Hospitality -->
+        <div class="sector-box-cresto">
+          <div class="sector-box-icon">
+            <svg viewBox="0 0 24 24"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg>
+          </div>
+          <h4>Hospitality</h4>
+          <p>Luxury 5-star hotels, resorts &amp; guestroom HVAC acoustics.</p>
+        </div>
+
+        <!-- 8: Cultivation Rooms -->
+        <div class="sector-box-cresto">
+          <div class="sector-box-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19H19.65l-.62-1.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9zm0 14c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+          </div>
+          <h4>Cultivation Rooms</h4>
+          <p>Strict humidity control, dehumidification &amp; CEA environments.</p>
+        </div>
+
+        <!-- 9: Data Centers -->
+        <div class="sector-box-cresto">
+          <div class="sector-box-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+          </div>
+          <h4>Data Centers</h4>
+          <p>Mission-critical N+N cooling loops, CRAH &amp; clean-agent fire suppression.</p>
+        </div>
+
+        <!-- 10: Industrial -->
+        <div class="sector-box-cresto">
+          <div class="sector-box-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 22H2V2h20v20zM4 20h16V4H4v16zm2-8h4v6H6v-6zm6-6h4v12h-4V6z"/></svg>
+          </div>
+          <h4>Industrial &amp; Logistics</h4>
+          <p>Warehouses, manufacturing plants &amp; mega logistics hubs.</p>
         </div>
       </div>
     </div>
@@ -1167,38 +1396,112 @@
        ========================================================================== -->
   <section class="section-cresto" id="process">
     <div class="container">
-      <div class="section-eyebrow">&mdash; OUR PROCESS</div>
-      <h2 class="section-headline">A Streamlined Engineering Journey.</h2>
+      <div class="section-eyebrow">&mdash; STRUCTURED DELIVERY FRAMEWORK</div>
+      <h2 class="section-headline">Our MEP Engineering Process.</h2>
+      <p style="max-width:760px; color:#A1A1AA; font-size:15px; margin-bottom:36px; line-height:1.6;">
+        A disciplined, transparent 4-stage engineering framework that advances your project from concept through statutory sanction approvals and Good-For-Construction (GFC) release.
+      </p>
 
-      <div class="process-cresto-row">
+      <div class="process-four-grid">
         <!-- Step 1 -->
-        <div class="process-step-cresto">
-          <div class="step-num-circle">01</div>
-          <h4>Understand Project Requirements</h4>
+        <div class="process-card-detailed">
+          <div class="step-num-badge">01</div>
+          <h4>Client Brief &amp; Statutory Review</h4>
+          <p>Collect architectural layouts, verify building classification under NBC 2016 Part 3, and establish local municipal development authority bye-laws (DDA, BMC, BBMP, NOIDA).</p>
+          <div class="step-checklist">
+            <div class="step-check-item">Architectural model &amp; master plan audit</div>
+            <div class="step-check-item">NBC classification &amp; local bye-law matrix</div>
+            <div class="step-check-item">Design basis report (DBR) sign-off</div>
+          </div>
         </div>
 
         <!-- Step 2 -->
-        <div class="process-step-cresto">
-          <div class="step-num-circle">02</div>
-          <h4>Develop & Coordinate Models</h4>
+        <div class="process-card-detailed">
+          <div class="step-num-badge">02</div>
+          <h4>Calculations &amp; BEP Plan</h4>
+          <p>Perform Carrier HAP / TRACE cooling loads for Indian ambient temperatures, calculate maximum electrical demand per IS 732, and establish the Revit BIM Execution Plan (BEP).</p>
+          <div class="step-checklist">
+            <div class="step-check-item">HAP cooling loads &amp; ECBC compliance</div>
+            <div class="step-check-item">DISCOM HT/LT transformer &amp; DG sizing</div>
+            <div class="step-check-item">STP, ETP, and RWH tank volumetric calcs</div>
+          </div>
         </div>
 
         <!-- Step 3 -->
-        <div class="process-step-cresto">
-          <div class="step-num-circle">03</div>
-          <h4>Analyze & Resolve Conflicts</h4>
+        <div class="process-card-detailed">
+          <div class="step-num-badge">03</div>
+          <h4>Detailed Design &amp; Coordination</h4>
+          <p>Model all MEP services in Autodesk Revit LOD 350-400, run automated Navisworks clash tests with structural elements, and design riser shafts and ceiling distributions.</p>
+          <div class="step-checklist">
+            <div class="step-check-item">3D parametric MEP model in Revit</div>
+            <div class="step-check-item">Navisworks multi-trade clash resolution</div>
+            <div class="step-check-item">Sleeve openings &amp; builder cutout drawings</div>
+          </div>
         </div>
 
         <!-- Step 4 -->
-        <div class="process-step-cresto">
-          <div class="step-num-circle">04</div>
-          <h4>Deliver Buildable Outputs</h4>
+        <div class="process-card-detailed">
+          <div class="step-num-badge">04</div>
+          <h4>Statutory Approvals &amp; GFC Release</h4>
+          <p>Conduct senior engineering peer review, assemble municipal sanction packages (Fire NOC, DISCOM clearance), and release signed Good-For-Construction (GFC) drawings and BOQs.</p>
+          <div class="step-checklist">
+            <div class="step-check-item">Fire NOC &amp; authority sanction sheet sets</div>
+            <div class="step-check-item">Good-For-Construction (GFC) drawing release</div>
+            <div class="step-check-item">Detailed CPWD-aligned itemized BOQ</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================================================
+    <!-- ==========================================================================
+       TECHNICAL KNOWLEDGE / BLOG SECTION (4 Guides from Screencapture PDF)
+       ========================================================================== -->
+  <section class="section-cresto" id="blog" style="border-top:1px solid var(--color-border); background:#060608;">
+    <div class="container">
+      <div class="section-eyebrow">&mdash; TECHNICAL KNOWLEDGE</div>
+      <h2 class="section-headline">Latest From Our Engineering Blog.</h2>
+      <p style="max-width:760px; color:#A1A1AA; font-size:15px; margin-bottom:36px; line-height:1.6;">
+        In-depth technical guides, NBC 2016 compliance breakdowns, and MEP engineering strategies from our senior consulting team.
+      </p>
+
+      <div class="blog-four-grid">
+        <!-- Blog 1 -->
+        <div class="blog-card-cresto">
+          <span class="blog-cat-pill">ECBC &amp; Energy</span>
+          <h4>Optimizing HVAC Energy Consumption Under ECBC 2017</h4>
+          <p>Balancing chilled water temperature resets, variable primary pumping, and envelope thermal performance for IGBC/GRIHA ratings in commercial buildings.</p>
+          <a href="blog.html" class="blog-guide-link">Read Technical Guide &rarr;</a>
+        </div>
+
+        <!-- Blog 2 -->
+        <div class="blog-card-cresto">
+          <span class="blog-cat-pill">Fire &amp; Life Safety</span>
+          <h4>NBC 2016 Part 4: Essential Fire Fighting Guidelines</h4>
+          <p>Understanding fire refuge area pressurization, sprinkler density per IS 15105, and obtaining municipal Fire NOC clearance seamlessly.</p>
+          <a href="blog.html" class="blog-guide-link">Read Technical Guide &rarr;</a>
+        </div>
+
+        <!-- Blog 3 -->
+        <div class="blog-card-cresto">
+          <span class="blog-cat-pill">Electrical Infrastructure</span>
+          <h4>Substation Sizing &amp; Earthing Under IS 3043 &amp; CEA</h4>
+          <p>Designing 11kV/33kV indoor substations, fault current calculations, and earth pit grid configurations for industrial &amp; IT campuses.</p>
+          <a href="blog.html" class="blog-guide-link">Read Technical Guide &rarr;</a>
+        </div>
+
+        <!-- Blog 4 -->
+        <div class="blog-card-cresto">
+          <span class="blog-cat-pill">PHE &amp; Water</span>
+          <h4>STP, ETP &amp; Zero Liquid Discharge (ZLD) Engineering</h4>
+          <p>Designing sewage treatment plants, dual plumbing systems for flushing, and rainwater harvesting compliance per local CGWA norms.</p>
+          <a href="blog.html" class="blog-guide-link">Read Technical Guide &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ==========================================================================
        FREQUENTLY ASKED QUESTIONS (Restored from Initial Base)
        ========================================================================== -->
   <section class="section-cresto" id="faqs" style="border-top:1px solid var(--color-border); background:#060608;">
@@ -1297,18 +1600,113 @@
   <!-- ==========================================================================
        BOTTOM CTA BANNER (Exact to Reference)
        ========================================================================== -->
-  <section class="container" style="padding-top: 40px; padding-bottom: 70px;" id="contact">
-    <div class="cta-cresto-banner">
-      <div class="cta-banner-img">
-        <img src="assets/project-commercial.jpg" alt="Stratum Architecture Facade">
-      </div>
-      <div class="cta-banner-content">
-        <h2>Have a Project in Mind?</h2>
-        <p>Let's discuss how Stratum Engineering can support your next construction project.</p>
-        <button class="btn-copper-pill trigger-modal">
-          <span>Discuss Your Project</span>
-          <span>&#8599;</span>
-        </button>
+  <section class="container" style="padding-top: 50px; padding-bottom: 80px;" id="contact">
+    <div class="project-inquiry-box">
+      <div class="inquiry-grid">
+        <!-- Left Sidebar -->
+        <div class="inquiry-sidebar">
+          <div>
+            <span class="section-eyebrow" style="color:var(--color-copper);">&mdash; FAST 24-HR RESPONSE</span>
+            <h3 style="font-size:24px; font-weight:700; color:#FFFFFF; margin:10px 0 14px 0;">Discuss your upcoming project</h3>
+            <p style="font-size:14px; color:#A1A1AA; line-height:1.6; margin-bottom:24px;">
+              Share your architectural layouts or scope requirements. Our senior engineering consultants will review and provide an itemized proposal within 24 hours.
+            </p>
+
+            <div class="inquiry-guarantees">
+              <div class="guarantee-item">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>Fast 24-Hour Proposal Turnaround</span>
+              </div>
+              <div class="guarantee-item">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>Mutual NDA Executed Upfront</span>
+              </div>
+              <div class="guarantee-item">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>100% NBC 2016 &amp; IS Code Compliant</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:32px; font-size:13px; color:#71717A; border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;">
+            <div style="margin-bottom:12px;">
+              Direct Phone: <br>
+              <a href="tel:+919871023456" style="color:#FFFFFF; font-size:16px; font-weight:700; text-decoration:none;">+91 98710 23456</a>
+            </div>
+            <div>
+              Direct Email: <br>
+              <a href="mailto:contact@stratum-engineering.com" style="color:#FFFFFF; font-size:15px; font-weight:600; text-decoration:none;">contact@stratum-engineering.com</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Form Wrap -->
+        <div class="inquiry-form-wrap">
+          <h4 style="font-size:20px; font-weight:700; color:#FFFFFF; margin-bottom:20px;">Request Engineering Proposal</h4>
+          <form class="project-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input type="text" class="form-input" placeholder="e.g. Rajesh Sharma" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Work Email *</label>
+                <input type="email" class="form-input" placeholder="rajesh@company.com" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Company / Developer / Firm *</label>
+                <input type="text" class="form-input" placeholder="e.g. Horizon Infra Developers" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone Number *</label>
+                <input type="tel" class="form-input" placeholder="+91 98000 00000" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Services Required (Check all that apply)</label>
+              <div class="form-checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="service" value="hvac" checked>
+                  <span>HVAC / Mechanical</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="service" value="electrical" checked>
+                  <span>Electrical &amp; Substation</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="service" value="plumbing" checked>
+                  <span>Plumbing &amp; PHE (STP/RWH)</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="service" value="fire" checked>
+                  <span>Fire Fighting (NBC Part 4)</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="service" value="bim">
+                  <span>Revit BIM (LOD 100-500)</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="service" value="clash">
+                  <span>Navisworks Coordination</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Project Details, Location &amp; Approximate Built-Up Area</label>
+              <textarea class="form-textarea" rows="4" placeholder="Mention project sector (commercial IT park, high-rise residential, hospital), city location, total built-up area (sq ft), and project timeline..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-copper-pill" style="width:100%; justify-content:center; padding:14px; border-radius:var(--radius-md);">
+              <span>Submit Project Inquiry</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
