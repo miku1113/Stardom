@@ -1555,6 +1555,282 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
+   ALL 15 SPECIALIZED DISCIPLINES GRID
+   ========================================================================== */
+.fifteen-services-block {
+  margin-top: 64px;
+  padding-top: 56px;
+  border-top: 1px solid var(--color-border);
+}
+
+.services-fifteen-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.discipline-card {
+  background: #0D0D0E;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-fast);
+}
+
+.discipline-card:hover {
+  border-color: #FFFFFF;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(255, 255, 255, 0.07);
+}
+
+.discipline-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.discipline-code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-copper);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.discipline-card-header svg {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.discipline-card:hover .discipline-card-header svg {
+  color: #FFFFFF;
+}
+
+.discipline-card h4 {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.discipline-card p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text-body);
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+.discipline-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.discipline-card:hover .discipline-link {
+  color: var(--color-copper);
+  gap: 12px;
+}
+
+/* ==========================================================================
+   SOFTWARE TECHNOLOGY STACK (10 Tools from Initial Commit)
+   ========================================================================== */
+.software-cresto-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.software-cresto-item {
+  background: #0D0D0E;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.software-cresto-item:hover {
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(255, 255, 255, 0.05);
+}
+
+.software-cresto-item strong {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.software-cresto-item span {
+  font-size: 12px;
+  color: var(--color-text-dim);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   CLIENT TESTIMONIALS (3 Marquee Reviews from Initial Commit)
+   ========================================================================== */
+.testimonials-three-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.testimonial-card-cresto {
+  background: #0D0D0E;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition-fast);
+}
+
+.testimonial-card-cresto:hover {
+  border-color: #FFFFFF;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(255, 255, 255, 0.06);
+}
+
+.testimonial-stars {
+  color: var(--color-copper);
+  font-size: 14px;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+
+.testimonial-quote {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #E4E4E7;
+  font-style: italic;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.testimonial-client {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 16px;
+}
+
+.client-avatar-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.client-meta h4 {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 3px 0;
+}
+
+.client-meta span {
+  font-size: 12px;
+  color: var(--color-text-dim);
+  display: block;
+  line-height: 1.35;
+}
+
+/* ==========================================================================
+   TECHNICAL & STATUTORY FAQS ACCORDION
+   ========================================================================== */
+.faqs-cresto-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 36px;
+  max-width: 960px;
+}
+
+.faq-item {
+  background: #0D0D0E;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+
+.faq-item:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.faq-item.active {
+  border-color: #FFFFFF;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 20px 24px;
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  gap: 16px;
+}
+
+.faq-icon {
+  font-size: 18px;
+  color: var(--color-text-dim);
+  transition: transform var(--transition-fast);
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+  color: #FFFFFF;
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 24px 20px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--color-text-body);
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+/* ==========================================================================
    COMPREHENSIVE MULTI-DEVICE RESPONSIVE BREAKPOINTS
    Desktop (1440px+) • Laptop (1025px-1439px) • Tablet (641px-1024px) • Mobile (<=640px)
    ========================================================================== */
@@ -1617,6 +1893,21 @@ button, input, select, textarea {
   .projects-three-grid,
   .drawings-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .services-fifteen-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .software-cresto-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .testimonials-three-grid {
+    grid-template-columns: 1fr;
     gap: 20px;
   }
 
@@ -1772,6 +2063,16 @@ button, input, select, textarea {
   .drawings-grid {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
+
+  .services-fifteen-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .software-cresto-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
   .why-pills-row {
