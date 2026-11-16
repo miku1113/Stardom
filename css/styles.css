@@ -312,31 +312,55 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   FULL-IMAGE TECHNICAL BLUEPRINT HERO (Monochrome Black & White CAD)
+   CREATIVE ARCHITECTURAL BIM HERO BANNER (3D Wireframe + Coordination HUD)
    ========================================================================== */
 .hero-blueprint-banner {
   position: relative;
-  min-height: 84vh;
+  min-height: 88vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 90px 0 32px;
+  padding: 100px 0 36px;
   background-color: #000000;
   background-image: 
-    linear-gradient(180deg, rgba(0, 0, 0, 0.84) 0%, rgba(0, 0, 0, 0.65) 45%, rgba(0, 0, 0, 0.94) 100%),
-    url('../assets/mep-blueprint-hero.svg');
-  background-position: center center;
+    linear-gradient(90deg, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.85) 42%, rgba(0, 0, 0, 0.35) 75%, rgba(0, 0, 0, 0.75) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 40%, rgba(0, 0, 0, 0.95) 100%),
+    url('../assets/hero-bim-architecture.jpg');
+  background-position: center right;
   background-size: cover;
   background-repeat: no-repeat;
   border-bottom: 1px solid var(--color-border);
   overflow: hidden;
 }
 
-.hero-blueprint-content {
-  max-width: 880px;
-  margin: auto 0;
+/* Subtle Technical CAD Grid Overlay */
+.hero-blueprint-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-main-layout {
   position: relative;
   z-index: 2;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 40px;
+  margin: auto 0;
+}
+
+.hero-blueprint-content {
+  max-width: 680px;
 }
 
 .hero-technical-eyebrow {
@@ -346,19 +370,34 @@ button, input, select, textarea {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.22);
   padding: 6px 14px;
-  border-radius: 4px;
+  border-radius: var(--radius-full);
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 1.8px;
   text-transform: uppercase;
   color: #FFFFFF;
   margin-bottom: 24px;
+  backdrop-filter: blur(8px);
+}
+
+.hero-live-dot {
+  width: 7px;
+  height: 7px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #FFFFFF;
+  animation: pulseLive 2s infinite ease-in-out;
+}
+
+@keyframes pulseLive {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
 }
 
 .hero-blueprint-headline {
   font-family: var(--font-heading);
-  font-size: 64px;
+  font-size: 60px;
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -1.2px;
@@ -366,26 +405,176 @@ button, input, select, textarea {
   margin-bottom: 22px;
 }
 
-.hero-blueprint-headline .text-copper {
-  color: #FFFFFF;
-  text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.35);
-  text-underline-offset: 6px;
+.hero-blueprint-headline span.text-creative-accent {
+  display: inline-block;
+  background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.35);
 }
 
 .hero-blueprint-subtext {
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.65;
   color: #A1A1AA;
-  margin-bottom: 38px;
-  max-width: 680px;
+  margin-bottom: 34px;
+  max-width: 600px;
 }
 
 .hero-blueprint-actions {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
   flex-wrap: wrap;
+}
+
+/* Interactive Floating 3D BIM Coordination HUD Card */
+.hero-bim-hud-card {
+  background: rgba(13, 13, 14, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md);
+  padding: 26px 28px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  max-width: 440px;
+  margin-left: auto;
+  position: relative;
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.hero-bim-hud-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.hud-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hud-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.hud-pulse-radar {
+  width: 8px;
+  height: 8px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  position: relative;
+}
+
+.hud-pulse-radar::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px solid #FFFFFF;
+  border-radius: 50%;
+  animation: radarRing 2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes radarRing {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.hud-badge-level {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  background: #FFFFFF;
+  color: #000000;
+  padding: 3px 8px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+
+.hud-metric-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hud-metric-row:last-of-type {
+  border-bottom: none;
+  margin-bottom: 16px;
+}
+
+.hud-metric-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #71717A;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hud-metric-value {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.hud-metric-value.status-pass {
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hud-metric-value.status-pass::before {
+  content: '✓';
+  font-weight: 900;
+}
+
+.hud-disciplines-tags {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.hud-disp-tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  color: #A1A1AA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all var(--transition-fast);
+}
+
+.hud-disp-tag:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+.hud-disp-tag .status-check {
+  font-size: 10px;
+  color: #FFFFFF;
 }
 
 /* Bottom Blueprint Ticker */
@@ -402,6 +591,8 @@ button, input, select, textarea {
   font-size: 11px;
   color: #FFFFFF;
   letter-spacing: 1px;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-blueprint-ticker span.ticker-item {
@@ -1317,6 +1508,14 @@ button, input, select, textarea {
    RESPONSIVE MEDIA QUERIES
    ========================================================================== */
 @media (max-width: 1024px) {
+  .hero-main-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .hero-bim-hud-card {
+    margin-left: 0;
+    max-width: 100%;
+  }
   .hero-blueprint-headline {
     font-size: 48px;
   }
