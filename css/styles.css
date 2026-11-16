@@ -302,112 +302,212 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   HERO SECTION (Exact MVC Layout: Left Typography, Right 3D Cutaway)
+   FULL-IMAGE TECHNICAL BLUEPRINT HERO (As Requested by User)
    ========================================================================== */
-.hero-cresto-section {
+.hero-blueprint-banner {
   position: relative;
-  padding: 70px 0 60px;
-  background: radial-gradient(circle at 80% 20%, rgba(196, 139, 94, 0.08) 0%, transparent 60%);
+  min-height: 84vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 90px 0 32px;
+  background-color: #110F0E;
+  background-image: 
+    linear-gradient(180deg, rgba(17, 15, 14, 0.88) 0%, rgba(17, 15, 14, 0.74) 45%, rgba(17, 15, 14, 0.96) 100%),
+    url('../assets/mep-blueprint-hero.svg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
   border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
 }
 
-.hero-cresto-grid {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 48px;
+.hero-blueprint-content {
+  max-width: 880px;
+  margin: auto 0;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-technical-eyebrow {
+  display: inline-flex;
   align-items: center;
-  margin-bottom: 60px;
+  gap: 10px;
+  background: rgba(196, 139, 94, 0.12);
+  border: 1px solid rgba(196, 139, 94, 0.35);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--color-copper-light);
+  margin-bottom: 24px;
 }
 
-.hero-headline {
+.hero-blueprint-headline {
   font-family: var(--font-heading);
-  font-size: 56px;
+  font-size: 64px;
   font-weight: 700;
-  line-height: 1.14;
-  letter-spacing: -1px;
+  line-height: 1.1;
+  letter-spacing: -1.2px;
   color: var(--color-text-title);
   margin-bottom: 22px;
 }
 
-.hero-headline .text-copper {
+.hero-blueprint-headline .text-copper {
   color: var(--color-copper);
 }
 
-.hero-subtext {
-  font-size: 16.5px;
+.hero-blueprint-subtext {
+  font-size: 18px;
   line-height: 1.65;
-  color: var(--color-text-body);
-  margin-bottom: 34px;
-  max-width: 500px;
+  color: #C2BBB3;
+  margin-bottom: 38px;
+  max-width: 680px;
 }
 
-.hero-buttons {
+.hero-blueprint-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
+  flex-wrap: wrap;
 }
 
-/* Hero Visual Box: Building with Wireframe Cutaway */
-.hero-visual-frame {
-  position: relative;
-  width: 100%;
-  height: 440px;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  background: #181513;
-}
-
-.hero-main-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.92) contrast(1.05);
-}
-
-/* Architectural BIM Wireframe Cutaway Overlay */
-.hero-wireframe-cutaway {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 48%;
-  height: 100%;
-  background: rgba(17, 15, 14, 0.75);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-left: 1px solid rgba(196, 139, 94, 0.4);
-  background-image: 
-    linear-gradient(rgba(196, 139, 94, 0.15) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(196, 139, 94, 0.15) 1px, transparent 1px);
-  background-size: 24px 24px;
+/* Bottom Blueprint Ticker */
+.hero-blueprint-ticker {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  padding: 20px;
-}
-
-.wireframe-badge {
-  display: inline-flex;
-  align-self: flex-end;
-  background: rgba(196, 139, 94, 0.2);
-  border: 1px solid var(--color-copper);
-  color: var(--color-copper-light);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  padding: 4px 10px;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
-
-.wireframe-specs {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-wrap: wrap;
+  gap: 16px;
   font-family: var(--font-mono);
   font-size: 11px;
+  color: var(--color-copper);
+  letter-spacing: 1px;
+}
+
+.hero-blueprint-ticker span.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #B5ADA5;
+}
+
+.hero-blueprint-ticker span.ticker-item strong {
   color: var(--color-copper-light);
+}
+
+/* ==========================================================================
+   TECHNICAL DRAWINGS & MEP DELIVERABLES SHOWCASE
+   ========================================================================== */
+.drawings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.drawing-sheet-card {
+  background: #181513;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+
+.drawing-sheet-card:hover {
+  border-color: var(--color-copper);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+}
+
+.drawing-preview-box {
+  height: 180px;
+  background: #110F0E;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: 
+    linear-gradient(rgba(196, 139, 94, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196, 139, 94, 0.12) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.drawing-sheet-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(17, 15, 14, 0.9);
+  border: 1px solid var(--color-copper);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-copper-light);
+  padding: 3px 8px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+
+.drawing-scale-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(17, 15, 14, 0.9);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #9E968F;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+.drawing-card-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.drawing-card-body h4 {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text-title);
+  margin-bottom: 6px;
+}
+
+.drawing-card-body p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text-body);
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.drawing-sheet-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sheet-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #B5ADA5;
+  padding: 2px 7px;
+  border-radius: 2px;
 }
 
 /* ==========================================================================
