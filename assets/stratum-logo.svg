@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 70" width="340" height="70" fill="none">
+  <defs>
+    <linearGradient id="bronzeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DCA376" />
+      <stop offset="50%" stop-color="#C48B5E" />
+      <stop offset="100%" stop-color="#9E6940" />
+    </linearGradient>
+    <linearGradient id="bronzeLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F0C29E" />
+      <stop offset="100%" stop-color="#C48B5E" />
+    </linearGradient>
+  </defs>
+
+  <!-- Architectural Geometric 'S' Monogram -->
+  <g transform="translate(6, 6)">
+    <!-- Top Beam Segment -->
+    <path d="M4 14 L28 14 L42 2 L18 2 Z" fill="url(#bronzeGrad)" />
+    <!-- Upper Vertical Angle Segment -->
+    <path d="M4 14 L18 2 L18 22 L4 34 Z" fill="url(#bronzeLight)" />
+    <!-- Central Cross Beam -->
+    <path d="M4 34 L18 22 L44 22 L30 34 Z" fill="url(#bronzeGrad)" />
+    <!-- Lower Vertical Angle Segment -->
+    <path d="M30 34 L44 22 L44 42 L30 54 Z" fill="url(#bronzeLight)" />
+    <!-- Bottom Beam Segment -->
+    <path d="M6 54 L30 54 L44 42 L20 42 Z" fill="url(#bronzeGrad)" />
+    <!-- Accent Line -->
+    <circle cx="42" cy="14" r="3" fill="#DCA376" />
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(66, 10)">
+    <!-- Main Brand Name -->
+    <text x="0" y="30" font-family="'Space Grotesk', 'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="800" letter-spacing="3.5" fill="#F5F3EF">STRATUM</text>
+    <!-- Subtitle / Disciplines -->
+    <text x="1" y="47" font-family="'JetBrains Mono', 'Plus Jakarta Sans', monospace" font-size="8.5" font-weight="600" letter-spacing="2.8" fill="#C48B5E">VDC | BIM | MEP ENGINEERING</text>
+  </g>
+</svg>
