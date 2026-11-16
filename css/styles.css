@@ -384,17 +384,19 @@ button, input, select, textarea {
 }
 
 .hero-live-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   background: #FFFFFF;
   border-radius: 50%;
-  box-shadow: 0 0 10px #FFFFFF;
-  animation: pulseLive 2s infinite ease-in-out;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+  flex-shrink: 0;
+  display: inline-block;
+  opacity: 0.9;
 }
 
 @keyframes pulseLive {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.35; transform: scale(0.85); }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
 }
 
 .hero-blueprint-headline {
@@ -615,23 +617,13 @@ button, input, select, textarea {
 }
 
 .spotlight-live-beacon {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   background: var(--color-copper);
   border-radius: 50%;
-  position: relative;
-}
-
-.spotlight-live-beacon::after {
-  content: '';
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 1px solid var(--color-copper);
-  border-radius: 50%;
-  animation: radarRing 2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 0 6px var(--color-copper);
+  flex-shrink: 0;
+  display: inline-block;
 }
 
 .spotlight-label {
