@@ -1,32 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
   <defs>
-    <linearGradient id="favBronzeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#DCA376" />
-      <stop offset="50%" stop-color="#C48B5E" />
-      <stop offset="100%" stop-color="#9E6940" />
+    <linearGradient id="favMonoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="60%" stop-color="#E4E4E7" />
+      <stop offset="100%" stop-color="#D4D4D8" />
     </linearGradient>
-    <linearGradient id="favBronzeLight" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#F0C29E" />
-      <stop offset="100%" stop-color="#C48B5E" />
+    <linearGradient id="favMonoLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#A1A1AA" />
     </linearGradient>
   </defs>
 
-  <!-- Obsidian Tile Background -->
-  <rect width="64" height="64" rx="14" fill="#110F0E" stroke="rgba(196,139,94,0.35)" stroke-width="1.5" />
+  <!-- Pitch Black Tile Background -->
+  <rect width="64" height="64" rx="14" fill="#000000" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" />
 
   <!-- Geometric 'S' Monogram -->
   <g transform="translate(10, 5)">
     <!-- Top Beam Segment -->
-    <path d="M4 14 L28 14 L42 2 L18 2 Z" fill="url(#favBronzeGrad)" />
+    <path d="M4 14 L28 14 L42 2 L18 2 Z" fill="url(#favMonoGrad)" />
     <!-- Upper Vertical Angle Segment -->
-    <path d="M4 14 L18 2 L18 22 L4 34 Z" fill="url(#favBronzeLight)" />
+    <path d="M4 14 L18 2 L18 22 L4 34 Z" fill="url(#favMonoLight)" />
     <!-- Central Cross Beam -->
-    <path d="M4 34 L18 22 L44 22 L30 34 Z" fill="url(#favBronzeGrad)" />
+    <path d="M4 34 L18 22 L44 22 L30 34 Z" fill="url(#favMonoGrad)" />
     <!-- Lower Vertical Angle Segment -->
-    <path d="M30 34 L44 22 L44 42 L30 54 Z" fill="url(#favBronzeLight)" />
+    <path d="M30 34 L44 22 L44 42 L30 54 Z" fill="url(#favMonoLight)" />
     <!-- Bottom Beam Segment -->
-    <path d="M6 54 L30 54 L44 42 L20 42 Z" fill="url(#favBronzeGrad)" />
+    <path d="M6 54 L30 54 L44 42 L20 42 Z" fill="url(#favMonoGrad)" />
     <!-- Accent Dot -->
-    <circle cx="42" cy="14" r="3" fill="#DCA376" />
+    <circle cx="42" cy="14" r="3" fill="#FFFFFF" />
   </g>
 </svg>
