@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=19.0">
+  <link rel="stylesheet" href="css/styles.css?v=20.0">
 </head>
 <body>
 
@@ -48,36 +48,35 @@
         <div class="nav-item"><a href="index.html" class="nav-link">Home</a></div>
         <div class="nav-item"><a href="about.html" class="nav-link">About Us</a></div>
 
-        <!-- Services Mega Menu -->
-                <!-- Services Dropdown (Exact 4 Turnkey Disciplines) -->
         <div class="nav-item has-mega">
           <a href="services.html" class="nav-link">
             <span>Services</span>
             <svg class="chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
           </a>
-          <div class="mega-dropdown" style="width: 520px; padding: 22px 26px;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-              <a href="services.html#mechanical" class="mega-link" style="padding: 10px 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-sm);">
-                <strong style="display:block; color:#FFFFFF; font-size:13.5px; margin-bottom:3px;">HVAC</strong>
-                <span style="font-size:11.5px; color:#A1A1AA; line-height:1.4; display:block;">Air conditioning, ventilation and cooling loads</span>
-              </a>
-              <a href="services.html#electrical" class="mega-link" style="padding: 10px 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-sm);">
-                <strong style="display:block; color:#FFFFFF; font-size:13.5px; margin-bottom:3px;">Electrical</strong>
-                <span style="font-size:11.5px; color:#A1A1AA; line-height:1.4; display:block;">Power, lighting and backup systems</span>
-              </a>
-              <a href="services.html#plumbing" class="mega-link" style="padding: 10px 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-sm);">
-                <strong style="display:block; color:#FFFFFF; font-size:13.5px; margin-bottom:3px;">Plumbing</strong>
-                <span style="font-size:11.5px; color:#A1A1AA; line-height:1.4; display:block;">Water supply, drainage and treatment</span>
-              </a>
-              <a href="services.html#fire" class="mega-link" style="padding: 10px 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-sm);">
-                <strong style="display:block; color:#FFFFFF; font-size:13.5px; margin-bottom:3px;">Fire Protection</strong>
-                <span style="font-size:11.5px; color:#A1A1AA; line-height:1.4; display:block;">Sprinklers, hydrants and alarms</span>
-              </a>
+          <!-- catalog:menu -->
+            <div class="mega-dropdown service-catalog-menu">
+              <section class="catalog-menu-group">
+                <h2><a href="services-mep.html">MEP Design Services</a></h2>
+                <ul><li><a href="services-mechanical-hvac.html">Mechanical/HVAC Design</a></li><li><a href="services-electrical-design.html">Electrical Design</a></li><li><a href="services-plumbing-design.html">Plumbing Design</a></li></ul>
+              </section>
+              <section class="catalog-menu-group">
+                <h2><a href="services-bim.html">BIM Services</a></h2>
+                <ul><li><a href="services-mep-bim.html">MEP BIM Services</a></li><li><a href="services-point-cloud-bim.html">Point Cloud to BIM</a></li><li><a href="services-pdf-to-cad.html">PDF to CAD Drafting</a></li><li><a href="services-clash-detection.html">Clash Detection &amp; Coordination</a></li></ul>
+              </section>
+              <section class="catalog-menu-group">
+                <h2><a href="services-construction.html">Construction Support Services</a></h2>
+                <ul><li><a href="services-quantity-takeoff.html">Quantity Takeoff Services</a></li><li><a href="services-family-creation.html">Revit Family Creation</a></li><li><a href="services-shop-drawings.html">Shop Drawings</a></li><li><a href="services-qa-qc.html">QA/QC Services</a></li></ul>
+              </section>
+              <section class="catalog-menu-group">
+                <h2><a href="services-drafting.html">Architectural &amp; Structural Drafting</a></h2>
+                <ul><li><a href="services-structural-drafting.html">Structural Drafting Services</a></li><li><a href="services-architectural-drafting.html">Architectural Drafting Services</a></li></ul>
+              </section>
+              <section class="catalog-menu-group">
+                <h2><a href="services-other.html">Other Services</a></h2>
+                <ul><li><a href="services-3d-rendering.html">3D Rendering</a></li><li><a href="services-fire-protection.html">Fire Protection Design</a></li></ul>
+              </section>
             </div>
-            <div style="margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center;">
-              <a href="services.html" style="font-family: var(--font-mono); font-size: 12px; color: #FFFFFF; text-decoration: none; font-weight: 600;">View All Services &rarr;</a>
-            </div>
-          </div>
+<!-- /catalog:menu -->
         </div>
         <div class="nav-item"><a href="portfolio.html" class="nav-link">Project Examples</a></div>
         <div class="nav-item"><a href="blog.html" class="nav-link">Design Notes</a></div>
@@ -104,11 +103,32 @@
     <div class="drawer-links">
       <a href="index.html" class="drawer-link">Home</a>
       <a href="about.html" class="drawer-link">About Us</a>
-      <a href="services.html" class="drawer-link active">Services</a>
-      <a href="services.html#mechanical" class="drawer-link" style="padding-left:24px; font-size:13px; opacity:0.85;">HVAC</a>
-      <a href="services.html#electrical" class="drawer-link" style="padding-left:24px; font-size:13px; opacity:0.85;">Electrical</a>
-      <a href="services.html#plumbing" class="drawer-link" style="padding-left:24px; font-size:13px; opacity:0.85;">Plumbing</a>
-      <a href="services.html#fire" class="drawer-link" style="padding-left:24px; font-size:13px; opacity:0.85;">Fire Protection</a>
+      <!-- catalog:drawer -->
+      <details class="drawer-service-catalog">
+        <summary>Services</summary>
+        <a class="drawer-link" href="services.html">All services</a>
+              <section class="catalog-menu-group">
+                <h2><a href="services-mep.html">MEP Design Services</a></h2>
+                <ul><li><a href="services-mechanical-hvac.html">Mechanical/HVAC Design</a></li><li><a href="services-electrical-design.html">Electrical Design</a></li><li><a href="services-plumbing-design.html">Plumbing Design</a></li></ul>
+              </section>
+              <section class="catalog-menu-group">
+                <h2><a href="services-bim.html">BIM Services</a></h2>
+                <ul><li><a href="services-mep-bim.html">MEP BIM Services</a></li><li><a href="services-point-cloud-bim.html">Point Cloud to BIM</a></li><li><a href="services-pdf-to-cad.html">PDF to CAD Drafting</a></li><li><a href="services-clash-detection.html">Clash Detection &amp; Coordination</a></li></ul>
+              </section>
+              <section class="catalog-menu-group">
+                <h2><a href="services-construction.html">Construction Support Services</a></h2>
+                <ul><li><a href="services-quantity-takeoff.html">Quantity Takeoff Services</a></li><li><a href="services-family-creation.html">Revit Family Creation</a></li><li><a href="services-shop-drawings.html">Shop Drawings</a></li><li><a href="services-qa-qc.html">QA/QC Services</a></li></ul>
+              </section>
+              <section class="catalog-menu-group">
+                <h2><a href="services-drafting.html">Architectural &amp; Structural Drafting</a></h2>
+                <ul><li><a href="services-structural-drafting.html">Structural Drafting Services</a></li><li><a href="services-architectural-drafting.html">Architectural Drafting Services</a></li></ul>
+              </section>
+              <section class="catalog-menu-group">
+                <h2><a href="services-other.html">Other Services</a></h2>
+                <ul><li><a href="services-3d-rendering.html">3D Rendering</a></li><li><a href="services-fire-protection.html">Fire Protection Design</a></li></ul>
+              </section>
+      </details>
+<!-- /catalog:drawer -->
       <a href="sectors.html" class="drawer-link">Sectors</a>
       <a href="process.html" class="drawer-link">Process</a>
       <a href="portfolio.html" class="drawer-link">Project Examples</a>
@@ -160,10 +180,13 @@
         <div class="footer-col">
           <h4 class="footer-heading">Services</h4>
           <ul class="footer-nav">
-            <li><a href="services.html#mechanical" class="footer-link">HVAC</a></li>
-            <li><a href="services.html#electrical" class="footer-link">Electrical</a></li>
-            <li><a href="services.html#plumbing" class="footer-link">Plumbing</a></li>
-            <li><a href="services.html#fire" class="footer-link">Fire Protection</a></li>
+            <!-- catalog:footer -->
+            <li><a class="footer-link" href="services-mep.html">MEP Design Services</a></li>
+            <li><a class="footer-link" href="services-bim.html">BIM Services</a></li>
+            <li><a class="footer-link" href="services-construction.html">Construction Support Services</a></li>
+            <li><a class="footer-link" href="services-drafting.html">Architectural &amp; Structural Drafting</a></li>
+            <li><a class="footer-link" href="services-other.html">Other Services</a></li>
+<!-- /catalog:footer -->
           </ul>
         </div>
         <div class="footer-col">

@@ -137,65 +137,51 @@
       "title": "Mechanical/HVAC Design",
       "category": "MEP DESIGN SERVICES",
       "categorySlug": "mep",
-      "anchor": "mechanical",
-      "url": "services-mep.html#mechanical",
-      "summary": "Centralized chilled water plants, VRF/VRV configurations, cleanroom positive pressure ventilation, and primary-variable hydronic pumping loops.",
-      "scope": "Carrier HAP thermal load profiles, static pressure calculations, duct layouts, acoustic attenuation, chiller optimization, IAQ filtration, and ECBC/ASHRAE 90.1 energy compliance.",
-      "deliverables": ["HVAC DBR & Load Reports", "Chilled Water & VRF Schematics", "Ductwork Layouts & Sizing", "Equipment Schedules & BOQ"],
-      "standards": "ISHRAE, NBC 2016 Part 8, ECBC 2017, ASHRAE 62.1 & 90.1",
-      "tools": "Carrier HAP, Revit MEP, AutoCAD, DuctSize, Pipe-Flo"
+      "anchor": "mechanical-hvac",
+      "url": "services-mechanical-hvac.html",
+      "summary": "Air conditioning, heating, ventilation, and cooling loads.",
+      "scope": "We size equipment and plan air and water distribution around the building layout and operating needs.",
+      "deliverables": [
+        "Heating and cooling load calculations",
+        "Duct and piping layouts",
+        "Equipment schedules"
+      ],
+      "standards": "",
+      "tools": ""
     },
     {
       "id": "electrical-design",
       "title": "Electrical Design",
       "category": "MEP DESIGN SERVICES",
       "categorySlug": "mep",
-      "anchor": "electrical",
-      "url": "services-mep.html#electrical",
-      "summary": "11kV/33kV indoor and outdoor substation yards, HT/LT switchgear, synchronized DG backup architectures, cable tray layouts, and photometrics.",
-      "scope": "ETAP short-circuit calculations, relay coordination, IS 3043 earthing grid calculations, IS/IEC 62305 lightning protection, voltage drop schedules, and CEIG statutory compliance.",
-      "deliverables": ["Substation Single Line Diagrams (SLD)", "Earthing & Lightning Grids", "Dialux Lighting Photometrics", "LT Panel Schedules & Cable Routing"],
-      "standards": "IS 732, IS 3043, IS/IEC 62305, Central Electricity Authority (CEA)",
-      "tools": "ETAP, Dialux EVO, AutoCAD Electrical, Revit MEP"
+      "anchor": "electrical-design",
+      "url": "services-electrical-design.html",
+      "summary": "Power distribution, lighting, and backup systems.",
+      "scope": "We use the load list and architectural plans to lay out distribution boards, circuits, lighting, and backup power.",
+      "deliverables": [
+        "Load schedules and single-line diagrams",
+        "Power and lighting plans",
+        "Backup power layouts"
+      ],
+      "standards": "",
+      "tools": ""
     },
     {
       "id": "plumbing-design",
       "title": "Plumbing Design",
       "category": "MEP DESIGN SERVICES",
       "categorySlug": "mep",
-      "anchor": "plumbing",
-      "url": "services-mep.html#plumbing",
-      "summary": "Public Health Engineering (PHE), hydro-pneumatic water boosting, greywater recycling, STP/ETP integration, and CGWA rainwater harvesting.",
-      "scope": "Dual plumbing piping (flushing/domestic), pump head calculations, gravity sewer gradients, stormwater drainage modeling, and municipal sewer connectivity.",
-      "deliverables": ["Water Supply & Hydro-Pneumatic Riser Diagrams", "Soil, Waste & Vent (SWV) Schematics", "STP / WTP Flow Sheets", "CGWA Rainwater Harvesting Layouts"],
-      "standards": "NBC 2016 Part 9, Uniform Plumbing Code India (UPC-I), CGWA Guidelines",
-      "tools": "WaterCAD, SewerGEMS, Revit MEP, AutoCAD"
-    },
-    {
-      "id": "structural-drafting",
-      "title": "Structural Drafting Services",
-      "category": "ARCHITECTURAL & STRUCTURAL DRAFTING",
-      "categorySlug": "drafting",
-      "anchor": "structural",
-      "url": "services-drafting.html#structural",
-      "summary": "RCC framed detailing, IS 13920 ductile rebar drafting, Bar Bending Schedules (BBS), and structural steel connection detailing.",
-      "scope": "Column/beam reinforcement sections, post-tensioned slab tendon layouts, foundation rebar detailing, steel truss connections, and PEB structural drawings.",
-      "deliverables": ["IS 13920 Ductile Detailing Sheets", "Automated Bar Bending Schedules (BBS)", "Foundation & Column Schedules", "Structural Steel Fabrication Sets"],
-      "standards": "IS 456:2000, IS 13920:2016, IS 800:2007, SP 34",
-      "tools": "AutoCAD, Tekla Structures, Revit Structure"
-    },
-    {
-      "id": "architectural-drafting",
-      "title": "Architectural Drafting Services",
-      "category": "ARCHITECTURAL & STRUCTURAL DRAFTING",
-      "categorySlug": "drafting",
-      "anchor": "architectural",
-      "url": "services-drafting.html#architectural",
-      "summary": "Comprehensive architectural working drawings, municipal sanction permit sets, authority clearance liaison drafting, and life-safety egress plans.",
-      "scope": "Floor plans, elevations, wall sections, door-window schedules, municipal FAR/FSI compliance sheets, parking layouts, and barrier-free access details.",
-      "deliverables": ["Municipal Sanction Submission Sets (DDA/BMC/BBMP)", "GFC Architectural Working Drawings", "NBC Part 4 Egress Compliance Plans", "Finishes & Joinery Details"],
-      "standards": "Local Municipal Building Byelaws, NBC 2016 Part 3 & 4",
-      "tools": "AutoCAD, Revit Architecture, Adobe Acrobat Pro"
+      "anchor": "plumbing-design",
+      "url": "services-plumbing-design.html",
+      "summary": "Water supply, sanitary drainage, and stormwater systems.",
+      "scope": "We size supply and drainage networks using the fixture schedule, building layout, and available utility connections.",
+      "deliverables": [
+        "Water supply and drainage plans",
+        "Riser diagrams",
+        "Fixture and equipment schedules"
+      ],
+      "standards": "",
+      "tools": ""
     },
     {
       "id": "mep-bim",
@@ -203,38 +189,50 @@
       "category": "BIM SERVICES",
       "categorySlug": "bim",
       "anchor": "mep-bim",
-      "url": "services-bim.html#mep-bim",
-      "summary": "Parametric 3D MEP modeling across LOD 100 to 500 in Autodesk Revit, complete with engineering data, maintenance metadata, and CPWD specifications.",
-      "scope": "HVAC ducting, chilled water piping, cable trays, conduit banks, plumbing risers, and plant room federated modeling with strict ISO 19650 BEP adherence.",
-      "deliverables": ["Federated Revit Model (.RVT)", "IFC 2x3 / IFC4 Export Files", "Parametric Equipment Schedules", "Clash-Free MEP Layouts"],
-      "standards": "ISO 19650 Part 1 & 2, BIM Forum LOD Specs, CPWD BIM Mandate",
-      "tools": "Autodesk Revit, BIM 360 / Autodesk Construction Cloud (ACC)"
+      "url": "services-mep-bim.html",
+      "summary": "3D models of building services for design and coordination.",
+      "scope": "We model the ducts, pipes, equipment, and cable routes in the agreed scope and follow the project’s model conventions.",
+      "deliverables": [
+        "MEP models by discipline",
+        "Coordinated model views",
+        "Model handover files"
+      ],
+      "standards": "",
+      "tools": ""
     },
     {
       "id": "point-cloud-bim",
       "title": "Point Cloud to BIM",
       "category": "BIM SERVICES",
       "categorySlug": "bim",
-      "anchor": "point-cloud",
-      "url": "services-bim.html#point-cloud",
-      "summary": "Converting 3D terrestrial LiDAR and drone laser scan point clouds into hyper-accurate, millimeter-precise as-built BIM models.",
-      "scope": "Point cloud decimation, coordinate registration, deviation heat-map validation, plant room retrofits, historical heritage preservation, and industrial expansions.",
-      "deliverables": ["As-Built Revit Model (.RVT)", "Point Cloud vs Model Deviation Reports", "As-Built GFC Validation Sets", "Registered Point Cloud (.RCS/.RCP)"],
-      "standards": "ASTM E57, USIBD Level of Accuracy (LOA) Guidelines",
-      "tools": "Autodesk Recap Pro, CloudCompare, Revit, Faro Scene"
+      "anchor": "point-cloud-bim",
+      "url": "services-point-cloud-bim.html",
+      "summary": "Models of existing spaces and services from survey scans.",
+      "scope": "We use the supplied point cloud to trace the systems and building elements defined in the scope. We flag areas the scan cannot show clearly.",
+      "deliverables": [
+        "Existing-conditions model",
+        "Plans and sections where required",
+        "Notes on scan gaps"
+      ],
+      "standards": "",
+      "tools": ""
     },
     {
       "id": "pdf-to-cad",
       "title": "PDF to CAD Drafting",
       "category": "BIM SERVICES",
       "categorySlug": "bim",
-      "anchor": "pdf-cad",
-      "url": "services-bim.html#pdf-cad",
-      "summary": "Vectorization and conversion of legacy scanned paper drawings, municipal blueprints, and flattened PDF sets into editable DWG and Revit models.",
-      "scope": "Scale normalization, layer restructuring per AIA/CPWD CAD standards, dimension verification, block creation, and text digitization.",
-      "deliverables": ["Layered AutoCAD DWG Files", "CTB Plot Style Tables", "Converted Revit Base Model", "Error & Dimension Discrepancy Log"],
-      "standards": "AIA CAD Layer Guidelines, CPWD Architectural Standards",
-      "tools": "AutoCAD, Raster Design, Autodesk Revit"
+      "anchor": "pdf-to-cad",
+      "url": "services-pdf-to-cad.html",
+      "summary": "Editable CAD drawings from PDF plans and details.",
+      "scope": "We redraw the supplied sheets, set up layers and units, and check the result against known dimensions.",
+      "deliverables": [
+        "Editable CAD drawings",
+        "Layered linework and annotations",
+        "A list of dimensions to confirm"
+      ],
+      "standards": "",
+      "tools": ""
     },
     {
       "id": "clash-detection",
@@ -242,25 +240,135 @@
       "category": "BIM SERVICES",
       "categorySlug": "bim",
       "anchor": "clash-detection",
-      "url": "services-bim.html#clash-detection",
-      "summary": "Comprehensive inter-disciplinary clash detection across Architecture, Structure, HVAC, Fire Fighting, Electrical, and Plumbing models in Navisworks Manage.",
-      "scope": "Hard, soft, and clearance clash matrices, multidisciplinary BCF issue tracking, weekly coordination meetings, and zero-rework pre-pour sign-offs.",
-      "deliverables": ["Navisworks Audit (.NWD) Federated Files", "Itemized BCF Clash Reports", "Coordinated Multi-Service Composite Drawings", "Clash Resolution Trend Matrices"],
-      "standards": "ISO 19650 BCF Standard, AGC BIM Coordination Protocols",
-      "tools": "Autodesk Navisworks Manage, Revizto, BIM Track, BIMcollab"
+      "url": "services-clash-detection.html",
+      "summary": "Find conflicts between building systems, structure, and architecture.",
+      "scope": "We combine the project models, check the agreed coordination zones, and log conflicts so each team can resolve its items.",
+      "deliverables": [
+        "Combined coordination model",
+        "Clash reports with locations and owners",
+        "Updates after review"
+      ],
+      "standards": "",
+      "tools": ""
+    },
+    {
+      "id": "quantity-takeoff",
+      "title": "Quantity Takeoff Services",
+      "category": "CONSTRUCTION SUPPORT SERVICES",
+      "categorySlug": "construction",
+      "anchor": "quantity-takeoff",
+      "url": "services-quantity-takeoff.html",
+      "summary": "Material counts and measurements for estimating.",
+      "scope": "We measure from the drawing or model revision your team provides and record the assumptions behind each quantity.",
+      "deliverables": [
+        "Itemised takeoff spreadsheet",
+        "Marked-up measurement references",
+        "Measurement assumptions and exclusions"
+      ],
+      "standards": "",
+      "tools": ""
+    },
+    {
+      "id": "family-creation",
+      "title": "Revit Family Creation",
+      "category": "CONSTRUCTION SUPPORT SERVICES",
+      "categorySlug": "construction",
+      "anchor": "family-creation",
+      "url": "services-family-creation.html",
+      "summary": "Reusable Revit components for project models.",
+      "scope": "We build families from product information, with geometry, connectors, and parameters appropriate for the project.",
+      "deliverables": [
+        "Revit family files",
+        "Types and parameter schedules",
+        "Guidance for loading the families"
+      ],
+      "standards": "",
+      "tools": ""
+    },
+    {
+      "id": "shop-drawings",
+      "title": "Shop Drawings",
+      "category": "CONSTRUCTION SUPPORT SERVICES",
+      "categorySlug": "construction",
+      "anchor": "shop-drawings",
+      "url": "services-shop-drawings.html",
+      "summary": "Installation drawings based on the coordinated design.",
+      "scope": "We develop the agreed service layouts into sheets with the dimensions and references the site team needs.",
+      "deliverables": [
+        "Dimensioned installation drawings",
+        "Sections and assembly details",
+        "Schedules for review"
+      ],
+      "standards": "",
+      "tools": ""
+    },
+    {
+      "id": "qa-qc",
+      "title": "QA/QC Services",
+      "category": "CONSTRUCTION SUPPORT SERVICES",
+      "categorySlug": "construction",
+      "anchor": "qa-qc",
+      "url": "services-qa-qc.html",
+      "summary": "Drawing and model checks before issue.",
+      "scope": "We review the agreed files for coordination, completeness, and consistency with the project requirements.",
+      "deliverables": [
+        "Review checklist",
+        "Marked-up drawings or model views",
+        "Issue log with items to resolve"
+      ],
+      "standards": "",
+      "tools": ""
+    },
+    {
+      "id": "structural-drafting",
+      "title": "Structural Drafting Services",
+      "category": "ARCHITECTURAL & STRUCTURAL DRAFTING",
+      "categorySlug": "drafting",
+      "anchor": "structural-drafting",
+      "url": "services-structural-drafting.html",
+      "summary": "Structural drawings from engineering designs and markups.",
+      "scope": "We turn engineer-provided information into coordinated plans, sections, and details for the agreed drawing set.",
+      "deliverables": [
+        "Foundation and framing plans",
+        "Sections and connection details",
+        "Drawing and revision schedules"
+      ],
+      "standards": "",
+      "tools": ""
+    },
+    {
+      "id": "architectural-drafting",
+      "title": "Architectural Drafting Services",
+      "category": "ARCHITECTURAL & STRUCTURAL DRAFTING",
+      "categorySlug": "drafting",
+      "anchor": "architectural-drafting",
+      "url": "services-architectural-drafting.html",
+      "summary": "Architectural drawings from sketches, models, and markups.",
+      "scope": "We prepare or update the drawing set using the architect’s design, dimensions, and drafting standards.",
+      "deliverables": [
+        "Floor plans and elevations",
+        "Building sections and details",
+        "Sheet and revision schedules"
+      ],
+      "standards": "",
+      "tools": ""
     },
     {
       "id": "3d-rendering",
       "title": "3D Rendering",
       "category": "OTHER SERVICES",
       "categorySlug": "other",
-      "anchor": "rendering",
-      "url": "services.html#rendering",
-      "summary": "Photorealistic 3D architectural, MEP plant room, and infrastructure visualizations, exterior daylight renderings, and immersive walk-through animations.",
-      "scope": "PBR texturing, physically accurate solar studies, architectural lighting simulation, plant room virtual reality walk-throughs, and marketing animations.",
-      "deliverables": ["Ultra HD 4K Renderings", "360-Degree Panoramic VR Tours", "Architectural Walkthrough MP4 Videos", "Investor Presentation Pack"],
-      "standards": "PBR Material Workflows, Physically Based Lighting Calculations",
-      "tools": "Lumion, 3ds Max, V-Ray, Enscape, Twinmotion"
+      "anchor": "3d-rendering",
+      "url": "services-3d-rendering.html",
+      "summary": "Still images to communicate how a proposed space will look.",
+      "scope": "We use your drawings or model to set up materials, lighting, and camera views for the agreed spaces.",
+      "deliverables": [
+        "Agreed interior or exterior views",
+        "Draft images for review",
+        "Final still images"
+      ],
+      "standards": "",
+      "tools": ""
     },
     {
       "id": "fire-protection",
@@ -268,64 +376,16 @@
       "category": "OTHER SERVICES",
       "categorySlug": "other",
       "anchor": "fire-protection",
-      "url": "services.html#fire-protection",
-      "summary": "Turnkey life-safety and fire engineering: automatic wet sprinkler arrays, wet riser/down-comer networks, gas suppression, and addressable fire alarms.",
-      "scope": "Hydraulic node calculations (HASS), fire pump head sizing (main electrical, diesel standby, jockey), clean agent (FM-200 / Novec 1230), and Fire NOC clearances.",
-      "deliverables": ["Hydraulic Calculation Reports", "Sprinkler & Hydrant Riser Schematics", "Addressable Smoke/Heat Alarm Layouts", "Local Fire Brigade NOC Submission Binder"],
-      "standards": "NBC 2016 Part 4, NFPA 13, 14, 20 & 72, IS 15105, IS 2189",
-      "tools": "AutoSPRINK, Pipe-Flo, Revit MEP, AutoCAD"
-    },
-    {
-      "id": "quantity-takeoff",
-      "title": "Quantity Takeoff Services",
-      "category": "CONSTRUCTION SUPPORT SERVICES",
-      "categorySlug": "support",
-      "anchor": "quantity-takeoff",
-      "url": "services-construction.html#quantity-takeoff",
-      "summary": "Comprehensive 5D BIM quantity extraction and itemized Bill of Quantities (BOQ) aligned directly with CPWD Delhi Schedule of Rates (DSR).",
-      "scope": "Automated schedule parameter extraction from Revit, duct surface area tonnage calculations, pipe linear lengths, valve itemizations, and tender estimation.",
-      "deliverables": ["CPWD DSR Itemized Bill of Quantities (BOQ)", "Duct Area & Sheet Metal Weight Schedules", "Electrical Cable & Tray Linear Schedules", "Tender Estimation Schedule"],
-      "standards": "CPWD DSR 2023, IS 1200 (Method of Measurement), RICS NRM",
-      "tools": "Autodesk Navisworks (Quantification), Bluebeam Revu, Microsoft Excel"
-    },
-    {
-      "id": "family-creation",
-      "title": "Revit Family Creation",
-      "category": "CONSTRUCTION SUPPORT SERVICES",
-      "categorySlug": "family-creation",
-      "anchor": "family-creation",
-      "url": "services-construction.html#family-creation",
-      "summary": "Development of parametric, lightweight Autodesk Revit families (.RFA) for Indian and global MEP and architectural equipment manufacturers.",
-      "scope": "Electrical voltage/phase connector definitions, hydraulic flow/pressure drop ports, custom formula parameter tables, and catalog type catalogs.",
-      "deliverables": ["Parametric Revit Family Files (.RFA)", "Catalog Type Text Files (.TXT)", "LOD 300-500 Geometrical Sets", "Testing & Clearance Quality Validation Cert"],
-      "standards": "BIM Forum LOD Specs, Revit Model Content Style Guide",
-      "tools": "Autodesk Revit Family Editor, Dynamo"
-    },
-    {
-      "id": "shop-drawings",
-      "title": "Shop Drawings",
-      "category": "CONSTRUCTION SUPPORT SERVICES",
-      "categorySlug": "support",
-      "anchor": "shop-drawings",
-      "url": "services-construction.html#shop-drawings",
-      "summary": "Good for Construction (GFC) installation shop drawings, pre-pour penetration sleeves, spool fabrication sheets, and equipment pad layout drawings.",
-      "scope": "Sleeve penetration layouts in RCC slabs/beams, pipe spool isometric cut-sheets with weld gaps, hanger/support structural locations, and site assembly drawings.",
-      "deliverables": ["GFC MEP Installation Sets", "RCC Slab & Beam Penetration Sleeve Plans", "Prefabricated Pipe Spool Sheets", "Equipment Foundation Pad & Anchor Details"],
-      "standards": "SMACNA Duct Construction Standards, ASME B31.9, CPWD Specs",
-      "tools": "AutoCAD, Revit MEP, Fabrication CADmep"
-    },
-    {
-      "id": "qa-qc",
-      "title": "QA/QC Services",
-      "category": "CONSTRUCTION SUPPORT SERVICES",
-      "categorySlug": "support",
-      "anchor": "qa-qc",
-      "url": "services-construction.html#qa-qc",
-      "summary": "Independent third-party model audit, design review, tolerance validation, and code compliance verification for owners, GC firms, and engineering consultants.",
-      "scope": "Model hygiene checklists, duplicate element purging, parameter naming standard checks, clash tolerance validation, and site GFC redline audits.",
-      "deliverables": ["Model Health & Audit Scorecards", "Third-Party Design Verification Reports", "CPWD Spec Compliance Checklists", "Pre-Pour RCC Sleeve Sign-off Logs"],
-      "standards": "ISO 19650 Quality Protocols, CPWD Works Manual, NBC 2016",
-      "tools": "Autodesk Model Checker, Solibri Model Checker, Navisworks Manage"
+      "url": "services-fire-protection.html",
+      "summary": "Sprinkler, hydrant, fire alarm, and smoke-control design.",
+      "scope": "We review the building plans and project requirements, then lay out the systems in scope and prepare drawings for review.",
+      "deliverables": [
+        "Fire protection and alarm layouts",
+        "Pump and tank sizing where required",
+        "Drawings for authority review"
+      ],
+      "standards": "",
+      "tools": ""
     }
   ],
   "blogs": [
