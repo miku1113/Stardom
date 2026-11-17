@@ -39,7 +39,7 @@
 
   /* Layout */
   --container-max: 1240px;
-  --header-height: 80px;
+  --header-height: 68px;
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
@@ -210,7 +210,7 @@ button, input, select, textarea {
 
 .site-header.scrolled {
   background: rgba(0, 0, 0, 0.98);
-  height: 72px;
+  height: 60px;
   border-bottom-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -228,7 +228,7 @@ button, input, select, textarea {
 
 .brand-logo-svg,
 .brand-logo-img {
-  height: 38px;
+  height: 32px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -354,11 +354,11 @@ button, input, select, textarea {
    ========================================================================== */
 .hero-blueprint-banner {
   position: relative;
-  min-height: 88vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 100px 0 36px;
+  padding: 48px 0 28px;
   background-color: #000000;
   background-image: 
     linear-gradient(90deg, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.85) 42%, rgba(0, 0, 0, 0.35) 75%, rgba(0, 0, 0, 0.75) 100%),
@@ -393,8 +393,8 @@ button, input, select, textarea {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   align-items: center;
-  gap: 40px;
-  margin: auto 0;
+  gap: 36px;
+  margin: 0;
 }
 
 .hero-blueprint-content {
@@ -407,7 +407,7 @@ button, input, select, textarea {
   gap: 10px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.22);
-  padding: 6px 14px;
+  padding: 5px 13px;
   border-radius: var(--radius-full);
   font-family: var(--font-mono);
   font-size: 11px;
@@ -415,7 +415,7 @@ button, input, select, textarea {
   letter-spacing: 1.8px;
   text-transform: uppercase;
   color: #FFFFFF;
-  margin-bottom: 24px;
+  margin-bottom: 14px;
   backdrop-filter: blur(8px);
   animation: heroFadeUp 0.7s 0.05s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -425,42 +425,42 @@ button, input, select, textarea {
   height: 6px;
   background: #FFFFFF;
   border-radius: 50%;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.95);
   flex-shrink: 0;
   display: inline-block;
-  opacity: 0.95;
-  animation: pulseLive 2.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
-}
-
-@keyframes pulseLive {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.35; transform: scale(0.85); }
 }
 
 .hero-blueprint-headline {
   font-family: var(--font-heading);
-  font-size: 60px;
+  font-size: 54px;
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -1.2px;
   color: #FFFFFF;
-  margin-bottom: 22px;
+  margin-bottom: 16px;
   animation: heroFadeUp 0.8s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .hero-blueprint-headline span.text-creative-accent {
   display: inline-block;
-  background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
+  background: linear-gradient(90deg, #FFFFFF 0%, #E4E4E7 35%, #FFFFFF 50%, #A1A1AA 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  animation: shimmerAccent 6s linear infinite;
+}
+
+@keyframes shimmerAccent {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
 .hero-blueprint-subtext {
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.6;
   color: #A1A1AA;
-  margin-bottom: 34px;
+  margin-bottom: 22px;
   max-width: 600px;
   animation: heroFadeUp 0.8s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -522,21 +522,13 @@ button, input, select, textarea {
   position: relative;
 }
 
-.hud-pulse-radar::after {
-  content: '';
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 1px solid #FFFFFF;
+.hud-pulse-radar {
+  width: 7px;
+  height: 7px;
+  background: #FFFFFF;
   border-radius: 50%;
-  animation: radarRing 2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-@keyframes radarRing {
-  0% { transform: scale(0.6); opacity: 1; }
-  100% { transform: scale(2.2); opacity: 0; }
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.95);
+  display: inline-block;
 }
 
 .hud-badge-level {
@@ -659,11 +651,11 @@ button, input, select, textarea {
 }
 
 .spotlight-live-beacon {
-  width: 6px;
-  height: 6px;
-  background: var(--color-copper);
+  width: 7px;
+  height: 7px;
+  background: #FFFFFF;
   border-radius: 50%;
-  box-shadow: 0 0 6px var(--color-copper);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.95);
   flex-shrink: 0;
   display: inline-block;
 }
@@ -697,6 +689,28 @@ button, input, select, textarea {
   margin-bottom: 14px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: #000000;
+}
+
+/* Modern Architectural Laser HUD Scanline (Replaces blowing circle) */
+.spotlight-card-media::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.8) 50%, transparent 100%);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.85);
+  opacity: 0.8;
+  animation: architecturalScan 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes architecturalScan {
+  0% { top: 0%; opacity: 0; }
+  12% { opacity: 0.85; }
+  88% { opacity: 0.85; }
+  100% { top: 100%; opacity: 0; }
 }
 
 .spotlight-image {
@@ -848,8 +862,8 @@ button, input, select, textarea {
 
 /* Bottom Blueprint Ticker */
 .hero-blueprint-ticker {
-  margin-top: 60px;
-  padding-top: 20px;
+  margin-top: 32px;
+  padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
@@ -1039,7 +1053,7 @@ button, input, select, textarea {
    ABOUT SECTION (Minimalist B&W Facade + 4 Capabilities)
    ========================================================================== */
 .section-cresto {
-  padding: 90px 0;
+  padding: 64px 0;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -2120,7 +2134,7 @@ button, input, select, textarea {
   }
 
   .hero-blueprint-banner {
-    padding: 90px 0 32px;
+    padding: 48px 0 28px;
     min-height: auto;
     background-image: 
       linear-gradient(180deg, rgba(0, 0, 0, 0.86) 0%, rgba(0, 0, 0, 0.58) 32%, rgba(0, 0, 0, 0.84) 68%, #000000 100%),
@@ -2255,7 +2269,7 @@ button, input, select, textarea {
   }
 
   .hero-blueprint-banner {
-    padding: 76px 0 24px;
+    padding: 38px 0 20px;
     background-image: 
       linear-gradient(180deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.48) 26%, rgba(0, 0, 0, 0.78) 64%, #000000 100%),
       url('../assets/hero-bim-architecture.jpg');
@@ -2502,11 +2516,13 @@ button, input, select, textarea {
 
 /* --- Topbar Notification Bar --- */
 .topbar {
-  background: #060608;
+  background: #000000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 8px 0;
-  font-size: 12.5px;
+  padding: 6px 0;
+  font-size: 11.5px;
   color: #A1A1AA;
+  position: relative;
+  z-index: 1001;
 }
 
 .topbar .container {
@@ -2518,7 +2534,7 @@ button, input, select, textarea {
 .topbar-info {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
 }
 
 .topbar-item {
@@ -3219,7 +3235,7 @@ button, input, select, textarea {
   background: #060608;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 32px 0;
+  padding: 22px 0;
 }
 
 .highlights-grid {
@@ -4659,21 +4675,6 @@ button, input, select, textarea {
 .portfolio-card:hover .portfolio-img-box img,
 .value-prop-visual:hover .leadership-img {
   transform: scale(1.035);
-}
-
-/* Radar Beacon Waves for Technical Live Indicators */
-.spotlight-live-beacon::after {
-  content: '';
-  position: absolute;
-  top: -4px; left: -4px; right: -4px; bottom: -4px;
-  border: 1px solid #FFFFFF;
-  border-radius: 50%;
-  animation: radarBeaconWave 2.2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-@keyframes radarBeaconWave {
-  0% { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(2.6); opacity: 0; }
 }
 
 /* Accessibility: Respect Reduced Motion Preference */
