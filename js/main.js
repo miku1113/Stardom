@@ -354,4 +354,31 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#039;');
   }
+
+  // --- 11. Modern Architectural Scroll-Driven Reveals ---
+  const revealTargets = document.querySelectorAll(
+    '.section-headline, .section-eyebrow, .services-header-split, .highlight-box, ' +
+    '.discipline-card, .drawing-sheet-card, .software-cresto-card, .why-pill-badge, ' +
+    '.project-cresto-card, .portfolio-card, .testimonials-three-grid, .industry-pill, ' +
+    '.process-cresto-row, .step-card, .blog-four-grid, .faq-item, .cta-cresto-banner, ' +
+    '.inquiry-grid, .value-prop-visual, .value-prop-content, .subpage-card'
+  );
+
+  if ('IntersectionObserver' in window && revealTargets.length > 0) {
+    revealTargets.forEach(el => el.classList.add('reveal-on-scroll'));
+
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.06
+    });
+
+    revealTargets.forEach(el => scrollObserver.observe(el));
+  }
 });

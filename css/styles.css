@@ -3,7 +3,7 @@
    Design System: Minimalist High-Contrast Architectural Black & White (Monochrome)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
   /* Minimalist High-Contrast Architectural Black & White Palette */
@@ -32,9 +32,9 @@
   --color-border: rgba(255, 255, 255, 0.12);
   --color-border-hover: rgba(255, 255, 255, 0.45);
 
-  /* Fonts */
-  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-heading: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  /* Modern Professional Architectural Typography System */
+  --font-main: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: 'Outfit', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Layout */
@@ -69,6 +69,14 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  color: var(--color-text-title);
 }
 
 a {
@@ -110,21 +118,31 @@ button, input, select, textarea {
   gap: 8px;
   background-color: #FFFFFF;
   color: #000000;
+  font-family: var(--font-main);
   font-weight: 700;
   font-size: 14px;
   padding: 11px 22px;
   border-radius: var(--radius-full);
   border: 1px solid #FFFFFF;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .btn-copper-pill:hover {
   background-color: #E4E4E7;
   border-color: #E4E4E7;
   color: #000000;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25);
+}
+
+.btn-copper-pill span:last-child {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-copper-pill:hover span:last-child {
+  transform: translate(2px, -2px);
 }
 
 .btn-outline-pill {
@@ -134,13 +152,31 @@ button, input, select, textarea {
   gap: 8px;
   background-color: transparent;
   color: #FFFFFF;
+  font-family: var(--font-main);
   font-weight: 600;
   font-size: 14px;
   padding: 11px 22px;
   border-radius: var(--radius-full);
   border: 1px solid rgba(255, 255, 255, 0.28);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-outline-pill:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.btn-outline-pill span:last-child {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-outline-pill:hover span:last-child {
+  transform: translateY(2px);
 }
 
 .btn-outline-pill:hover {
@@ -381,6 +417,7 @@ button, input, select, textarea {
   color: #FFFFFF;
   margin-bottom: 24px;
   backdrop-filter: blur(8px);
+  animation: heroFadeUp 0.7s 0.05s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .hero-live-dot {
@@ -388,15 +425,16 @@ button, input, select, textarea {
   height: 6px;
   background: #FFFFFF;
   border-radius: 50%;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
   flex-shrink: 0;
   display: inline-block;
-  opacity: 0.9;
+  opacity: 0.95;
+  animation: pulseLive 2.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
 }
 
 @keyframes pulseLive {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.45; }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
 }
 
 .hero-blueprint-headline {
@@ -407,6 +445,7 @@ button, input, select, textarea {
   letter-spacing: -1.2px;
   color: #FFFFFF;
   margin-bottom: 22px;
+  animation: heroFadeUp 0.8s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .hero-blueprint-headline span.text-creative-accent {
@@ -423,6 +462,7 @@ button, input, select, textarea {
   color: #A1A1AA;
   margin-bottom: 34px;
   max-width: 600px;
+  animation: heroFadeUp 0.8s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .hero-blueprint-actions {
@@ -430,6 +470,7 @@ button, input, select, textarea {
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
+  animation: heroFadeUp 0.8s 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* Interactive Floating 3D BIM Coordination HUD Card */
@@ -594,6 +635,7 @@ button, input, select, textarea {
   margin-left: auto;
   position: relative;
   transition: transform var(--transition-smooth), border-color var(--transition-smooth);
+  animation: heroCardEntrance 0.85s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .hero-project-spotlight-card:hover {
@@ -820,6 +862,7 @@ button, input, select, textarea {
   letter-spacing: 1px;
   position: relative;
   z-index: 2;
+  animation: heroFadeIn 0.9s 0.45s ease both;
 }
 
 .hero-blueprint-ticker span.ticker-item {
@@ -4508,4 +4551,137 @@ button, input, select, textarea {
 .btn-light:hover {
   background: #E4E4E7;
   color: #000000;
+}
+
+/* ==========================================================================
+   MODERN PROFESSIONAL ARCHITECTURAL ANIMATIONS & SCROLL REVEALS
+   ========================================================================== */
+
+/* Hero Entrance Animations */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroCardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Scroll-Driven Smooth Reveal */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle Staggered Entrance for Grids */
+.highlights-grid > .reveal-on-scroll:nth-child(1),
+.drawings-grid > .reveal-on-scroll:nth-child(1),
+.projects-three-grid > .reveal-on-scroll:nth-child(1),
+.services-three-grid > .reveal-on-scroll:nth-child(1) { transition-delay: 0.05s; }
+
+.highlights-grid > .reveal-on-scroll:nth-child(2),
+.drawings-grid > .reveal-on-scroll:nth-child(2),
+.projects-three-grid > .reveal-on-scroll:nth-child(2),
+.services-three-grid > .reveal-on-scroll:nth-child(2) { transition-delay: 0.12s; }
+
+.highlights-grid > .reveal-on-scroll:nth-child(3),
+.drawings-grid > .reveal-on-scroll:nth-child(3),
+.projects-three-grid > .reveal-on-scroll:nth-child(3),
+.services-three-grid > .reveal-on-scroll:nth-child(3) { transition-delay: 0.19s; }
+
+.highlights-grid > .reveal-on-scroll:nth-child(4),
+.drawings-grid > .reveal-on-scroll:nth-child(4),
+.services-three-grid > .reveal-on-scroll:nth-child(4) { transition-delay: 0.26s; }
+
+.highlights-grid > .reveal-on-scroll:nth-child(5) { transition-delay: 0.33s; }
+
+/* Architectural Card Elevating & Luminescent Border Hover Transitions */
+.highlight-box,
+.discipline-card,
+.drawing-sheet-card,
+.testimonial-card,
+.step-card,
+.software-cresto-card,
+.industry-pill,
+.portfolio-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
+}
+
+.highlight-box:hover,
+.discipline-card:hover,
+.drawing-sheet-card:hover,
+.testimonial-card:hover,
+.step-card:hover,
+.portfolio-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+/* Subtle Smooth Image Zooms */
+.drawing-preview-box img,
+.portfolio-img-box img,
+.about-col-img img,
+.leadership-img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.drawing-sheet-card:hover .drawing-preview-box img,
+.portfolio-card:hover .portfolio-img-box img,
+.value-prop-visual:hover .leadership-img {
+  transform: scale(1.035);
+}
+
+/* Radar Beacon Waves for Technical Live Indicators */
+.spotlight-live-beacon::after {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border: 1px solid #FFFFFF;
+  border-radius: 50%;
+  animation: radarBeaconWave 2.2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes radarBeaconWave {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* Accessibility: Respect Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
