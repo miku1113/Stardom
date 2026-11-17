@@ -235,6 +235,7 @@ button, input, select, textarea {
 }
 
 .nav-menu {
+  --nav-link-padding: 14px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -251,7 +252,8 @@ button, input, select, textarea {
   font-size: 14.5px;
   font-weight: 500;
   color: #A1A1AA;
-  padding: 8px 14px;
+  padding: 8px var(--nav-link-padding);
+  white-space: nowrap;
   border-radius: 4px;
   transition: color var(--transition-fast);
 }
@@ -264,8 +266,8 @@ button, input, select, textarea {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 14px;
-  right: 14px;
+  left: var(--nav-link-padding);
+  right: var(--nav-link-padding);
   height: 2px;
   background: #FFFFFF;
 }
@@ -339,6 +341,32 @@ button, input, select, textarea {
 
 .mega-links-list a:hover {
   color: #FFFFFF;
+}
+
+.site-enquiry {
+  line-height: 1.25;
+}
+
+.drawer-enquiry {
+  width: 100%;
+}
+
+.drawer-contact-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.drawer-contact-links a {
+  text-decoration: underline;
+}
+
+.drawer-enquiry.drawer-link {
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
 }
 
 .header-actions {
@@ -2123,6 +2151,13 @@ button, input, select, textarea {
    Desktop (1440px+) • Laptop (1025px-1439px) • Tablet (641px-1024px) • Mobile (<=640px)
    ========================================================================== */
 
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .nav-menu {
+    --nav-link-padding: 7px;
+    gap: 2px;
+  }
+}
+
 /* --- Tablet Landscape & Small Laptops (max-width: 1024px) --- */
 @media (max-width: 1024px) {
   .site-header .container {
@@ -2262,9 +2297,9 @@ button, input, select, textarea {
     padding: 0 16px;
   }
 
-  /* Prevent header CTA button from wrapping into multiple lines on mobile */
-  .header-actions .btn-copper-pill {
-    display: none;
+  .header-actions .btn-primary {
+    padding-inline: 12px;
+    white-space: nowrap;
   }
 
   .brand-logo-svg,
@@ -2548,6 +2583,10 @@ button, input, select, textarea {
   color: #A1A1AA;
   text-decoration: none;
   transition: color var(--transition-fast);
+}
+
+.topbar-email {
+  font-family: var(--font-mono);
 }
 
 .topbar-item:hover {
@@ -4740,7 +4779,7 @@ button, input, select, textarea {
 
 .service-catalog-menu {
   top: 100%;
-  width: min(760px, 76vw);
+  width: min(760px, 54vw);
   display: none;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
@@ -4788,6 +4827,12 @@ button, input, select, textarea {
 .drawer-service-catalog summary {
   cursor: pointer;
   color: #fff;
+}
+
+.drawer-service-catalog summary.active {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .drawer-service-catalog .catalog-menu-group {
