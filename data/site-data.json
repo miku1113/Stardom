@@ -15,11 +15,11 @@
     "teamSize": "40+"
   },
   "hero": {
-    "badge": "Premier Indian MEP & BIM Consultancy",
-    "title": "Turnkey MEP Engineering, VDC & BIM Coordination",
-    "subtitle": "Chartered Mechanical (HVAC), Electrical Substation, PHE & Fire Protection engineering coupled with high-precision Revit LOD 100-500 BIM modeling. Fully aligned with NBC 2016, IS Codes, ECBC, and municipal sanction clearances.",
-    "ctaText": "Explore 15 Services",
-    "ctaSecondary": "Schedule Consultation"
+    "badge": "Building services design",
+    "title": "MEP Design for Buildings",
+    "subtitle": "Stratum designs mechanical, electrical, plumbing and fire protection systems for buildings across India.",
+    "ctaText": "View MEP services",
+    "ctaSecondary": "Discuss your project"
   },
   "stats": [
     { "value": "150+", "label": "Major Projects Delivered", "desc": "Pan-India & Overseas Developments" },
@@ -30,79 +30,103 @@
   "projects": [
     {
       "id": "proj-1",
-      "title": "Tech Horizon IT Park, Whitefield, Bengaluru",
+      "title": "Office Campus",
       "category": "commercial",
-      "sector": "Commercial Tech Campus",
+      "sector": "Commercial",
       "location": "Whitefield, Bengaluru",
       "area": "1,200,000 sq ft",
       "image": "assets/project-commercial.jpg",
-      "description": "1,200,000 sq ft Grade-A commercial tech campus. Turnkey HVAC engineering featuring 2400 TR water-cooled magnetic bearing centrifugal chillers, 33kV dedicated indoor substation with 4x2000 kVA transformers, synchronized DG plant, and LOD 350 Revit MEP coordination with zero clash change orders.",
-      "tags": ["2400 TR Chiller Plant", "33kV Substation Yard", "ECBC 2017 Compliant", "Revit LOD 350"],
+      "description": "Plan the cooling plant and main power distribution together. Allow space above ceilings for ducts, lighting and sprinkler pipes.",
+      "tags": [
+        "Cooling plant",
+        "Power distribution",
+        "Ceiling coordination"
+      ],
       "featured": true,
       "completionYear": "2025"
     },
     {
       "id": "proj-2",
-      "title": "Skyvillas Luxury Residences, Worli, Mumbai",
+      "title": "Residential Towers",
       "category": "residential",
-      "sector": "High-Rise Residential",
+      "sector": "Residential",
       "location": "Worli, Mumbai",
       "area": "850,000 sq ft",
       "image": "assets/project-multifamily.jpg",
-      "description": "54-story supertall twin residential towers (250m height). Turnkey MEP engineering overcoming high static head pressures: multi-zone hydro-pneumatic water boosting, PRV stations, rooftop VRV/VRF condensing units, pressurized fire escape stairwells, and BMC / Mumbai Fire Brigade NOC clearance.",
-      "tags": ["54-Story Supertall", "NBC Part 4 Fire NOC", "Multi-Zone PHE Risers", "Navisworks Zero Clash"],
+      "description": "Divide water supply into pressure zones. Align the vertical routes for pipes and cables with the floor plans.",
+      "tags": [
+        "Water pressure zones",
+        "Service risers",
+        "Stairwell ventilation"
+      ],
       "featured": true,
       "completionYear": "2025"
     },
     {
       "id": "proj-3",
-      "title": "Medanta Care Super-Specialty Hospital, Gurgaon",
+      "title": "Hospital",
       "category": "healthcare",
-      "sector": "Super-Specialty Hospital",
+      "sector": "Healthcare",
       "location": "Gurgaon, Haryana",
       "area": "620,000 sq ft",
       "image": "assets/project-healthcare.jpg",
-      "description": "450-bed tertiary super-specialty hospital. NABH & ISHRAE compliant cleanroom HVAC with HEPA-filtered laminar airflow for 12 modular operation theatres, medical gas pipeline systems (MGPS), isolated power panels (IPS) for ICUs, and 100% emergency diesel generator power synchronization.",
-      "tags": ["450 Beds / 12 OTs", "NABH & ISHRAE HVAC", "Medical Gas (HTM 02-01)", "STP 100% Water Recycle"],
+      "description": "Separate ventilation for clinical spaces from the rest of the building. Identify which rooms and equipment need backup power.",
+      "tags": [
+        "Clinical ventilation",
+        "Backup power",
+        "Medical gas"
+      ],
       "featured": true,
       "completionYear": "2024"
     },
     {
       "id": "proj-4",
-      "title": "Chakan Mega Logistics & Assembly Hub, Pune",
+      "title": "Logistics Warehouse",
       "category": "industrial",
-      "sector": "Logistics & Industrial",
+      "sector": "Industrial",
       "location": "Chakan, Pune",
       "area": "650,000 sq ft",
-      "image": "assets/project-restaurant.jpg",
-      "description": "650,000 sq ft heavy engineering and grade-A logistics warehouse. Early Suppression Fast Response (ESFR) high-bay sprinkler suppression, natural ridge-ventilation air distribution, heavy industrial HT power yard, and CGWA-compliant rainwater harvesting recharge wells.",
-      "tags": ["650,000 Sq Ft", "ESFR Sprinklers", "CGWA Recharge Wells", "MIDC Clearances"],
+      "image": "assets/mep-blueprint-hero.svg",
+      "description": "Set sprinkler layouts around storage rack heights and aisle widths. Plan ventilation around loading areas and work zones.",
+      "tags": [
+        "Sprinklers",
+        "Ventilation",
+        "Stormwater drainage"
+      ],
       "featured": true,
       "completionYear": "2024"
     },
     {
       "id": "proj-5",
-      "title": "Cybercity Hyperscale Data Center Campus, Navi Mumbai",
+      "title": "Data Centre",
       "category": "datacenter",
-      "sector": "Hyperscale Data Center",
+      "sector": "Data Centres",
       "location": "Navi Mumbai, Maharashtra",
       "area": "400,000 sq ft (30 MW IT Load)",
       "image": "assets/stat-data-center.jpg",
-      "description": "30 MW Tier-IV ready hyperscale data center. Dual 100% redundant (2N) 33kV dedicated substations, CRAH computer room air handlers with water-side economization, hot aisle containment CFD simulation, and VESDA laser smoke detection with clean agent gas suppression.",
-      "tags": ["Tier IV Architecture", "30 MW IT Load", "2N Power Redundancy", "CFD Thermal Modeling"],
+      "description": "Plan cooling and power for the equipment load. Work out which systems need a backup if the primary equipment goes offline.",
+      "tags": [
+        "Equipment cooling",
+        "Backup power",
+        "Fire detection"
+      ],
       "featured": true,
       "completionYear": "2026"
     },
     {
       "id": "proj-6",
-      "title": "Capital Central Underground Metro Interchange, Delhi",
+      "title": "Underground Station",
       "category": "infrastructure",
-      "sector": "Transit & Metro Hub",
+      "sector": "Transport",
       "location": "Central Delhi",
       "area": "3-Level Underground Station",
       "image": "assets/stat-metro-transit.jpg",
-      "description": "3-level deep underground interchange station. High-capacity Tunnel Ventilation Systems (TVS), Environmental Control Systems (ECS) with magnetic levitation chillers, NFPA 130 life-safety egress simulations, and LiDAR point cloud scan-to-BIM verification.",
-      "tags": ["TVS & ECS Systems", "NFPA 130 Egress", "LOD 400 As-Built", "Point Cloud Scan-to-BIM"],
+      "description": "Coordinate station ventilation and smoke control with the station layout and passenger escape routes.",
+      "tags": [
+        "Ventilation",
+        "Smoke control",
+        "Emergency lighting"
+      ],
       "featured": true,
       "completionYear": "2025"
     }

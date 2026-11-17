@@ -4686,3 +4686,28 @@ button, input, select, textarea {
     scroll-behavior: auto !important;
   }
 }
+
+/* Keep linked design sections and forms below the sticky header. */
+.subpage-detail-box[id],
+#mep-services-list,
+#contact,
+#project-enquiry {
+  scroll-margin-top: 110px;
+}
+
+.inquiry-status:not(:empty) {
+  margin-top: 12px;
+}
+
+#quoteModal:not(.open) {
+  display: none;
+}
+
+.enquiry-email {
+  margin-bottom: 16px;
+}
+
+.enquiry-email a {
+  color: var(--color-copper);
+  text-decoration: underline;
+}

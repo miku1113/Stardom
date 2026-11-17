@@ -1,0 +1,3 @@
+# The Node server owns this storage. GitHub Pages serves the static site.
+exclude:
+  - data

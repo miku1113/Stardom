@@ -5,7 +5,8 @@ const crypto = require('crypto');
 
 const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = __dirname;
-const DATA_FILE = path.join(PUBLIC_DIR, 'data', 'site-data.json');
+const DATA_DIR = path.join(PUBLIC_DIR, 'data');
+const DATA_FILE = path.join(DATA_DIR, 'site-data.json');
 const UPLOADS_DIR = path.join(PUBLIC_DIR, 'assets', 'uploads');
 
 // Ensure uploads dir exists
@@ -216,9 +217,12 @@ const server = http.createServer(async (req, res) => {
     // --- 5. GET SITE DATA (PUBLIC & ADMIN) ---
     if (reqUrl === '/api/data' && req.method === 'GET') {
       const data = readSiteData();
-      // Omit auth credentials from public data
       const sanitized = { ...data };
       delete sanitized.auth;
+      if (!isAuthenticated(req)) {
+        delete sanitized.inquiries;
+      }
+      res.setHeader('Cache-Control', 'no-store');
       return sendJson(res, 200, sanitized);
     }
 
@@ -467,6 +471,12 @@ const server = http.createServer(async (req, res) => {
     }
 
     // --- 11. INQUIRIES & LEADS ---
+    if (reqUrl === '/api/inquiries' && req.method === 'HEAD') {
+      res.writeHead(204, { 'Cache-Control': 'no-store' });
+      res.end();
+      return;
+    }
+
     // Public: website visitors submitting consultation modal or contact form
     if (reqUrl === '/api/inquiries' && req.method === 'POST') {
       const body = await parseJsonBody(req);
@@ -486,7 +496,9 @@ const server = http.createServer(async (req, res) => {
       };
 
       data.inquiries.unshift(newInquiry);
-      writeSiteData(data);
+      if (!writeSiteData(data)) {
+        return sendJson(res, 500, { success: false, message: 'Could not save inquiry' });
+      }
       return sendJson(res, 201, { success: true, message: 'Inquiry received successfully', inquiry: newInquiry });
     }
 
@@ -592,7 +604,8 @@ const server = http.createServer(async (req, res) => {
   let filePath = path.join(PUBLIC_DIR, reqPath);
 
   // Directory traversal defense
-  if (!filePath.startsWith(PUBLIC_DIR)) {
+  const topLevel = path.relative(PUBLIC_DIR, filePath).split(path.sep)[0].toLowerCase();
+  if (!filePath.startsWith(PUBLIC_DIR + path.sep) || topLevel === path.basename(DATA_DIR)) {
     res.writeHead(403);
     res.end('403 Forbidden');
     return;
