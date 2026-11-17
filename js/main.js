@@ -48,18 +48,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const drawerLinks = document.querySelectorAll('.drawer-link');
   const drawerOverlay = document.querySelector('.drawer-overlay');
 
+  const closeDrawer = () => {
+    mobileDrawer.classList.remove('open');
+    drawerOverlay?.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
   if (mobileToggle && mobileDrawer) {
     mobileToggle.addEventListener('click', () => {
       mobileDrawer.classList.add('open');
       if (drawerOverlay) drawerOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
-
-    const closeDrawer = () => {
-      mobileDrawer.classList.remove('open');
-      if (drawerOverlay) drawerOverlay.classList.remove('active');
-      document.body.style.overflow = '';
-    };
 
     if (drawerCloseBtn) {
       drawerCloseBtn.addEventListener('click', closeDrawer);
@@ -99,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 4. Portfolio Filters ---
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const portfolioCards = document.querySelectorAll('.portfolio-card');
 
   if (filterBtns.length > 0) {
     filterBtns.forEach(btn => {
@@ -109,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const filter = btn.getAttribute('data-filter');
 
-        portfolioCards.forEach(card => {
+        document.querySelectorAll('.portfolio-card').forEach(card => {
           if (filter === 'all' || card.getAttribute('data-category') === filter) {
             card.style.display = 'block';
           } else {
@@ -130,11 +129,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const isActive = item.classList.contains('active');
 
         // Close all items
-        faqItems.forEach(i => i.classList.remove('active'));
+        faqItems.forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
 
         // Toggle current item
         if (!isActive) {
           item.classList.add('active');
+          question.setAttribute('aria-expanded', 'true');
         }
       });
     });
@@ -182,124 +185,112 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 7. Modal Open & Close ---
   const modal = document.querySelector('#quoteModal');
-  const openModalBtns = document.querySelectorAll('.trigger-modal');
-  const closeModalBtn = document.querySelector('.modal-close-btn');
-
   if (modal) {
-    openModalBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      });
-    });
+    const closeModalButton = modal.querySelector('.modal-close-btn');
+    let returnFocus;
 
     const closeModal = () => {
       modal.classList.remove('open');
       document.body.style.overflow = '';
+      // Portfolio loading can replace the card that opened the dialog.
+      const focusTarget = returnFocus?.isConnected ? returnFocus : document.querySelector('.filter-btn.active');
+      focusTarget?.focus();
     };
 
-    if (closeModalBtn) {
-      closeModalBtn.addEventListener('click', closeModal);
-    }
+    document.addEventListener('click', event => {
+      const trigger = event.target.closest('.trigger-modal');
+      if (!trigger) return;
 
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeModal();
+      event.preventDefault();
+      returnFocus = trigger;
+      if (mobileDrawer?.contains(trigger)) {
+        closeDrawer();
+        returnFocus = mobileToggle;
       }
+
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      closeModalButton.focus({ preventScroll: true });
     });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('open')) {
+    closeModalButton.addEventListener('click', closeModal);
+    modal.addEventListener('click', event => {
+      if (event.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (!modal.classList.contains('open')) return;
+      if (event.key === 'Escape') {
         closeModal();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+
+      const controls = [...modal.querySelectorAll('button, a[href], input, textarea')]
+        .filter(control => !control.disabled && control.getClientRects().length);
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      const focused = document.activeElement;
+      if (!modal.contains(focused) || focused === (event.shiftKey ? first : last)) {
+        event.preventDefault();
+        (event.shiftKey ? last : first).focus();
       }
     });
   }
 
-  // --- 8. Toast Notification Utility ---
-  const showToast = (message) => {
-    let toast = document.querySelector('.toast-notice');
-    if (!toast) {
-      toast = document.createElement('div');
-      toast.className = 'toast-notice';
-      document.body.appendChild(toast);
-    }
+  // Project enquiry forms share the same fields and API.
+  const enquiryForms = [...document.querySelectorAll('form.project-form')];
+  if (enquiryForms.length) {
+    fetch(enquiryForms[0].action, { method: 'HEAD' })
+      .then(response => {
+        if (response.status !== 204) return;
+        enquiryForms.forEach(form => {
+          form.hidden = false;
+          form.querySelector('button[type="submit"]').disabled = false;
+        });
+      })
+      .catch(() => {}); // The email link remains available on static hosts and during outages.
+  }
 
-    toast.innerHTML = `
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="#00D084">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-      </svg>
-      <span>${message}</span>
-    `;
+  enquiryForms.forEach(form => {
+    const submitButton = form.querySelector('button[type="submit"]');
+    const status = form.querySelector('.inquiry-status');
 
-    toast.classList.add('show');
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, 4500);
-  };
-
-  // --- 9. Form Submission Handling (Modal & In-Page) wired to /api/inquiries ---
-  const forms = document.querySelectorAll('form.project-form');
-
-  forms.forEach(form => {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
-
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `
-        <svg class="spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 0.8s linear infinite;">
-          <circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="12"></circle>
-        </svg>
-        <span>Sending Requirements...</span>
-      `;
-
-      // Extract form fields
-      const inputs = form.querySelectorAll('input, textarea');
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      const fields = new FormData(form);
+      const services = fields.getAll('service');
+      const brief = fields.get('details').trim();
       const payload = {
-        name: '',
-        email: '',
-        firm: '',
-        phone: '',
-        details: '',
+        name: fields.get('name').trim(),
+        email: fields.get('email').trim(),
+        firm: fields.get('firm').trim(),
+        phone: fields.get('phone').trim(),
+        details: services.length ? `Services: ${services.join(', ')}\n\n${brief}` : brief,
         type: 'Consultation'
       };
 
-      inputs.forEach(input => {
-        const type = input.type;
-        const val = input.value.trim();
-        if (type === 'email') payload.email = val;
-        else if (type === 'tel') payload.phone = val;
-        else if (input.tagName.toLowerCase() === 'textarea') payload.details = val;
-        else if (input.placeholder && input.placeholder.toLowerCase().includes('firm')) payload.firm = val;
-        else if (!payload.name) payload.name = val;
-        else if (!payload.firm) payload.firm = val;
-      });
+      submitButton.disabled = true;
+      status.textContent = 'Sending your enquiry…';
 
       try {
-        await fetch('/api/inquiries', {
-          method: 'POST',
+        const response = await fetch(form.action, {
+          method: form.method,
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-      } catch (err) {
-        console.warn('Inquiry API note:', err);
-      }
 
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-        form.reset();
-
-        if (modal && modal.classList.contains('open')) {
-          modal.classList.remove('open');
-          document.body.style.overflow = '';
+        if (!response.ok || !(await response.json()).success) {
+          throw new Error('Enquiry could not be saved');
         }
 
-        showToast("Thank you! Your project inquiry has been received. A Stratum MEP engineer will contact you within 24 hours under NDA.");
-      }, 800);
+        form.reset();
+        status.textContent = 'Thank you. We received your enquiry.';
+      } catch {
+        status.textContent = 'Your enquiry could not be sent. Use the email link above to send your brief.';
+      } finally {
+        submitButton.disabled = false;
+      }
     });
   });
 
@@ -324,22 +315,13 @@ document.addEventListener('DOMContentLoaded', () => {
                   <div class="project-meta-chips">
                     ${tags.map(t => `<span class="meta-chip">${escapeHtml(t)}</span>`).join('')}
                   </div>
-                  <button class="btn btn-outline trigger-modal" style="padding:10px 20px; font-size:13.5px;">Inquire About Similar Project</button>
+                  <button class="btn btn-outline trigger-modal" style="padding:10px 20px; font-size:13.5px;">Discuss your project</button>
                 </div>
               </div>
             `;
           }).join('');
 
-          // Re-bind modal triggers for newly created elements
-          document.querySelectorAll('.portfolio-card .trigger-modal').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-              e.preventDefault();
-              if (modal) {
-                modal.classList.add('open');
-                document.body.style.overflow = 'hidden';
-              }
-            });
-          });
+          document.querySelector('.filter-btn.active')?.click();
         }
       })
       .catch(err => console.log('Serving default portfolio view'));
