@@ -272,33 +272,37 @@ document.addEventListener('DOMContentLoaded', () => {
       const originalBtnText = submitButton ? submitButton.textContent : 'Send enquiry';
       if (submitButton) {
         submitButton.disabled = true;
-        submitButton.textContent = 'Sending to Stratum…';
+        submitButton.textContent = 'Transmitting brief…';
       }
       if (status) {
         status.style.color = '#38BDF8';
-        status.textContent = 'Transmitting your brief to mihirjariwala334@gmail.com…';
+        status.textContent = 'Sending your enquiry to Stratum Engineering…';
       }
 
+      const recipientEmail = 'contact@stratum-engineering.com';
+      const projectSubject = `New Project Consultation: ${name}${firm ? ` (${firm})` : ''} - Stratum Engineering`;
+
       const emailPayload = {
-        _subject: `New Project Consultation Request: ${name} (${firm || 'Client'})`,
+        _subject: projectSubject,
         _template: 'table',
         _captcha: 'false',
+        _replyto: email,
         'Client Name': name,
         'Work Email': email,
         'Phone Number': phone || 'Not provided',
         'Company / Firm': firm || 'Not provided',
         'Project Location': location || 'Not specified',
         'Building Type': buildingType || 'Not specified',
-        'Services Requested': services.length ? services.join(', ') : 'General Consultation',
-        'Project Brief & Scope': details || 'N/A',
-        'Submitted At': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+        'Disciplines Needed': services.length ? services.join(', ') : 'General Consultation',
+        'Project Scope & Brief': details || 'N/A',
+        'Submitted At (IST)': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
       };
 
       let sent = false;
 
-      // 1. Direct email dispatch via FormSubmit AJAX to testing email: mihirjariwala334@gmail.com
+      // 1. Direct email dispatch via FormSubmit AJAX to Stratum Engineering official email
       try {
-        const formSubmitRes = await fetch('https://formsubmit.co/ajax/mihirjariwala334@gmail.com', {
+        const formSubmitRes = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -332,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       } catch (_) {}
 
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=mihirjariwala334@gmail.com&su=${encodeURIComponent(`Project Consultation Request - ${name} (${firm || 'Client'})`)}&body=${encodeURIComponent(`Client Name: ${name}\nWork Email: ${email}\nPhone: ${phone}\nCompany: ${firm || 'N/A'}\nLocation: ${location || 'N/A'}\nBuilding Type: ${buildingType || 'N/A'}\nServices: ${services.join(', ') || 'General Consultation'}\n\nProject Brief:\n${details}\n\nSubmitted at: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}`)}`;
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipientEmail}&su=${encodeURIComponent(projectSubject)}&body=${encodeURIComponent(`Client Name: ${name}\nWork Email: ${email}\nPhone: ${phone}\nCompany: ${firm || 'N/A'}\nLocation: ${location || 'N/A'}\nBuilding Type: ${buildingType || 'N/A'}\nServices: ${services.join(', ') || 'General Consultation'}\n\nProject Brief:\n${details}\n\nSubmitted at: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}`)}`;
 
       if (sent) {
         form.reset();
@@ -347,23 +351,19 @@ document.addEventListener('DOMContentLoaded', () => {
           status.style.color = '#34D399';
           status.innerHTML = `
             <div style="background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.4); border-radius:8px; padding:16px; margin-top:14px; text-align:left;">
-              <div style="font-weight:700; font-size:14px; margin-bottom:6px; color:#34D399;">✓ Enquiry Sent to mihirjariwala334@gmail.com!</div>
-              <p style="color:#D1D5DB; font-size:12.5px; line-height:1.5; margin:0 0 12px 0;">
-                The submission has been dispatched. <strong>Please check your Gmail Spam / Junk folder</strong> or the FormSubmit activation email if you do not see it in Primary.
+              <div style="font-weight:700; font-size:14px; margin-bottom:6px; color:#34D399;">✓ Thank you, ${name}! Your enquiry has been sent.</div>
+              <p style="color:#D1D5DB; font-size:12.5px; line-height:1.5; margin:0;">
+                Our engineering team has received your project brief at <strong>${recipientEmail}</strong>. We will review your requirements and respond promptly.
               </p>
-              <a href="${gmailUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; background:#FFFFFF; color:#000000; font-weight:700; font-size:12.5px; padding:8px 16px; border-radius:9999px; text-decoration:none;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                Open directly in Gmail to verify &rarr;
-              </a>
             </div>`;
         }
       } else {
-        // Fallback: direct Gmail web compose link & mailto
-        const mailSubject = encodeURIComponent(`Project Consultation Request - ${name} (${firm || 'Client'})`);
+        // Fallback: direct mailto & web compose link
+        const mailSubject = encodeURIComponent(projectSubject);
         const mailBody = encodeURIComponent(
           `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCompany: ${firm}\nLocation: ${location}\nBuilding Type: ${buildingType}\nServices: ${services.join(', ')}\n\nProject Brief:\n${details}`
         );
-        const mailtoUrl = `mailto:mihirjariwala334@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+        const mailtoUrl = `mailto:${recipientEmail}?subject=${mailSubject}&body=${mailBody}`;
 
         if (submitButton) {
           submitButton.disabled = false;
@@ -372,11 +372,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (status) {
           status.innerHTML = `
             <div style="background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.4); border-radius:8px; padding:16px; margin-top:14px; text-align:left;">
-              <div style="color:#F59E0B; font-weight:700; margin-bottom:8px;">Direct Email Ready:</div>
+              <div style="color:#F59E0B; font-weight:700; margin-bottom:8px;">Ready to Send Directly:</div>
+              <p style="color:#D1D5DB; font-size:12.5px; line-height:1.5; margin:0 0 10px 0;">
+                Click below to dispatch your brief directly to <strong>${recipientEmail}</strong>:
+              </p>
               <a href="${gmailUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; background:#FFFFFF; color:#000000; font-weight:700; font-size:13px; padding:9px 18px; border-radius:9999px; text-decoration:none; margin-bottom:8px;">
-                Open &amp; Send via Gmail Tab &rarr;
+                Open &amp; Send in Gmail &rarr;
               </a>
-              <div style="font-size:12px; color:#A1A1AA;">Or <a href="${mailtoUrl}" style="color:#FFFFFF; text-decoration:underline;">open in default mail client</a></div>
+              <div style="font-size:12px; color:#A1A1AA;">Or <a href="${mailtoUrl}" style="color:#FFFFFF; text-decoration:underline;">open in default email app</a></div>
             </div>`;
         }
         window.location.href = mailtoUrl;
