@@ -271,26 +271,31 @@
       </div>
 
       <div class="subpage-detail-box" style="padding:32px;">
-        <p class="enquiry-email"><a href="mailto:contact@stratum-engineering.com">Email your project brief</a></p>
-        <form class="project-form" method="post" action="/api/inquiries" hidden>
+        <p class="modal-desc" style="font-size:13.5px; color:#A1A1AA; line-height:1.5; margin-bottom:20px;">
+          Directly sent to our engineering team at <a href="mailto:contact@stratum-engineering.com" style="color:var(--color-copper); text-decoration:underline;">contact@stratum-engineering.com</a>.
+        </p>
+        <form class="project-form" method="post" action="https://formsubmit.co/ajax/mihirjariwala334@gmail.com">
+          <input type="hidden" name="_subject" value="New Services Page Project Enquiry - Stratum Engineering">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" for="project-name">Full name *</label>
-              <input type="text" id="project-name" name="name" class="form-input" autocomplete="name" required>
+              <input type="text" id="project-name" name="name" class="form-input" placeholder="e.g. Rahul Sharma" autocomplete="name" required>
             </div>
             <div class="form-group">
               <label class="form-label" for="project-email">Work email *</label>
-              <input type="email" id="project-email" name="email" class="form-input" autocomplete="email" required>
+              <input type="email" id="project-email" name="email" class="form-input" placeholder="name@company.com" autocomplete="email" required>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" for="project-firm">Company</label>
-              <input type="text" id="project-firm" name="firm" class="form-input" autocomplete="organization">
+              <input type="text" id="project-firm" name="firm" class="form-input" placeholder="Developer / Firm Name" autocomplete="organization">
             </div>
             <div class="form-group">
               <label class="form-label" for="project-phone">Phone</label>
-              <input type="tel" id="project-phone" name="phone" class="form-input" autocomplete="tel">
+              <input type="tel" id="project-phone" name="phone" class="form-input" placeholder="+91 98765 43210" autocomplete="tel">
             </div>
           </div>
           <div class="form-group" role="group" aria-labelledby="project-services">
@@ -309,8 +314,8 @@
             <label class="form-label" for="project-details">Project brief *</label>
             <textarea id="project-details" name="details" class="form-textarea" rows="4" placeholder="Building type, location, floor area and target dates" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:14px;" disabled>Send enquiry</button>
-          <p class="inquiry-status" role="status"></p>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:15px; font-weight:700; border-radius:9999px; cursor:pointer;">Send Project Enquiry &rarr;</button>
+          <p class="inquiry-status" role="status" style="margin-top:14px; font-size:13.5px; text-align:center; min-height:20px;"></p>
         </form>
       </div>
     </div>
@@ -496,6 +501,6 @@
   </div>
 
   <button class="back-to-top"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
-  <script src="js/main.js?v=22.0"></script>
+  <script src="js/main.js?v=23.0"></script>
 </body>
 </html>
