@@ -238,58 +238,127 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Project enquiry forms share the same fields and API.
+  // Project enquiry forms - Direct transmission to Stratum Engineering email
   const enquiryForms = [...document.querySelectorAll('form.project-form')];
-  if (enquiryForms.length) {
-    fetch(enquiryForms[0].action, { method: 'HEAD' })
-      .then(response => {
-        if (response.status !== 204) return;
-        enquiryForms.forEach(form => {
-          form.hidden = false;
-          form.querySelector('button[type="submit"]').disabled = false;
-        });
-      })
-      .catch(() => {}); // The email link remains available on static hosts and during outages.
-  }
 
   enquiryForms.forEach(form => {
+    // Ensure form is always visible and submit button is enabled on all hosts
+    form.removeAttribute('hidden');
+    form.style.display = 'block';
     const submitButton = form.querySelector('button[type="submit"]');
+    if (submitButton) submitButton.disabled = false;
     const status = form.querySelector('.inquiry-status');
 
     form.addEventListener('submit', async event => {
       event.preventDefault();
       const fields = new FormData(form);
+      const name = (fields.get('name') || '').toString().trim();
+      const email = (fields.get('email') || '').toString().trim();
+      const firm = (fields.get('firm') || '').toString().trim();
+      const phone = (fields.get('phone') || '').toString().trim();
+      const location = (fields.get('location') || '').toString().trim();
+      const buildingType = (fields.get('building_type') || '').toString().trim();
       const services = fields.getAll('service');
-      const brief = fields.get('details').trim();
-      const payload = {
-        name: fields.get('name').trim(),
-        email: fields.get('email').trim(),
-        firm: fields.get('firm').trim(),
-        phone: fields.get('phone').trim(),
-        details: services.length ? `Services: ${services.join(', ')}\n\n${brief}` : brief,
-        type: 'Consultation'
+      const details = (fields.get('details') || '').toString().trim();
+
+      if (!name || !email) {
+        if (status) {
+          status.style.color = '#EF4444';
+          status.textContent = 'Please fill in your name and email address.';
+        }
+        return;
+      }
+
+      const originalBtnText = submitButton ? submitButton.textContent : 'Send enquiry';
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending to Stratum…';
+      }
+      if (status) {
+        status.style.color = '#38BDF8';
+        status.textContent = 'Transmitting your brief to contact@stratum-engineering.com…';
+      }
+
+      const emailPayload = {
+        _subject: `New Project Consultation Request: ${name} (${firm || 'Client'})`,
+        _template: 'table',
+        _captcha: 'false',
+        'Client Name': name,
+        'Work Email': email,
+        'Phone Number': phone || 'Not provided',
+        'Company / Firm': firm || 'Not provided',
+        'Project Location': location || 'Not specified',
+        'Building Type': buildingType || 'Not specified',
+        'Services Requested': services.length ? services.join(', ') : 'General Consultation',
+        'Project Brief & Scope': details || 'N/A',
+        'Submitted At': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
       };
 
-      submitButton.disabled = true;
-      status.textContent = 'Sending your enquiry…';
+      let sent = false;
 
+      // 1. Direct email dispatch via FormSubmit AJAX to contact@stratum-engineering.com
       try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+        const formSubmitRes = await fetch('https://formsubmit.co/ajax/contact@stratum-engineering.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(emailPayload)
         });
-
-        if (!response.ok || !(await response.json()).success) {
-          throw new Error('Enquiry could not be saved');
+        if (formSubmitRes.ok) {
+          sent = true;
         }
+      } catch (err) {
+        console.warn('FormSubmit AJAX attempt:', err);
+      }
 
+      // 2. Dual-save to local server API if running on Node
+      try {
+        await fetch('/api/inquiries', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            firm,
+            details: `Building: ${buildingType} | Loc: ${location} | Services: ${services.join(', ')}\n\n${details}`,
+            type: 'Consultation'
+          })
+        });
+      } catch (_) {}
+
+      if (sent) {
         form.reset();
-        status.textContent = 'Thank you. We received your enquiry.';
-      } catch {
-        status.textContent = 'Your enquiry could not be sent. Use the email link above to send your brief.';
-      } finally {
-        submitButton.disabled = false;
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Enquiry Sent Successfully ✓';
+          submitButton.style.background = '#10B981';
+          submitButton.style.borderColor = '#10B981';
+          submitButton.style.color = '#FFFFFF';
+        }
+        if (status) {
+          status.style.color = '#34D399';
+          status.innerHTML = `<strong>✓ Thank you, ${name}!</strong> Your project brief has been sent directly to <strong>contact@stratum-engineering.com</strong>. Our engineering leads will review it and reply promptly.`;
+        }
+      } else {
+        // Fallback: mailto link pre-populated with all the form details
+        const mailSubject = encodeURIComponent(`Project Consultation Request - ${name} (${firm || 'Client'})`);
+        const mailBody = encodeURIComponent(
+          `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCompany: ${firm}\nLocation: ${location}\nBuilding Type: ${buildingType}\nServices: ${services.join(', ')}\n\nProject Brief:\n${details}`
+        );
+        const mailtoUrl = `mailto:contact@stratum-engineering.com?subject=${mailSubject}&body=${mailBody}`;
+
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalBtnText;
+        }
+        if (status) {
+          status.style.color = '#F59E0B';
+          status.innerHTML = `Connecting to email service… <a href="${mailtoUrl}" style="color:#FFFFFF; text-decoration:underline; font-weight:700;">Click here to send directly via your mail client &rarr;</a>`;
+        }
+        window.location.href = mailtoUrl;
       }
     });
   });
