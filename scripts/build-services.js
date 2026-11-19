@@ -120,7 +120,7 @@ ${catalogMenu}
     if (page.includes('id="quoteModal"')) {
       return `<button type="button" class="${classes} trigger-modal">Discuss Your Project</button>`;
     }
-    return `<a href="${enquiryLink}" class="${classes}${drawer && filename === 'contact.html' ? ' drawer-link' : ''}">Discuss Your Project</a>`;
+    return `<a href="${enquiryLink}" class="${classes}">Discuss Your Project</a>`;
   };
   const header = headerTemplate
     .replace('        <!-- primary-navigation -->', desktop)

@@ -355,8 +355,42 @@ button, input, select, textarea {
   line-height: 1.25;
 }
 
-.drawer-enquiry {
-  width: 100%;
+.drawer-cta-box {
+  padding: 18px 0 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 8px;
+}
+
+.drawer-enquiry,
+.drawer-cta-box .drawer-enquiry {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 13px 20px !important;
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  font-family: var(--font-heading, sans-serif);
+  font-size: 14.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+  border-radius: 9999px !important;
+  border: 1px solid #FFFFFF !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.12);
+  transition: all var(--transition-fast);
+}
+
+.drawer-enquiry:hover,
+.drawer-enquiry:active,
+.drawer-cta-box .drawer-enquiry:hover,
+.drawer-cta-box .drawer-enquiry:active {
+  background: #E4E4E7 !important;
+  color: #000000 !important;
+  transform: translateY(-1px);
 }
 
 .drawer-contact-links {
@@ -368,13 +402,6 @@ button, input, select, textarea {
 
 .drawer-contact-links a {
   text-decoration: underline;
-}
-
-.drawer-enquiry.drawer-link {
-  color: #000;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 12px 24px;
 }
 
 .header-actions {
@@ -2191,6 +2218,12 @@ button, input, select, textarea {
     display: none;
   }
 
+  /* Hide Discuss Project CTA button from top bar on mobile/tablet so it only appears in sidebar */
+  .site-header .header-actions .site-enquiry,
+  .site-header .header-actions .btn-primary {
+    display: none !important;
+  }
+
   .mobile-toggle {
     display: flex;
     align-items: center;
@@ -2320,9 +2353,10 @@ button, input, select, textarea {
     padding: 0 16px;
   }
 
-  .header-actions .btn-primary {
-    padding-inline: 12px;
-    white-space: nowrap;
+  /* Prevent top bar CTA from appearing on mobile */
+  .site-header .header-actions .site-enquiry,
+  .site-header .header-actions .btn-primary {
+    display: none !important;
   }
 
   .brand-logo-svg,
