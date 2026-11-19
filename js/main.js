@@ -280,13 +280,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const recipientEmail = 'contact@stratum-engineering.com';
-      const projectSubject = `New Project Consultation: ${name}${firm ? ` (${firm})` : ''} - Stratum Engineering`;
+      const projectSubject = `Stratum Enquiry - ${name}${firm ? ` (${firm})` : ''}`;
 
       const emailPayload = {
         _subject: projectSubject,
         _template: 'table',
         _captcha: 'false',
         _replyto: email,
+        'Enquiry Type': 'Stratum Enquiry',
         'Client Name': name,
         'Work Email': email,
         'Phone Number': phone || 'Not provided',
