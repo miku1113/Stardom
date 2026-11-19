@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (status) {
         status.style.color = '#38BDF8';
-        status.textContent = 'Transmitting your brief to contact@stratum-engineering.com…';
+        status.textContent = 'Transmitting your brief to mihirjariwala334@gmail.com…';
       }
 
       const emailPayload = {
@@ -296,9 +296,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let sent = false;
 
-      // 1. Direct email dispatch via FormSubmit AJAX to contact@stratum-engineering.com
+      // 1. Direct email dispatch via FormSubmit AJAX to testing email: mihirjariwala334@gmail.com
       try {
-        const formSubmitRes = await fetch('https://formsubmit.co/ajax/contact@stratum-engineering.com', {
+        const formSubmitRes = await fetch('https://formsubmit.co/ajax/mihirjariwala334@gmail.com', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (status) {
           status.style.color = '#34D399';
-          status.innerHTML = `<strong>✓ Thank you, ${name}!</strong> Your project brief has been sent directly to <strong>contact@stratum-engineering.com</strong>. Our engineering leads will review it and reply promptly.`;
+          status.innerHTML = `<strong>✓ Thank you, ${name}!</strong> Your project brief has been sent to <strong>mihirjariwala334@gmail.com</strong>. We will review it and reply promptly.`;
         }
       } else {
         // Fallback: mailto link pre-populated with all the form details
@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const mailBody = encodeURIComponent(
           `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCompany: ${firm}\nLocation: ${location}\nBuilding Type: ${buildingType}\nServices: ${services.join(', ')}\n\nProject Brief:\n${details}`
         );
-        const mailtoUrl = `mailto:contact@stratum-engineering.com?subject=${mailSubject}&body=${mailBody}`;
+        const mailtoUrl = `mailto:mihirjariwala334@gmail.com?subject=${mailSubject}&body=${mailBody}`;
 
         if (submitButton) {
           submitButton.disabled = false;
