@@ -39,7 +39,7 @@
 
   /* Layout */
   --container-max: 1240px;
-  --header-height: 68px;
+  --header-height: 74px;
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
@@ -210,8 +210,13 @@ button, input, select, textarea {
 
 .site-header.scrolled {
   background: rgba(0, 0, 0, 0.98);
-  height: 60px;
+  height: 62px;
   border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.site-header.scrolled .brand-logo-svg,
+.site-header.scrolled .brand-logo-img {
+  height: 40px;
 }
 
 .site-header .container {
@@ -224,14 +229,16 @@ button, input, select, textarea {
 .site-brand {
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 .brand-logo-svg,
 .brand-logo-img {
-  height: 32px;
+  height: 48px;
   width: auto;
   display: block;
   object-fit: contain;
+  transition: height var(--transition-fast);
 }
 
 .nav-menu {
@@ -1650,6 +1657,14 @@ button, input, select, textarea {
   margin-bottom: 48px;
 }
 
+.footer-brand-info img {
+  height: 48px !important;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 16px;
+}
+
 .footer-brand-info p {
   font-size: 13.5px;
   line-height: 1.65;
@@ -1839,6 +1854,13 @@ button, input, select, textarea {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.drawer-header img {
+  height: 42px !important;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .drawer-close-btn {
@@ -2290,7 +2312,7 @@ button, input, select, textarea {
 /* --- Mobile Devices & Small Tablets (max-width: 640px) --- */
 @media (max-width: 640px) {
   .site-header {
-    height: 70px;
+    height: 72px;
   }
 
   .site-header .container {
@@ -2304,7 +2326,7 @@ button, input, select, textarea {
 
   .brand-logo-svg,
   .brand-logo-img {
-    height: 30px;
+    height: 40px;
     max-width: 220px;
   }
 
@@ -2539,7 +2561,7 @@ button, input, select, textarea {
 
   .brand-logo-svg,
   .brand-logo-img {
-    height: 26px;
+    height: 34px;
     max-width: 190px;
   }
 
