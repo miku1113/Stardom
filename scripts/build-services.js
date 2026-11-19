@@ -71,11 +71,11 @@ const navigation = [
   ['services.html', 'Services'],
   ['portfolio.html', 'Project Examples'],
   ['sectors.html', 'Industries'],
-  ['blog.html', 'Design Notes'],
   ['career.html', 'Careers'],
   ['contact.html', 'Contact Us'],
 ];
 const additionalDrawerLinks = [
+  ['blog.html', 'Design Notes'],
   ['process.html', 'How We Work'],
   ['faqs.html', 'FAQs'],
 ];
