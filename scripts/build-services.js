@@ -14,8 +14,6 @@ const groups = [
   ['mep', 'MEP Design Services', 'Design for the building’s mechanical, electrical, and plumbing systems.'],
   ['bim', 'BIM Services', 'Building information models, drawing conversions, and coordination checks.'],
   ['construction', 'Construction Support Services', 'Drawings, quantities, components, and checks for construction teams.'],
-  ['drafting', 'Architectural & Structural Drafting', 'Drawings that develop the architect’s or engineer’s design.'],
-  ['other', 'Other Services', 'Visual rendering and fire protection design.'],
 ].map(([slug, title, summary]) => ({
   slug, title, summary,
   url: `services-${slug}.html`,
@@ -53,6 +51,56 @@ ${items.map((item) => `        <article class="subpage-detail-box"${item.anchor 
           <h3><a href="${item.url}">${html(item.title)} <span aria-hidden="true">&rarr;</span></a></h3>
           <p>${html(item.summary)}</p>
         </article>`).join('\n')}
+      </div>`;
+}
+
+const serviceImages = {
+  mep: {
+    img: 'assets/service-mep-design.jpg?v=1.0',
+    alt: 'MEP Design Services - Mechanical, Electrical & Plumbing Engineering',
+    tag: '01 / MEP SYSTEMS',
+    chips: ['Mechanical & HVAC', 'Electrical Power', 'Plumbing & Drainage']
+  },
+  bim: {
+    img: 'assets/service-bim.jpg?v=1.0',
+    alt: 'BIM Services - 3D Modeling & Coordination',
+    tag: '02 / BIM & VDC',
+    chips: ['LOD 350-400 BIM', '3D Clash Detection', 'Point Cloud to BIM']
+  },
+  construction: {
+    img: 'assets/service-construction.jpg?v=1.0',
+    alt: 'Construction Support Services - On-site Engineering & Drawings',
+    tag: '03 / SITE EXECUTION',
+    chips: ['Shop Drawings', 'Quantity Takeoff', 'QA/QC Inspection']
+  }
+};
+
+function homeServiceRow(items) {
+  return `      <div class="home-services-row">
+${items.map((item) => {
+    const meta = serviceImages[item.slug] || {
+      img: 'assets/project-commercial.jpg',
+      alt: item.title,
+      tag: 'SERVICE',
+      chips: []
+    };
+    return `        <article class="home-service-card">
+          <a href="${item.url}" class="home-service-link" aria-label="${html(item.title)}">
+            <div class="home-service-img-box">
+              <img src="${meta.img}" alt="${html(meta.alt)}" loading="lazy">
+              <span class="home-service-tag">${meta.tag}</span>
+            </div>
+            <div class="home-service-content">
+              <h3>${html(item.title)} <span class="service-arrow" aria-hidden="true">&rarr;</span></h3>
+              <p>${html(item.summary)}</p>
+              <div class="home-service-chips">
+                ${meta.chips.map(chip => `<span class="service-chip">${html(chip)}</span>`).join('')}
+              </div>
+              <span class="home-service-btn">Explore service &rarr;</span>
+            </div>
+          </a>
+        </article>`;
+  }).join('\n')}
       </div>`;
 }
 
@@ -147,7 +195,7 @@ const publicPages = ['index', 'about', 'blog', 'career', 'contact', 'faqs', 'por
 for (const name of publicPages) {
   const filename = name + '.html';
   let page = withCatalog(read(filename), filename);
-  if (name === 'index') page = block(page, 'home', cardGrid(groups));
+  if (name === 'index') page = block(page, 'home', homeServiceRow(groups));
   if (name === 'services') page = block(page, 'overview', catalogOverview());
   write(filename, page);
 }
@@ -197,5 +245,20 @@ for (const group of groups) {
           <h2>What you receive</h2>
           <ul>${service.deliverables.map((deliverable) => `<li>${html(deliverable)}</li>`).join('')}</ul>
         </div>`);
+  }
+}
+
+// Also update extra service files that might exist on disk so their headers match
+const extraServiceFiles = [
+  'services-drafting.html',
+  'services-structural-drafting.html',
+  'services-architectural-drafting.html',
+  'services-other.html',
+  'services-3d-rendering.html',
+  'services-fire-protection.html'
+];
+for (const f of extraServiceFiles) {
+  if (fs.existsSync(path.join(root, f))) {
+    write(f, withCatalog(read(f), f));
   }
 }
