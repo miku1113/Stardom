@@ -660,9 +660,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (reviewsTrack && reviewDots.length > 0) {
     const slides = reviewsTrack.querySelectorAll('.review-slide');
     let autoScrollTimer = null;
-    let isUserInteracting = false;
-    let isSectionInView = false;
-    const AUTO_SCROLL_DELAY = 3800; // 3.8 seconds per review
+    let isHovered = false;
+    let hoverResumeTimer = null;
+    let isSectionInView = true; // default true so it starts immediately
+    const AUTO_SCROLL_DELAY = 3400; // 3.4 seconds per review
 
     function updateActiveDot(idx) {
       reviewDots.forEach((dot, i) => {
@@ -689,31 +690,36 @@ document.addEventListener('DOMContentLoaded', () => {
       return closestIdx;
     }
 
-    function scrollToSlide(idx) {
-      if (!slides[idx]) return;
-      const targetLeft = slides[idx].offsetLeft - reviewsTrack.offsetLeft;
-      reviewsTrack.scrollTo({ left: targetLeft, behavior: 'smooth' });
-      updateActiveDot(idx);
+    function advanceNext() {
+      const maxScroll = reviewsTrack.scrollWidth - reviewsTrack.clientWidth;
+      // If at or near the end, loop smoothly back to beginning
+      if (reviewsTrack.scrollLeft >= maxScroll - 25) {
+        reviewsTrack.scrollTo({ left: 0, behavior: 'smooth' });
+        updateActiveDot(0);
+      } else {
+        const slide = slides[0];
+        const step = (slide ? slide.offsetWidth : 350) + 24;
+        const target = Math.min(reviewsTrack.scrollLeft + step, maxScroll);
+        reviewsTrack.scrollTo({ left: target, behavior: 'smooth' });
+      }
     }
 
-    function advanceToNextSlide() {
-      const maxScroll = reviewsTrack.scrollWidth - reviewsTrack.clientWidth;
-      const isAtEnd = reviewsTrack.scrollLeft >= maxScroll - 20;
-
-      if (isAtEnd) {
-        scrollToSlide(0);
+    function advancePrev() {
+      const slide = slides[0];
+      const step = (slide ? slide.offsetWidth : 350) + 24;
+      if (reviewsTrack.scrollLeft <= 15) {
+        const maxScroll = reviewsTrack.scrollWidth - reviewsTrack.clientWidth;
+        reviewsTrack.scrollTo({ left: maxScroll, behavior: 'smooth' });
       } else {
-        const currentIdx = getActiveSlideIndex();
-        const nextIdx = (currentIdx + 1) % slides.length;
-        scrollToSlide(nextIdx);
+        reviewsTrack.scrollTo({ left: Math.max(0, reviewsTrack.scrollLeft - step), behavior: 'smooth' });
       }
     }
 
     function startAutoScroll() {
       stopAutoScroll();
-      if (isUserInteracting || !isSectionInView) return;
+      if (isHovered || !isSectionInView) return;
       autoScrollTimer = setInterval(() => {
-        advanceToNextSlide();
+        advanceNext();
       }, AUTO_SCROLL_DELAY);
     }
 
@@ -722,6 +728,11 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(autoScrollTimer);
         autoScrollTimer = null;
       }
+    }
+
+    function restartTimer() {
+      stopAutoScroll();
+      startAutoScroll();
     }
 
     // Scroll listener for manual dragging / touch swiping
@@ -738,74 +749,84 @@ document.addEventListener('DOMContentLoaded', () => {
     reviewDots.forEach(dot => {
       dot.addEventListener('click', () => {
         const idx = parseInt(dot.getAttribute('data-index'), 10);
-        scrollToSlide(idx);
-        startAutoScroll(); // reset timer
+        if (slides[idx]) {
+          const maxScroll = reviewsTrack.scrollWidth - reviewsTrack.clientWidth;
+          const target = Math.min(slides[idx].offsetLeft - reviewsTrack.offsetLeft, maxScroll);
+          reviewsTrack.scrollTo({ left: target, behavior: 'smooth' });
+          updateActiveDot(idx);
+          restartTimer();
+        }
       });
     });
 
     // Arrow Buttons
     if (reviewsPrevBtn) {
       reviewsPrevBtn.addEventListener('click', () => {
-        const currentIdx = getActiveSlideIndex();
-        const prevIdx = currentIdx === 0 ? slides.length - 1 : currentIdx - 1;
-        scrollToSlide(prevIdx);
-        startAutoScroll(); // reset timer
+        advancePrev();
+        restartTimer();
       });
     }
 
     if (reviewsNextBtn) {
       reviewsNextBtn.addEventListener('click', () => {
-        advanceToNextSlide();
-        startAutoScroll(); // reset timer
+        advanceNext();
+        restartTimer();
       });
     }
 
-    // Pause auto-scroll on hover (so user can read comfortably)
+    // Hover handling: pause briefly for reading, but auto-resume after 6s so it never freezes
     const interactionContainer = reviewsWrapper || reviewsTrack;
     interactionContainer.addEventListener('mouseenter', () => {
-      isUserInteracting = true;
+      isHovered = true;
       stopAutoScroll();
+      clearTimeout(hoverResumeTimer);
+      hoverResumeTimer = setTimeout(() => {
+        isHovered = false;
+        startAutoScroll();
+      }, 6000);
     });
 
     interactionContainer.addEventListener('mouseleave', () => {
-      isUserInteracting = false;
+      isHovered = false;
+      clearTimeout(hoverResumeTimer);
       startAutoScroll();
     });
 
-    // Pause on touch / drag, resume on touch end
+    // Touch support: pause during swipe, resume 1s after release
     interactionContainer.addEventListener('touchstart', () => {
-      isUserInteracting = true;
+      isHovered = true;
       stopAutoScroll();
     }, { passive: true });
 
     interactionContainer.addEventListener('touchend', () => {
-      setTimeout(() => {
-        isUserInteracting = false;
+      clearTimeout(hoverResumeTimer);
+      hoverResumeTimer = setTimeout(() => {
+        isHovered = false;
         startAutoScroll();
-      }, 1000);
+      }, 1200);
     }, { passive: true });
 
     // Page visibility pause (saves CPU/battery when tab is inactive)
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         stopAutoScroll();
-      } else if (isSectionInView && !isUserInteracting) {
+      } else if (isSectionInView && !isHovered) {
         startAutoScroll();
       }
     });
 
-    // Viewport Intersection Observer: only auto-scroll when reviews are in view
+    // Viewport Intersection Observer: start when visible, pause when scrolled away
     if (testimonialsSection && 'IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           isSectionInView = entry.isIntersecting;
-          if (isSectionInView) {
+          if (isSectionInView && !isHovered) {
             startAutoScroll();
           } else {
             stopAutoScroll();
           }
         });
-      }, { threshold: 0.15 });
+      }, { threshold: [0, 0.15] });
       observer.observe(testimonialsSection);
     } else {
       isSectionInView = true;
