@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=35.0">
+  <link rel="stylesheet" href="css/styles.css?v=36.0">
 </head>
 <body>
 
@@ -377,88 +377,92 @@
       </div>
 
       <div class="dynamic-stepper-wrap" id="dynamicStepper">
-        <!-- Interactive 4-Step Cards Grid -->
+        <!-- Interactive 4-Step Rail -->
         <div class="stepper-track-desktop">
           <!-- Step 1 -->
           <div class="stepper-step is-active" data-step="0">
-            <div class="stepper-card-top">
-              <div class="stepper-node-wrap">
+            <div class="stepper-node-wrap">
+              <button class="stepper-node-trigger" type="button" aria-label="Stage 1: Set the Scope">
                 <span class="stepper-node">01</span>
                 <span class="stepper-phase-tag">PHASE 01</span>
+              </button>
+              <div class="stepper-connector-bar">
+                <div class="stepper-connector-fill"></div>
               </div>
-              <span class="stepper-stage-status">ACTIVE STAGE</span>
             </div>
             <div class="stepper-content">
               <h3 class="stepper-title">Set the Scope</h3>
               <p class="stepper-desc">Review architectural drawings, building occupancy, and local statutory requirements (NBC 2016, IS, ECBC).</p>
-            </div>
-            <div class="stepper-deliverables">
-              <span class="stepper-pill">Project Brief</span>
-              <span class="stepper-pill">Design Basis</span>
-              <span class="stepper-pill">Drawing Schedule</span>
+              <div class="stepper-deliverables">
+                <span class="stepper-pill">Project Brief</span>
+                <span class="stepper-pill">Design Basis</span>
+                <span class="stepper-pill">Drawing Schedule</span>
+              </div>
             </div>
           </div>
 
           <!-- Step 2 -->
           <div class="stepper-step" data-step="1">
-            <div class="stepper-card-top">
-              <div class="stepper-node-wrap">
+            <div class="stepper-node-wrap">
+              <button class="stepper-node-trigger" type="button" aria-label="Stage 2: Size the Systems">
                 <span class="stepper-node">02</span>
                 <span class="stepper-phase-tag">PHASE 02</span>
+              </button>
+              <div class="stepper-connector-bar">
+                <div class="stepper-connector-fill"></div>
               </div>
-              <span class="stepper-stage-status">STAGE 02</span>
             </div>
             <div class="stepper-content">
               <h3 class="stepper-title">Size the Systems</h3>
               <p class="stepper-desc">Calculate thermal cooling loads, electrical demand, water supply flow, and fire pump capacity to size primary equipment.</p>
-            </div>
-            <div class="stepper-deliverables">
-              <span class="stepper-pill">Heat Load Sizing</span>
-              <span class="stepper-pill">Equipment Schedules</span>
-              <span class="stepper-pill">Single Line Diagrams</span>
+              <div class="stepper-deliverables">
+                <span class="stepper-pill">Heat Load Sizing</span>
+                <span class="stepper-pill">Equipment Schedules</span>
+                <span class="stepper-pill">Single Line Diagrams</span>
+              </div>
             </div>
           </div>
 
           <!-- Step 3 -->
           <div class="stepper-step" data-step="2">
-            <div class="stepper-card-top">
-              <div class="stepper-node-wrap">
+            <div class="stepper-node-wrap">
+              <button class="stepper-node-trigger" type="button" aria-label="Stage 3: Coordinate Layouts">
                 <span class="stepper-node">03</span>
                 <span class="stepper-phase-tag">PHASE 03</span>
+              </button>
+              <div class="stepper-connector-bar">
+                <div class="stepper-connector-fill"></div>
               </div>
-              <span class="stepper-stage-status">STAGE 03</span>
             </div>
             <div class="stepper-content">
               <h3 class="stepper-title">Coordinate Layouts</h3>
               <p class="stepper-desc">Route ducts, pipes, and cable trays in 3D BIM (Navisworks / Revit) to resolve multi-trade clashes against concrete structure.</p>
-            </div>
-            <div class="stepper-deliverables">
-              <span class="stepper-pill">3D Clash Detection</span>
-              <span class="stepper-pill">Coordinated Overlays</span>
-              <span class="stepper-pill">Shaft Clearances</span>
+              <div class="stepper-deliverables">
+                <span class="stepper-pill">3D Clash Detection</span>
+                <span class="stepper-pill">Coordinated Overlays</span>
+                <span class="stepper-pill">Shaft Clearances</span>
+              </div>
             </div>
           </div>
 
           <!-- Step 4 -->
           <div class="stepper-step" data-step="3">
-            <div class="stepper-card-top">
-              <div class="stepper-node-wrap">
+            <div class="stepper-node-wrap">
+              <button class="stepper-node-trigger" type="button" aria-label="Stage 4: Issue the Drawings">
                 <span class="stepper-node">04</span>
                 <span class="stepper-phase-tag">PHASE 04</span>
-              </div>
-              <span class="stepper-stage-status">STAGE 04</span>
+              </button>
             </div>
             <div class="stepper-content">
               <h3 class="stepper-title">Issue the Drawings</h3>
               <p class="stepper-desc">Release authority submission drawings, Good For Construction (GFC) sets, sleeve cutouts, and tender bill of quantities.</p>
-            </div>
-            <div class="stepper-deliverables">
-              <span class="stepper-pill">Municipal Drawings</span>
-              <span class="stepper-pill">GFC Sets</span>
-              <span class="stepper-pill">Bill of Quantities</span>
+              <div class="stepper-deliverables">
+                <span class="stepper-pill">Municipal Drawings</span>
+                <span class="stepper-pill">GFC Sets</span>
+                <span class="stepper-pill">Bill of Quantities</span>
+              </div>
             </div>
           </div>
-        </div>
         </div>
 
         <!-- Dynamic Live Phase Detail Panel -->
@@ -852,6 +856,6 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/main.js?v=34.0"></script>
+  <script src="js/main.js?v=35.0"></script>
 </body>
 </html>

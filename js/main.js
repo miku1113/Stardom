@@ -556,24 +556,23 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let currentStep = 0;
-    let currentStep = 0;
 
     function renderStep(idx) {
       currentStep = idx;
       const data = phaseData[idx];
 
-      // Update Step Card Classes and Status Badge
+      // Update Step Classes and Connector Fill Bars
       steps.forEach((step, i) => {
-        const statusChip = step.querySelector('.stepper-stage-status');
+        const fill = step.querySelector('.stepper-connector-fill');
         step.classList.remove('is-active', 'is-completed');
-        if (i === idx) {
-          step.classList.add('is-active');
-          if (statusChip) statusChip.textContent = 'ACTIVE STAGE';
-        } else if (i < idx) {
+        if (i < idx) {
           step.classList.add('is-completed');
-          if (statusChip) statusChip.textContent = `STAGE 0${i + 1}`;
+          if (fill) fill.style.width = '100%';
+        } else if (i === idx) {
+          step.classList.add('is-active');
+          if (fill) fill.style.width = '100%';
         } else {
-          if (statusChip) statusChip.textContent = `STAGE 0${i + 1}`;
+          if (fill) fill.style.width = '0%';
         }
       });
 
