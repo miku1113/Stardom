@@ -3717,6 +3717,187 @@ button, input, select, textarea {
   margin: 0;
 }
 
+/* ==========================================================================
+   ARCHITECTURAL PROCESS STEPPER (Replaces repetitive boxed cards)
+   ========================================================================== */
+.stepper-process-wrap {
+  margin-top: 54px;
+  position: relative;
+}
+
+.stepper-track-desktop {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px;
+  position: relative;
+}
+
+/* Connecting Timeline Rail */
+.stepper-rail-line {
+  position: absolute;
+  top: 24px;
+  left: 6%;
+  right: 6%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.45) 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  z-index: 1;
+}
+
+.stepper-rail-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(90deg, transparent, transparent 8px, #000000 8px, #000000 12px);
+}
+
+.stepper-step {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stepper-step:hover {
+  transform: translateY(-4px);
+}
+
+.stepper-node-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.stepper-node {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #000000;
+  border: 2px solid #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFFFFF;
+  box-shadow: 0 0 0 7px #000000, 0 4px 16px rgba(0, 0, 0, 0.9);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.stepper-step:hover .stepper-node {
+  background: #FFFFFF;
+  color: #000000;
+  transform: scale(1.08);
+  box-shadow: 0 0 0 7px #000000, 0 0 24px rgba(255, 255, 255, 0.35);
+}
+
+.stepper-phase-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-copper);
+}
+
+.stepper-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.stepper-title {
+  font-family: var(--font-heading);
+  font-size: 19px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.015em;
+  transition: color 0.2s ease;
+}
+
+.stepper-desc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #A1A1AA;
+  margin: 0 0 20px 0;
+  flex-grow: 1;
+}
+
+.stepper-deliverables {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stepper-pill {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #E4E4E7;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+@media (max-width: 960px) {
+  .stepper-track-desktop {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 24px;
+  }
+  .stepper-rail-line {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .stepper-track-desktop {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-left: 10px;
+  }
+  .stepper-rail-line {
+    display: block;
+    top: 24px;
+    bottom: 24px;
+    left: 34px;
+    right: auto;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.15) 100%);
+  }
+  .stepper-rail-line::after {
+    display: none;
+  }
+  .stepper-step {
+    padding-left: 48px;
+    position: relative;
+  }
+  .stepper-node-wrap {
+    position: static;
+    margin-bottom: 8px;
+  }
+  .stepper-node {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 44px;
+    height: 44px;
+    font-size: 13px;
+  }
+}
+
 /* --- Detailed 4-Stage Process --- */
 .process-four-grid {
   display: grid;
@@ -4735,20 +4916,24 @@ button, input, select, textarea {
 .highlights-grid > .reveal-on-scroll:nth-child(1),
 .drawings-grid > .reveal-on-scroll:nth-child(1),
 .projects-three-grid > .reveal-on-scroll:nth-child(1),
+.stepper-track-desktop > .reveal-on-scroll:nth-child(1),
 .services-three-grid > .reveal-on-scroll:nth-child(1) { transition-delay: 0.05s; }
 
 .highlights-grid > .reveal-on-scroll:nth-child(2),
 .drawings-grid > .reveal-on-scroll:nth-child(2),
 .projects-three-grid > .reveal-on-scroll:nth-child(2),
+.stepper-track-desktop > .reveal-on-scroll:nth-child(2),
 .services-three-grid > .reveal-on-scroll:nth-child(2) { transition-delay: 0.12s; }
 
 .highlights-grid > .reveal-on-scroll:nth-child(3),
 .drawings-grid > .reveal-on-scroll:nth-child(3),
 .projects-three-grid > .reveal-on-scroll:nth-child(3),
+.stepper-track-desktop > .reveal-on-scroll:nth-child(3),
 .services-three-grid > .reveal-on-scroll:nth-child(3) { transition-delay: 0.19s; }
 
 .highlights-grid > .reveal-on-scroll:nth-child(4),
 .drawings-grid > .reveal-on-scroll:nth-child(4),
+.stepper-track-desktop > .reveal-on-scroll:nth-child(4),
 .services-three-grid > .reveal-on-scroll:nth-child(4) { transition-delay: 0.26s; }
 
 .highlights-grid > .reveal-on-scroll:nth-child(5) { transition-delay: 0.33s; }

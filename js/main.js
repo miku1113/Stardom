@@ -437,7 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
     '.discipline-card, .drawing-sheet-card, .software-cresto-card, .why-pill-badge, ' +
     '.project-cresto-card, .portfolio-card, .testimonials-three-grid, .industry-pill, ' +
     '.process-cresto-row, .step-card, .blog-four-grid, .faq-item, .cta-cresto-banner, ' +
-    '.inquiry-grid, .value-prop-visual, .value-prop-content, .subpage-card'
+    '.inquiry-grid, .value-prop-visual, .value-prop-content, .subpage-card, .stepper-step'
   );
 
   if ('IntersectionObserver' in window && revealTargets.length > 0) {

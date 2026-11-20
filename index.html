@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=26.0">
+  <link rel="stylesheet" href="css/styles.css?v=27.0">
 </head>
 <body>
 
@@ -339,40 +339,88 @@
     </div>
   </section>
 
-  <section class="section-cresto" id="process">
+  <section class="section-cresto" id="process" style="padding: 80px 0; border-top: 1px solid var(--color-border);">
     <div class="container">
-      <h2 class="section-headline">How We Work</h2>
-      <p style="max-width:760px; color:#A1A1AA; font-size:15px; margin-bottom:36px; line-height:1.6;">
-        From the first floor plan to construction drawings.
-      </p>
-
-      <div class="process-four-grid">
-        <!-- Step 1 -->
-        <div class="process-card-detailed">
-          <div class="step-num-badge">01</div>
-          <h4>Set the scope</h4>
-          <p>Review the brief, building plans and local requirements.</p>
+      <div class="services-header-split">
+        <div>
+          <div class="section-eyebrow">&mdash; 4-STAGE ENGINEERING DELIVERY</div>
+          <h2 class="section-headline">How We Work</h2>
         </div>
+        <p style="max-width:480px; color:#A1A1AA; font-size:15px; line-height:1.6;">
+          A systematic, stage-gated engineering workflow from initial architectural drawings to clash-free site construction sets.
+        </p>
+      </div>
 
-        <!-- Step 2 -->
-        <div class="process-card-detailed">
-          <div class="step-num-badge">02</div>
-          <h4>Size the systems</h4>
-          <p>Calculate loads and choose equipment to suit the building.</p>
-        </div>
+      <div class="stepper-process-wrap">
+        <div class="stepper-rail-line"></div>
+        <div class="stepper-track-desktop">
+          <!-- Step 1 -->
+          <div class="stepper-step">
+            <div class="stepper-node-wrap">
+              <div class="stepper-node">01</div>
+              <span class="stepper-phase-tag">PHASE 01</span>
+            </div>
+            <div class="stepper-content">
+              <h3 class="stepper-title">Set the Scope</h3>
+              <p class="stepper-desc">Review architectural drawings, building occupancy, and local statutory requirements (NBC 2016, IS, ECBC).</p>
+              <div class="stepper-deliverables">
+                <span class="stepper-pill">Project Brief</span>
+                <span class="stepper-pill">Design Basis</span>
+                <span class="stepper-pill">Drawing Schedule</span>
+              </div>
+            </div>
+          </div>
 
-        <!-- Step 3 -->
-        <div class="process-card-detailed">
-          <div class="step-num-badge">03</div>
-          <h4>Coordinate the layouts</h4>
-          <p>Check where ducts, pipes and cables cross other services or structure.</p>
-        </div>
+          <!-- Step 2 -->
+          <div class="stepper-step">
+            <div class="stepper-node-wrap">
+              <div class="stepper-node">02</div>
+              <span class="stepper-phase-tag">PHASE 02</span>
+            </div>
+            <div class="stepper-content">
+              <h3 class="stepper-title">Size the Systems</h3>
+              <p class="stepper-desc">Calculate thermal cooling loads, electrical demand, water supply flow, and fire pump capacity to size primary equipment.</p>
+              <div class="stepper-deliverables">
+                <span class="stepper-pill">Heat Load Sizing</span>
+                <span class="stepper-pill">Equipment Schedules</span>
+                <span class="stepper-pill">Single Line Diagrams</span>
+              </div>
+            </div>
+          </div>
 
-        <!-- Step 4 -->
-        <div class="process-card-detailed">
-          <div class="step-num-badge">04</div>
-          <h4>Issue the drawings</h4>
-          <p>Prepare submission and construction drawings, plus a bill of quantities where required.</p>
+          <!-- Step 3 -->
+          <div class="stepper-step">
+            <div class="stepper-node-wrap">
+              <div class="stepper-node">03</div>
+              <span class="stepper-phase-tag">PHASE 03</span>
+            </div>
+            <div class="stepper-content">
+              <h3 class="stepper-title">Coordinate Layouts</h3>
+              <p class="stepper-desc">Route ducts, pipes, and cable trays in 3D BIM (Navisworks / Revit) to resolve multi-trade clashes against concrete structure.</p>
+              <div class="stepper-deliverables">
+                <span class="stepper-pill">3D Clash Detection</span>
+                <span class="stepper-pill">Coordinated Overlays</span>
+                <span class="stepper-pill">Shaft Clearances</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="stepper-step">
+            <div class="stepper-node-wrap">
+              <div class="stepper-node">04</div>
+              <span class="stepper-phase-tag">PHASE 04</span>
+            </div>
+            <div class="stepper-content">
+              <h3 class="stepper-title">Issue the Drawings</h3>
+              <p class="stepper-desc">Release authority submission drawings, Good For Construction (GFC) sets, sleeve cutouts, and tender bill of quantities.</p>
+              <div class="stepper-deliverables">
+                <span class="stepper-pill">Municipal Drawings</span>
+                <span class="stepper-pill">GFC Sets</span>
+                <span class="stepper-pill">Bill of Quantities</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -662,6 +710,6 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/main.js?v=25.0"></script>
+  <script src="js/main.js?v=26.0"></script>
 </body>
 </html>
