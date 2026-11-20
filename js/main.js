@@ -649,4 +649,83 @@ document.addEventListener('DOMContentLoaded', () => {
     renderStep(0);
     startAuto();
   }
+
+  // --- 13. Reviews Horizontal Carousel & Dots Controller ---
+  const reviewsTrack = document.getElementById('reviewsSliderTrack');
+  const reviewDots = document.querySelectorAll('.review-dot');
+  const reviewsPrevBtn = document.getElementById('reviewsPrevBtn');
+  const reviewsNextBtn = document.getElementById('reviewsNextBtn');
+
+  if (reviewsTrack && reviewDots.length > 0) {
+    const slides = reviewsTrack.querySelectorAll('.review-slide');
+
+    function updateActiveDot(idx) {
+      reviewDots.forEach((dot, i) => {
+        if (i === idx) {
+          dot.classList.add('is-active');
+        } else {
+          dot.classList.remove('is-active');
+        }
+      });
+    }
+
+    function getActiveSlideIndex() {
+      const scrollPos = reviewsTrack.scrollLeft;
+      let closestIdx = 0;
+      let minDiff = Infinity;
+
+      slides.forEach((slide, idx) => {
+        const diff = Math.abs(slide.offsetLeft - reviewsTrack.offsetLeft - scrollPos);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIdx = idx;
+        }
+      });
+      return closestIdx;
+    }
+
+    let scrollTimeout;
+    reviewsTrack.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const activeIdx = getActiveSlideIndex();
+        updateActiveDot(activeIdx);
+      }, 50);
+    }, { passive: true });
+
+    reviewDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.getAttribute('data-index'), 10);
+        if (slides[idx]) {
+          const targetLeft = slides[idx].offsetLeft - reviewsTrack.offsetLeft;
+          reviewsTrack.scrollTo({ left: targetLeft, behavior: 'smooth' });
+          updateActiveDot(idx);
+        }
+      });
+    });
+
+    if (reviewsPrevBtn) {
+      reviewsPrevBtn.addEventListener('click', () => {
+        const currentIdx = getActiveSlideIndex();
+        const prevIdx = Math.max(0, currentIdx - 1);
+        if (slides[prevIdx]) {
+          const targetLeft = slides[prevIdx].offsetLeft - reviewsTrack.offsetLeft;
+          reviewsTrack.scrollTo({ left: targetLeft, behavior: 'smooth' });
+          updateActiveDot(prevIdx);
+        }
+      });
+    }
+
+    if (reviewsNextBtn) {
+      reviewsNextBtn.addEventListener('click', () => {
+        const currentIdx = getActiveSlideIndex();
+        const nextIdx = Math.min(slides.length - 1, currentIdx + 1);
+        if (slides[nextIdx]) {
+          const targetLeft = slides[nextIdx].offsetLeft - reviewsTrack.offsetLeft;
+          reviewsTrack.scrollTo({ left: targetLeft, behavior: 'smooth' });
+          updateActiveDot(nextIdx);
+        }
+      });
+    }
+  }
 });

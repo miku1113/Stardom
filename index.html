@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=29.0">
+  <link rel="stylesheet" href="css/styles.css?v=30.0">
 </head>
 <body>
 
@@ -466,129 +466,146 @@
        ========================================================================== -->
   <section class="section-cresto" id="testimonials" style="border-top:1px solid var(--color-border); padding: 75px 0;">
     <div class="container">
-      <div class="services-header-split">
+      <div class="services-header-split" style="align-items: flex-end;">
         <div>
           <div class="section-eyebrow">&mdash; CLIENT REVIEWS &amp; VERIFIED FEEDBACK</div>
           <h2 class="section-headline">What Our Clients Say.</h2>
+          <p style="max-width:540px; color:#A1A1AA; font-size:15px; line-height:1.6; margin-top: 10px;">
+            Trusted by leading developers, principal architects, and industrial builders across Surat and South Gujarat for statutory-approved, clash-free MEP engineering.
+          </p>
         </div>
-        <p style="max-width:480px; color:#A1A1AA; font-size:15px; line-height:1.6;">
-          Trusted by leading developers, principal architects, and industrial builders across Surat and South Gujarat for statutory-approved, clash-free MEP engineering.
-        </p>
+        <div class="reviews-header-arrows">
+          <button class="reviews-arrow-btn" id="reviewsPrevBtn" type="button" aria-label="Previous Review">&larr;</button>
+          <button class="reviews-arrow-btn" id="reviewsNextBtn" type="button" aria-label="Next Review">&rarr;</button>
+        </div>
       </div>
 
-      <div class="testimonials-reviews-grid">
-        <!-- Review 1: Commercial High-Rise, Vesu -->
-        <div class="testimonial-card-cresto">
-          <div class="testimonial-card-header">
-            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <span class="testimonial-loc-badge">📍 Vesu, Surat</span>
+      <div class="reviews-carousel-wrapper" id="reviewsCarouselWrap">
+        <!-- Horizontal Scrollable Row Track -->
+        <div class="reviews-slider-track" id="reviewsSliderTrack">
+          <!-- Review 1: Commercial High-Rise, Vesu -->
+          <div class="testimonial-card-cresto review-slide" data-index="0">
+            <div class="testimonial-card-header">
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <span class="testimonial-loc-badge">📍 Vesu, Surat</span>
+            </div>
+            <p class="testimonial-quote">
+              &ldquo;Stratum handled turnkey MEP design for our 22-storey commercial tower on VIP Road, Vesu. Their HVAC heat load calculations and SMC Fire Department NOC documentation were spot-on. Zero re-drawings needed during municipal scrutiny, and their Revit 3D clash coordination saved our contractors weeks of on-site rework.&rdquo;
+            </p>
+            <div class="testimonial-client">
+              <div class="client-avatar-badge">BP</div>
+              <div class="client-meta">
+                <h4>Bhavin K. Patel</h4>
+                <span>Managing Director &bull; Shreeji Skyrise Infrastructure, Surat</span>
+                <div class="client-verified-tag">&#10003; Verified Commercial Project</div>
+              </div>
+            </div>
           </div>
-          <p class="testimonial-quote">
-            &ldquo;Stratum handled turnkey MEP design for our 22-storey commercial tower on VIP Road, Vesu. Their HVAC heat load calculations and SMC Fire Department NOC documentation were spot-on. Zero re-drawings needed during municipal scrutiny, and their Revit 3D clash coordination saved our contractors weeks of on-site rework.&rdquo;
-          </p>
-          <div class="testimonial-client">
-            <div class="client-avatar-badge">BP</div>
-            <div class="client-meta">
-              <h4>Bhavin K. Patel</h4>
-              <span>Managing Director &bull; Shreeji Skyrise Infrastructure, Surat</span>
-              <div class="client-verified-tag">&#10003; Verified Commercial Project</div>
+
+          <!-- Review 2: Architecture Studio, Piplod -->
+          <div class="testimonial-card-cresto review-slide" data-index="1">
+            <div class="testimonial-card-header">
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <span class="testimonial-loc-badge">📍 Piplod, Surat</span>
+            </div>
+            <p class="testimonial-quote">
+              &ldquo;As architects, our biggest challenge is MEP ducting clashing with structural beams and false ceiling heights. Stratum worked side-by-side with our team on Revit BIM, coordinating chilled water and drainage lines seamlessly without compromising our design aesthetic. Their GFC sets arrived right on schedule.&rdquo;
+            </p>
+            <div class="testimonial-client">
+              <div class="client-avatar-badge">JS</div>
+              <div class="client-meta">
+                <h4>Ar. Jignesh Shah</h4>
+                <span>Principal Architect &bull; Aakhar Architectural Studio, Surat</span>
+                <div class="client-verified-tag">&#10003; Verified Architecture Partner</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3: Diamond Hub, Mahidharpura -->
+          <div class="testimonial-card-cresto review-slide" data-index="2">
+            <div class="testimonial-card-header">
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <span class="testimonial-loc-badge">📍 Mahidharpura, Surat</span>
+            </div>
+            <p class="testimonial-quote">
+              &ldquo;Diamond trading hubs require ultra-precise climate control, 100% DG backup, and airtight ELV security. Stratum engineered our transformer yard, clean power distribution, and precision AC layouts to perfection. Having an engineering team right here in Surat who understands local building bylaws made all the difference.&rdquo;
+            </p>
+            <div class="testimonial-client">
+              <div class="client-avatar-badge">PC</div>
+              <div class="client-meta">
+                <h4>Paresh Choksi</h4>
+                <span>Partner &amp; Project Head &bull; Surat Gems &amp; Diamond Centre</span>
+                <div class="client-verified-tag">&#10003; Verified Commercial Hub</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 4: Industrial Plant, Sachin GIDC -->
+          <div class="testimonial-card-cresto review-slide" data-index="3">
+            <div class="testimonial-card-header">
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <span class="testimonial-loc-badge">📍 Sachin GIDC, Surat</span>
+            </div>
+            <p class="testimonial-quote">
+              &ldquo;For our large-scale textile weaving and processing facility in Sachin GIDC, high-hazard fire sprinkler density and industrial ventilation were paramount. Stratum engineered the entire fire hydrant network strictly adhering to NBC Part 4 and GPCB norms. Prompt on-site inspections and exceptional technical rigor.&rdquo;
+            </p>
+            <div class="testimonial-client">
+              <div class="client-avatar-badge">HM</div>
+              <div class="client-meta">
+                <h4>Harshvardhan Mehta</h4>
+                <span>Chief Project Engineer &bull; Navkar Textile &amp; Industrial Park</span>
+                <div class="client-verified-tag">&#10003; Verified Industrial Plant</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 5: Healthcare Hospital, Athwa Lines -->
+          <div class="testimonial-card-cresto review-slide" data-index="4">
+            <div class="testimonial-card-header">
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <span class="testimonial-loc-badge">📍 Athwa Lines, Surat</span>
+            </div>
+            <p class="testimonial-quote">
+              &ldquo;Our 300-bed hospital project required specialized medical gas piping (MGPS), positive pressure OT ventilation, and uninterrupted power backup. Stratum delivered complete NABH-compliant MEP engineering and authority documentation with remarkable speed. Readily available for every coordination meeting.&rdquo;
+            </p>
+            <div class="testimonial-client">
+              <div class="client-avatar-badge">SD</div>
+              <div class="client-meta">
+                <h4>Dr. Snehal Desai</h4>
+                <span>Director of Infrastructure &bull; Apex Multi-Speciality Hospital</span>
+                <div class="client-verified-tag">&#10003; Verified Healthcare Facility</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 6: Gated Township, Pal-Adajan -->
+          <div class="testimonial-card-cresto review-slide" data-index="5">
+            <div class="testimonial-card-header">
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <span class="testimonial-loc-badge">📍 Pal-Adajan, Surat</span>
+            </div>
+            <p class="testimonial-quote">
+              &ldquo;Stratum engineered the complete domestic plumbing, STP wastewater treatment, and hydro-pneumatic pumping layout for our 350-unit residential township in Pal. Their precise pipe sizing and pump head calculations significantly optimized ongoing electricity and water consumption for our residents.&rdquo;
+            </p>
+            <div class="testimonial-client">
+              <div class="client-avatar-badge">RK</div>
+              <div class="client-meta">
+                <h4>Rajesh V. Kheni</h4>
+                <span>Co-Founder &amp; Developer &bull; Kheni Brothers Realty, Surat</span>
+                <div class="client-verified-tag">&#10003; Verified Residential Township</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Review 2: Architecture Studio, Piplod -->
-        <div class="testimonial-card-cresto">
-          <div class="testimonial-card-header">
-            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <span class="testimonial-loc-badge">📍 Piplod, Surat</span>
-          </div>
-          <p class="testimonial-quote">
-            &ldquo;As architects, our biggest challenge is MEP ducting clashing with structural beams and false ceiling heights. Stratum worked side-by-side with our team on Revit BIM, coordinating chilled water and drainage lines seamlessly without compromising our design aesthetic. Their GFC sets arrived right on schedule.&rdquo;
-          </p>
-          <div class="testimonial-client">
-            <div class="client-avatar-badge">JS</div>
-            <div class="client-meta">
-              <h4>Ar. Jignesh Shah</h4>
-              <span>Principal Architect &bull; Aakhar Architectural Studio, Surat</span>
-              <div class="client-verified-tag">&#10003; Verified Architecture Partner</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 3: Diamond Hub, Mahidharpura -->
-        <div class="testimonial-card-cresto">
-          <div class="testimonial-card-header">
-            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <span class="testimonial-loc-badge">📍 Mahidharpura, Surat</span>
-          </div>
-          <p class="testimonial-quote">
-            &ldquo;Diamond trading hubs require ultra-precise climate control, 100% DG backup, and airtight ELV security. Stratum engineered our transformer yard, clean power distribution, and precision AC layouts to perfection. Having an engineering team right here in Surat who understands local building bylaws made all the difference.&rdquo;
-          </p>
-          <div class="testimonial-client">
-            <div class="client-avatar-badge">PC</div>
-            <div class="client-meta">
-              <h4>Paresh Choksi</h4>
-              <span>Partner &amp; Project Head &bull; Surat Gems &amp; Diamond Centre</span>
-              <div class="client-verified-tag">&#10003; Verified Commercial Hub</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 4: Industrial Plant, Sachin GIDC -->
-        <div class="testimonial-card-cresto">
-          <div class="testimonial-card-header">
-            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <span class="testimonial-loc-badge">📍 Sachin GIDC, Surat</span>
-          </div>
-          <p class="testimonial-quote">
-            &ldquo;For our large-scale textile weaving and processing facility in Sachin GIDC, high-hazard fire sprinkler density and industrial ventilation were paramount. Stratum engineered the entire fire hydrant network strictly adhering to NBC Part 4 and GPCB norms. Prompt on-site inspections and exceptional technical rigor.&rdquo;
-          </p>
-          <div class="testimonial-client">
-            <div class="client-avatar-badge">HM</div>
-            <div class="client-meta">
-              <h4>Harshvardhan Mehta</h4>
-              <span>Chief Project Engineer &bull; Navkar Textile &amp; Industrial Park</span>
-              <div class="client-verified-tag">&#10003; Verified Industrial Plant</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 5: Healthcare Hospital, Athwa Lines -->
-        <div class="testimonial-card-cresto">
-          <div class="testimonial-card-header">
-            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <span class="testimonial-loc-badge">📍 Athwa Lines, Surat</span>
-          </div>
-          <p class="testimonial-quote">
-            &ldquo;Our 300-bed hospital project required specialized medical gas piping (MGPS), positive pressure OT ventilation, and uninterrupted power backup. Stratum delivered complete NABH-compliant MEP engineering and authority documentation with remarkable speed. Readily available for every coordination meeting.&rdquo;
-          </p>
-          <div class="testimonial-client">
-            <div class="client-avatar-badge">SD</div>
-            <div class="client-meta">
-              <h4>Dr. Snehal Desai</h4>
-              <span>Director of Infrastructure &bull; Apex Multi-Speciality Hospital</span>
-              <div class="client-verified-tag">&#10003; Verified Healthcare Facility</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 6: Gated Township, Pal-Adajan -->
-        <div class="testimonial-card-cresto">
-          <div class="testimonial-card-header">
-            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <span class="testimonial-loc-badge">📍 Pal-Adajan, Surat</span>
-          </div>
-          <p class="testimonial-quote">
-            &ldquo;Stratum engineered the complete domestic plumbing, STP wastewater treatment, and hydro-pneumatic pumping layout for our 350-unit residential township in Pal. Their precise pipe sizing and pump head calculations significantly optimized ongoing electricity and water consumption for our residents.&rdquo;
-          </p>
-          <div class="testimonial-client">
-            <div class="client-avatar-badge">RK</div>
-            <div class="client-meta">
-              <h4>Rajesh V. Kheni</h4>
-              <span>Co-Founder &amp; Developer &bull; Kheni Brothers Realty, Surat</span>
-              <div class="client-verified-tag">&#10003; Verified Residential Township</div>
-            </div>
-          </div>
+        <!-- Pagination Dots Below -->
+        <div class="reviews-dots-nav" id="reviewsDotsNav" aria-label="Customer review pagination">
+          <button class="review-dot is-active" type="button" data-index="0" aria-label="Review 1"></button>
+          <button class="review-dot" type="button" data-index="1" aria-label="Review 2"></button>
+          <button class="review-dot" type="button" data-index="2" aria-label="Review 3"></button>
+          <button class="review-dot" type="button" data-index="3" aria-label="Review 4"></button>
+          <button class="review-dot" type="button" data-index="4" aria-label="Review 5"></button>
+          <button class="review-dot" type="button" data-index="5" aria-label="Review 6"></button>
         </div>
       </div>
     </div>
@@ -814,6 +831,6 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/main.js?v=28.0"></script>
+  <script src="js/main.js?v=29.0"></script>
 </body>
 </html>

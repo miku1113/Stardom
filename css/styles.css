@@ -2061,8 +2061,118 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   CLIENT TESTIMONIALS (Regional Surat & Gujarat Verified Reviews)
+   CLIENT TESTIMONIALS (Horizontal Row Scroll Slider with Pagination Dots)
    ========================================================================== */
+.reviews-carousel-wrapper {
+  position: relative;
+  margin-top: 36px;
+  width: 100%;
+}
+
+.reviews-slider-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 10px 4px 18px 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.reviews-slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.review-slide {
+  flex: 0 0 calc((100% - 48px) / 3);
+  min-width: 320px;
+  scroll-snap-align: start;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1060px) {
+  .review-slide {
+    flex: 0 0 calc((100% - 24px) / 2);
+    min-width: 290px;
+  }
+}
+
+@media (max-width: 680px) {
+  .review-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+}
+
+/* Dots Pagination Below */
+.reviews-dots-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.review-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.review-dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+}
+
+.review-dot.is-active {
+  width: 28px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+/* Header Arrows */
+.reviews-header-arrows {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reviews-arrow-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+}
+
+.reviews-arrow-btn:hover {
+  background: #FFFFFF;
+  color: #000000;
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.2);
+}
+
 .testimonials-reviews-grid,
 .testimonials-three-grid {
   display: grid;
