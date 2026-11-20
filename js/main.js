@@ -728,17 +728,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- 14. Hero Scanner HUD Indicator Switcher ---
+  // --- 14. Hero Scanner HUD Indicator Switcher (Phase-Locked to CSS Animation) ---
+  const laserBeam = document.querySelector('.spotlight-laser-beam');
   const heroScanLabel = document.getElementById('heroScanLabel');
-  if (heroScanLabel) {
-    let scanPhase = false;
-    setInterval(() => {
-      scanPhase = !scanPhase;
-      if (scanPhase) {
-        heroScanLabel.innerHTML = '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#10B981;"></span><span>SCAN: MEP SKELETON (PLUMBING &amp; HVAC)</span>';
-      } else {
-        heroScanLabel.innerHTML = '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--color-copper);"></span><span>SCAN: ARCHITECTURAL EXTERIOR</span>';
+  const laserTagText = document.querySelector('.laser-tag-text');
+
+  if (laserBeam && heroScanLabel) {
+    let anim = null;
+    const getAnim = () => {
+      if (!anim && laserBeam.getAnimations) {
+        const anims = laserBeam.getAnimations();
+        if (anims.length > 0) anim = anims[0];
       }
-    }, 3500);
+      return anim;
+    };
+
+    let lastMode = '';
+    const updateHUD = () => {
+      const activeAnim = getAnim();
+      let isDownSweep = true;
+      if (activeAnim && typeof activeAnim.currentTime === 'number') {
+        const cycle = activeAnim.currentTime % 6500;
+        isDownSweep = cycle < 3250;
+      } else {
+        isDownSweep = (Date.now() % 6500) < 3250;
+      }
+
+      const currentMode = isDownSweep ? 'skeleton' : 'exterior';
+      if (currentMode !== lastMode) {
+        lastMode = currentMode;
+        if (isDownSweep) {
+          heroScanLabel.innerHTML = '<span class="hud-mode-dot" style="background:#00E5FF;box-shadow:0 0 8px #00E5FF;"></span><span>SCAN: MEP BIM SKELETON</span>';
+          if (laserTagText) laserTagText.textContent = 'MEP SCAN ACTIVE';
+        } else {
+          heroScanLabel.innerHTML = '<span class="hud-mode-dot" style="background:var(--color-copper);box-shadow:0 0 8px var(--color-copper);"></span><span>SCAN: ARCHITECTURAL EXTERIOR</span>';
+          if (laserTagText) laserTagText.textContent = 'EXTERIOR RESTORE';
+        }
+      }
+    };
+
+    setInterval(updateHUD, 100);
   }
 });

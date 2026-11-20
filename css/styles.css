@@ -776,8 +776,10 @@ button, input, select, textarea {
   height: 100%;
   z-index: 4;
   clip-path: inset(0 0 100% 0);
-  animation: skeletonScanReveal 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  -webkit-clip-path: inset(0 0 100% 0);
+  animation: skeletonScanReveal 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   pointer-events: none;
+  will-change: clip-path;
 }
 
 .spotlight-skeleton-image {
@@ -785,7 +787,7 @@ button, input, select, textarea {
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: brightness(1.02) contrast(1.12);
+  filter: brightness(1.05) contrast(1.15);
 }
 
 /* High-Tech Laser Beam Scanner Line */
@@ -793,11 +795,12 @@ button, input, select, textarea {
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
-  height: 0;
+  top: 0%;
+  height: 3px;
   pointer-events: none;
-  z-index: 8;
-  animation: laserBeamMove 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  z-index: 25;
+  animation: laserBeamMove 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: top, opacity;
 }
 
 .spotlight-laser-line {
@@ -805,33 +808,33 @@ button, input, select, textarea {
   top: 0;
   left: 0;
   right: 0;
-  height: 2.5px;
+  height: 3px;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    var(--color-copper) 12%, 
+    #00E5FF 12%, 
     #FFFFFF 50%, 
-    var(--color-copper) 88%, 
+    #00E5FF 88%, 
     transparent 100%
   );
-  box-shadow: 0 0 12px #FFFFFF, 0 0 24px var(--color-copper), 0 0 35px rgba(201, 147, 90, 0.85);
+  box-shadow: 0 0 12px #FFFFFF, 0 0 24px #00E5FF, 0 0 35px rgba(0, 229, 255, 0.85);
 }
 
 .spotlight-laser-glow {
   position: absolute;
-  bottom: 0;
+  top: -14px;
   left: 0;
   right: 0;
-  height: 32px;
-  background: linear-gradient(0deg, rgba(201, 147, 90, 0.22) 0%, transparent 100%);
+  height: 30px;
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.22) 0%, transparent 100%);
   pointer-events: none;
 }
 
 .spotlight-laser-tag {
   position: absolute;
   right: 12px;
-  top: -12px;
+  top: -14px;
   background: #000000;
-  border: 1px solid var(--color-copper);
+  border: 1px solid #00E5FF;
   color: #FFFFFF;
   font-family: var(--font-mono);
   font-size: 9px;
@@ -850,33 +853,34 @@ button, input, select, textarea {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 6px #10B981;
+  background: #00E5FF;
+  box-shadow: 0 0 6px #00E5FF;
   animation: beaconPulse 1.2s infinite ease-in-out;
 }
 
-/* Synchronized Keyframes for Laser Beam & Skeleton Reveal */
+/* 100% Synchronized Keyframes for Laser Beam & Skeleton Reveal */
 @keyframes laserBeamMove {
   0% {
     top: 0%;
     opacity: 0;
   }
-  4% {
+  3% {
+    top: 0%;
     opacity: 1;
   }
-  45% {
-    top: 100%;
+  47% {
+    top: calc(100% - 3px);
     opacity: 1;
   }
   50% {
-    top: 100%;
-    opacity: 0.85;
-  }
-  55% {
-    top: 100%;
+    top: calc(100% - 3px);
     opacity: 1;
   }
-  95% {
+  53% {
+    top: calc(100% - 3px);
+    opacity: 1;
+  }
+  97% {
     top: 0%;
     opacity: 1;
   }
@@ -887,14 +891,17 @@ button, input, select, textarea {
 }
 
 @keyframes skeletonScanReveal {
-  0%, 4% {
+  0%, 3% {
     clip-path: inset(0 0 100% 0);
+    -webkit-clip-path: inset(0 0 100% 0);
   }
-  45%, 55% {
+  47%, 53% {
     clip-path: inset(0 0 0% 0);
+    -webkit-clip-path: inset(0 0 0% 0);
   }
-  95%, 100% {
+  97%, 100% {
     clip-path: inset(0 0 100% 0);
+    -webkit-clip-path: inset(0 0 100% 0);
   }
 }
 
