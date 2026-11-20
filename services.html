@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=42.0">
+  <link rel="stylesheet" href="css/styles.css?v=43.0">
 </head>
 <body>
 
@@ -60,11 +60,11 @@
           <div class="mega-dropdown service-catalog-menu">
               <section class="catalog-menu-group">
                 <h2><a href="services-mep.html">MEP Design Services</a></h2>
-                <ul><li><a href="services-mechanical-hvac.html">Mechanical/HVAC Design</a></li><li><a href="services-electrical-design.html">Electrical Design</a></li><li><a href="services-plumbing-design.html">Plumbing Design</a></li></ul>
+                <ul><li><a href="services-mechanical-hvac.html">Mechanical/HVAC Design</a></li><li><a href="services-electrical-design.html">Electrical Design</a></li><li><a href="services-plumbing-design.html">Plumbing Design</a></li><li><a href="services-fire-protection.html">Fire Protection Design</a></li></ul>
               </section>
               <section class="catalog-menu-group">
                 <h2><a href="services-construction.html">Construction Support Services</a></h2>
-                <ul><li><a href="services-quantity-takeoff.html">Quantity Takeoff Services</a></li><li><a href="services-family-creation.html">Revit Family Creation</a></li><li><a href="services-shop-drawings.html">Shop Drawings</a></li><li><a href="services-qa-qc.html">QA/QC Services</a></li></ul>
+                <ul><li><a href="services-quantity-takeoff.html">Quantity Takeoff Services</a></li><li><a href="services-qa-qc.html">QA/QC Services</a></li></ul>
               </section>
           </div>
         </div>
@@ -101,11 +101,11 @@
         <a href="services.html" class="drawer-link active" aria-current="page">All services</a>
               <section class="catalog-menu-group">
                 <h2><a href="services-mep.html">MEP Design Services</a></h2>
-                <ul><li><a href="services-mechanical-hvac.html">Mechanical/HVAC Design</a></li><li><a href="services-electrical-design.html">Electrical Design</a></li><li><a href="services-plumbing-design.html">Plumbing Design</a></li></ul>
+                <ul><li><a href="services-mechanical-hvac.html">Mechanical/HVAC Design</a></li><li><a href="services-electrical-design.html">Electrical Design</a></li><li><a href="services-plumbing-design.html">Plumbing Design</a></li><li><a href="services-fire-protection.html">Fire Protection Design</a></li></ul>
               </section>
               <section class="catalog-menu-group">
                 <h2><a href="services-construction.html">Construction Support Services</a></h2>
-                <ul><li><a href="services-quantity-takeoff.html">Quantity Takeoff Services</a></li><li><a href="services-family-creation.html">Revit Family Creation</a></li><li><a href="services-shop-drawings.html">Shop Drawings</a></li><li><a href="services-qa-qc.html">QA/QC Services</a></li></ul>
+                <ul><li><a href="services-quantity-takeoff.html">Quantity Takeoff Services</a></li><li><a href="services-qa-qc.html">QA/QC Services</a></li></ul>
               </section>
       </details>
       <a href="portfolio.html" class="drawer-link">Projects</a>
@@ -146,42 +146,86 @@
       <!-- catalog:overview -->
     <section class="catalog-group" id="mep">
       <h2><a href="services-mep.html">MEP Design Services <span aria-hidden="true">&rarr;</span></a></h2>
-      <p>Design for the building’s mechanical, electrical, and plumbing systems.</p>
-      <div class="subpage-grid-2 catalog-grid">
-        <article class="subpage-detail-box" id="mechanical">
-          <h3><a href="services-mechanical-hvac.html">Mechanical/HVAC Design <span aria-hidden="true">&rarr;</span></a></h3>
-          <p>Air conditioning, heating, ventilation, and cooling loads.</p>
-        </article>
-        <article class="subpage-detail-box" id="electrical">
-          <h3><a href="services-electrical-design.html">Electrical Design <span aria-hidden="true">&rarr;</span></a></h3>
-          <p>Power distribution, lighting, and backup systems.</p>
-        </article>
-        <article class="subpage-detail-box" id="plumbing">
-          <h3><a href="services-plumbing-design.html">Plumbing Design <span aria-hidden="true">&rarr;</span></a></h3>
-          <p>Water supply, sanitary drainage, and stormwater systems.</p>
-        </article>
+      <p>Design for the building’s mechanical, electrical, plumbing, and fire protection systems.</p>
+      <div class="service-drawings-grid grid-4">
+        <div class="drawing-sheet-card service-drawing-card" id="mechanical">
+          <div class="drawing-preview-box">
+            <span class="drawing-sheet-badge">M-101</span>
+            <span class="drawing-scale-badge">IS / ASHRAE</span>
+            <img src="assets/drawing-hvac.jpg?v=1.0" alt="Mechanical and HVAC Engineering Design Model" loading="lazy">
+          </div>
+          <div class="drawing-card-body">
+            <h4><a href="services-mechanical-hvac.html">Mechanical/HVAC Design <span aria-hidden="true">&rarr;</span></a></h4>
+            <p>Air conditioning, heating, ventilation, and cooling loads.</p>
+            <a href="services-mechanical-hvac.html" class="service-card-action-btn">Explore service &rarr;</a>
+          </div>
+        </div>
+        <div class="drawing-sheet-card service-drawing-card" id="electrical">
+          <div class="drawing-preview-box">
+            <span class="drawing-sheet-badge">E-201</span>
+            <span class="drawing-scale-badge">IS & IEC</span>
+            <img src="assets/drawing-electrical.jpg?v=1.0" alt="Power &amp; Lighting Electrical Engineering Model" loading="lazy">
+          </div>
+          <div class="drawing-card-body">
+            <h4><a href="services-electrical-design.html">Electrical Design <span aria-hidden="true">&rarr;</span></a></h4>
+            <p>Power distribution, lighting, and backup systems.</p>
+            <a href="services-electrical-design.html" class="service-card-action-btn">Explore service &rarr;</a>
+          </div>
+        </div>
+        <div class="drawing-sheet-card service-drawing-card" id="plumbing">
+          <div class="drawing-preview-box">
+            <span class="drawing-sheet-badge">P-401</span>
+            <span class="drawing-scale-badge">CPWD / PHE</span>
+            <img src="assets/drawing-plumbing.jpg?v=1.0" alt="Water Supply, Booster Pumps &amp; Drainage Stacks Drawing" loading="lazy">
+          </div>
+          <div class="drawing-card-body">
+            <h4><a href="services-plumbing-design.html">Plumbing Design <span aria-hidden="true">&rarr;</span></a></h4>
+            <p>Water supply, sanitary drainage, and stormwater systems.</p>
+            <a href="services-plumbing-design.html" class="service-card-action-btn">Explore service &rarr;</a>
+          </div>
+        </div>
+        <div class="drawing-sheet-card service-drawing-card" id="fire">
+          <div class="drawing-preview-box">
+            <span class="drawing-sheet-badge">FP-301</span>
+            <span class="drawing-scale-badge">NBC PART 4</span>
+            <img src="assets/drawing-fire-protection.jpg?v=1.0" alt="Fire Sprinkler Network &amp; Standpipe Engineering Drawing" loading="lazy">
+          </div>
+          <div class="drawing-card-body">
+            <h4><a href="services-fire-protection.html">Fire Protection Design <span aria-hidden="true">&rarr;</span></a></h4>
+            <p>Sprinkler, hydrant, fire alarm, and smoke-control design.</p>
+            <a href="services-fire-protection.html" class="service-card-action-btn">Explore service &rarr;</a>
+          </div>
+        </div>
       </div>
     </section>
     <section class="catalog-group" id="construction">
       <h2><a href="services-construction.html">Construction Support Services <span aria-hidden="true">&rarr;</span></a></h2>
       <p>Drawings, quantities, components, and checks for construction teams.</p>
-      <div class="subpage-grid-2 catalog-grid">
-        <article class="subpage-detail-box">
-          <h3><a href="services-quantity-takeoff.html">Quantity Takeoff Services <span aria-hidden="true">&rarr;</span></a></h3>
-          <p>Material counts and measurements for estimating.</p>
-        </article>
-        <article class="subpage-detail-box">
-          <h3><a href="services-family-creation.html">Revit Family Creation <span aria-hidden="true">&rarr;</span></a></h3>
-          <p>Reusable Revit components for project models.</p>
-        </article>
-        <article class="subpage-detail-box">
-          <h3><a href="services-shop-drawings.html">Shop Drawings <span aria-hidden="true">&rarr;</span></a></h3>
-          <p>Installation drawings based on the coordinated design.</p>
-        </article>
-        <article class="subpage-detail-box">
-          <h3><a href="services-qa-qc.html">QA/QC Services <span aria-hidden="true">&rarr;</span></a></h3>
-          <p>Drawing and model checks before issue.</p>
-        </article>
+      <div class="service-drawings-grid grid-2">
+        <div class="drawing-sheet-card service-drawing-card">
+          <div class="drawing-preview-box">
+            <span class="drawing-sheet-badge">QTO-101</span>
+            <span class="drawing-scale-badge">IS 1200 / BOQ</span>
+            <img src="assets/drawing-takeoff.jpg?v=1.0" alt="Material Quantity Takeoff &amp; Cost Estimation Schedule" loading="lazy">
+          </div>
+          <div class="drawing-card-body">
+            <h4><a href="services-quantity-takeoff.html">Quantity Takeoff Services <span aria-hidden="true">&rarr;</span></a></h4>
+            <p>Material counts and measurements for estimating.</p>
+            <a href="services-quantity-takeoff.html" class="service-card-action-btn">Explore service &rarr;</a>
+          </div>
+        </div>
+        <div class="drawing-sheet-card service-drawing-card">
+          <div class="drawing-preview-box">
+            <span class="drawing-sheet-badge">QC-201</span>
+            <span class="drawing-scale-badge">ISO / COMPLIANCE</span>
+            <img src="assets/drawing-qaqc.jpg?v=1.0" alt="QA/QC Drawing Scrutiny &amp; Site Verification Checks" loading="lazy">
+          </div>
+          <div class="drawing-card-body">
+            <h4><a href="services-qa-qc.html">QA/QC Services <span aria-hidden="true">&rarr;</span></a></h4>
+            <p>Drawing and model checks before issue.</p>
+            <a href="services-qa-qc.html" class="service-card-action-btn">Explore service &rarr;</a>
+          </div>
+        </div>
       </div>
     </section>
 <!-- /catalog:overview -->

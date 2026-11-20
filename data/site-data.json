@@ -373,8 +373,8 @@
     {
       "id": "fire-protection",
       "title": "Fire Protection Design",
-      "category": "OTHER SERVICES",
-      "categorySlug": "other",
+      "category": "MEP DESIGN SERVICES",
+      "categorySlug": "mep",
       "anchor": "fire-protection",
       "url": "services-fire-protection.html",
       "summary": "Sprinkler, hydrant, fire alarm, and smoke-control design.",

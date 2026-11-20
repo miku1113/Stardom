@@ -13,13 +13,18 @@ const {services} = JSON.parse(read('data/site-data.json'));
 // Active core service groups displayed across site navigation, home, and catalog
 // NOTE: 'bim', 'drafting', and 'other' are archived in repository for future feature rollout
 const groups = [
-  ['mep', 'MEP Design Services', 'Design for the building’s mechanical, electrical, and plumbing systems.'],
+  ['mep', 'MEP Design Services', 'Design for the building’s mechanical, electrical, plumbing, and fire protection systems.'],
   // ['bim', 'BIM Services', 'Building information models, drawing conversions, and coordination checks.'], // Archived for future feature
   ['construction', 'Construction Support Services', 'Drawings, quantities, components, and checks for construction teams.'],
 ].map(([slug, title, summary]) => ({
   slug, title, summary,
   url: `services-${slug}.html`,
-  services: services.filter((service) => service.categorySlug === slug),
+  services: services.filter((service) => {
+    if (slug === 'construction') {
+      return service.categorySlug === slug && service.id !== 'family-creation' && service.id !== 'shop-drawings';
+    }
+    return service.categorySlug === slug;
+  }),
 }));
 
 const legacy = new Map([
@@ -47,33 +52,83 @@ function menu(groups) {
               </section>`).join('\n');
 }
 
+const serviceCardMeta = {
+  'mechanical-hvac': {
+    badge: 'M-101',
+    code: 'IS / ASHRAE',
+    img: 'assets/drawing-hvac.jpg?v=1.0',
+    alt: 'Mechanical and HVAC Engineering Design Model'
+  },
+  'electrical-design': {
+    badge: 'E-201',
+    code: 'IS & IEC',
+    img: 'assets/drawing-electrical.jpg?v=1.0',
+    alt: 'Power & Lighting Electrical Engineering Model'
+  },
+  'plumbing-design': {
+    badge: 'P-401',
+    code: 'CPWD / PHE',
+    img: 'assets/drawing-plumbing.jpg?v=1.0',
+    alt: 'Water Supply, Booster Pumps & Drainage Stacks Drawing'
+  },
+  'fire-protection': {
+    badge: 'FP-301',
+    code: 'NBC PART 4',
+    img: 'assets/drawing-fire-protection.jpg?v=1.0',
+    alt: 'Fire Sprinkler Network & Standpipe Engineering Drawing'
+  },
+  'quantity-takeoff': {
+    badge: 'QTO-101',
+    code: 'IS 1200 / BOQ',
+    img: 'assets/drawing-takeoff.jpg?v=1.0',
+    alt: 'Material Quantity Takeoff & Cost Estimation Schedule'
+  },
+  'qa-qc': {
+    badge: 'QC-201',
+    code: 'ISO / COMPLIANCE',
+    img: 'assets/drawing-qaqc.jpg?v=1.0',
+    alt: 'QA/QC Drawing Scrutiny & Site Verification Checks'
+  }
+};
+
 function cardGrid(items) {
-  return `      <div class="subpage-grid-2 catalog-grid">
-${items.map((item) => `        <article class="subpage-detail-box"${item.anchor ? ` id="${item.anchor}"` : ''}>
-          <h3><a href="${item.url}">${html(item.title)} <span aria-hidden="true">&rarr;</span></a></h3>
-          <p>${html(item.summary)}</p>
-        </article>`).join('\n')}
+  const gridClass = items.length >= 4 ? 'service-drawings-grid grid-4' : 'service-drawings-grid grid-2';
+  return `      <div class="${gridClass}">
+${items.map((item) => {
+    const meta = serviceCardMeta[item.id] || {
+      badge: 'DWG-01',
+      code: 'NBC / IS',
+      img: 'assets/drawing-hvac.jpg?v=1.0',
+      alt: item.title
+    };
+    return `        <div class="drawing-sheet-card service-drawing-card"${item.anchor ? ` id="${item.anchor}"` : ''}>
+          <div class="drawing-preview-box">
+            <span class="drawing-sheet-badge">${meta.badge}</span>
+            <span class="drawing-scale-badge">${meta.code}</span>
+            <img src="${meta.img}" alt="${html(meta.alt)}" loading="lazy">
+          </div>
+          <div class="drawing-card-body">
+            <h4><a href="${item.url}">${html(item.title)} <span aria-hidden="true">&rarr;</span></a></h4>
+            <p>${html(item.summary)}</p>
+            <a href="${item.url}" class="service-card-action-btn">Explore service &rarr;</a>
+          </div>
+        </div>`;
+  }).join('\n')}
       </div>`;
 }
 
 const serviceImages = {
   mep: {
     img: 'assets/service-mep-design.jpg?v=1.0',
-    alt: 'MEP Design Services - Mechanical, Electrical & Plumbing Engineering',
+    alt: 'MEP Design Services - Mechanical, Electrical, Plumbing & Fire Protection',
     tag: '01 / MEP SYSTEMS',
-    chips: ['Mechanical & HVAC', 'Electrical Power', 'Plumbing & Drainage']
-  },
-  bim: {
-    img: 'assets/service-bim.jpg?v=1.0',
-    alt: 'BIM Services - 3D Modeling & Coordination',
-    tag: 'BIM & VDC',
-    chips: ['LOD 350-400 BIM', '3D Clash Detection', 'Point Cloud to BIM']
+    chips: ['Mechanical & HVAC', 'Electrical Power', 'Plumbing & Drainage', 'Fire Protection']
   },
   construction: {
     img: 'assets/service-construction.jpg?v=1.0',
     alt: 'Construction Support Services - On-site Engineering & Drawings',
     tag: '02 / SITE EXECUTION',
-    chips: ['Shop Drawings', 'Quantity Takeoff', 'QA/QC Inspection']
+    chips: ['Quantity Takeoff', 'QA/QC Inspection']
   }
 };
 

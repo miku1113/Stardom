@@ -5892,6 +5892,153 @@ button, input, select, textarea,
 }
 
 /* ==========================================================================
+   SERVICES CATALOGUE DRAWING CARDS (Rich Engineering Sheet UI)
+   ========================================================================== */
+.service-drawings-grid {
+  display: grid;
+  gap: 26px;
+  margin-top: 24px;
+}
+
+.service-drawings-grid.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.service-drawings-grid.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.service-drawing-card {
+  background: #0D0D0E;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+}
+
+.service-drawing-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 255, 255, 0.06);
+}
+
+.service-drawing-card .drawing-preview-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  height: 205px;
+  overflow: hidden;
+  background: #000000;
+  flex-shrink: 0;
+}
+
+.service-drawing-card .drawing-preview-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%) brightness(0.92) contrast(1.08);
+  -webkit-filter: grayscale(100%) brightness(0.92) contrast(1.08);
+  transition: filter 0.5s cubic-bezier(0.16, 1, 0.3, 1), -webkit-filter 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-drawing-card:hover .drawing-preview-box img {
+  filter: grayscale(0%) brightness(1) contrast(1);
+  -webkit-filter: grayscale(0%) brightness(1) contrast(1);
+  transform: scale(1.06);
+}
+
+.service-drawing-card .drawing-card-body {
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.service-drawing-card .drawing-card-body h4 {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  line-height: 1.35;
+  color: #FFFFFF;
+}
+
+.service-drawing-card .drawing-card-body h4 a {
+  color: #FFFFFF;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  transition: color 0.2s ease;
+}
+
+.service-drawing-card .drawing-card-body h4 a span {
+  color: var(--color-copper);
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.service-drawing-card:hover .drawing-card-body h4 a span {
+  transform: translateX(4px);
+  color: #FFFFFF;
+}
+
+.service-drawing-card .drawing-card-body p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #A1A1AA;
+  margin: 0 0 18px 0;
+  flex-grow: 1;
+}
+
+.service-card-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-full);
+  color: #FFFFFF;
+  font-family: var(--font-main) !important;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: auto;
+}
+
+.service-drawing-card:hover .service-card-action-btn {
+  background: #FFFFFF;
+  color: #000000;
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 1100px) {
+  .service-drawings-grid.grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .service-drawings-grid.grid-4,
+  .service-drawings-grid.grid-2 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* ==========================================================================
    HOMEPAGE SERVICES (Core Pillars Row Showcase with Black & White to Color Hover)
    ========================================================================== */
 .home-services-row {
