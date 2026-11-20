@@ -458,4 +458,195 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealTargets.forEach(el => scrollObserver.observe(el));
   }
+
+  // --- 12. Dynamic Architectural Stepper Controller ---
+  const dynamicStepper = document.getElementById('dynamicStepper');
+  if (dynamicStepper) {
+    const steps = dynamicStepper.querySelectorAll('.stepper-step');
+    const detailBadge = document.getElementById('stepperDetailBadge');
+    const detailBody = document.getElementById('stepperDetailBody');
+    const counter = document.getElementById('stepperCounter');
+    const prevBtn = document.getElementById('stepperPrevBtn');
+    const nextBtn = document.getElementById('stepperNextBtn');
+
+    const phaseData = [
+      {
+        phase: 'PHASE 01',
+        title: 'Scope Definition & Statutory Scrutiny',
+        badge: 'STAGE 01 &bull; INTAKE &amp; FEASIBILITY',
+        summary: 'Reviewing architectural plans, structural grids, and regional municipal compliance boundaries before calculating equipment capacities.',
+        tasks: [
+          'Scrutiny of architectural CAD/BIM floor plans, elevations, and structural column grid spacing.',
+          'Surat Municipal Corporation (SMC) & NBC 2016 statutory compliance benchmark analysis.',
+          'Occupancy classification, diversity factors, and emergency egress routing.',
+          'Establishment of the formal Design Basis Report (DBR) and project drawing register.'
+        ],
+        outputs: 'Design Basis Report (DBR), Spatial MEP Allocation Schematics, Milestones Schedule',
+        formats: 'Autodesk Revit (.rvt), AutoCAD (.dwg), Searchable PDF (.pdf)',
+        codes: 'NBC 2016 Part 4 & 8, IS 732, ECBC 2017, SMC Fire Regulations',
+        turnaround: '3 to 5 Business Days'
+      },
+      {
+        phase: 'PHASE 02',
+        title: 'Engineering Calculations & System Sizing',
+        badge: 'STAGE 02 &bull; SIZING &amp; SPECIFICATIONS',
+        summary: 'Rigorous engineering math sizing HVAC thermal loads, electrical transformers, hydro-pneumatic pumping, and fire hydraulic networks.',
+        tasks: [
+          'Room-by-room thermal cooling load calculation via ASHRAE RTS / HAP Carrier simulations.',
+          'Electrical connected & maximum demand load sheets, transformer, DG backup, and busduct sizing.',
+          'Hydro-pneumatic pumping head calculations, domestic/flushing storage tanks, and STP sizing.',
+          'Preparation of single line diagrams (SLDs), equipment schedules, and schematic risers.'
+        ],
+        outputs: 'Heat Load Calculations, Electrical SLDs, Equipment Schedules, Plumbing Schematics',
+        formats: 'AutoCAD (.dwg), Engineering Spreadsheets (.xlsx), Schematic PDF (.pdf)',
+        codes: 'ASHRAE Fundamentals, IS 1391, NBC 2016 Part 9, CEA Norms',
+        turnaround: '5 to 7 Business Days'
+      },
+      {
+        phase: 'PHASE 03',
+        title: '3D BIM Multi-Trade Clash Coordination',
+        badge: 'STAGE 03 &bull; 3D BIM COORDINATION',
+        summary: 'Spatial alignment of mechanical ductwork, electrical cable trays, fire pipes, and plumbing stacks against concrete structure in 3D BIM.',
+        tasks: [
+          'Full 3D modeling across all MEP disciplines in Autodesk Revit 2024 at LOD 300/350.',
+          'Automated hard & clearance clash detection in Navisworks Manage across all trades.',
+          'Beam penetrations, structural drop beam checks, and false ceiling height optimization.',
+          'Multi-disciplinary clash review meetings and signed-off composite overlay drawings.'
+        ],
+        outputs: 'Coordinated 3D BIM Model, Navisworks Clash Audit Report, Combined Services Drawings (CSD)',
+        formats: 'Autodesk Navisworks (.nwd), Revit (.rvt), Industry Foundation Classes (.ifc)',
+        codes: 'ISO 19650 BIM Standards, AIA Document E202, NBC 2016 Coordination Guidelines',
+        turnaround: '7 to 10 Business Days'
+      },
+      {
+        phase: 'PHASE 04',
+        title: 'GFC Release & Statutory Approvals',
+        badge: 'STAGE 04 &bull; GFC ISSUANCE &amp; TENDER',
+        summary: 'Final issuance of Good For Construction (GFC) sets, sleeve cutout locations, municipal submission sets, and comprehensive BOQ.',
+        tasks: [
+          'Final release of Good For Construction (GFC) sheets with dimensioned sleeve & core-cut coordinates.',
+          'Statutory submission sets formatted specifically for Surat Municipal Corporation (SMC) Fire NOC.',
+          'Preparation of itemized Bill of Quantities (BOQ) with unit rates and technical tender specifications.',
+          'Site coordination handover and contractor technical RFI resolution support.'
+        ],
+        outputs: 'Stamped GFC Drawing Packages, Sleeve & Opening Cutout Drawings, Tender BOQ',
+        formats: 'Stamped PDF Sets, High-Res AutoCAD (.dwg), Itemized BOQ (.xlsx)',
+        codes: 'NBC 2016 Part 4 Fire & Life Safety, SMC Bylaws, GPCB Environmental Norms',
+        turnaround: 'Immediate Site Release & Handover'
+      }
+    ];
+
+    let currentStep = 0;
+    let autoInterval = null;
+
+    function renderStep(idx) {
+      currentStep = idx;
+      const data = phaseData[idx];
+
+      // Update Step Classes
+      steps.forEach((step, i) => {
+        const fill = step.querySelector('.stepper-connector-fill');
+        step.classList.remove('is-active', 'is-completed');
+        if (i < idx) {
+          step.classList.add('is-completed');
+          if (fill) fill.style.width = '100%';
+        } else if (i === idx) {
+          step.classList.add('is-active');
+          if (fill) fill.style.width = '100%';
+        } else {
+          if (fill) fill.style.width = '0%';
+        }
+      });
+
+      // Update Panel
+      if (detailBadge) {
+        detailBadge.innerHTML = `<span style="width:8px;height:8px;border-radius:50%;background:var(--color-copper);display:inline-block;"></span> ${data.badge}`;
+      }
+      if (counter) {
+        counter.textContent = `Phase ${idx + 1} of ${phaseData.length}`;
+      }
+
+      if (detailBody) {
+        detailBody.innerHTML = `
+          <div class="stepper-panel-grid">
+            <div>
+              <h3 class="stepper-panel-heading">${data.title}</h3>
+              <p class="stepper-panel-summary">${data.summary}</p>
+              <ul class="stepper-panel-tasks-list">
+                ${data.tasks.map(t => `<li><span class="stepper-task-dot"></span><span>${t}</span></li>`).join('')}
+              </ul>
+            </div>
+            <div>
+              <div class="stepper-meta-card">
+                <div class="stepper-meta-item">
+                  <span class="stepper-meta-label">Primary Deliverables</span>
+                  <span class="stepper-meta-value">${data.outputs}</span>
+                </div>
+                <div class="stepper-meta-item">
+                  <span class="stepper-meta-label">File Formats Issued</span>
+                  <span class="stepper-meta-value" style="font-family:var(--font-mono);font-size:12px;color:#A1A1AA;">${data.formats}</span>
+                </div>
+                <div class="stepper-meta-item">
+                  <span class="stepper-meta-label">Standards Applied</span>
+                  <span class="stepper-meta-value" style="color:var(--color-copper);font-family:var(--font-mono);font-size:11.5px;">${data.codes}</span>
+                </div>
+                <div class="stepper-meta-item">
+                  <span class="stepper-meta-label">Typical Stage Duration</span>
+                  <span class="stepper-meta-value">${data.turnaround}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // Step Click Handlers
+    steps.forEach((step, idx) => {
+      step.addEventListener('click', () => {
+        stopAuto();
+        renderStep(idx);
+      });
+    });
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        stopAuto();
+        const prev = (currentStep - 1 + phaseData.length) % phaseData.length;
+        renderStep(prev);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        stopAuto();
+        const next = (currentStep + 1) % phaseData.length;
+        renderStep(next);
+      });
+    }
+
+    function startAuto() {
+      if (autoInterval) clearInterval(autoInterval);
+      autoInterval = setInterval(() => {
+        const next = (currentStep + 1) % phaseData.length;
+        renderStep(next);
+      }, 5000);
+    }
+
+    function stopAuto() {
+      if (autoInterval) {
+        clearInterval(autoInterval);
+        autoInterval = null;
+      }
+    }
+
+    dynamicStepper.addEventListener('mouseenter', stopAuto);
+    dynamicStepper.addEventListener('mouseleave', startAuto);
+
+    // Initial render
+    renderStep(0);
+    startAuto();
+  }
 });
