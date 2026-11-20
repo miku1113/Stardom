@@ -649,14 +649,20 @@ document.addEventListener('DOMContentLoaded', () => {
     renderStep(0);
   }
 
-  // --- 13. Reviews Horizontal Carousel & Dots Controller ---
+  // --- 13. Reviews Horizontal Carousel & Auto-Scroll Controller ---
   const reviewsTrack = document.getElementById('reviewsSliderTrack');
+  const reviewsWrapper = document.getElementById('reviewsCarouselWrap');
   const reviewDots = document.querySelectorAll('.review-dot');
   const reviewsPrevBtn = document.getElementById('reviewsPrevBtn');
   const reviewsNextBtn = document.getElementById('reviewsNextBtn');
+  const testimonialsSection = document.getElementById('testimonials');
 
   if (reviewsTrack && reviewDots.length > 0) {
     const slides = reviewsTrack.querySelectorAll('.review-slide');
+    let autoScrollTimer = null;
+    let isUserInteracting = false;
+    let isSectionInView = false;
+    const AUTO_SCROLL_DELAY = 3800; // 3.8 seconds per review
 
     function updateActiveDot(idx) {
       reviewDots.forEach((dot, i) => {
@@ -683,6 +689,42 @@ document.addEventListener('DOMContentLoaded', () => {
       return closestIdx;
     }
 
+    function scrollToSlide(idx) {
+      if (!slides[idx]) return;
+      const targetLeft = slides[idx].offsetLeft - reviewsTrack.offsetLeft;
+      reviewsTrack.scrollTo({ left: targetLeft, behavior: 'smooth' });
+      updateActiveDot(idx);
+    }
+
+    function advanceToNextSlide() {
+      const maxScroll = reviewsTrack.scrollWidth - reviewsTrack.clientWidth;
+      const isAtEnd = reviewsTrack.scrollLeft >= maxScroll - 20;
+
+      if (isAtEnd) {
+        scrollToSlide(0);
+      } else {
+        const currentIdx = getActiveSlideIndex();
+        const nextIdx = (currentIdx + 1) % slides.length;
+        scrollToSlide(nextIdx);
+      }
+    }
+
+    function startAutoScroll() {
+      stopAutoScroll();
+      if (isUserInteracting || !isSectionInView) return;
+      autoScrollTimer = setInterval(() => {
+        advanceToNextSlide();
+      }, AUTO_SCROLL_DELAY);
+    }
+
+    function stopAutoScroll() {
+      if (autoScrollTimer) {
+        clearInterval(autoScrollTimer);
+        autoScrollTimer = null;
+      }
+    }
+
+    // Scroll listener for manual dragging / touch swiping
     let scrollTimeout;
     reviewsTrack.addEventListener('scroll', () => {
       clearTimeout(scrollTimeout);
@@ -692,39 +734,82 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 50);
     }, { passive: true });
 
+    // Interactive Dot Navigation
     reviewDots.forEach(dot => {
       dot.addEventListener('click', () => {
         const idx = parseInt(dot.getAttribute('data-index'), 10);
-        if (slides[idx]) {
-          const targetLeft = slides[idx].offsetLeft - reviewsTrack.offsetLeft;
-          reviewsTrack.scrollTo({ left: targetLeft, behavior: 'smooth' });
-          updateActiveDot(idx);
-        }
+        scrollToSlide(idx);
+        startAutoScroll(); // reset timer
       });
     });
 
+    // Arrow Buttons
     if (reviewsPrevBtn) {
       reviewsPrevBtn.addEventListener('click', () => {
         const currentIdx = getActiveSlideIndex();
-        const prevIdx = Math.max(0, currentIdx - 1);
-        if (slides[prevIdx]) {
-          const targetLeft = slides[prevIdx].offsetLeft - reviewsTrack.offsetLeft;
-          reviewsTrack.scrollTo({ left: targetLeft, behavior: 'smooth' });
-          updateActiveDot(prevIdx);
-        }
+        const prevIdx = currentIdx === 0 ? slides.length - 1 : currentIdx - 1;
+        scrollToSlide(prevIdx);
+        startAutoScroll(); // reset timer
       });
     }
 
     if (reviewsNextBtn) {
       reviewsNextBtn.addEventListener('click', () => {
-        const currentIdx = getActiveSlideIndex();
-        const nextIdx = Math.min(slides.length - 1, currentIdx + 1);
-        if (slides[nextIdx]) {
-          const targetLeft = slides[nextIdx].offsetLeft - reviewsTrack.offsetLeft;
-          reviewsTrack.scrollTo({ left: targetLeft, behavior: 'smooth' });
-          updateActiveDot(nextIdx);
-        }
+        advanceToNextSlide();
+        startAutoScroll(); // reset timer
       });
+    }
+
+    // Pause auto-scroll on hover (so user can read comfortably)
+    const interactionContainer = reviewsWrapper || reviewsTrack;
+    interactionContainer.addEventListener('mouseenter', () => {
+      isUserInteracting = true;
+      stopAutoScroll();
+    });
+
+    interactionContainer.addEventListener('mouseleave', () => {
+      isUserInteracting = false;
+      startAutoScroll();
+    });
+
+    // Pause on touch / drag, resume on touch end
+    interactionContainer.addEventListener('touchstart', () => {
+      isUserInteracting = true;
+      stopAutoScroll();
+    }, { passive: true });
+
+    interactionContainer.addEventListener('touchend', () => {
+      setTimeout(() => {
+        isUserInteracting = false;
+        startAutoScroll();
+      }, 1000);
+    }, { passive: true });
+
+    // Page visibility pause (saves CPU/battery when tab is inactive)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoScroll();
+      } else if (isSectionInView && !isUserInteracting) {
+        startAutoScroll();
+      }
+    });
+
+    // Viewport Intersection Observer: only auto-scroll when reviews are in view
+    if (testimonialsSection && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          isSectionInView = entry.isIntersecting;
+          if (isSectionInView) {
+            startAutoScroll();
+          } else {
+            stopAutoScroll();
+          }
+        });
+      }, { threshold: 0.15 });
+      observer.observe(testimonialsSection);
+    } else {
+      isSectionInView = true;
+      startAutoScroll();
     }
   }
 
