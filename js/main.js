@@ -602,11 +602,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="stepper-meta-item">
                   <span class="stepper-meta-label">File Formats Issued</span>
-                  <span class="stepper-meta-value" style="font-family:var(--font-mono);font-size:12px;color:#A1A1AA;">${data.formats}</span>
+                  <span class="stepper-meta-value" style="font-family:var(--font-main);font-size:12px;color:#A1A1AA;">${data.formats}</span>
                 </div>
                 <div class="stepper-meta-item">
                   <span class="stepper-meta-label">Standards Applied</span>
-                  <span class="stepper-meta-value" style="color:var(--color-copper);font-family:var(--font-mono);font-size:11.5px;">${data.codes}</span>
+                  <span class="stepper-meta-value" style="color:var(--color-copper);font-family:var(--font-main);font-size:11.5px;">${data.codes}</span>
                 </div>
                 <div class="stepper-meta-item">
                   <span class="stepper-meta-label">Typical Stage Duration</span>
