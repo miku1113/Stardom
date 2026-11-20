@@ -756,30 +756,188 @@ button, input, select, textarea {
   overflow: hidden;
   aspect-ratio: 16 / 9;
   margin-bottom: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   background: #000000;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
 }
 
-/* Modern Architectural Laser HUD Scanline (Replaces blowing circle) */
-.spotlight-card-media::after {
-  content: '';
+/* Base Image: Exterior Building */
+.spotlight-base-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.92) contrast(1.05);
+  z-index: 1;
+}
+
+/* Skeleton Layer: Internal MEP Plumbing, HVAC, Fire & Cable Trays */
+.spotlight-skeleton-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  clip-path: inset(0 0 100% 0);
+  animation: skeletonScanReveal 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+.spotlight-skeleton-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(1.02) contrast(1.12);
+}
+
+/* High-Tech Laser Beam Scanner Line */
+.spotlight-laser-beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 8;
+  animation: laserBeamMove 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.spotlight-laser-line {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.8) 50%, transparent 100%);
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.85);
-  opacity: 0.8;
-  animation: architecturalScan 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  height: 2.5px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--color-copper) 12%, 
+    #FFFFFF 50%, 
+    var(--color-copper) 88%, 
+    transparent 100%
+  );
+  box-shadow: 0 0 12px #FFFFFF, 0 0 24px var(--color-copper), 0 0 35px rgba(201, 147, 90, 0.85);
+}
+
+.spotlight-laser-glow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: linear-gradient(0deg, rgba(201, 147, 90, 0.22) 0%, transparent 100%);
   pointer-events: none;
 }
 
-@keyframes architecturalScan {
-  0% { top: 0%; opacity: 0; }
-  12% { opacity: 0.85; }
-  88% { opacity: 0.85; }
-  100% { top: 100%; opacity: 0; }
+.spotlight-laser-tag {
+  position: absolute;
+  right: 12px;
+  top: -12px;
+  background: #000000;
+  border: 1px solid var(--color-copper);
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.95);
+  white-space: nowrap;
+}
+
+.laser-tag-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 6px #10B981;
+  animation: beaconPulse 1.2s infinite ease-in-out;
+}
+
+/* Synchronized Keyframes for Laser Beam & Skeleton Reveal */
+@keyframes laserBeamMove {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  45% {
+    top: 100%;
+    opacity: 1;
+  }
+  50% {
+    top: 100%;
+    opacity: 0.85;
+  }
+  55% {
+    top: 100%;
+    opacity: 1;
+  }
+  95% {
+    top: 0%;
+    opacity: 1;
+  }
+  100% {
+    top: 0%;
+    opacity: 0;
+  }
+}
+
+@keyframes skeletonScanReveal {
+  0%, 4% {
+    clip-path: inset(0 0 100% 0);
+  }
+  45%, 55% {
+    clip-path: inset(0 0 0% 0);
+  }
+  95%, 100% {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+/* HUD Overlay Badges */
+.spotlight-hud-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 12px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.85) 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.spotlight-hud-mode {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 0.8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.spotlight-hud-status {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--color-copper);
+  background: rgba(194, 120, 3, 0.14);
+  border: 1px solid rgba(194, 120, 3, 0.35);
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .spotlight-image {

@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=31.0">
+  <link rel="stylesheet" href="css/styles.css?v=32.0">
 </head>
 <body>
 
@@ -189,8 +189,33 @@
             <span class="spotlight-sector-badge">COMMERCIAL</span>
           </div>
 
-          <div class="spotlight-card-media">
-            <img src="assets/project-commercial.jpg" alt="Illustration of a commercial office building" class="spotlight-image">
+          <div class="spotlight-card-media" id="heroScanMedia">
+            <!-- Exterior Architecture Base Layer -->
+            <img src="assets/project-commercial.jpg" alt="Commercial office building architectural exterior" class="spotlight-base-image">
+
+            <!-- Internal MEP Engineering Skeleton Layer (Plumbing, HVAC, Electrical) -->
+            <div class="spotlight-skeleton-wrapper" aria-hidden="true">
+              <img src="assets/project-commercial-skeleton.jpg" alt="Commercial office building 3D MEP BIM internal engineering skeleton showing plumbing and HVAC" class="spotlight-skeleton-image">
+            </div>
+
+            <!-- Animated Laser Scanner Line with Beam Aura -->
+            <div class="spotlight-laser-beam" aria-hidden="true">
+              <div class="spotlight-laser-line"></div>
+              <div class="spotlight-laser-glow"></div>
+              <div class="spotlight-laser-tag">
+                <span class="laser-tag-dot"></span>
+                <span class="laser-tag-text">MEP SCAN ACTIVE</span>
+              </div>
+            </div>
+
+            <!-- HUD Scan Status Overlay -->
+            <div class="spotlight-hud-overlay">
+              <span class="spotlight-hud-mode" id="heroScanLabel">
+                <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#10B981;"></span>
+                <span>SCAN: MEP SKELETON</span>
+              </span>
+              <span class="spotlight-hud-status">LOD 350 BIM</span>
+            </div>
           </div>
 
           <div class="spotlight-card-body">
@@ -831,6 +856,6 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/main.js?v=30.0"></script>
+  <script src="js/main.js?v=31.0"></script>
 </body>
 </html>

@@ -728,4 +728,18 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+
+  // --- 14. Hero Scanner HUD Indicator Switcher ---
+  const heroScanLabel = document.getElementById('heroScanLabel');
+  if (heroScanLabel) {
+    let scanPhase = false;
+    setInterval(() => {
+      scanPhase = !scanPhase;
+      if (scanPhase) {
+        heroScanLabel.innerHTML = '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#10B981;"></span><span>SCAN: MEP SKELETON (PLUMBING &amp; HVAC)</span>';
+      } else {
+        heroScanLabel.innerHTML = '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--color-copper);"></span><span>SCAN: ARCHITECTURAL EXTERIOR</span>';
+      }
+    }, 3500);
+  }
 });
