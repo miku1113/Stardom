@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.querySelectorAll('.portfolio-card').forEach(card => {
           if (filter === 'all' || card.getAttribute('data-category') === filter) {
-            card.style.display = 'block';
+            card.style.display = 'flex';
           } else {
             card.style.display = 'none';
           }
