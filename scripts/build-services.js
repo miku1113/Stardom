@@ -69,7 +69,7 @@ const navigation = [
   ['index.html', 'Home'],
   ['about.html', 'About Us'],
   ['services.html', 'Services'],
-  ['portfolio.html', 'Project Examples'],
+  ['portfolio.html', 'Projects'],
   ['sectors.html', 'Industries'],
   ['career.html', 'Careers'],
   ['contact.html', 'Contact Us'],
