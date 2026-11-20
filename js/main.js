@@ -649,7 +649,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderStep(0);
   }
 
-  // --- 13. Reviews Horizontal Carousel & Auto-Scroll Controller ---
+  // --- 13. Reviews Horizontal Carousel & Continuous Auto-Scroll Controller ---
   const reviewsTrack = document.getElementById('reviewsSliderTrack');
   const reviewsWrapper = document.getElementById('reviewsCarouselWrap');
   const reviewDots = document.querySelectorAll('.review-dot');
@@ -657,17 +657,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const reviewsNextBtn = document.getElementById('reviewsNextBtn');
   const testimonialsSection = document.getElementById('testimonials');
 
-  if (reviewsTrack && reviewDots.length > 0) {
-    const slides = reviewsTrack.querySelectorAll('.review-slide');
-    let autoScrollTimer = null;
-    let isHovered = false;
-    let hoverResumeTimer = null;
-    let isSectionInView = true; // default true so it starts immediately
-    const AUTO_SCROLL_DELAY = 3400; // 3.4 seconds per review
+  if (reviewsTrack) {
+    // Clone all child review cards to build an endless seamless infinite track
+    const originalChildren = Array.from(reviewsTrack.children);
+    const originalCount = originalChildren.length;
+    originalChildren.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add('review-clone');
+      clone.setAttribute('aria-hidden', 'true');
+      reviewsTrack.appendChild(clone);
+    });
 
-    function updateActiveDot(idx) {
+    let isPaused = false;
+    let isSectionInView = true;
+    let isProgrammatic = false;
+    let rafId = null;
+    let resumeTimeout = null;
+    const SPEED = 0.85; // px per frame (ultra-smooth ~50px/sec)
+
+    function getHalfWidth() {
+      return reviewsTrack.scrollWidth / 2;
+    }
+
+    function updateActiveDot() {
+      if (!reviewDots.length || originalCount === 0) return;
+      const halfWidth = getHalfWidth();
+      if (!halfWidth) return;
+      const normalizedScroll = reviewsTrack.scrollLeft % halfWidth;
+      const activeIdx = Math.min(
+        originalCount - 1,
+        Math.floor((normalizedScroll / halfWidth) * originalCount)
+      );
       reviewDots.forEach((dot, i) => {
-        if (i === idx) {
+        if (i === activeIdx) {
           dot.classList.add('is-active');
         } else {
           dot.classList.remove('is-active');
@@ -675,162 +697,111 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    function getActiveSlideIndex() {
-      const scrollPos = reviewsTrack.scrollLeft;
-      let closestIdx = 0;
-      let minDiff = Infinity;
+    function loop() {
+      if (!isPaused && isSectionInView && !isProgrammatic) {
+        const halfWidth = getHalfWidth();
+        reviewsTrack.scrollLeft += SPEED;
 
-      slides.forEach((slide, idx) => {
-        const diff = Math.abs(slide.offsetLeft - reviewsTrack.offsetLeft - scrollPos);
-        if (diff < minDiff) {
-          minDiff = diff;
-          closestIdx = idx;
+        // When first set finishes, seamlessly wrap back to start
+        if (reviewsTrack.scrollLeft >= halfWidth) {
+          reviewsTrack.scrollLeft -= halfWidth;
         }
-      });
-      return closestIdx;
-    }
 
-    function advanceNext() {
-      const maxScroll = reviewsTrack.scrollWidth - reviewsTrack.clientWidth;
-      // If at or near the end, loop smoothly back to beginning
-      if (reviewsTrack.scrollLeft >= maxScroll - 25) {
-        reviewsTrack.scrollTo({ left: 0, behavior: 'smooth' });
-        updateActiveDot(0);
-      } else {
-        const slide = slides[0];
-        const step = (slide ? slide.offsetWidth : 350) + 24;
-        const target = Math.min(reviewsTrack.scrollLeft + step, maxScroll);
-        reviewsTrack.scrollTo({ left: target, behavior: 'smooth' });
+        updateActiveDot();
       }
+      rafId = requestAnimationFrame(loop);
     }
 
-    function advancePrev() {
-      const slide = slides[0];
-      const step = (slide ? slide.offsetWidth : 350) + 24;
-      if (reviewsTrack.scrollLeft <= 15) {
-        const maxScroll = reviewsTrack.scrollWidth - reviewsTrack.clientWidth;
-        reviewsTrack.scrollTo({ left: maxScroll, behavior: 'smooth' });
-      } else {
-        reviewsTrack.scrollTo({ left: Math.max(0, reviewsTrack.scrollLeft - step), behavior: 'smooth' });
-      }
-    }
+    // Start continuous infinite animation loop
+    rafId = requestAnimationFrame(loop);
 
-    function startAutoScroll() {
-      stopAutoScroll();
-      if (isHovered || !isSectionInView) return;
-      autoScrollTimer = setInterval(() => {
-        advanceNext();
-      }, AUTO_SCROLL_DELAY);
-    }
+    // Hover handling: pause so user can comfortably read any review
+    const container = reviewsWrapper || reviewsTrack;
+    container.addEventListener('mouseenter', () => {
+      isPaused = true;
+    });
 
-    function stopAutoScroll() {
-      if (autoScrollTimer) {
-        clearInterval(autoScrollTimer);
-        autoScrollTimer = null;
-      }
-    }
+    container.addEventListener('mouseleave', () => {
+      isPaused = false;
+    });
 
-    function restartTimer() {
-      stopAutoScroll();
-      startAutoScroll();
-    }
-
-    // Scroll listener for manual dragging / touch swiping
-    let scrollTimeout;
-    reviewsTrack.addEventListener('scroll', () => {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        const activeIdx = getActiveSlideIndex();
-        updateActiveDot(activeIdx);
-      }, 50);
+    // Touch support for phones & tablets
+    container.addEventListener('touchstart', () => {
+      isPaused = true;
+      clearTimeout(resumeTimeout);
     }, { passive: true });
+
+    container.addEventListener('touchend', () => {
+      resumeTimeout = setTimeout(() => {
+        isPaused = false;
+      }, 1000);
+    }, { passive: true });
+
+    // Arrow controls: smoothly step forward / backward by 1 card
+    function getStepSize() {
+      const firstSlide = reviewsTrack.querySelector('.review-slide');
+      return (firstSlide ? firstSlide.offsetWidth : 350) + 24;
+    }
+
+    if (reviewsNextBtn) {
+      reviewsNextBtn.addEventListener('click', () => {
+        isProgrammatic = true;
+        const halfWidth = getHalfWidth();
+        let target = reviewsTrack.scrollLeft + getStepSize();
+        if (target >= halfWidth) {
+          reviewsTrack.scrollLeft -= halfWidth;
+          target = reviewsTrack.scrollLeft + getStepSize();
+        }
+        reviewsTrack.scrollTo({ left: target, behavior: 'smooth' });
+        setTimeout(() => {
+          isProgrammatic = false;
+        }, 450);
+      });
+    }
+
+    if (reviewsPrevBtn) {
+      reviewsPrevBtn.addEventListener('click', () => {
+        isProgrammatic = true;
+        const halfWidth = getHalfWidth();
+        let target = reviewsTrack.scrollLeft - getStepSize();
+        if (target < 0) {
+          reviewsTrack.scrollLeft += halfWidth;
+          target = reviewsTrack.scrollLeft - getStepSize();
+        }
+        reviewsTrack.scrollTo({ left: target, behavior: 'smooth' });
+        setTimeout(() => {
+          isProgrammatic = false;
+        }, 450);
+      });
+    }
 
     // Interactive Dot Navigation
     reviewDots.forEach(dot => {
       dot.addEventListener('click', () => {
         const idx = parseInt(dot.getAttribute('data-index'), 10);
-        if (slides[idx]) {
-          const maxScroll = reviewsTrack.scrollWidth - reviewsTrack.clientWidth;
-          const target = Math.min(slides[idx].offsetLeft - reviewsTrack.offsetLeft, maxScroll);
-          reviewsTrack.scrollTo({ left: target, behavior: 'smooth' });
-          updateActiveDot(idx);
-          restartTimer();
-        }
+        const halfWidth = getHalfWidth();
+        const target = (idx / originalCount) * halfWidth;
+        isProgrammatic = true;
+        reviewsTrack.scrollTo({ left: target, behavior: 'smooth' });
+        setTimeout(() => {
+          isProgrammatic = false;
+        }, 450);
       });
     });
-
-    // Arrow Buttons
-    if (reviewsPrevBtn) {
-      reviewsPrevBtn.addEventListener('click', () => {
-        advancePrev();
-        restartTimer();
-      });
-    }
-
-    if (reviewsNextBtn) {
-      reviewsNextBtn.addEventListener('click', () => {
-        advanceNext();
-        restartTimer();
-      });
-    }
-
-    // Hover handling: pause briefly for reading, but auto-resume after 6s so it never freezes
-    const interactionContainer = reviewsWrapper || reviewsTrack;
-    interactionContainer.addEventListener('mouseenter', () => {
-      isHovered = true;
-      stopAutoScroll();
-      clearTimeout(hoverResumeTimer);
-      hoverResumeTimer = setTimeout(() => {
-        isHovered = false;
-        startAutoScroll();
-      }, 6000);
-    });
-
-    interactionContainer.addEventListener('mouseleave', () => {
-      isHovered = false;
-      clearTimeout(hoverResumeTimer);
-      startAutoScroll();
-    });
-
-    // Touch support: pause during swipe, resume 1s after release
-    interactionContainer.addEventListener('touchstart', () => {
-      isHovered = true;
-      stopAutoScroll();
-    }, { passive: true });
-
-    interactionContainer.addEventListener('touchend', () => {
-      clearTimeout(hoverResumeTimer);
-      hoverResumeTimer = setTimeout(() => {
-        isHovered = false;
-        startAutoScroll();
-      }, 1200);
-    }, { passive: true });
 
     // Page visibility pause (saves CPU/battery when tab is inactive)
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        stopAutoScroll();
-      } else if (isSectionInView && !isHovered) {
-        startAutoScroll();
-      }
+      isPaused = document.hidden;
     });
 
-    // Viewport Intersection Observer: start when visible, pause when scrolled away
+    // Viewport Intersection Observer: run only when section is in view
     if (testimonialsSection && 'IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           isSectionInView = entry.isIntersecting;
-          if (isSectionInView && !isHovered) {
-            startAutoScroll();
-          } else {
-            stopAutoScroll();
-          }
         });
-      }, { threshold: [0, 0.15] });
+      }, { threshold: [0, 0.1] });
       observer.observe(testimonialsSection);
-    } else {
-      isSectionInView = true;
-      startAutoScroll();
     }
   }
 
