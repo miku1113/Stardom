@@ -4047,17 +4047,17 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   DYNAMIC ARCHITECTURAL STEPPER (Interactive, Zero-Overlap)
+   DYNAMIC ARCHITECTURAL STEPPER (Hover-Interactive, Last Hovered Persistent)
    ========================================================================== */
 .dynamic-stepper-wrap {
-  margin-top: 50px;
+  margin-top: 48px;
   position: relative;
 }
 
 .stepper-track-desktop {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
+  gap: 20px;
   position: relative;
 }
 
@@ -4065,65 +4065,79 @@ button, input, select, textarea {
   position: relative;
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  justify-content: space-between;
+  background: #0D0D0E;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .stepper-step:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
+  background: #141417;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.stepper-step.is-active {
+  background: #151518;
+  border-color: #FFFFFF;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 24px rgba(255, 255, 255, 0.1);
+}
+
+.stepper-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  width: 100%;
 }
 
 .stepper-node-wrap {
   display: flex;
   align-items: center;
-  position: relative;
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-.stepper-node-trigger {
-  display: inline-flex;
-  align-items: center;
   gap: 12px;
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  text-align: left;
-  flex-shrink: 0;
-  outline: none;
 }
 
 .stepper-node {
-  width: 46px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: #000000;
-  border: 2px solid rgba(255, 255, 255, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 700;
   color: #FFFFFF;
-  box-shadow: 0 0 0 5px #000000, 0 4px 16px rgba(0, 0, 0, 0.8);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 0 4px #000000;
+  transition: all 0.3s ease;
   flex-shrink: 0;
+}
+
+.stepper-step:hover .stepper-node {
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  box-shadow: 0 0 0 4px #000000, 0 0 14px rgba(255, 255, 255, 0.3);
 }
 
 .stepper-step.is-active .stepper-node {
   background: #FFFFFF;
   color: #000000;
   border-color: #FFFFFF;
-  transform: scale(1.08);
-  box-shadow: 0 0 0 6px #000000, 0 0 24px rgba(255, 255, 255, 0.45);
+  transform: scale(1.06);
+  box-shadow: 0 0 0 5px #000000, 0 0 20px rgba(255, 255, 255, 0.45);
 }
 
 .stepper-step.is-completed .stepper-node {
   border-color: var(--color-copper);
   color: var(--color-copper);
-  background: rgba(194, 120, 3, 0.12);
 }
 
 .stepper-phase-tag {
@@ -4134,40 +4148,31 @@ button, input, select, textarea {
   text-transform: uppercase;
   color: #A1A1AA;
   transition: color 0.3s ease;
-  white-space: nowrap;
 }
 
+.stepper-step:hover .stepper-phase-tag,
 .stepper-step.is-active .stepper-phase-tag {
   color: var(--color-copper);
 }
 
-/* Individual Connector Bar: ONLY exists after the phase tag, NEVER overlaps text */
-.stepper-connector-bar {
-  flex: 1 1 auto;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.12);
-  margin-left: 14px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 2px;
+.stepper-stage-status {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  color: #71717A;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 3px 8px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
-.stepper-connector-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 0%;
-  background: linear-gradient(90deg, #FFFFFF, var(--color-copper));
-  transition: width 0.45s ease;
-}
-
-.stepper-step.is-completed .stepper-connector-fill {
-  width: 100%;
-}
-
-.stepper-step.is-active .stepper-connector-fill {
-  width: 100%;
+.stepper-step.is-active .stepper-stage-status {
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
 }
 
 .stepper-content {
@@ -4191,8 +4196,8 @@ button, input, select, textarea {
 }
 
 .stepper-desc {
-  font-size: 13.5px;
-  line-height: 1.6;
+  font-size: 13px;
+  line-height: 1.55;
   color: #A1A1AA;
   margin: 0 0 18px 0;
   flex-grow: 1;
@@ -4209,18 +4214,19 @@ button, input, select, textarea {
 
 .stepper-pill {
   font-family: var(--font-mono);
-  font-size: 11px;
-  color: #E4E4E7;
+  font-size: 10.5px;
+  color: #D4D4D8;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 3px 8px;
-  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 3px 7px;
+  border-radius: 3px;
   white-space: nowrap;
   transition: all 0.2s ease;
 }
 
-.stepper-step.is-active .stepper-pill {
-  border-color: rgba(255, 255, 255, 0.25);
+.stepper-step.is-active .stepper-pill,
+.stepper-step:hover .stepper-pill {
+  border-color: rgba(255, 255, 255, 0.22);
   background: rgba(255, 255, 255, 0.08);
   color: #FFFFFF;
 }

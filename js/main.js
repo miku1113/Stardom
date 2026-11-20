@@ -537,28 +537,28 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let currentStep = 0;
-    let autoInterval = null;
+    let currentStep = 0;
 
     function renderStep(idx) {
       currentStep = idx;
       const data = phaseData[idx];
 
-      // Update Step Classes
+      // Update Step Card Classes and Status Badge
       steps.forEach((step, i) => {
-        const fill = step.querySelector('.stepper-connector-fill');
+        const statusChip = step.querySelector('.stepper-stage-status');
         step.classList.remove('is-active', 'is-completed');
-        if (i < idx) {
-          step.classList.add('is-completed');
-          if (fill) fill.style.width = '100%';
-        } else if (i === idx) {
+        if (i === idx) {
           step.classList.add('is-active');
-          if (fill) fill.style.width = '100%';
+          if (statusChip) statusChip.textContent = 'ACTIVE STAGE';
+        } else if (i < idx) {
+          step.classList.add('is-completed');
+          if (statusChip) statusChip.textContent = `STAGE 0${i + 1}`;
         } else {
-          if (fill) fill.style.width = '0%';
+          if (statusChip) statusChip.textContent = `STAGE 0${i + 1}`;
         }
       });
 
-      // Update Panel
+      // Update Panel Below
       if (detailBadge) {
         detailBadge.innerHTML = `<span style="width:8px;height:8px;border-radius:50%;background:var(--color-copper);display:inline-block;"></span> ${data.badge}`;
       }
@@ -601,10 +601,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Step Click Handlers
+    // Hover & Click Handlers: Hovering instantly updates, and last hovered step remains shown below!
     steps.forEach((step, idx) => {
+      step.addEventListener('mouseenter', () => {
+        renderStep(idx);
+      });
       step.addEventListener('click', () => {
-        stopAuto();
         renderStep(idx);
       });
     });
@@ -612,7 +614,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (prevBtn) {
       prevBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        stopAuto();
         const prev = (currentStep - 1 + phaseData.length) % phaseData.length;
         renderStep(prev);
       });
@@ -621,33 +622,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nextBtn) {
       nextBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        stopAuto();
         const next = (currentStep + 1) % phaseData.length;
         renderStep(next);
       });
     }
 
-    function startAuto() {
-      if (autoInterval) clearInterval(autoInterval);
-      autoInterval = setInterval(() => {
-        const next = (currentStep + 1) % phaseData.length;
-        renderStep(next);
-      }, 5000);
-    }
-
-    function stopAuto() {
-      if (autoInterval) {
-        clearInterval(autoInterval);
-        autoInterval = null;
-      }
-    }
-
-    dynamicStepper.addEventListener('mouseenter', stopAuto);
-    dynamicStepper.addEventListener('mouseleave', startAuto);
-
-    // Initial render
+    // Initial render: Step 01
     renderStep(0);
-    startAuto();
   }
 
   // --- 13. Reviews Horizontal Carousel & Dots Controller ---
