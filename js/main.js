@@ -15,25 +15,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- 1. Sticky Header with Scroll Effect ---
+  // --- 1. Sticky Header with Zero-Stutter Scroll Effect ---
   const header = document.querySelector('.site-header');
   const backToTop = document.querySelector('.back-to-top');
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
+  if (header) {
+    let isHeaderTicking = false;
 
-    if (backToTop) {
-      if (window.scrollY > 500) {
-        backToTop.classList.add('show');
-      } else {
-        backToTop.classList.remove('show');
+    const onScrollUpdate = () => {
+      const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+
+      // Hysteresis buffer (50px add, 15px remove) prevents any threshold flicker/oscillation
+      if (scrollY > 50) {
+        header.classList.add('scrolled');
+      } else if (scrollY < 15) {
+        header.classList.remove('scrolled');
       }
-    }
-  });
+
+      if (backToTop) {
+        if (scrollY > 450) {
+          backToTop.classList.add('show');
+        } else if (scrollY < 380) {
+          backToTop.classList.remove('show');
+        }
+      }
+
+      isHeaderTicking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!isHeaderTicking) {
+        window.requestAnimationFrame(onScrollUpdate);
+        isHeaderTicking = true;
+      }
+    }, { passive: true });
+
+    // Initial check in case page loaded scrolled down
+    onScrollUpdate();
+  }
 
   if (backToTop) {
     backToTop.addEventListener('click', () => {
