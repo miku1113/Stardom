@@ -435,7 +435,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const revealTargets = document.querySelectorAll(
     '.section-headline, .section-eyebrow, .services-header-split, .highlight-box, ' +
     '.discipline-card, .drawing-sheet-card, .software-cresto-card, .why-pill-badge, ' +
-    '.project-cresto-card, .portfolio-card, .testimonials-three-grid, .industry-pill, ' +
+    '.project-cresto-card, .portfolio-card, .testimonials-three-grid, .testimonials-reviews-grid, ' +
+    '.testimonial-card-cresto, .industry-pill, ' +
     '.process-cresto-row, .step-card, .blog-four-grid, .faq-item, .cta-cresto-banner, ' +
     '.inquiry-grid, .value-prop-visual, .value-prop-content, .subpage-card, .stepper-step'
   );

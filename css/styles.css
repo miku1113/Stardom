@@ -2061,24 +2061,32 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   CLIENT TESTIMONIALS (3 Marquee Reviews from Initial Commit)
+   CLIENT TESTIMONIALS (Regional Surat & Gujarat Verified Reviews)
    ========================================================================== */
+.testimonials-reviews-grid,
 .testimonials-three-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
   margin-top: 36px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .testimonial-card-cresto {
   background: #0D0D0E;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 30px;
+  padding: 28px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
   transition: all var(--transition-fast);
+  position: relative;
 }
 
 .testimonial-card-cresto:hover {
@@ -2087,44 +2095,77 @@ button, input, select, textarea {
   box-shadow: 0 14px 30px rgba(255, 255, 255, 0.06);
 }
 
+.testimonial-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .testimonial-stars {
   color: var(--color-copper);
-  font-size: 14px;
-  letter-spacing: 3px;
-  margin-bottom: 16px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.testimonial-loc-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: #A1A1AA;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
 }
 
 .testimonial-quote {
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.65;
-  color: #E4E4E7;
-  font-style: italic;
-  margin-bottom: 24px;
+  color: #D4D4D8;
+  margin: 0 0 22px 0;
   flex-grow: 1;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
 }
 
 .testimonial-client {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 16px;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .client-avatar-badge {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   color: #FFFFFF;
   flex-shrink: 0;
+}
+
+.client-meta {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
 }
 
 .client-meta h4 {
@@ -2133,13 +2174,30 @@ button, input, select, textarea {
   font-weight: 700;
   color: #FFFFFF;
   margin: 0 0 3px 0;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .client-meta span {
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--color-text-dim);
   display: block;
   line-height: 1.35;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.client-verified-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #10B981;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
 }
 
 /* ==========================================================================
@@ -2311,8 +2369,9 @@ button, input, select, textarea {
     gap: 12px;
   }
 
+  .testimonials-reviews-grid,
   .testimonials-three-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
   }
 
@@ -2524,7 +2583,9 @@ button, input, select, textarea {
 
   .services-three-grid,
   .projects-three-grid,
-  .drawings-grid {
+  .drawings-grid,
+  .testimonials-reviews-grid,
+  .testimonials-three-grid {
     grid-template-columns: 1fr;
     gap: 18px;
   }
