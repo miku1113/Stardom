@@ -10,9 +10,11 @@ const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
 const write = (file, html) => fs.writeFileSync(path.join(root, file), html);
 const {services} = JSON.parse(read('data/site-data.json'));
 
+// Active core service groups displayed across site navigation, home, and catalog
+// NOTE: 'bim', 'drafting', and 'other' are archived in repository for future feature rollout
 const groups = [
   ['mep', 'MEP Design Services', 'Design for the building’s mechanical, electrical, and plumbing systems.'],
-  ['bim', 'BIM Services', 'Building information models, drawing conversions, and coordination checks.'],
+  // ['bim', 'BIM Services', 'Building information models, drawing conversions, and coordination checks.'], // Archived for future feature
   ['construction', 'Construction Support Services', 'Drawings, quantities, components, and checks for construction teams.'],
 ].map(([slug, title, summary]) => ({
   slug, title, summary,
@@ -64,13 +66,13 @@ const serviceImages = {
   bim: {
     img: 'assets/service-bim.jpg?v=1.0',
     alt: 'BIM Services - 3D Modeling & Coordination',
-    tag: '02 / BIM & VDC',
+    tag: 'BIM & VDC',
     chips: ['LOD 350-400 BIM', '3D Clash Detection', 'Point Cloud to BIM']
   },
   construction: {
     img: 'assets/service-construction.jpg?v=1.0',
     alt: 'Construction Support Services - On-site Engineering & Drawings',
-    tag: '03 / SITE EXECUTION',
+    tag: '02 / SITE EXECUTION',
     chips: ['Shop Drawings', 'Quantity Takeoff', 'QA/QC Inspection']
   }
 };
@@ -248,8 +250,13 @@ for (const group of groups) {
   }
 }
 
-// Also update extra service files that might exist on disk so their headers match
+// Also update extra service files that exist on disk so their navigation and footer match
 const extraServiceFiles = [
+  'services-bim.html',
+  'services-mep-bim.html',
+  'services-point-cloud-bim.html',
+  'services-pdf-to-cad.html',
+  'services-clash-detection.html',
   'services-drafting.html',
   'services-structural-drafting.html',
   'services-architectural-drafting.html',

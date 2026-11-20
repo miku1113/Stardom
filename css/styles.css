@@ -5779,10 +5779,10 @@ button, input, select, textarea,
 
 .service-catalog-menu {
   top: 100%;
-  width: min(760px, 54vw);
+  width: min(560px, 46vw);
   display: none;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
   max-height: calc(100vh - 110px);
   overflow: auto;
 }
@@ -5870,15 +5870,16 @@ button, input, select, textarea,
 }
 
 /* ==========================================================================
-   HOMEPAGE SERVICES (3-Pillar Row Showcase with Black & White to Color Hover)
+   HOMEPAGE SERVICES (Core Pillars Row Showcase with Black & White to Color Hover)
    ========================================================================== */
 .home-services-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
   align-items: stretch;
   width: 100%;
-  margin-top: 28px;
+  max-width: 960px;
+  margin: 28px auto 0 auto;
 }
 
 .home-service-card {
