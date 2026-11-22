@@ -1,0 +1,657 @@
+/* ==========================================================================
+   STRATUM MEP ENGINEERING - ARCHITECTURAL LIGHT THEME
+   Crisp, High-Precision White Architectural Minimalist Aesthetics
+   ========================================================================== */
+
+:root,
+html.light-theme,
+body.light-theme {
+  /* Architectural Light Palette */
+  --color-bg-base: #FFFFFF;
+  --color-bg-card: #FFFFFF;
+  --color-bg-card-hover: #F8FAFC;
+  --color-bg-surface: #F8FAFC;
+  --color-bg-light: #F1F5F9;
+
+  /* Architectural Signature Warm Orange Accents */
+  --color-accent: #FA6B05;
+  --color-accent-light: #FF851A;
+  --color-accent-dark: #DC5800;
+  --color-accent-glow: rgba(250, 107, 5, 0.25);
+
+  --color-copper: #FA6B05;
+  --color-copper-light: #FF851A;
+  --color-copper-dark: #DC5800;
+  --color-copper-glow: rgba(250, 107, 5, 0.25);
+  --color-copper-gradient: linear-gradient(135deg, #FF851A 0%, #FA6B05 60%, #E05800 100%);
+
+  /* Typography Colors */
+  --color-text-title: #0F172A;
+  --color-text-body: #475569;
+  --color-text-subtle: #64748B;
+  --color-border: #E2E8F0;
+  --color-border-hover: #CBD5E1;
+}
+
+body.light-theme {
+  background-color: #FFFFFF !important;
+  color: var(--color-text-body) !important;
+}
+
+/* Base Headings & Paragraphs */
+.light-theme h1,
+.light-theme h2,
+.light-theme h3,
+.light-theme h4,
+.light-theme h5,
+.light-theme h6 {
+  color: #0F172A !important;
+}
+
+.light-theme p {
+  color: #475569;
+}
+
+/* --------------------------------------------------------------------------
+   Top Bar & Navigation Header
+   -------------------------------------------------------------------------- */
+.light-theme .topbar {
+  background: #F8FAFC !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  color: #64748B !important;
+}
+
+.light-theme .topbar a,
+.light-theme .topbar-item {
+  color: #475569 !important;
+}
+
+.light-theme .topbar-item:hover {
+  color: var(--color-copper) !important;
+}
+
+.light-theme .site-header {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.light-theme .site-header.scrolled {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-bottom-color: #CBD5E1 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+}
+
+.light-theme .nav-link {
+  color: #334155 !important;
+}
+
+.light-theme .nav-link:hover,
+.light-theme .nav-link.active {
+  color: var(--color-copper) !important;
+}
+
+.light-theme .nav-dropdown,
+.light-theme .mega-dropdown {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08) !important;
+}
+
+.light-theme .catalog-menu-group h2,
+.light-theme .catalog-menu-group h2 a {
+  color: #0F172A !important;
+}
+
+.light-theme .catalog-menu-group ul li a {
+  color: #475569 !important;
+}
+
+.light-theme .catalog-menu-group ul li a:hover {
+  color: var(--color-copper) !important;
+  background: #FFF7ED !important;
+}
+
+/* --------------------------------------------------------------------------
+   Hero Section & Spotlight Card
+   -------------------------------------------------------------------------- */
+.light-theme .hero-blueprint-banner {
+  background-color: #F8FAFC !important;
+  background-image: 
+    linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.92) 50%, rgba(255, 255, 255, 0.75) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, transparent 40%, rgba(255, 255, 255, 0.98) 100%),
+    url('../assets/hero-architecture-monochrome.jpg') !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.light-theme .hero-blueprint-banner::before {
+  background-image: 
+    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px) !important;
+}
+
+.light-theme .hero-blueprint-headline {
+  color: #0F172A !important;
+}
+
+.light-theme .hero-blueprint-subtext {
+  color: #475569 !important;
+}
+
+.light-theme .btn-outline-pill {
+  background: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #1E293B !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+.light-theme .btn-outline-pill:hover {
+  background: #F1F5F9 !important;
+  border-color: #94A3B8 !important;
+  color: #0F172A !important;
+}
+
+.light-theme .hero-project-spotlight-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.07) !important;
+}
+
+.light-theme .spotlight-card-header {
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.light-theme .spotlight-label {
+  color: #334155 !important;
+}
+
+.light-theme .spotlight-sector-badge {
+  background: #FFF7ED !important;
+  border: 1px solid #FED7AA !important;
+  color: #C2410C !important;
+}
+
+.light-theme .spotlight-project-title {
+  color: #0F172A !important;
+}
+
+.light-theme .spotlight-project-desc {
+  color: #475569 !important;
+}
+
+.light-theme .spotlight-case-study-btn {
+  background: #F1F5F9 !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #1E293B !important;
+}
+
+.light-theme .spotlight-case-study-btn:hover {
+  background: var(--color-copper) !important;
+  border-color: var(--color-copper) !important;
+  color: #FFFFFF !important;
+}
+
+/* --------------------------------------------------------------------------
+   Services Editorial Section
+   -------------------------------------------------------------------------- */
+.light-theme .section-cresto {
+  background: #FAFAFA !important;
+  border-top: 1px solid #E2E8F0 !important;
+}
+
+.light-theme #services.section-cresto {
+  background: #FFFFFF !important;
+}
+
+.light-theme .section-headline {
+  color: #0F172A !important;
+}
+
+.light-theme .services-header-split p {
+  color: #475569 !important;
+}
+
+.light-theme .home-service-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04) !important;
+}
+
+.light-theme .home-service-card:hover {
+  border-color: var(--color-copper) !important;
+  box-shadow: 0 16px 36px rgba(250, 107, 5, 0.12) !important;
+}
+
+.light-theme .home-service-content h3 {
+  color: #0F172A !important;
+}
+
+.light-theme .home-service-content p {
+  color: #475569 !important;
+}
+
+.light-theme .home-service-tag {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #0F172A !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+.light-theme .service-chip {
+  background: #F1F5F9 !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #334155 !important;
+}
+
+.light-theme .home-service-card:hover .service-chip {
+  background: #FFF7ED !important;
+  border-color: #FED7AA !important;
+  color: #C2410C !important;
+}
+
+.light-theme .home-service-btn {
+  background: #F8FAFC !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #1E293B !important;
+}
+
+.light-theme .home-service-card:hover .home-service-btn {
+  background: var(--color-copper-gradient) !important;
+  color: #FFFFFF !important;
+  border-color: var(--color-copper) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Process Stepper Section
+   -------------------------------------------------------------------------- */
+.light-theme #process.section-cresto {
+  background: #F8FAFC !important;
+  border-top: 1px solid #E2E8F0 !important;
+}
+
+.light-theme .stepper-node {
+  background: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #64748B !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+}
+
+.light-theme .stepper-step.active .stepper-node {
+  background: var(--color-copper) !important;
+  border-color: var(--color-copper) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 16px rgba(250, 107, 5, 0.4) !important;
+}
+
+.light-theme .stepper-phase-tag {
+  color: #64748B !important;
+}
+
+.light-theme .stepper-step.active .stepper-phase-tag {
+  color: var(--color-copper) !important;
+}
+
+.light-theme .stepper-connector-bar {
+  background: #E2E8F0 !important;
+}
+
+.light-theme .stepper-connector-fill {
+  background: var(--color-copper) !important;
+}
+
+.light-theme .stepper-title {
+  color: #0F172A !important;
+}
+
+.light-theme .stepper-desc {
+  color: #475569 !important;
+}
+
+.light-theme .stepper-pill {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #334155 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+}
+
+.light-theme .stepper-pill svg {
+  fill: var(--color-copper) !important;
+}
+
+.light-theme .stepper-detail-panel {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.05) !important;
+}
+
+.light-theme .stepper-panel-header {
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.light-theme .stepper-panel-stage-badge {
+  background: #FFF7ED !important;
+  border: 1px solid #FED7AA !important;
+  color: #C2410C !important;
+}
+
+.light-theme .stepper-panel-counter {
+  color: #64748B !important;
+}
+
+.light-theme .stepper-panel-btn {
+  background: #F8FAFC !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #1E293B !important;
+}
+
+.light-theme .stepper-panel-btn:hover {
+  background: var(--color-copper) !important;
+  border-color: var(--color-copper) !important;
+  color: #FFFFFF !important;
+}
+
+.light-theme .stepper-detail-panel h4 {
+  color: #0F172A !important;
+}
+
+.light-theme .stepper-detail-panel p,
+.light-theme .stepper-detail-panel li {
+  color: #475569 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Client Testimonials Section
+   -------------------------------------------------------------------------- */
+.light-theme #testimonials.section-cresto {
+  background: #FFFFFF !important;
+  border-top: 1px solid #E2E8F0 !important;
+}
+
+.light-theme .testimonial-card-cresto {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03) !important;
+}
+
+.light-theme .testimonial-quote {
+  color: #1E293B !important;
+}
+
+.light-theme .testimonial-loc-badge {
+  background: #FFF7ED !important;
+  border: 1px solid #FED7AA !important;
+  color: #C2410C !important;
+}
+
+.light-theme .client-avatar-badge {
+  background: var(--color-copper) !important;
+  color: #FFFFFF !important;
+}
+
+.light-theme .client-meta h4 {
+  color: #0F172A !important;
+}
+
+.light-theme .client-meta span {
+  color: #64748B !important;
+}
+
+.light-theme .client-verified-tag {
+  background: rgba(16, 185, 129, 0.08) !important;
+  border: 1px solid rgba(16, 185, 129, 0.25) !important;
+  color: #059669 !important;
+}
+
+.light-theme .reviews-arrow-btn {
+  background: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #1E293B !important;
+}
+
+.light-theme .reviews-arrow-btn:hover {
+  background: var(--color-copper) !important;
+  border-color: var(--color-copper) !important;
+  color: #FFFFFF !important;
+}
+
+.light-theme .review-dot {
+  background: #CBD5E1 !important;
+}
+
+.light-theme .review-dot.active {
+  background: var(--color-copper) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Contact Form & Details Section
+   -------------------------------------------------------------------------- */
+.light-theme #contact {
+  background: #FFFFFF !important;
+}
+
+.light-theme #contact h2 {
+  color: #0F172A !important;
+}
+
+.light-theme #contact p {
+  color: #475569 !important;
+}
+
+.light-theme .project-inquiry-box,
+.light-theme .inquiry-form-wrap {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.04) !important;
+}
+
+.light-theme .form-label {
+  color: #334155 !important;
+}
+
+.light-theme .form-input,
+.light-theme .form-select,
+.light-theme .form-textarea {
+  background: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+.light-theme .form-input:focus,
+.light-theme .form-select:focus,
+.light-theme .form-textarea:focus {
+  border-color: var(--color-copper) !important;
+  box-shadow: 0 0 0 3px rgba(250, 107, 5, 0.15) !important;
+}
+
+.light-theme .form-input::placeholder,
+.light-theme .form-textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+.light-theme .checkbox-label {
+  background: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #334155 !important;
+}
+
+.light-theme .checkbox-label:hover {
+  border-color: var(--color-copper) !important;
+  color: var(--color-copper) !important;
+  background: #FFF7ED !important;
+}
+
+.light-theme .inquiry-sidebar h4 {
+  color: #0F172A !important;
+}
+
+.light-theme .inquiry-sidebar a {
+  color: #0F172A !important;
+}
+
+.light-theme .inquiry-sidebar a:hover {
+  color: var(--color-copper) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Site Footer
+   -------------------------------------------------------------------------- */
+.light-theme .site-footer-cresto,
+.light-theme .site-footer {
+  background: #F1F5F9 !important;
+  border-top: 1px solid #E2E8F0 !important;
+}
+
+.light-theme .footer-brand-info p {
+  color: #475569 !important;
+}
+
+.light-theme .footer-col-title {
+  color: #0F172A !important;
+}
+
+.light-theme .footer-link {
+  color: #64748B !important;
+}
+
+.light-theme .footer-link:hover {
+  color: var(--color-copper) !important;
+}
+
+.light-theme .footer-links-list {
+  color: #64748B !important;
+}
+
+.light-theme .footer-links-list a {
+  color: #64748B !important;
+}
+
+.light-theme .footer-links-list a:hover {
+  color: var(--color-copper) !important;
+}
+
+.light-theme .footer-bottom-bar {
+  border-top: 1px solid #E2E8F0 !important;
+  color: #94A3B8 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Drawer & Consultation Modal
+   -------------------------------------------------------------------------- */
+.light-theme .mobile-drawer {
+  background: #FFFFFF !important;
+  border-left: 1px solid #E2E8F0 !important;
+}
+
+.light-theme .drawer-header {
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.light-theme .drawer-close-btn {
+  color: #334155 !important;
+}
+
+.light-theme .drawer-link {
+  color: #1E293B !important;
+  border-bottom: 1px solid #F1F5F9 !important;
+}
+
+.light-theme .drawer-link:hover {
+  color: var(--color-copper) !important;
+  background: #FFF7ED !important;
+}
+
+.light-theme .modal-box {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.15) !important;
+}
+
+.light-theme .modal-close-btn {
+  color: #64748B !important;
+}
+
+.light-theme .modal-close-btn:hover {
+  color: #0F172A !important;
+}
+
+.light-theme .modal-title {
+  color: #0F172A !important;
+}
+
+.light-theme .modal-desc {
+  color: #475569 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Theme Demo Floating Switcher
+   -------------------------------------------------------------------------- */
+.theme-demo-switcher-bar {
+  background: linear-gradient(90deg, #FA6B05 0%, #FF851A 100%);
+  color: #FFFFFF;
+  padding: 10px 20px;
+  font-size: 13.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1001;
+  box-shadow: 0 2px 12px rgba(250, 107, 5, 0.25);
+  letter-spacing: 0.2px;
+}
+
+.theme-demo-switcher-bar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #0F172A;
+  color: #FFFFFF !important;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.theme-demo-switcher-bar a:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.theme-demo-floating-badge {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #E2E8F0;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(12px);
+  font-size: 13px;
+  font-weight: 600;
+  color: #0F172A;
+}
+
+.theme-demo-floating-badge a {
+  background: #0F172A;
+  color: #FFFFFF !important;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.theme-demo-floating-badge a:hover {
+  background: var(--color-copper);
+}
