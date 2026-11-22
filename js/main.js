@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
         submitButton.textContent = 'Transmitting brief…';
       }
       if (status) {
-        status.style.color = '#38BDF8';
+        status.style.color = '#FA6B05';
         status.textContent = 'Sending your enquiry to Stratum Engineering…';
       }
 

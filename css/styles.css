@@ -230,11 +230,11 @@ button, input, select, textarea,
 }
 
 .btn-outline-pill:hover {
-  border-color: rgba(255, 255, 255, 0.6);
-  background-color: rgba(255, 255, 255, 0.06);
-  color: #FFFFFF;
+  border-color: var(--color-copper);
+  background-color: rgba(250, 107, 5, 0.08);
+  color: var(--color-copper);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(250, 107, 5, 0.15);
 }
 
 .btn-outline-pill span:last-child {
@@ -244,13 +244,6 @@ button, input, select, textarea,
 
 .btn-outline-pill:hover span:last-child {
   transform: translateY(2px);
-}
-
-.btn-outline-pill:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  border-color: #FFFFFF;
-  color: #FFFFFF;
-  transform: translateY(-1px);
 }
 
 .btn-outline-pill .play-icon {
@@ -329,8 +322,13 @@ button, input, select, textarea,
   transition: color var(--transition-fast);
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover {
   color: #FFFFFF;
+}
+
+.nav-link.active {
+  color: var(--color-copper);
+  font-weight: 600;
 }
 
 .nav-link.active::after {
@@ -340,7 +338,8 @@ button, input, select, textarea,
   left: var(--nav-link-padding);
   right: var(--nav-link-padding);
   height: 2px;
-  background: #FFFFFF;
+  background: var(--color-copper);
+  box-shadow: 0 0 8px var(--color-copper-glow);
 }
 
 .nav-link svg.chevron {
@@ -1222,9 +1221,9 @@ button, input, select, textarea,
 }
 
 .drawing-sheet-card:hover {
-  border-color: #FFFFFF;
+  border-color: rgba(250, 107, 5, 0.45);
   transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 24px rgba(250, 107, 5, 0.12);
 }
 
 .drawing-preview-box {
@@ -1341,12 +1340,12 @@ button, input, select, textarea,
   width: 44px;
   height: 44px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(250, 107, 5, 0.08);
+  border: 1px solid rgba(250, 107, 5, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FFFFFF;
+  color: var(--color-copper);
   font-size: 20px;
   flex-shrink: 0;
 }
@@ -1387,7 +1386,7 @@ button, input, select, textarea,
   font-size: 11.5px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: var(--color-copper);
   margin-bottom: 14px;
   font-weight: 600;
 }
@@ -1453,12 +1452,12 @@ button, input, select, textarea,
   width: 36px;
   height: 36px;
   border-radius: 6px;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background: rgba(250, 107, 5, 0.08);
+  border: 1px solid rgba(250, 107, 5, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FFFFFF;
+  color: var(--color-copper);
   flex-shrink: 0;
 }
 
@@ -1517,7 +1516,8 @@ button, input, select, textarea,
 }
 
 .service-card-cresto:hover {
-  border-color: rgba(255, 255, 255, 0.45);
+  border-color: rgba(250, 107, 5, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 24px rgba(250, 107, 5, 0.12);
   transform: translateY(-4px);
   background: var(--color-bg-card-hover);
 }
@@ -1563,7 +1563,7 @@ button, input, select, textarea,
 .service-card-title-row svg {
   width: 20px;
   height: 20px;
-  fill: #FFFFFF;
+  fill: var(--color-copper);
 }
 
 .service-card-title-row h3 {
@@ -1595,9 +1595,10 @@ button, input, select, textarea,
 }
 
 .service-card-cresto:hover .service-card-arrow-btn {
-  background: #FFFFFF;
-  border-color: #FFFFFF;
+  background: var(--color-copper-gradient);
+  border-color: var(--color-copper);
   color: #000000;
+  box-shadow: 0 4px 14px var(--color-copper-glow);
 }
 
 /* ==========================================================================
@@ -2083,7 +2084,9 @@ button, input, select, textarea,
 }
 
 .form-input:focus, .form-textarea:focus, .form-select:focus {
-  border-color: #FFFFFF;
+  border-color: var(--color-copper);
+  box-shadow: 0 0 0 3px rgba(250, 107, 5, 0.22);
+  outline: none;
 }
 
 /* ==========================================================================
@@ -2171,8 +2174,13 @@ button, input, select, textarea,
   transition: color var(--transition-fast);
 }
 
-.drawer-link:hover, .drawer-link.active {
+.drawer-link:hover {
   color: #FFFFFF;
+}
+
+.drawer-link.active {
+  color: var(--color-copper);
+  font-weight: 600;
 }
 
 /* ==========================================================================
@@ -2201,9 +2209,9 @@ button, input, select, textarea,
 }
 
 .discipline-card:hover {
-  border-color: #FFFFFF;
+  border-color: rgba(250, 107, 5, 0.45);
   transform: translateY(-3px);
-  box-shadow: 0 14px 30px rgba(255, 255, 255, 0.07);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(250, 107, 5, 0.1);
 }
 
 .discipline-card-header {
@@ -2575,7 +2583,8 @@ button, input, select, textarea,
 }
 
 .faq-item.active {
-  border-color: #FFFFFF;
+  border-color: var(--color-copper);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 15px rgba(250, 107, 5, 0.12);
 }
 
 .faq-question {
@@ -2603,7 +2612,7 @@ button, input, select, textarea,
 
 .faq-item.active .faq-icon {
   transform: rotate(180deg);
-  color: #FFFFFF;
+  color: var(--color-copper);
 }
 
 .faq-answer {
@@ -3152,16 +3161,24 @@ button, input, select, textarea,
 }
 
 .breadcrumb a {
-  color: #FFFFFF;
+  color: #D4D4D8;
   text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
 .breadcrumb a:hover {
-  text-decoration: underline;
+  color: var(--color-copper);
+  text-decoration: none;
 }
 
 .breadcrumb span.sep {
   color: rgba(255, 255, 255, 0.25);
+}
+
+.breadcrumb span:last-child,
+.breadcrumb [aria-current="page"] {
+  color: var(--color-copper);
+  font-weight: 600;
 }
 
 .page-title {
@@ -3251,8 +3268,9 @@ button, input, select, textarea,
 }
 
 .btn-outline:hover {
-  border-color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-copper);
+  color: var(--color-copper);
+  background: rgba(250, 107, 5, 0.08);
 }
 
 /* --- Subpage Detail Boxes (About, Services) --- */
@@ -3275,7 +3293,8 @@ button, input, select, textarea,
 }
 
 .subpage-detail-box:hover {
-  border-color: rgba(255, 255, 255, 0.35);
+  border-color: rgba(250, 107, 5, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(250, 107, 5, 0.1);
   transform: translateY(-4px);
 }
 
@@ -3308,14 +3327,21 @@ button, input, select, textarea,
 }
 
 .deliverable-badge {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(250, 107, 5, 0.06);
   color: #FFFFFF;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 500;
   padding: 4px 10px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(250, 107, 5, 0.25);
+  transition: all var(--transition-fast);
+}
+
+.deliverable-badge:hover {
+  border-color: var(--color-copper);
+  color: var(--color-copper);
+  background: rgba(250, 107, 5, 0.12);
 }
 
 /* --- Project Inquiry Box (Contact Page & Quote Sections) --- */
@@ -3426,9 +3452,9 @@ button, input, select, textarea,
 }
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
-  border-color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
+  border-color: var(--color-copper);
+  background: rgba(250, 107, 5, 0.04);
+  box-shadow: 0 0 0 3px rgba(250, 107, 5, 0.22);
 }
 
 .form-select option {
@@ -3547,11 +3573,17 @@ button, input, select, textarea,
   transition: all var(--transition-fast);
 }
 
-.portfolio-filter-btn:hover,
+.portfolio-filter-btn:hover {
+  border-color: var(--color-copper);
+  color: #FFFFFF;
+}
+
 .portfolio-filter-btn.active {
-  background: #FFFFFF;
+  background: var(--color-copper-gradient);
   color: #000000;
-  border-color: #FFFFFF;
+  border-color: var(--color-copper);
+  box-shadow: 0 4px 16px var(--color-copper-glow);
+  font-weight: 700;
 }
 
 /* --- Sectors Showcase --- */
@@ -3573,25 +3605,37 @@ button, input, select, textarea,
 
 .sector-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(250, 107, 5, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(250, 107, 5, 0.1);
 }
 
 .sector-card-icon {
   width: 44px;
   height: 44px;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(250, 107, 5, 0.08);
+  border: 1px solid rgba(250, 107, 5, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
+  transition: all var(--transition-fast);
 }
 
 .sector-card-icon svg {
   width: 22px;
   height: 22px;
-  fill: #FFFFFF;
+  fill: var(--color-copper);
+  transition: fill var(--transition-fast);
+}
+
+.sector-card:hover .sector-card-icon {
+  background: var(--color-copper-gradient);
+  border-color: var(--color-copper);
+}
+
+.sector-card:hover .sector-card-icon svg {
+  fill: #000000;
 }
 
 .sector-card h4 {
@@ -3687,7 +3731,8 @@ button, input, select, textarea,
 
 .job-card:hover, .blog-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(250, 107, 5, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(250, 107, 5, 0.1);
 }
 
 .job-title, .blog-title {
@@ -4638,7 +4683,8 @@ button, input, select, textarea,
 
 .blog-card-cresto:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 255, 255, 0.35);
+  border-color: rgba(250, 107, 5, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(250, 107, 5, 0.1);
 }
 
 .blog-cat-pill {
@@ -4882,8 +4928,8 @@ button, input, select, textarea,
   width: 44px;
   height: 44px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(250, 107, 5, 0.08);
+  border: 1px solid rgba(250, 107, 5, 0.35);
   color: var(--color-copper);
   font-size: 18px;
   font-weight: 700;
@@ -4891,6 +4937,7 @@ button, input, select, textarea,
   align-items: center;
   justify-content: center;
   margin-bottom: 18px;
+  box-shadow: 0 0 14px rgba(250, 107, 5, 0.12);
 }
 
 /* Service Card Components for Subpages */
@@ -4993,8 +5040,8 @@ button, input, select, textarea,
 
 .feature-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8);
+  border-color: rgba(250, 107, 5, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(250, 107, 5, 0.1);
 }
 
 .feature-icon-box {
@@ -5047,7 +5094,8 @@ button, input, select, textarea,
 
 .tech-item-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 255, 255, 0.35);
+  border-color: rgba(250, 107, 5, 0.4);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7), 0 0 16px rgba(250, 107, 5, 0.1);
 }
 
 .tech-icon-circle {
@@ -5105,8 +5153,10 @@ button, input, select, textarea,
 
 .faq-item.active .faq-toggle-icon {
   transform: rotate(45deg);
-  background: #FFFFFF;
+  background: var(--color-copper-gradient);
+  border-color: var(--color-copper);
   color: #000000;
+  box-shadow: 0 0 10px var(--color-copper-glow);
 }
 
 /* Portfolio Page Filters & Cards */
@@ -5132,10 +5182,17 @@ button, input, select, textarea,
   transition: all var(--transition-fast);
 }
 
-.filter-btn:hover, .filter-btn.active {
-  background: #FFFFFF;
-  color: #000000;
-  border-color: #FFFFFF;
+.filter-btn:hover {
+  border-color: var(--color-copper);
+  color: #FFFFFF;
+}
+
+.filter-btn.active {
+  background: var(--color-copper-gradient);
+  color: #000000 !important;
+  border-color: var(--color-copper);
+  box-shadow: 0 4px 16px var(--color-copper-glow);
+  font-weight: 700;
 }
 
 /* ==========================================================================
@@ -5164,8 +5221,8 @@ button, input, select, textarea,
 
 .portfolio-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 24px rgba(255, 255, 255, 0.06);
+  border-color: rgba(250, 107, 5, 0.45);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 24px var(--color-copper-glow);
 }
 
 .portfolio-img-box {
@@ -5310,8 +5367,9 @@ button, input, select, textarea,
 }
 
 .portfolio-card:hover .meta-chip {
-  border-color: rgba(255, 255, 255, 0.22);
+  border-color: rgba(250, 107, 5, 0.35);
   color: #FFFFFF;
+  background: rgba(250, 107, 5, 0.06);
 }
 
 .portfolio-card .btn-outline {
@@ -5335,11 +5393,11 @@ button, input, select, textarea,
 }
 
 .portfolio-card .btn-outline:hover {
-  background: #FFFFFF;
+  background: var(--color-copper-gradient);
   color: #000000;
-  border-color: #FFFFFF;
+  border-color: var(--color-copper);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px var(--color-copper-glow);
 }
 
 @media (max-width: 1024px) {
@@ -5363,8 +5421,8 @@ button, input, select, textarea,
   width: 48px;
   height: 48px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(250, 107, 5, 0.08);
+  border: 1px solid rgba(250, 107, 5, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5374,13 +5432,15 @@ button, input, select, textarea,
 
 .sector-card:hover .sector-icon {
   transform: translateY(-2px);
-  background: #FFFFFF;
+  background: var(--color-copper-gradient);
+  border-color: var(--color-copper);
 }
 
 .sector-icon svg {
   width: 22px;
   height: 22px;
-  fill: #FFFFFF;
+  fill: var(--color-copper);
+  transition: fill var(--transition-fast);
 }
 
 .sector-card:hover .sector-icon svg {
@@ -5496,7 +5556,7 @@ button, input, select, textarea,
 }
 
 .footer-link:hover {
-  color: #FFFFFF;
+  color: var(--color-copper);
 }
 
 .footer-contact-item {
@@ -5507,6 +5567,16 @@ button, input, select, textarea,
   color: #D4D4D8;
   margin-bottom: 12px;
   line-height: 1.45;
+}
+
+.footer-contact-item a {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-contact-item a:hover {
+  color: var(--color-copper);
 }
 
 .footer-contact-item svg {
@@ -6058,11 +6128,11 @@ button, input, select, textarea,
 }
 
 .service-drawing-card:hover .service-card-action-btn {
-  background: #FFFFFF;
+  background: var(--color-copper-gradient);
   color: #000000;
-  border-color: #FFFFFF;
+  border-color: var(--color-copper);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px var(--color-copper-glow);
 }
 
 @media (max-width: 1100px) {
@@ -6235,8 +6305,9 @@ button, input, select, textarea,
 }
 
 .home-service-card:hover .service-chip {
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(250, 107, 5, 0.35);
   color: #FFFFFF;
+  background: rgba(250, 107, 5, 0.06);
 }
 
 .home-service-btn {
@@ -6258,11 +6329,11 @@ button, input, select, textarea,
 }
 
 .home-service-card:hover .home-service-btn {
-  background: #FFFFFF;
+  background: var(--color-copper-gradient);
   color: #000000;
-  border-color: #FFFFFF;
+  border-color: var(--color-copper);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px var(--color-copper-glow);
 }
 
 @media (max-width: 1024px) {
@@ -6291,6 +6362,28 @@ button, input, select, textarea,
 }
 
 .catalog-service-detail ul {
-  margin: 0;
+  margin: 0 0 20px;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.catalog-service-detail ul li {
+  position: relative;
   padding-left: 22px;
+  font-size: 14.5px;
+  color: #D4D4D8;
+  line-height: 1.5;
+}
+
+.catalog-service-detail ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-copper);
+  font-weight: 700;
+  font-size: 14px;
 }
