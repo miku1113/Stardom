@@ -493,16 +493,16 @@ document.addEventListener('DOMContentLoaded', () => {
         phase: 'PHASE 01',
         title: 'Scope Definition & Statutory Scrutiny',
         badge: 'STAGE 01 &bull; INTAKE &amp; FEASIBILITY',
-        summary: 'Reviewing architectural plans, structural grids, and regional municipal compliance boundaries before calculating equipment capacities.',
+        summary: 'Reviewing architectural plans, structural grids, and statutory compliance standards before calculating equipment capacities.',
         tasks: [
-          'Scrutiny of architectural CAD/BIM floor plans, elevations, and structural column grid spacing.',
-          'Surat Municipal Corporation (SMC) & NBC 2016 statutory compliance benchmark analysis.',
+          'Scrutiny of architectural CAD floor plans, elevations, and structural column grid spacing.',
+          'Statutory compliance benchmark analysis adhering to NBC, IPC, IS standards, ASHRAE, and NFPA.',
           'Occupancy classification, diversity factors, and emergency egress routing.',
           'Establishment of the formal Design Basis Report (DBR) and project drawing register.'
         ],
         outputs: 'Design Basis Report (DBR), Spatial MEP Allocation Schematics, Milestones Schedule',
-        formats: 'Autodesk Revit (.rvt), AutoCAD (.dwg), Searchable PDF (.pdf)',
-        codes: 'NBC 2016 Part 4 & 8, IS 732, ECBC 2017, SMC Fire Regulations',
+        formats: 'AutoCAD (.dwg), Searchable PDF (.pdf), Excel Schedules (.xlsx)',
+        codes: 'NBC 2016 Part 4 & 8, IPC, IS Standards, ASHRAE, NFPA, ECBC',
         turnaround: '3 to 5 Business Days'
       },
       {
@@ -518,39 +518,39 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         outputs: 'Heat Load Calculations, Electrical SLDs, Equipment Schedules, Plumbing Schematics',
         formats: 'AutoCAD (.dwg), Engineering Spreadsheets (.xlsx), Schematic PDF (.pdf)',
-        codes: 'ASHRAE Fundamentals, IS 1391, NBC 2016 Part 9, CEA Norms',
+        codes: 'ASHRAE Fundamentals, IS Standards, NBC 2016 Part 9, CEA Norms, IPC',
         turnaround: '5 to 7 Business Days'
       },
       {
         phase: 'PHASE 03',
-        title: '3D BIM Multi-Trade Clash Coordination',
-        badge: 'STAGE 03 &bull; 3D BIM COORDINATION',
-        summary: 'Spatial alignment of mechanical ductwork, electrical cable trays, fire pipes, and plumbing stacks against concrete structure in 3D BIM.',
+        title: 'Multi-Trade Spatial Clash Coordination',
+        badge: 'STAGE 03 &bull; MULTI-TRADE COORDINATION',
+        summary: 'Spatial alignment of mechanical ductwork, electrical cable trays, fire pipes, and plumbing stacks against structural frameworks for clash-free execution.',
         tasks: [
-          'Full 3D modeling across all MEP disciplines in Autodesk Revit 2024 at LOD 300/350.',
-          'Automated hard & clearance clash detection in Navisworks Manage across all trades.',
+          'Full multi-trade coordinated layout modeling across all MEP disciplines for clash-free routing.',
+          'Systematic hard & clearance clash detection across mechanical, electrical, plumbing, and fire services.',
           'Beam penetrations, structural drop beam checks, and false ceiling height optimization.',
           'Multi-disciplinary clash review meetings and signed-off composite overlay drawings.'
         ],
-        outputs: 'Coordinated 3D BIM Model, Navisworks Clash Audit Report, Combined Services Drawings (CSD)',
-        formats: 'Autodesk Navisworks (.nwd), Revit (.rvt), Industry Foundation Classes (.ifc)',
-        codes: 'ISO 19650 BIM Standards, AIA Document E202, NBC 2016 Coordination Guidelines',
+        outputs: 'Coordinated Multi-Trade Drawings, Clash Audit Report, Combined Services Drawings (CSD)',
+        formats: 'AutoCAD (.dwg), Navisworks (.nwd), High-Res PDF (.pdf)',
+        codes: 'NBC 2016 Coordination Guidelines, NFPA Standards, IS Standards, ASHRAE',
         turnaround: '7 to 10 Business Days'
       },
       {
         phase: 'PHASE 04',
         title: 'GFC Release & Statutory Approvals',
         badge: 'STAGE 04 &bull; GFC ISSUANCE &amp; TENDER',
-        summary: 'Final issuance of Good For Construction (GFC) sets, sleeve cutout locations, municipal submission sets, and comprehensive BOQ.',
+        summary: 'Final issuance of Good For Construction (GFC) sets, sleeve cutout locations, statutory submission sets, and comprehensive BOQ.',
         tasks: [
           'Final release of Good For Construction (GFC) sheets with dimensioned sleeve & core-cut coordinates.',
-          'Statutory submission sets formatted specifically for Surat Municipal Corporation (SMC) Fire NOC.',
+          'Statutory submission sets formatted strictly adhering to NBC Part 4 Fire & Life Safety, Fire NOC, and national building bylaws.',
           'Preparation of itemized Bill of Quantities (BOQ) with unit rates and technical tender specifications.',
           'Site coordination handover and contractor technical RFI resolution support.'
         ],
         outputs: 'Stamped GFC Drawing Packages, Sleeve & Opening Cutout Drawings, Tender BOQ',
         formats: 'Stamped PDF Sets, High-Res AutoCAD (.dwg), Itemized BOQ (.xlsx)',
-        codes: 'NBC 2016 Part 4 Fire & Life Safety, SMC Bylaws, GPCB Environmental Norms',
+        codes: 'NBC 2016 Part 4 Fire & Life Safety, NFPA, IS Standards, National Building Bylaws',
         turnaround: 'Immediate Site Release & Handover'
       }
     ];
@@ -835,7 +835,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (currentMode !== lastMode) {
         lastMode = currentMode;
         if (isDownSweep) {
-          heroScanLabel.innerHTML = '<span class="hud-mode-dot" style="background:#00E5FF;box-shadow:0 0 8px #00E5FF;"></span><span>SCAN: MEP BIM SKELETON</span>';
+          heroScanLabel.innerHTML = '<span class="hud-mode-dot" style="background:#00E5FF;box-shadow:0 0 8px #00E5FF;"></span><span>SCAN: MEP ENGINEERING SKELETON</span>';
           if (laserTagText) laserTagText.textContent = 'MEP SCAN ACTIVE';
         } else {
           heroScanLabel.innerHTML = '<span class="hud-mode-dot" style="background:var(--color-copper);box-shadow:0 0 8px var(--color-copper);"></span><span>SCAN: ARCHITECTURAL EXTERIOR</span>';
