@@ -523,17 +523,17 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       {
         phase: 'PHASE 03',
-        title: 'Multi-Trade Spatial Clash Coordination',
-        badge: 'STAGE 03 &bull; MULTI-TRADE COORDINATION',
-        summary: 'Spatial alignment of mechanical ductwork, electrical cable trays, fire pipes, and plumbing stacks against structural frameworks for clash-free execution.',
+        title: 'Coordinate Layouts',
+        badge: 'STAGE 03 &bull; INTEGRATED 2D MEP COORDINATION',
+        summary: 'Prepare integrated 2D MEP coordination layouts for HVAC ducts, plumbing pipes, electrical cable trays, and fire-fighting services, ensuring proper routing, clearances, and coordination with architectural and structural drawings.',
         tasks: [
-          'Full multi-trade coordinated layout modeling across all MEP disciplines for clash-free routing.',
-          'Systematic hard & clearance clash detection across mechanical, electrical, plumbing, and fire services.',
-          'Beam penetrations, structural drop beam checks, and false ceiling height optimization.',
-          'Multi-disciplinary clash review meetings and signed-off composite overlay drawings.'
+          'Preparation of integrated 2D MEP coordination layouts across HVAC, plumbing, electrical, and fire protection.',
+          'Cross-trade composite MEP coordination drawings and clash elimination prior to site fabrication.',
+          'Coordinated overlays aligned against structural column grids, drop beams, and architectural partitions.',
+          'Shaft clearances, service riser allocation, and maintenance access verification.'
         ],
-        outputs: 'Coordinated Multi-Trade Drawings, Clash Audit Report, Combined Services Drawings (CSD)',
-        formats: 'AutoCAD (.dwg), Navisworks (.nwd), High-Res PDF (.pdf)',
+        outputs: 'Integrated 2D Layouts, MEP Coordination Drawings, Coordinated Overlays, Shaft Clearances',
+        formats: 'AutoCAD (.dwg), High-Res Coordinated PDF (.pdf)',
         codes: 'NBC 2016 Coordination Guidelines, NFPA Standards, IS Standards, ASHRAE',
         turnaround: '7 to 10 Business Days'
       },
