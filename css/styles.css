@@ -496,7 +496,7 @@ button, input, select, textarea,
   background-image: 
     linear-gradient(90deg, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.85) 42%, rgba(0, 0, 0, 0.35) 75%, rgba(0, 0, 0, 0.75) 100%),
     linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 40%, rgba(0, 0, 0, 0.95) 100%),
-    url('../assets/project-commercial.jpg');
+    url('../assets/hero-architecture-monochrome.jpg');
   background-position: center right;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2656,7 +2656,7 @@ button, input, select, textarea,
       min-height: auto;
     background-image: 
       linear-gradient(180deg, rgba(0, 0, 0, 0.86) 0%, rgba(0, 0, 0, 0.58) 32%, rgba(0, 0, 0, 0.84) 68%, #000000 100%),
-      url('../assets/project-commercial.jpg');
+      url('../assets/hero-architecture-monochrome.jpg');
     background-position: 45% 20%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2799,7 +2799,7 @@ button, input, select, textarea,
   .hero-blueprint-banner {
     background-image:
       linear-gradient(180deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.48) 26%, rgba(0, 0, 0, 0.78) 64%, #000000 100%),
-      url('../assets/project-commercial.jpg');
+      url('../assets/hero-architecture-monochrome.jpg');
     background-position: 45% 15%;
     background-size: cover;
     background-repeat: no-repeat;
