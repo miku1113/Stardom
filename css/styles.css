@@ -184,7 +184,7 @@ button, input, select, textarea,
   justify-content: center;
   gap: 8px;
   background: var(--color-copper-gradient);
-  color: #000000;
+  color: #FFFFFF;
   font-family: var(--font-main);
   font-weight: 700;
   font-size: 14px;
@@ -198,7 +198,7 @@ button, input, select, textarea,
 
 .btn-copper-pill:hover {
   filter: brightness(1.1);
-  color: #000000;
+  color: #FFFFFF;
   transform: translateY(-2px);
   box-shadow: 0 8px 28px rgba(250, 107, 5, 0.48);
 }
@@ -431,18 +431,18 @@ button, input, select, textarea,
   width: 100% !important;
   box-sizing: border-box !important;
   padding: 13px 20px !important;
-  background: #FFFFFF !important;
-  color: #000000 !important;
+  background: var(--color-copper-gradient) !important;
+  color: #FFFFFF !important;
   font-family: var(--font-heading, sans-serif);
   font-size: 14.5px !important;
   font-weight: 700 !important;
   letter-spacing: -0.01em;
   border-radius: 9999px !important;
-  border: 1px solid #FFFFFF !important;
+  border: 1px solid rgba(255, 138, 0, 0.4) !important;
   text-decoration: none !important;
   cursor: pointer !important;
   text-align: center;
-  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 14px var(--color-copper-glow) !important;
   transition: all var(--transition-fast);
 }
 
@@ -450,8 +450,8 @@ button, input, select, textarea,
 .drawer-enquiry:active,
 .drawer-cta-box .drawer-enquiry:hover,
 .drawer-cta-box .drawer-enquiry:active {
-  background: #E4E4E7 !important;
-  color: #000000 !important;
+  filter: brightness(1.1) !important;
+  color: #FFFFFF !important;
   transform: translateY(-1px);
 }
 
@@ -1597,7 +1597,7 @@ button, input, select, textarea,
 .service-card-cresto:hover .service-card-arrow-btn {
   background: var(--color-copper-gradient);
   border-color: var(--color-copper);
-  color: #000000;
+  color: #FFFFFF;
   box-shadow: 0 4px 14px var(--color-copper-glow);
 }
 
@@ -3231,7 +3231,7 @@ button, input, select, textarea,
   justify-content: center;
   gap: 8px;
   background: var(--color-copper-gradient);
-  color: #000000 !important;
+  color: #FFFFFF !important;
   font-weight: 700;
   font-size: 14px;
   padding: 12px 24px;
@@ -3245,7 +3245,7 @@ button, input, select, textarea,
 
 .btn-primary:hover {
   filter: brightness(1.1);
-  color: #000000 !important;
+  color: #FFFFFF !important;
   transform: translateY(-2px);
   box-shadow: 0 8px 26px rgba(250, 107, 5, 0.45);
 }
@@ -3580,7 +3580,7 @@ button, input, select, textarea,
 
 .portfolio-filter-btn.active {
   background: var(--color-copper-gradient);
-  color: #000000;
+  color: #FFFFFF;
   border-color: var(--color-copper);
   box-shadow: 0 4px 16px var(--color-copper-glow);
   font-weight: 700;
@@ -3635,7 +3635,7 @@ button, input, select, textarea,
 }
 
 .sector-card:hover .sector-card-icon svg {
-  fill: #000000;
+  fill: #FFFFFF;
 }
 
 .sector-card h4 {
@@ -5161,7 +5161,7 @@ button, input, select, textarea,
   transform: rotate(45deg);
   background: var(--color-copper-gradient);
   border-color: var(--color-copper);
-  color: #000000;
+  color: #FFFFFF;
   box-shadow: 0 0 10px var(--color-copper-glow);
 }
 
@@ -5195,7 +5195,7 @@ button, input, select, textarea,
 
 .filter-btn.active {
   background: var(--color-copper-gradient);
-  color: #000000 !important;
+  color: #FFFFFF !important;
   border-color: var(--color-copper);
   box-shadow: 0 4px 16px var(--color-copper-glow);
   font-weight: 700;
@@ -5400,7 +5400,7 @@ button, input, select, textarea,
 
 .portfolio-card .btn-outline:hover {
   background: var(--color-copper-gradient);
-  color: #000000;
+  color: #FFFFFF;
   border-color: var(--color-copper);
   transform: translateY(-2px);
   box-shadow: 0 4px 16px var(--color-copper-glow);
@@ -5450,7 +5450,7 @@ button, input, select, textarea,
 }
 
 .sector-card:hover .sector-icon svg {
-  fill: #000000;
+  fill: #FFFFFF;
 }
 
 /* Modal Popup Dialog */
@@ -6135,7 +6135,7 @@ button, input, select, textarea,
 
 .service-drawing-card:hover .service-card-action-btn {
   background: var(--color-copper-gradient);
-  color: #000000;
+  color: #FFFFFF;
   border-color: var(--color-copper);
   transform: translateY(-2px);
   box-shadow: 0 4px 16px var(--color-copper-glow);
@@ -6336,7 +6336,7 @@ button, input, select, textarea,
 
 .home-service-card:hover .home-service-btn {
   background: var(--color-copper-gradient);
-  color: #000000;
+  color: #FFFFFF;
   border-color: var(--color-copper);
   transform: translateY(-2px);
   box-shadow: 0 4px 16px var(--color-copper-glow);
