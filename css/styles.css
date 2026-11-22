@@ -13,18 +13,18 @@
   --color-bg-surface: #121214;
   --color-bg-light: #222226;
 
-  /* Architectural Signature Luminous Light Orange Accents (Stratum Brand Lighter Amber Palette) */
-  --color-accent: #FFA02E;
-  --color-accent-light: #FFBA59;
-  --color-accent-dark: #FF8500;
-  --color-accent-glow: rgba(255, 160, 46, 0.35);
+  /* Architectural Signature Warm Orange Accents (Exact Match to Stratum Brand Logo #FA6B05) */
+  --color-accent: #FA6B05;
+  --color-accent-light: #FF851A;
+  --color-accent-dark: #DC5800;
+  --color-accent-glow: rgba(250, 107, 5, 0.32);
 
   /* Brand Warm Orange / Copper Tokens */
-  --color-copper: #FFA02E;
-  --color-copper-light: #FFBA59;
-  --color-copper-dark: #FF8500;
-  --color-copper-glow: rgba(255, 160, 46, 0.35);
-  --color-copper-gradient: linear-gradient(135deg, #FFC066 0%, #FFA02E 50%, #FF8500 100%);
+  --color-copper: #FA6B05;
+  --color-copper-light: #FF851A;
+  --color-copper-dark: #DC5800;
+  --color-copper-glow: rgba(250, 107, 5, 0.32);
+  --color-copper-gradient: linear-gradient(135deg, #FF851A 0%, #FA6B05 60%, #E05800 100%);
 
   /* Typography Colors */
   --color-text-title: #FFFFFF;
@@ -200,7 +200,7 @@ button, input, select, textarea,
   filter: brightness(1.1);
   color: #000000;
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(255, 160, 46, 0.48);
+  box-shadow: 0 8px 28px rgba(250, 107, 5, 0.48);
 }
 
 .btn-copper-pill span:last-child {
@@ -575,11 +575,11 @@ button, input, select, textarea,
 
 .hero-blueprint-headline span.text-creative-accent {
   display: inline-block;
-  background: linear-gradient(90deg, #FFD180 0%, #FFA02E 50%, #FFB84D 100%);
+  background: linear-gradient(90deg, #FF851A 0%, #FA6B05 50%, #FF7700 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  border-bottom: 2px solid rgba(255, 160, 46, 0.6);
+  border-bottom: 2px solid rgba(250, 107, 5, 0.55);
   animation: shimmerAccent 6s linear infinite;
 }
 
@@ -3230,7 +3230,7 @@ button, input, select, textarea,
   filter: brightness(1.1);
   color: #000000 !important;
   transform: translateY(-2px);
-  box-shadow: 0 8px 26px rgba(255, 160, 46, 0.45);
+  box-shadow: 0 8px 26px rgba(250, 107, 5, 0.45);
 }
 
 .btn-outline {
@@ -3862,8 +3862,8 @@ button, input, select, textarea,
 
 .leadership-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(255, 160, 46, 0.45) !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 160, 46, 0.15) !important;
+  border-color: rgba(250, 107, 5, 0.45) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(250, 107, 5, 0.15) !important;
 }
 
 .leadership-card img {
@@ -4238,14 +4238,14 @@ button, input, select, textarea,
   color: #FFFFFF;
   border-color: var(--color-copper);
   transform: scale(1.08);
-  box-shadow: 0 0 0 6px #000000, 0 0 22px rgba(255, 160, 46, 0.5);
+  box-shadow: 0 0 0 6px #000000, 0 0 22px rgba(250, 107, 5, 0.5);
 }
 
 .stepper-step.is-completed .stepper-node {
   border-color: var(--color-copper);
   color: #FFFFFF;
   background: #000000;
-  box-shadow: 0 0 0 5px #000000, 0 0 14px rgba(255, 160, 46, 0.35);
+  box-shadow: 0 0 0 5px #000000, 0 0 14px rgba(250, 107, 5, 0.35);
 }
 
 .stepper-phase-tag {
@@ -4355,8 +4355,8 @@ button, input, select, textarea,
 
 .stepper-step.is-active .stepper-pill,
 .stepper-step:hover .stepper-pill {
-  border-color: rgba(255, 160, 46, 0.4);
-  background: rgba(255, 160, 46, 0.08);
+  border-color: rgba(250, 107, 5, 0.4);
+  background: rgba(250, 107, 5, 0.08);
   color: #FFFFFF;
 }
 
