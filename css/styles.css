@@ -13,17 +13,18 @@
   --color-bg-surface: #121214;
   --color-bg-light: #222226;
 
-  /* Architectural Monochrome Accents */
-  --color-accent: #FFFFFF;
-  --color-accent-light: #F4F4F5;
-  --color-accent-dark: #A1A1AA;
-  --color-accent-glow: rgba(255, 255, 255, 0.12);
+  /* Architectural Signature Warm Orange Accents (matching Stratum Brand Logo) */
+  --color-accent: #FA6B05;
+  --color-accent-light: #FF8A00;
+  --color-accent-dark: #D45500;
+  --color-accent-glow: rgba(250, 107, 5, 0.28);
 
-  /* Aliasing legacy copper tokens to pure monochrome so all components auto-inherit */
-  --color-copper: #FFFFFF;
-  --color-copper-light: #F4F4F5;
-  --color-copper-dark: #A1A1AA;
-  --color-copper-glow: rgba(255, 255, 255, 0.12);
+  /* Brand Warm Orange / Copper Tokens */
+  --color-copper: #FA6B05;
+  --color-copper-light: #FF8A00;
+  --color-copper-dark: #D45500;
+  --color-copper-glow: rgba(250, 107, 5, 0.28);
+  --color-copper-gradient: linear-gradient(135deg, #FF8A00 0%, #FA6B05 60%, #E05800 100%);
 
   /* Typography Colors */
   --color-text-title: #FFFFFF;
@@ -182,24 +183,24 @@ button, input, select, textarea,
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: #FFFFFF;
+  background: var(--color-copper-gradient);
   color: #000000;
   font-family: var(--font-main);
   font-weight: 700;
   font-size: 14px;
   padding: 11px 22px;
   border-radius: var(--radius-full);
-  border: 1px solid #FFFFFF;
+  border: 1px solid rgba(255, 138, 0, 0.4);
   cursor: pointer;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 4px 18px var(--color-copper-glow);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
 }
 
 .btn-copper-pill:hover {
-  background-color: #E4E4E7;
-  border-color: #E4E4E7;
+  filter: brightness(1.1);
   color: #000000;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 28px rgba(250, 107, 5, 0.48);
 }
 
 .btn-copper-pill span:last-child {
@@ -574,11 +575,11 @@ button, input, select, textarea,
 
 .hero-blueprint-headline span.text-creative-accent {
   display: inline-block;
-  background: linear-gradient(90deg, #FFFFFF 0%, #E4E4E7 35%, #FFFFFF 50%, #A1A1AA 100%);
+  background: linear-gradient(90deg, #FF9E2A 0%, #FA6B05 50%, #FF8A00 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 2px solid rgba(250, 107, 5, 0.5);
   animation: shimmerAccent 6s linear infinite;
 }
 
@@ -3212,22 +3213,24 @@ button, input, select, textarea,
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: #FFFFFF;
-  color: #000000;
-  font-weight: 600;
+  background: var(--color-copper-gradient);
+  color: #000000 !important;
+  font-weight: 700;
   font-size: 14px;
   padding: 12px 24px;
   border-radius: 9999px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid rgba(255, 138, 0, 0.4);
   text-decoration: none;
   cursor: pointer;
+  box-shadow: 0 4px 18px var(--color-copper-glow);
   transition: all var(--transition-fast);
 }
 
 .btn-primary:hover {
-  background: #E4E4E7;
-  color: #000000;
-  transform: translateY(-1px);
+  filter: brightness(1.1);
+  color: #000000 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(250, 107, 5, 0.45);
 }
 
 .btn-outline {
@@ -4185,16 +4188,16 @@ button, input, select, textarea,
 }
 
 .stepper-node {
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: #000000;
-  border: 2px solid rgba(255, 255, 255, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.28);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   color: #FFFFFF;
   box-shadow: 0 0 0 5px #000000, 0 4px 16px rgba(0, 0, 0, 0.8);
@@ -4203,23 +4206,24 @@ button, input, select, textarea,
 }
 
 .stepper-step:hover .stepper-node {
-  border-color: #FFFFFF;
+  border-color: var(--color-copper);
   color: #FFFFFF;
-  box-shadow: 0 0 0 5px #000000, 0 0 16px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 5px #000000, 0 0 16px var(--color-copper-glow);
 }
 
 .stepper-step.is-active .stepper-node {
-  background: #FFFFFF;
-  color: #000000;
-  border-color: #FFFFFF;
+  background: #000000;
+  color: #FFFFFF;
+  border-color: var(--color-copper);
   transform: scale(1.08);
-  box-shadow: 0 0 0 6px #000000, 0 0 24px rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 0 6px #000000, 0 0 22px rgba(250, 107, 5, 0.5);
 }
 
 .stepper-step.is-completed .stepper-node {
   border-color: var(--color-copper);
-  color: var(--color-copper);
-  background: rgba(194, 120, 3, 0.12);
+  color: #FFFFFF;
+  background: #000000;
+  box-shadow: 0 0 0 5px #000000, 0 0 14px rgba(250, 107, 5, 0.35);
 }
 
 .stepper-phase-tag {
@@ -4305,22 +4309,38 @@ button, input, select, textarea,
 }
 
 .stepper-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   color: #D4D4D8;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  padding: 3px 7px;
-  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 4px 10px;
+  border-radius: 6px;
   white-space: nowrap;
   transition: all 0.2s ease;
 }
 
+.stepper-pill .pill-icon {
+  width: 14px;
+  height: 14px;
+  fill: var(--color-copper);
+  color: var(--color-copper);
+  flex-shrink: 0;
+}
+
 .stepper-step.is-active .stepper-pill,
 .stepper-step:hover .stepper-pill {
-  border-color: rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(250, 107, 5, 0.4);
+  background: rgba(250, 107, 5, 0.08);
   color: #FFFFFF;
+}
+
+.stepper-title-accent {
+  color: var(--color-copper);
+  font-weight: 700;
 }
 
 /* ==========================================================================
