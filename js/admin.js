@@ -707,7 +707,7 @@ function openCareerModal(isNew = true, job = null) {
   document.getElementById('careerModalTitle').innerText = isNew ? 'Add Job Opening' : 'Edit Job Opening';
   document.getElementById('careerId').value = job ? job.id : '';
   document.getElementById('careerTitle').value = job ? job.title : '';
-  document.getElementById('careerDepartment').value = job ? (job.department || '') : 'BIM & VDC';
+  document.getElementById('careerDepartment').value = job ? (job.department || '') : 'MEP & VDC';
   document.getElementById('careerLocation').value = job ? (job.location || '') : 'Gurugram HQ';
   document.getElementById('careerExperience').value = job ? (job.experience || '') : '3+ Years';
   document.getElementById('careerTags').value = job && Array.isArray(job.tags) ? job.tags.join(', ') : '';

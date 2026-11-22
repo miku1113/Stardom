@@ -484,7 +484,7 @@ button, input, select, textarea,
 }
 
 /* ==========================================================================
-   CREATIVE ARCHITECTURAL BIM HERO BANNER (3D Wireframe + Coordination HUD)
+   CREATIVE ARCHITECTURAL HERO BANNER (3D Wireframe + Coordination HUD)
    ========================================================================== */
 .hero-blueprint-banner {
   position: relative;
@@ -496,7 +496,7 @@ button, input, select, textarea,
   background-image: 
     linear-gradient(90deg, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.85) 42%, rgba(0, 0, 0, 0.35) 75%, rgba(0, 0, 0, 0.75) 100%),
     linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 40%, rgba(0, 0, 0, 0.95) 100%),
-    url('../assets/hero-bim-architecture.jpg');
+    url('../assets/project-commercial.jpg');
   background-position: center right;
   background-size: cover;
   background-repeat: no-repeat;
@@ -605,8 +605,8 @@ button, input, select, textarea,
   animation: heroFadeUp 0.8s 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Interactive Floating 3D BIM Coordination HUD Card */
-.hero-bim-hud-card {
+/* Interactive Floating 3D Coordination HUD Card */
+.hero-hud-card {
   background: rgba(13, 13, 14, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -620,7 +620,7 @@ button, input, select, textarea,
   transition: transform var(--transition-smooth), border-color var(--transition-smooth);
 }
 
-.hero-bim-hud-card:hover {
+.hero-hud-card:hover {
   transform: translateY(-4px);
   border-color: rgba(255, 255, 255, 0.45);
 }
@@ -746,7 +746,7 @@ button, input, select, textarea,
   color: #FFFFFF;
 }
 
-/* Featured Landmark Project Spotlight Card (Replacing Live BIM HUD Card) */
+/* Featured Landmark Project Spotlight Card (Replacing Live Coordination HUD Card) */
 .hero-project-spotlight-card {
   background: rgba(13, 13, 14, 0.90);
   backdrop-filter: blur(16px);
@@ -2656,7 +2656,7 @@ button, input, select, textarea,
       min-height: auto;
     background-image: 
       linear-gradient(180deg, rgba(0, 0, 0, 0.86) 0%, rgba(0, 0, 0, 0.58) 32%, rgba(0, 0, 0, 0.84) 68%, #000000 100%),
-      url('../assets/hero-bim-architecture.jpg');
+      url('../assets/project-commercial.jpg');
     background-position: 45% 20%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2683,7 +2683,7 @@ button, input, select, textarea,
     font-size: clamp(38px, 5.5vw, 48px);
   }
 
-  .hero-bim-hud-card,
+  .hero-hud-card,
   .hero-project-spotlight-card {
     margin-left: 0;
     max-width: 100%;
@@ -2799,7 +2799,7 @@ button, input, select, textarea,
   .hero-blueprint-banner {
     background-image:
       linear-gradient(180deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.48) 26%, rgba(0, 0, 0, 0.78) 64%, #000000 100%),
-      url('../assets/hero-bim-architecture.jpg');
+      url('../assets/project-commercial.jpg');
     background-position: 45% 15%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2857,7 +2857,7 @@ button, input, select, textarea,
     font-size: 14px;
   }
 
-  .hero-bim-hud-card,
+  .hero-hud-card,
   .hero-project-spotlight-card {
     padding: 18px 16px;
     width: 100%;

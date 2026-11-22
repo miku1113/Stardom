@@ -3,7 +3,7 @@
     "name": "Stratum VDC & MEP Engineering",
     "brandTitle": "Stratum",
     "brandSubtitle": "VDC & MEP Engineering",
-    "tagline": "ISO 9001:2015 Certified | Turnkey MEP Design & BIM Solutions Across India & Globally",
+    "tagline": "ISO 9001:2015 Certified | Turnkey MEP Design & Multi-Trade Coordination Solutions Across India & Globally",
     "phone": "+91 98710 23456",
     "email": "contact@stratum-engineering.com",
     "careersEmail": "careers@stratum-engineering.com",
@@ -184,12 +184,12 @@
       "tools": ""
     },
     {
-      "id": "mep-bim",
-      "title": "MEP BIM Services",
-      "category": "BIM SERVICES",
-      "categorySlug": "bim",
-      "anchor": "mep-bim",
-      "url": "services-mep-bim.html",
+      "id": "mep-modeling",
+      "title": "MEP 3D Modeling Services",
+      "category": "COORDINATION SERVICES",
+      "categorySlug": "coordination",
+      "anchor": "mep-modeling",
+      "url": "services-mep-modeling.html",
       "summary": "3D models of building services for design and coordination.",
       "scope": "We model the ducts, pipes, equipment, and cable routes in the agreed scope and follow the project’s model conventions.",
       "deliverables": [
@@ -201,12 +201,12 @@
       "tools": ""
     },
     {
-      "id": "point-cloud-bim",
-      "title": "Point Cloud to BIM",
-      "category": "BIM SERVICES",
-      "categorySlug": "bim",
-      "anchor": "point-cloud-bim",
-      "url": "services-point-cloud-bim.html",
+      "id": "point-cloud",
+      "title": "Point Cloud to 3D CAD",
+      "category": "COORDINATION SERVICES",
+      "categorySlug": "coordination",
+      "anchor": "point-cloud",
+      "url": "services-point-cloud.html",
       "summary": "Models of existing spaces and services from survey scans.",
       "scope": "We use the supplied point cloud to trace the systems and building elements defined in the scope. We flag areas the scan cannot show clearly.",
       "deliverables": [
@@ -220,8 +220,8 @@
     {
       "id": "pdf-to-cad",
       "title": "PDF to CAD Drafting",
-      "category": "BIM SERVICES",
-      "categorySlug": "bim",
+      "category": "COORDINATION SERVICES",
+      "categorySlug": "coordination",
       "anchor": "pdf-to-cad",
       "url": "services-pdf-to-cad.html",
       "summary": "Editable CAD drawings from PDF plans and details.",
@@ -237,8 +237,8 @@
     {
       "id": "clash-detection",
       "title": "Clash Detection & Coordination",
-      "category": "BIM SERVICES",
-      "categorySlug": "bim",
+      "category": "COORDINATION SERVICES",
+      "categorySlug": "coordination",
       "anchor": "clash-detection",
       "url": "services-clash-detection.html",
       "summary": "Find conflicts between building systems, structure, and architecture.",
@@ -270,15 +270,15 @@
     },
     {
       "id": "family-creation",
-      "title": "Revit Family Creation",
+      "title": "Component Library Creation",
       "category": "CONSTRUCTION SUPPORT SERVICES",
       "categorySlug": "construction",
       "anchor": "family-creation",
       "url": "services-family-creation.html",
-      "summary": "Reusable Revit components for project models.",
+      "summary": "Reusable parametric components for project models.",
       "scope": "We build families from product information, with geometry, connectors, and parameters appropriate for the project.",
       "deliverables": [
-        "Revit family files",
+        "Parametric component files",
         "Types and parameter schedules",
         "Guidance for loading the families"
       ],
@@ -403,17 +403,17 @@
     {
       "id": "blog-2",
       "title": "Zero-Rework on High-Rise Basements: Navisworks Clash Matrix Best Practices",
-      "category": "BIM & Coordination",
+      "category": "Engineering & Coordination",
       "date": "April 2026",
-      "author": "Priya Nair, BIM Director",
+      "author": "Priya Nair, Technical Director",
       "readTime": "8 min read",
-      "image": "assets/services-bim-thumb.jpg",
+      "image": "assets/service-mep-design.jpg",
       "summary": "A practical guide to structuring hard vs. soft clash tests between gravity sewer lines, high-voltage cable trays, and fire sprinkler mains to avoid costly site modifications.",
       "content": "Basement ceiling voids in modern Indian commercial high-rises are the most contested real estate on the construction site..."
     },
     {
       "id": "blog-3",
-      "title": "Automating CPWD DSR Aligned BOQ Generation from Revit 5D Models",
+      "title": "Automating CPWD DSR Aligned BOQ Generation from Multi-Trade 3D Models",
       "category": "Construction Support",
       "date": "March 2026",
       "author": "Karan Singhania, QS Manager",
@@ -426,13 +426,13 @@
   "careers": [
     {
       "id": "job-1",
-      "title": "Senior MEP BIM Coordinator (Navisworks & Revit)",
-      "department": "BIM & VDC",
+      "title": "Senior MEP Coordination Engineer (Navisworks & AutoCAD)",
+      "department": "MEP & VDC",
       "location": "Gurugram / Bengaluru (Hybrid)",
       "type": "Full-time",
       "experience": "5-8 Years Experience",
       "description": "Lead multi-disciplinary clash detection matrices in Navisworks Manage, coordinate between HVAC, PHE, Fire, and Electrical sub-teams, manage BCF issue trackers, and ensure LOD 400-500 model compliance per client EIR.",
-      "tags": ["Autodesk Revit", "Navisworks Manage", "ISO 19650", "LOD 400/500"],
+      "tags": ["AutoCAD", "Navisworks Manage", "ISO 19650", "LOD 400/500"],
       "active": true
     },
     {
@@ -477,7 +477,7 @@
       "email": "r.malhotra@dlf-commercial.in",
       "firm": "DLF Commercial Projects",
       "phone": "+91 98112 34567",
-      "details": "Requirement for turnkey MEP DBR and LOD 350 BIM modeling for a 750,000 sq ft commercial IT building in Sector 58, Gurugram. Looking to commence within 3 weeks.",
+      "details": "Requirement for turnkey MEP DBR and LOD 350 spatial modeling for a 750,000 sq ft commercial IT building in Sector 58, Gurugram. Looking to commence within 3 weeks.",
       "type": "Consultation",
       "status": "In Review"
     },

@@ -11,10 +11,9 @@ const write = (file, html) => fs.writeFileSync(path.join(root, file), html);
 const {services} = JSON.parse(read('data/site-data.json'));
 
 // Active core service groups displayed across site navigation, home, and catalog
-// NOTE: 'bim', 'drafting', and 'other' are archived in repository for future feature rollout
+// NOTE: 'drafting' and 'other' are archived in repository for future feature rollout
 const groups = [
   ['mep', 'MEP Design Services', 'Design for the building’s mechanical, electrical, plumbing, and fire protection systems.'],
-  // ['bim', 'BIM Services', 'Building information models, drawing conversions, and coordination checks.'], // Archived for future feature
   ['construction', 'Construction Support Services', 'Drawings, quantities, components, and checks for construction teams.'],
 ].map(([slug, title, summary]) => ({
   slug, title, summary,
@@ -307,9 +306,9 @@ for (const group of groups) {
 
 // Also update extra service files that exist on disk so their navigation and footer match
 const extraServiceFiles = [
-  'services-bim.html',
-  'services-mep-bim.html',
-  'services-point-cloud-bim.html',
+  'services-coordination.html',
+  'services-mep-modeling.html',
+  'services-point-cloud.html',
   'services-pdf-to-cad.html',
   'services-clash-detection.html',
   'services-drafting.html',
