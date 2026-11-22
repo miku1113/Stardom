@@ -4352,6 +4352,9 @@ button, input, select, textarea,
   margin: 0 0 8px 0;
   letter-spacing: -0.015em;
   transition: color 0.2s ease;
+  min-height: 48px;
+  display: flex;
+  align-items: flex-start;
 }
 
 .stepper-step.is-active .stepper-title {
@@ -4364,6 +4367,7 @@ button, input, select, textarea,
   color: #A1A1AA;
   margin: 0 0 18px 0;
   flex-grow: 1;
+  min-height: 60px;
 }
 
 .stepper-deliverables {
@@ -4373,6 +4377,8 @@ button, input, select, textarea,
   margin-top: auto;
   padding-top: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 64px;
+  align-content: flex-start;
 }
 
 .stepper-pill {
