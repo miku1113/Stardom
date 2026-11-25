@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
         status.textContent = 'Sending your enquiry to Stratum Engineering…';
       }
 
-      const recipientEmail = 'contact@stratum-engineering.com';
+      const recipientEmail = 'info@stratumengineerings.com';
       const projectSubject = `Stratum Enquiry - ${name}${firm ? ` (${firm})` : ''}`;
 
       const emailPayload = {

@@ -188,7 +188,7 @@ function withHeader(page, filename) {
   const catalogMenu = menu(groups);
   const isServicePage = filename === 'services.html' || filename.startsWith('services-');
   const isCareers = filename === 'career.html';
-  const email = isCareers ? 'careers@stratum-engineering.com' : 'contact@stratum-engineering.com';
+  const email = isCareers ? 'careers@stratum-engineering.com' : 'info@stratumengineerings.com';
   const attributes = (href, linkClass) => {
     const isCurrent = href === filename;
     const isServiceSection = href === 'services.html' && isServicePage;
@@ -281,7 +281,7 @@ function renderPage(entry, group, content) {
       <div class="container">
 ${content}
         <div class="catalog-actions">
-          <a href="mailto:contact@stratum-engineering.com?subject=${encodeURIComponent(entry.title)}" class="btn btn-primary">Email about this service &rarr;</a>
+          <a href="mailto:info@stratumengineerings.com?subject=${encodeURIComponent(entry.title)}" class="btn btn-primary">Email about this service &rarr;</a>
           <a href="${group ? group.url : 'services.html'}" class="btn btn-outline">${group ? `Back to ${html(group.title)}` : 'All services'}</a>
         </div>
       </div>
