@@ -655,3 +655,37 @@ body.light-theme {
 .theme-demo-floating-badge a:hover {
   background: var(--color-copper);
 }
+
+/* --------------------------------------------------------------------------
+   FAQ Accordion Section in Light Theme
+   -------------------------------------------------------------------------- */
+.light-theme .faq-item {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+}
+
+.light-theme .faq-item:hover {
+  border-color: #CBD5E1 !important;
+}
+
+.light-theme .faq-item.active {
+  border-color: var(--color-copper) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), 0 0 15px rgba(250, 107, 5, 0.1) !important;
+}
+
+.light-theme .faq-question {
+  color: #0F172A !important;
+}
+
+.light-theme .faq-answer {
+  color: #475569 !important;
+}
+
+.light-theme .faq-answer ul li {
+  color: #475569 !important;
+}
+
+.light-theme .faq-category-group h3 {
+  color: #0F172A !important;
+}
+
