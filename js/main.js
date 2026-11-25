@@ -1,5 +1,5 @@
 /**
- * Stratum VDC & MEP Engineering
+ * Stratum MEP Engineering
  * Interactive JavaScript Components
  * Website: stratum-engineering.com
  */
