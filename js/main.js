@@ -319,6 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       let sent = false;
+      let activationNeeded = false;
 
       // 1. Direct email dispatch via FormSubmit AJAX to Stratum Engineering official email
       try {
@@ -334,6 +335,9 @@ document.addEventListener('DOMContentLoaded', () => {
           const data = await formSubmitRes.json().catch(() => ({}));
           if (data.success === true || data.success === 'true' || (data.message && data.message.toLowerCase().includes('success'))) {
             sent = true;
+          } else if (data.message && data.message.toLowerCase().includes('activation')) {
+            activationNeeded = true;
+            console.warn('FormSubmit needs one-time activation at:', recipientEmail);
           }
         }
       } catch (err) {
@@ -356,7 +360,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       } catch (_) {}
 
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipientEmail}&su=${encodeURIComponent(projectSubject)}&body=${encodeURIComponent(`Client Name: ${name}\nWork Email: ${email}\nPhone: ${phone}\nCompany: ${firm || 'N/A'}\nLocation: ${location || 'N/A'}\nBuilding Type: ${buildingType || 'N/A'}\nServices: ${services.join(', ') || 'General Consultation'}\n\nProject Brief:\n${details}\n\nSubmitted at: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}`)}`;
+      // URLs for multiple delivery channels
+      const mailSubject = encodeURIComponent(projectSubject);
+      const mailBody = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCompany: ${firm || 'N/A'}\nLocation: ${location || 'N/A'}\nBuilding Type: ${buildingType || 'N/A'}\nServices: ${services.join(', ') || 'General Consultation'}\n\nProject Brief:\n${details}`
+      );
+      const mailtoUrl = `mailto:${recipientEmail}?subject=${mailSubject}&body=${mailBody}`;
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipientEmail}&su=${mailSubject}&body=${mailBody}`;
+      const whatsappMsg = `*Stratum MEP Project Enquiry*\n\n` +
+        `*Name:* ${name}\n` +
+        `*Email:* ${email}\n` +
+        `*Phone:* ${phone || 'Not provided'}\n` +
+        `*Company:* ${firm || 'Not provided'}\n` +
+        `*Location:* ${location || 'Not specified'}\n` +
+        `*Building Type:* ${buildingType || 'Not specified'}\n` +
+        `*Services:* ${services.join(', ') || 'General Consultation'}\n\n` +
+        `*Project Brief:*\n${details}`;
+      const whatsappUrl = `https://wa.me/919099855212?text=${encodeURIComponent(whatsappMsg)}`;
 
       if (sent) {
         form.reset();
@@ -378,31 +398,34 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>`;
         }
       } else {
-        // Fallback: direct mailto & web compose link
-        const mailSubject = encodeURIComponent(projectSubject);
-        const mailBody = encodeURIComponent(
-          `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCompany: ${firm}\nLocation: ${location}\nBuilding Type: ${buildingType}\nServices: ${services.join(', ')}\n\nProject Brief:\n${details}`
-        );
-        const mailtoUrl = `mailto:${recipientEmail}?subject=${mailSubject}&body=${mailBody}`;
-
         if (submitButton) {
           submitButton.disabled = false;
           submitButton.textContent = originalBtnText;
         }
         if (status) {
           status.innerHTML = `
-            <div style="background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.4); border-radius:8px; padding:16px; margin-top:14px; text-align:left;">
-              <div style="color:#F59E0B; font-weight:700; margin-bottom:8px;">Ready to Send Directly:</div>
-              <p style="color:#D1D5DB; font-size:12.5px; line-height:1.5; margin:0 0 10px 0;">
-                Click below to dispatch your brief directly to <strong>${recipientEmail}</strong>:
+            <div style="background:rgba(250,107,5,0.08); border:1px solid rgba(250,107,5,0.3); border-radius:10px; padding:18px; margin-top:16px; text-align:left;">
+              <div style="color:var(--color-copper); font-weight:700; font-size:14px; margin-bottom:8px;">
+                ${activationNeeded ? 'Form Activation Required:' : 'Direct Dispatch Ready:'}
+              </div>
+              <p style="color:#D4D4D8; font-size:13px; line-height:1.5; margin:0 0 14px 0;">
+                ${activationNeeded 
+                  ? `An activation link was emailed to <strong>${recipientEmail}</strong>. Click that link once to enable 1-click background sending on all devices. In the meantime, dispatch your brief instantly below:`
+                  : `Choose your preferred channel to send your brief directly to our team:`}
               </p>
-              <a href="${gmailUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; background:#FFFFFF; color:#000000; font-weight:700; font-size:13px; padding:9px 18px; border-radius:9999px; text-decoration:none; margin-bottom:8px;">
-                Open &amp; Send in Gmail &rarr;
-              </a>
-              <div style="font-size:12px; color:#A1A1AA;">Or <a href="${mailtoUrl}" style="color:#FFFFFF; text-decoration:underline;">open in default email app</a></div>
+              <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; background:#25D366; color:#FFFFFF; font-weight:700; font-size:13px; padding:10px 18px; border-radius:9999px; text-decoration:none;">
+                  <span>💬 Send via WhatsApp</span>
+                </a>
+                <a href="${gmailUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; background:#EA4335; color:#FFFFFF; font-weight:700; font-size:13px; padding:10px 18px; border-radius:9999px; text-decoration:none;">
+                  <span>✉️ Open in Gmail</span>
+                </a>
+                <a href="${mailtoUrl}" style="display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:#FFFFFF; font-weight:600; font-size:13px; padding:10px 18px; border-radius:9999px; text-decoration:none;">
+                  <span>Default Mail App</span>
+                </a>
+              </div>
             </div>`;
         }
-        window.location.href = mailtoUrl;
       }
     });
   });
