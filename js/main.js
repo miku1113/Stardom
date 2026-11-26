@@ -869,4 +869,118 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setInterval(updateHUD, 100);
   }
+
+  // --- 15. Dark / Light Mode Switcher with Circular Reveal Animation ---
+  const applyTheme = (themeName) => {
+    const isLight = themeName === 'light';
+    if (isLight) {
+      document.documentElement.classList.add('light-theme');
+      document.body.classList.add('light-theme');
+      try { localStorage.setItem('stratum_theme', 'light'); } catch (e) {}
+    } else {
+      document.documentElement.classList.remove('light-theme');
+      document.body.classList.remove('light-theme');
+      try { localStorage.setItem('stratum_theme', 'dark'); } catch (e) {}
+    }
+
+    // Synchronize logo images
+    const logos = document.querySelectorAll('img[src*="stratum-official-logo"]');
+    logos.forEach(img => {
+      const isBlack = img.src.includes('stratum-official-logo-black');
+      if (isLight && !isBlack) {
+        img.src = img.src.replace('stratum-official-logo.png', 'stratum-official-logo-black.png');
+      } else if (!isLight && isBlack) {
+        img.src = img.src.replace('stratum-official-logo-black.png', 'stratum-official-logo.png');
+      }
+    });
+
+    // Update button accessibility labels
+    document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+      const label = isLight ? 'Switch to Dark Mode' : 'Switch to Light Mode';
+      btn.setAttribute('title', label);
+      btn.setAttribute('aria-label', label);
+    });
+  };
+
+  const toggleThemeWithCircle = (event, triggerBtn) => {
+    const isCurrentLight = document.documentElement.classList.contains('light-theme');
+    const targetTheme = isCurrentLight ? 'dark' : 'light';
+
+    let x = window.innerWidth / 2;
+    let y = window.innerHeight / 2;
+
+    if (triggerBtn) {
+      const rect = triggerBtn.getBoundingClientRect();
+      x = rect.left + rect.width / 2;
+      y = rect.top + rect.height / 2;
+    } else if (event && typeof event.clientX === 'number') {
+      x = event.clientX;
+      y = event.clientY;
+    }
+
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const transition = document.startViewTransition(() => {
+        applyTheme(targetTheme);
+      });
+
+      transition.ready.then(() => {
+        document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${endRadius}px at ${x}px ${y}px)`
+            ]
+          },
+          {
+            duration: 600,
+            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+            pseudoElement: '::view-transition-new(root)'
+          }
+        );
+      }).catch(() => {
+        applyTheme(targetTheme);
+      });
+    } else {
+      // Fallback circular reveal overlay
+      const ripple = document.createElement('div');
+      ripple.className = 'theme-circle-ripple';
+      ripple.style.background = targetTheme === 'light' ? '#FFFFFF' : '#000000';
+      ripple.style.clipPath = `circle(0px at ${x}px ${y}px)`;
+      document.body.appendChild(ripple);
+
+      // Force layout reflow
+      ripple.getBoundingClientRect();
+
+      ripple.style.clipPath = `circle(${endRadius}px at ${x}px ${y}px)`;
+
+      setTimeout(() => {
+        applyTheme(targetTheme);
+        setTimeout(() => {
+          if (ripple.parentNode) ripple.parentNode.removeChild(ripple);
+        }, 150);
+      }, 450);
+    }
+  };
+
+  // Bind Header & Drawer Theme Toggle Buttons
+  const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn, .drawer-theme-toggle-btn');
+  themeToggleBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleThemeWithCircle(e, btn);
+    });
+  });
+
+  // Initial Sync from stored preference
+  try {
+    const savedTheme = localStorage.getItem('stratum_theme');
+    if (savedTheme === 'light') {
+      applyTheme('light');
+    }
+  } catch (e) {}
 });

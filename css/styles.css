@@ -4,6 +4,7 @@
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600;1,700&display=swap');
+@import url('light-theme.css');
 
 :root {
   /* Minimalist High-Contrast Architectural Black & White Palette */
@@ -6393,4 +6394,128 @@ button, input, select, textarea,
   font-weight: 700;
   font-size: 14px;
 }
+
+/* ==========================================================================
+   THEME TOGGLE BUTTON & CIRCULAR REVEAL TRANSITION ANIMATION
+   ========================================================================== */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+  margin-right: 12px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--color-copper);
+  color: var(--color-copper);
+  transform: scale(1.08);
+}
+
+.theme-toggle-btn .theme-icon-sun {
+  display: none;
+}
+.theme-toggle-btn .theme-icon-moon {
+  display: block;
+}
+
+.light-theme .theme-toggle-btn {
+  background: #F1F5F9;
+  border-color: #CBD5E1;
+  color: #0F172A;
+}
+
+.light-theme .theme-toggle-btn:hover {
+  background: #E2E8F0;
+  border-color: var(--color-copper);
+  color: var(--color-copper);
+}
+
+.light-theme .theme-toggle-btn .theme-icon-sun {
+  display: block;
+}
+.light-theme .theme-toggle-btn .theme-icon-moon {
+  display: none;
+}
+
+.drawer-theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 16px;
+  margin-top: 10px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #D4D4D8;
+  font-family: var(--font-main);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.drawer-theme-toggle-btn:hover {
+  border-color: var(--color-copper);
+  color: var(--color-copper);
+  background: rgba(250, 107, 5, 0.08);
+}
+
+.theme-icon-sun-label {
+  display: none !important;
+}
+.theme-icon-moon-label {
+  display: inline-flex !important;
+}
+
+.light-theme .theme-icon-sun-label {
+  display: inline-flex !important;
+}
+.light-theme .theme-icon-moon-label {
+  display: none !important;
+}
+
+.light-theme .drawer-theme-toggle-btn {
+  background: #F1F5F9;
+  border-color: #CBD5E1;
+  color: #334155;
+}
+
+/* Native Circular View Transition API Animation */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 99999;
+}
+
+/* Fallback Ripple Circle Element (for browsers without View Transitions) */
+.theme-circle-ripple {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+  will-change: clip-path;
+  transition: clip-path 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
 

@@ -248,10 +248,13 @@ function withCatalog(page, filename) {
 }
 
 const publicPages = ['index', 'about', 'blog', 'career', 'contact', 'faqs', 'portfolio', 'process', 'sectors', 'services'];
+if (fs.existsSync(path.join(root, 'demo.html'))) {
+  publicPages.push('demo');
+}
 for (const name of publicPages) {
   const filename = name + '.html';
   let page = withCatalog(read(filename), filename);
-  if (name === 'index') page = block(page, 'home', homeServiceRow(groups));
+  if (name === 'index' || name === 'demo') page = block(page, 'home', homeServiceRow(groups));
   if (name === 'services') page = block(page, 'overview', catalogOverview());
   write(filename, page);
 }
