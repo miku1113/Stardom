@@ -257,8 +257,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Project enquiry forms - Direct transmission to Stratum Engineering email
+  // Project enquiry forms - Direct transmission to Stratum Engineering official email
   const enquiryForms = [...document.querySelectorAll('form.project-form')];
+
+  // Configurable email dispatch endpoints (Formspree / Web3Forms / Google Apps Script)
+  const STRATUM_MAIL_CONFIG = {
+    recipientEmail: 'info@stratumengineerings.com',
+    // Set your Formspree Form ID or Google Apps Script URL here for 1-click serverless dispatch:
+    formspreeEndpoint: '', // e.g., 'https://formspree.io/f/YOUR_FORM_ID'
+    web3FormsKey: '',      // e.g., 'YOUR_ACCESS_KEY'
+    googleAppsScriptUrl: '' // e.g., 'https://script.google.com/macros/s/.../exec'
+  };
 
   enquiryForms.forEach(form => {
     // Ensure form is always visible and submit button is enabled on all hosts
@@ -291,60 +300,98 @@ document.addEventListener('DOMContentLoaded', () => {
       const originalBtnText = submitButton ? submitButton.textContent : 'Send enquiry';
       if (submitButton) {
         submitButton.disabled = true;
-        submitButton.textContent = 'Transmitting brief…';
+        submitButton.textContent = 'Sending to info@stratumengineerings.com…';
       }
       if (status) {
         status.style.color = '#FA6B05';
-        status.textContent = 'Sending your enquiry to Stratum Engineering…';
+        status.textContent = 'Transmitting brief to info@stratumengineerings.com…';
       }
 
-      const recipientEmail = 'info@stratumengineerings.com';
-      const projectSubject = `Stratum Enquiry - ${name}${firm ? ` (${firm})` : ''}`;
+      const recipientEmail = STRATUM_MAIL_CONFIG.recipientEmail;
+      const projectSubject = `Stratum Project Enquiry - ${name}${firm ? ` (${firm})` : ''}`;
 
       const emailPayload = {
         _subject: projectSubject,
         _template: 'table',
         _captcha: 'false',
         _replyto: email,
-        'Enquiry Type': 'Stratum Enquiry',
-        'Client Name': name,
-        'Work Email': email,
-        'Phone Number': phone || 'Not provided',
-        'Company / Firm': firm || 'Not provided',
-        'Project Location': location || 'Not specified',
-        'Building Type': buildingType || 'Not specified',
-        'Disciplines Needed': services.length ? services.join(', ') : 'General Consultation',
-        'Project Scope & Brief': details || 'N/A',
-        'Submitted At (IST)': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+        name: name,
+        email: email,
+        phone: phone || 'Not provided',
+        firm: firm || 'Not provided',
+        location: location || 'Not specified',
+        building_type: buildingType || 'Not specified',
+        services: services.length ? services.join(', ') : 'General Consultation',
+        details: details || 'N/A',
+        'Submitted At': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
       };
 
       let sent = false;
-      let activationNeeded = false;
 
-      // 1. Direct email dispatch via FormSubmit AJAX to Stratum Engineering official email
-      try {
-        const formSubmitRes = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(emailPayload)
-        });
-        if (formSubmitRes.ok) {
-          const data = await formSubmitRes.json().catch(() => ({}));
-          if (data.success === true || data.success === 'true' || (data.message && data.message.toLowerCase().includes('success'))) {
-            sent = true;
-          } else if (data.message && data.message.toLowerCase().includes('activation')) {
-            activationNeeded = true;
-            console.warn('FormSubmit needs one-time activation at:', recipientEmail);
-          }
+      // 1. Try Configured Dedicated Endpoint (Formspree / Google Apps Script)
+      const primaryEndpoint = STRATUM_MAIL_CONFIG.formspreeEndpoint || STRATUM_MAIL_CONFIG.googleAppsScriptUrl;
+      if (primaryEndpoint) {
+        try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 6000);
+          const res = await fetch(primaryEndpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(emailPayload),
+            signal: controller.signal
+          });
+          clearTimeout(timeoutId);
+          if (res.ok) sent = true;
+        } catch (e) {
+          console.warn('Primary form endpoint error:', e);
         }
-      } catch (err) {
-        console.warn('FormSubmit AJAX attempt:', err);
       }
 
-      // 2. Dual-save to local server API if running on Node
+      // 2. Try Web3Forms if key configured
+      if (!sent && STRATUM_MAIL_CONFIG.web3FormsKey) {
+        try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 6000);
+          const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ access_key: STRATUM_MAIL_CONFIG.web3FormsKey, ...emailPayload }),
+            signal: controller.signal
+          });
+          clearTimeout(timeoutId);
+          if (res.ok) sent = true;
+        } catch (e) {
+          console.warn('Web3Forms error:', e);
+        }
+      }
+
+      // 3. Fallback: FormSubmit with strict 4.5s timeout (prevents hanging)
+      if (!sent) {
+        try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 4500);
+          const formSubmitRes = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(emailPayload),
+            signal: controller.signal
+          });
+          clearTimeout(timeoutId);
+          if (formSubmitRes.ok) {
+            const data = await formSubmitRes.json().catch(() => ({}));
+            if (data.success === true || data.success === 'true' || (data.message && data.message.toLowerCase().includes('success'))) {
+              sent = true;
+            }
+          }
+        } catch (err) {
+          console.warn('FormSubmit AJAX attempt timed out or failed:', err);
+        }
+      }
+
+      // 4. Dual-save to local server API if running on Node
       try {
         await fetch('/api/inquiries', {
           method: 'POST',
@@ -398,6 +445,16 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>`;
         }
       } else {
+        // Attempt direct mailto invocation so client mail opens with pre-filled content
+        try {
+          const mailLink = document.createElement('a');
+          mailLink.href = mailtoUrl;
+          mailLink.style.display = 'none';
+          document.body.appendChild(mailLink);
+          mailLink.click();
+          setTimeout(() => mailLink.remove(), 200);
+        } catch (_) {}
+
         if (submitButton) {
           submitButton.disabled = false;
           submitButton.textContent = originalBtnText;
@@ -406,22 +463,20 @@ document.addEventListener('DOMContentLoaded', () => {
           status.innerHTML = `
             <div style="background:rgba(250,107,5,0.08); border:1px solid rgba(250,107,5,0.3); border-radius:10px; padding:18px; margin-top:16px; text-align:left;">
               <div style="color:var(--color-copper); font-weight:700; font-size:14px; margin-bottom:8px;">
-                ${activationNeeded ? 'Form Activation Required:' : 'Direct Dispatch Ready:'}
+                Direct Email Dispatch to ${recipientEmail}
               </div>
               <p style="color:#D4D4D8; font-size:13px; line-height:1.5; margin:0 0 14px 0;">
-                ${activationNeeded 
-                  ? `An activation link was emailed to <strong>${recipientEmail}</strong>. Click that link once to enable 1-click background sending on all devices. In the meantime, dispatch your brief instantly below:`
-                  : `Choose your preferred channel to send your brief directly to our team:`}
+                Your project brief has been formatted. Click below to deliver it directly to our engineering team at <strong>${recipientEmail}</strong>:
               </p>
               <div style="display:flex; flex-wrap:wrap; gap:10px;">
-                <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; background:#25D366; color:#FFFFFF; font-weight:700; font-size:13px; padding:10px 18px; border-radius:9999px; text-decoration:none;">
-                  <span>💬 Send via WhatsApp</span>
+                <a href="${mailtoUrl}" style="display:inline-flex; align-items:center; gap:6px; background:#FA6B05; color:#FFFFFF; font-weight:700; font-size:13px; padding:10px 18px; border-radius:9999px; text-decoration:none;">
+                  <span>✉️ Send Direct Email</span>
                 </a>
                 <a href="${gmailUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; background:#EA4335; color:#FFFFFF; font-weight:700; font-size:13px; padding:10px 18px; border-radius:9999px; text-decoration:none;">
                   <span>✉️ Open in Gmail</span>
                 </a>
-                <a href="${mailtoUrl}" style="display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:#FFFFFF; font-weight:600; font-size:13px; padding:10px 18px; border-radius:9999px; text-decoration:none;">
-                  <span>Default Mail App</span>
+                <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; background:#25D366; color:#FFFFFF; font-weight:700; font-size:13px; padding:10px 18px; border-radius:9999px; text-decoration:none;">
+                  <span>💬 Send via WhatsApp</span>
                 </a>
               </div>
             </div>`;
