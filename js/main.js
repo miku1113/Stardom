@@ -883,8 +883,8 @@ document.addEventListener('DOMContentLoaded', () => {
       try { localStorage.setItem('stratum_theme', 'dark'); } catch (e) {}
     }
 
-    // Synchronize logo images
-    const logos = document.querySelectorAll('img[src*="stratum-official-logo"]');
+    // Synchronize standalone logo images if any don't use dual classes
+    const logos = document.querySelectorAll('img[src*="stratum-official-logo"]:not(.logo-dark):not(.logo-light)');
     logos.forEach(img => {
       const isBlack = img.src.includes('stratum-official-logo-black');
       if (isLight && !isBlack) {

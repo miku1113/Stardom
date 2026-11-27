@@ -6518,4 +6518,27 @@ button, input, select, textarea,
   transition: clip-path 0.65s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+/* ==========================================================================
+   BRAND LOGO SWITCHING (DARK VS LIGHT)
+   ========================================================================== */
+.logo-dark {
+  display: block !important;
+}
+.logo-light {
+  display: none !important;
+}
+
+html.light-theme .logo-dark,
+body.light-theme .logo-dark,
+.light-theme .logo-dark {
+  display: none !important;
+}
+
+html.light-theme .logo-light,
+body.light-theme .logo-light,
+.light-theme .logo-light {
+  display: block !important;
+}
+
+
 

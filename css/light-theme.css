@@ -689,3 +689,439 @@ body.light-theme {
   color: #0F172A !important;
 }
 
+/* ==========================================================================
+   SUBPAGES, CATALOG, PORTFOLIO, SECTORS, PROCESS, CAREERS & GLOBAL LIGHT THEME
+   ========================================================================== */
+
+/* Brand Logo Switching */
+.logo-dark {
+  display: block !important;
+}
+.logo-light {
+  display: none !important;
+}
+
+html.light-theme .logo-dark,
+body.light-theme .logo-dark,
+.light-theme .logo-dark {
+  display: none !important;
+}
+
+html.light-theme .logo-light,
+body.light-theme .logo-light,
+.light-theme .logo-light {
+  display: block !important;
+}
+
+/* Page Header Banners & Breadcrumbs */
+.light-theme .page-header-banner {
+  background: #F8FAFC !important;
+  color: #0F172A !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.light-theme .page-header-banner .hero-backdrop-grid {
+  background-image: 
+    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px) !important;
+  opacity: 0.8 !important;
+}
+
+.light-theme .breadcrumb {
+  color: #64748B !important;
+}
+
+.light-theme .breadcrumb a {
+  color: #64748B !important;
+}
+
+.light-theme .breadcrumb a:hover {
+  color: var(--color-copper) !important;
+}
+
+.light-theme .breadcrumb span.sep {
+  color: #CBD5E1 !important;
+}
+
+.light-theme .breadcrumb span:last-child,
+.light-theme .breadcrumb [aria-current="page"] {
+  color: var(--color-copper) !important;
+}
+
+.light-theme .page-title {
+  color: #0F172A !important;
+}
+
+.light-theme .page-desc {
+  color: #475569 !important;
+}
+
+/* Subpage Detail Box & Deliverables */
+.light-theme .subpage-detail-box {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04) !important;
+}
+
+.light-theme .subpage-detail-box:hover {
+  border-color: var(--color-copper) !important;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08), 0 0 16px rgba(250, 107, 5, 0.08) !important;
+}
+
+.light-theme .subpage-detail-box h2,
+.light-theme .subpage-detail-box h3,
+.light-theme .subpage-detail-box h4 {
+  color: #0F172A !important;
+}
+
+.light-theme .subpage-detail-box p,
+.light-theme .subpage-detail-box li {
+  color: #475569 !important;
+}
+
+.light-theme .deliverable-badge {
+  background: #FFF7ED !important;
+  color: #C2410C !important;
+  border: 1px solid #FFEDD5 !important;
+}
+
+.light-theme .deliverable-badge:hover {
+  background: var(--color-copper) !important;
+  color: #FFFFFF !important;
+  border-color: var(--color-copper) !important;
+}
+
+/* Service Drawings Grid & Technical Cards */
+.light-theme .catalog-group h2,
+.light-theme .catalog-group h2 a {
+  color: #0F172A !important;
+}
+
+.light-theme .catalog-group > p {
+  color: #64748B !important;
+}
+
+.light-theme .drawing-sheet-card,
+.light-theme .service-drawing-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04) !important;
+}
+
+.light-theme .drawing-sheet-card:hover,
+.light-theme .service-drawing-card:hover {
+  border-color: var(--color-copper) !important;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08), 0 0 16px rgba(250, 107, 5, 0.08) !important;
+}
+
+.light-theme .drawing-preview-box {
+  background: #F1F5F9 !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.light-theme .drawing-sheet-badge {
+  background: #0F172A !important;
+  color: #FFFFFF !important;
+}
+
+.light-theme .drawing-scale-badge {
+  background: rgba(255, 255, 255, 0.92) !important;
+  color: #0F172A !important;
+  border: 1px solid #CBD5E1 !important;
+}
+
+.light-theme .drawing-card-body h4,
+.light-theme .drawing-card-body h4 a {
+  color: #0F172A !important;
+}
+
+.light-theme .drawing-card-body p {
+  color: #64748B !important;
+}
+
+.light-theme .service-card-action-btn {
+  color: var(--color-copper) !important;
+}
+
+/* Project Inquiry Box (Contact Page & Quote Sections) */
+.light-theme .project-inquiry-box {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.05) !important;
+}
+
+.light-theme .inquiry-sidebar {
+  background: #F8FAFC !important;
+  border-right: 1px solid #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+.light-theme .inquiry-sidebar h3 {
+  color: #0F172A !important;
+}
+
+.light-theme .inquiry-sidebar p {
+  color: #64748B !important;
+}
+
+.light-theme .guarantee-item {
+  color: #334155 !important;
+}
+
+.light-theme .guarantee-item svg {
+  fill: var(--color-copper) !important;
+}
+
+.light-theme .inquiry-form-wrap {
+  background: #FFFFFF !important;
+}
+
+.light-theme .inquiry-form-wrap h4 {
+  color: #0F172A !important;
+}
+
+/* Buttons */
+.light-theme .btn-outline {
+  border: 1px solid #CBD5E1 !important;
+  color: #334155 !important;
+  background: transparent !important;
+}
+
+.light-theme .btn-outline:hover {
+  border-color: var(--color-copper) !important;
+  color: var(--color-copper) !important;
+  background: #FFF7ED !important;
+}
+
+/* Portfolio Showcase */
+.light-theme .portfolio-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04) !important;
+}
+
+.light-theme .portfolio-card:hover {
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08) !important;
+}
+
+.light-theme .portfolio-card-img {
+  background: #F1F5F9 !important;
+}
+
+.light-theme .portfolio-card-body h4 {
+  color: #0F172A !important;
+}
+
+.light-theme .portfolio-card-body p {
+  color: #64748B !important;
+}
+
+.light-theme .portfolio-filter-btn {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #64748B !important;
+}
+
+.light-theme .portfolio-filter-btn:hover {
+  border-color: var(--color-copper) !important;
+  color: var(--color-copper) !important;
+  background: #FFF7ED !important;
+}
+
+.light-theme .portfolio-filter-btn.active {
+  background: var(--color-copper-gradient) !important;
+  color: #FFFFFF !important;
+  border-color: var(--color-copper) !important;
+}
+
+/* Sectors Showcase */
+.light-theme .sector-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04) !important;
+}
+
+.light-theme .sector-card:hover {
+  border-color: var(--color-copper) !important;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08), 0 0 16px rgba(250, 107, 5, 0.08) !important;
+}
+
+.light-theme .sector-card-icon {
+  background: #FFF7ED !important;
+  border: 1px solid #FFEDD5 !important;
+}
+
+.light-theme .sector-card-icon svg {
+  fill: var(--color-copper) !important;
+}
+
+.light-theme .sector-card:hover .sector-card-icon {
+  background: var(--color-copper-gradient) !important;
+  border-color: var(--color-copper) !important;
+}
+
+.light-theme .sector-card:hover .sector-card-icon svg {
+  fill: #FFFFFF !important;
+}
+
+.light-theme .sector-card h4 {
+  color: #0F172A !important;
+}
+
+.light-theme .sector-card p {
+  color: #64748B !important;
+}
+
+/* Process Steps Showcase */
+.light-theme .process-step-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04) !important;
+}
+
+.light-theme .process-step-num {
+  color: #CBD5E1 !important;
+}
+
+.light-theme .process-step-card h4 {
+  color: #0F172A !important;
+}
+
+.light-theme .process-step-card p {
+  color: #64748B !important;
+}
+
+/* Careers & Blog */
+.light-theme .job-card,
+.light-theme .blog-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04) !important;
+}
+
+.light-theme .job-card:hover,
+.light-theme .blog-card:hover {
+  border-color: var(--color-copper) !important;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08) !important;
+}
+
+.light-theme .job-title,
+.light-theme .blog-title {
+  color: #0F172A !important;
+}
+
+.light-theme .job-meta,
+.light-theme .blog-date {
+  color: #64748B !important;
+}
+
+/* About & Leadership */
+.light-theme .leadership-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06) !important;
+  overflow: hidden !important;
+}
+
+.light-theme .leadership-card h3 {
+  color: #0F172A !important;
+}
+
+.light-theme .leadership-card p {
+  color: #64748B !important;
+}
+
+.light-theme .leadership-img-frame {
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08) !important;
+  border: 1px solid #E2E8F0 !important;
+}
+
+/* Section Backgrounds & Global Container Inlines */
+.light-theme .bg-light {
+  background: #F8FAFC !important;
+}
+
+.light-theme .section-title,
+.light-theme .section-headline {
+  color: #0F172A !important;
+}
+
+.light-theme .section-desc {
+  color: #64748B !important;
+}
+
+.light-theme .badge-dark {
+  background: #F1F5F9 !important;
+  color: #0F172A !important;
+  border: 1px solid #CBD5E1 !important;
+}
+
+/* Comprehensive Inline Style Overrides for Light Mode */
+.light-theme section[style*="background: #070708"],
+.light-theme section[style*="background:#070708"],
+.light-theme section[style*="background: #000000"],
+.light-theme section[style*="background:#000000"] {
+  background: #F8FAFC !important;
+  border-top-color: #E2E8F0 !important;
+}
+
+.light-theme [style*="color: #FFFFFF"],
+.light-theme [style*="color:#FFFFFF"],
+.light-theme [style*="color: #F4F4F5"],
+.light-theme [style*="color:#F4F4F5"] {
+  color: #0F172A !important;
+}
+
+.light-theme [style*="color: #A1A1AA"],
+.light-theme [style*="color:#A1A1AA"],
+.light-theme [style*="color: #E4E4E7"],
+.light-theme [style*="color:#E4E4E7"] {
+  color: #475569 !important;
+}
+
+.light-theme [style*="background: linear-gradient(135deg, rgba(250, 107, 5, 0.08) 0%, rgba(0, 0, 0, 0.4) 100%)"] {
+  background: #FFF7ED !important;
+  border-left-color: var(--color-copper) !important;
+}
+
+.light-theme .footer-contact-item a[style*="color:#FFFFFF"],
+.light-theme .footer-contact-item a[style*="color: #FFFFFF"] {
+  color: #0F172A !important;
+}
+
+.light-theme .footer-contact-item a:hover {
+  color: var(--color-copper) !important;
+}
+
+.light-theme .site-footer {
+  background: #F8FAFC !important;
+  border-top: 1px solid #E2E8F0 !important;
+}
+
+.light-theme .site-footer .footer-brand p {
+  color: #64748B !important;
+}
+
+.light-theme .site-footer .footer-col h5 {
+  color: #0F172A !important;
+}
+
+.light-theme .site-footer .footer-link {
+  color: #475569 !important;
+}
+
+.light-theme .site-footer .footer-link:hover {
+  color: var(--color-copper) !important;
+}
+
+.light-theme .site-footer .footer-contact-item svg {
+  fill: var(--color-copper) !important;
+}
+
+.light-theme .site-footer .footer-bottom {
+  border-top: 1px solid #E2E8F0 !important;
+  color: #94A3B8 !important;
+}
+
