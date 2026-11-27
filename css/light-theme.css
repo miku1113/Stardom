@@ -918,42 +918,94 @@ body.light-theme .logo-light,
   background: #FFF7ED !important;
 }
 
-/* Portfolio Showcase */
+/* Portfolio Showcase & Cards in Light Mode */
 .light-theme .portfolio-card {
   background: #FFFFFF !important;
   border: 1px solid #E2E8F0 !important;
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04) !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
 }
 
 .light-theme .portfolio-card:hover {
   border-color: #CBD5E1 !important;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.1) !important;
 }
 
+.light-theme .portfolio-img-box,
 .light-theme .portfolio-card-img {
   background: #F1F5F9 !important;
 }
 
+.light-theme .portfolio-details {
+  background: #FFFFFF !important;
+}
+
+.light-theme .portfolio-details h3,
 .light-theme .portfolio-card-body h4 {
   color: #0F172A !important;
 }
 
+.light-theme .portfolio-details p,
 .light-theme .portfolio-card-body p {
-  color: #64748B !important;
+  color: #475569 !important;
 }
 
+.light-theme .portfolio-subloc {
+  color: #64748B !important;
+  font-weight: 600 !important;
+}
+
+.light-theme .portfolio-subloc svg {
+  fill: #FA6B05 !important;
+}
+
+.light-theme .project-meta-chips {
+  border-top: 1px solid #E2E8F0 !important;
+}
+
+.light-theme .meta-chip {
+  background: #F1F5F9 !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #334155 !important;
+  font-weight: 600 !important;
+}
+
+.light-theme .portfolio-card:hover .meta-chip,
+.light-theme .meta-chip:hover {
+  background: #FFF7ED !important;
+  border-color: rgba(250, 107, 5, 0.45) !important;
+  color: #C2410C !important;
+}
+
+.light-theme .portfolio-card .btn-outline {
+  background: #F8FAFC !important;
+  border: 1.5px solid #CBD5E1 !important;
+  color: #0F172A !important;
+  font-weight: 600 !important;
+}
+
+.light-theme .portfolio-card .btn-outline:hover {
+  background: var(--color-copper-gradient) !important;
+  color: #FFFFFF !important;
+  border-color: var(--color-copper) !important;
+  box-shadow: 0 4px 16px rgba(250, 107, 5, 0.35) !important;
+}
+
+/* Portfolio Filters */
+.light-theme .filter-btn,
 .light-theme .portfolio-filter-btn {
   background: #F8FAFC !important;
-  border: 1px solid #E2E8F0 !important;
-  color: #64748B !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #475569 !important;
 }
 
+.light-theme .filter-btn:hover,
 .light-theme .portfolio-filter-btn:hover {
   border-color: var(--color-copper) !important;
   color: var(--color-copper) !important;
   background: #FFF7ED !important;
 }
 
+.light-theme .filter-btn.active,
 .light-theme .portfolio-filter-btn.active {
   background: var(--color-copper-gradient) !important;
   color: #FFFFFF !important;
