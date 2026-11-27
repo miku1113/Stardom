@@ -913,9 +913,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const rect = triggerBtn.getBoundingClientRect();
       x = rect.left + rect.width / 2;
       y = rect.top + rect.height / 2;
-    } else if (event && typeof event.clientX === 'number') {
+    } else if (event && typeof event.clientX === 'number' && event.clientX > 0) {
       x = event.clientX;
       y = event.clientY;
+    }
+
+    // 1. Trigger button animation & circular sonar pulse ("animation like a circle over there")
+    if (triggerBtn) {
+      triggerBtn.classList.add('theme-btn-animating');
+      setTimeout(() => triggerBtn.classList.remove('theme-btn-animating'), 700);
+
+      const sonar = document.createElement('span');
+      sonar.className = 'theme-btn-sonar-ring';
+      triggerBtn.appendChild(sonar);
+      setTimeout(() => {
+        if (sonar.parentNode) sonar.parentNode.removeChild(sonar);
+      }, 700);
     }
 
     const endRadius = Math.hypot(
@@ -923,48 +936,81 @@ document.addEventListener('DOMContentLoaded', () => {
       Math.max(y, window.innerHeight - y)
     );
 
-    if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const transition = document.startViewTransition(() => {
-        applyTheme(targetTheme);
-      });
+    // 2. Visible glowing expanding circular shockwave wave ring
+    const wave = document.createElement('div');
+    wave.className = 'theme-circle-wave';
+    wave.style.left = `${x}px`;
+    wave.style.top = `${y}px`;
+    document.body.appendChild(wave);
 
-      transition.ready.then(() => {
-        document.documentElement.animate(
-          {
-            clipPath: [
-              `circle(0px at ${x}px ${y}px)`,
-              `circle(${endRadius}px at ${x}px ${y}px)`
-            ]
-          },
-          {
-            duration: 600,
-            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-            pseudoElement: '::view-transition-new(root)'
+    requestAnimationFrame(() => {
+      wave.style.width = `${endRadius * 2.2}px`;
+      wave.style.height = `${endRadius * 2.2}px`;
+      wave.style.opacity = '0';
+    });
+    setTimeout(() => {
+      if (wave.parentNode) wave.parentNode.removeChild(wave);
+    }, 750);
+
+    // 3. Set CSS properties for CSS keyframes view-transition
+    document.documentElement.style.setProperty('--circle-x', `${x}px`);
+    document.documentElement.style.setProperty('--circle-y', `${y}px`);
+    document.documentElement.style.setProperty('--circle-radius', `${endRadius}px`);
+
+    // 4. View Transitions API execution
+    const canViewTransition = typeof document.startViewTransition === 'function' &&
+                              !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (canViewTransition) {
+      try {
+        const transition = document.startViewTransition(() => {
+          applyTheme(targetTheme);
+        });
+
+        transition.ready.then(() => {
+          try {
+            document.documentElement.animate(
+              {
+                clipPath: [
+                  `circle(0px at ${x}px ${y}px)`,
+                  `circle(${endRadius}px at ${x}px ${y}px)`
+                ]
+              },
+              {
+                duration: 650,
+                easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                pseudoElement: '::view-transition-new(root)'
+              }
+            );
+          } catch (e) {
+            // CSS keyframe handles it in Safari / browsers without WAAPI pseudoElement
           }
-        );
-      }).catch(() => {
-        applyTheme(targetTheme);
-      });
-    } else {
-      // Fallback circular reveal overlay
-      const ripple = document.createElement('div');
-      ripple.className = 'theme-circle-ripple';
-      ripple.style.background = targetTheme === 'light' ? '#FFFFFF' : '#000000';
-      ripple.style.clipPath = `circle(0px at ${x}px ${y}px)`;
-      document.body.appendChild(ripple);
-
-      // Force layout reflow
-      ripple.getBoundingClientRect();
-
-      ripple.style.clipPath = `circle(${endRadius}px at ${x}px ${y}px)`;
-
-      setTimeout(() => {
-        applyTheme(targetTheme);
-        setTimeout(() => {
-          if (ripple.parentNode) ripple.parentNode.removeChild(ripple);
-        }, 150);
-      }, 450);
+        }).catch(() => {
+          applyTheme(targetTheme);
+        });
+        return;
+      } catch (err) {
+        // Fall through to fallback
+      }
     }
+
+    // 5. Fallback circular ripple for browsers without View Transitions
+    const ripple = document.createElement('div');
+    ripple.className = 'theme-circle-ripple';
+    ripple.style.background = targetTheme === 'light' ? '#FFFFFF' : '#0B0B0C';
+    ripple.style.clipPath = `circle(0px at ${x}px ${y}px)`;
+    document.body.appendChild(ripple);
+
+    requestAnimationFrame(() => {
+      ripple.style.clipPath = `circle(${endRadius}px at ${x}px ${y}px)`;
+    });
+
+    setTimeout(() => {
+      applyTheme(targetTheme);
+      setTimeout(() => {
+        if (ripple.parentNode) ripple.parentNode.removeChild(ripple);
+      }, 100);
+    }, 450);
   };
 
   // Bind Header & Drawer Theme Toggle Buttons
