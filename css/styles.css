@@ -6450,6 +6450,14 @@ button, input, select, textarea,
   display: none;
 }
 
+.light-theme .mobile-toggle {
+  color: #0F172A !important;
+}
+
+.light-theme .mobile-toggle:hover {
+  color: var(--color-copper) !important;
+}
+
 .drawer-theme-toggle-btn {
   display: flex;
   align-items: center;

@@ -91,6 +91,14 @@ body.light-theme {
   color: var(--color-copper) !important;
 }
 
+.light-theme .mobile-toggle {
+  color: #0F172A !important;
+}
+
+.light-theme .mobile-toggle:hover {
+  color: var(--color-copper) !important;
+}
+
 .light-theme .nav-dropdown,
 .light-theme .mega-dropdown {
   background: #FFFFFF !important;
@@ -414,12 +422,30 @@ body.light-theme {
   color: #FFFFFF !important;
 }
 
-.light-theme .review-dot {
-  background: #CBD5E1 !important;
+.light-theme .reviews-dots-nav {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
 }
 
+.light-theme .review-dot {
+  background: #94A3B8 !important;
+  border: 1px solid #CBD5E1 !important;
+  opacity: 0.7 !important;
+}
+
+.light-theme .review-dot:hover {
+  background: #475569 !important;
+  opacity: 1 !important;
+}
+
+.light-theme .review-dot.is-active,
 .light-theme .review-dot.active {
   background: var(--color-copper) !important;
+  border-color: var(--color-copper) !important;
+  opacity: 1 !important;
+  box-shadow: 0 2px 8px rgba(250, 107, 5, 0.35) !important;
 }
 
 /* --------------------------------------------------------------------------
